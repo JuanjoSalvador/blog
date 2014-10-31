@@ -88,7 +88,10 @@
 		color: #ffffff;
 		padding: 10 10 10 10;
 		}
-
+	.construccion {
+		position: absolute;
+		text-align: center;
+		}
 	/* Botones */
 	.boton {
 		-moz-box-shadow:inset 0px 1px 0px 0px #f5978e;
