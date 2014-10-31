@@ -88,7 +88,8 @@
 		color: #ffffff;
 		padding: 10 10 10 10;
 		}
-	.construccion {
+	/* IDs */
+	#construccion {
 		position: absolute;
 		text-align: center;
 		}
