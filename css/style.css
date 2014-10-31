@@ -1,6 +1,8 @@
 /* Stylesheet juanjosalvador.github.io 
 	Autor: Juan José Salvador
 	Versión: 1.0
+
+	Pendiente de añadir: ul, ol
 	
 	Paleta de colores usados
 	
@@ -13,23 +15,28 @@
 		text-align: center; 
 		background-image: url(../imagenes/pattern.png); 
 		background-repeat: repeat;
-		color: #ffffff;
 		padding: 12px;
-		border: 12px #ffffff;
-		font-family: Oswald;
 		}
+
+	h1 {
+		font-family: Oswald;
+		color: #ffffff;
+		font-size: 25pt;
+	   }
 
 	body { 
 		background-image: url(../imagenes/pattern.png); 
 		background-repeat: repeat;
 	     }
 
+	ul, ol {
+	       }
+
 	p, li { 
 		color: #ffffff; 
-		font-family: Serif, Helvetica; 
-		font-size: 18pt; 
+		font-family: Lora, Helvetica; 
+		font-size: 18px; 
 		text-decoration: none;
-		
 	  }
 
 	footer { 
@@ -45,16 +52,26 @@
 		text-align: justify;
 		}
 
-	span, h2, h3, h4 {
+	span, h2, h3, h4, h5 {
 		color: #f24537;
 		font-family: Oswald;
 	     }
+
+	/* Clases */
 	.enlace {
 		color: #ffffff;
 		text-decoration: none;
 		}
 	.enlace:hover {
 		color: #f24537;
+		}
+
+	.boxcode {	
+		width: 97%;
+		background-color: #212121;
+		border: 2px solid #000000;
+		color: #ffffff;
+		padding: 10 10 10 10;
 		}
 
 	/* Botones */

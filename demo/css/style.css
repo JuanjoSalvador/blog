@@ -2,7 +2,7 @@
 	Autor: Juan José Salvador
 	Versión: 1.0
 
-	Pendiente de añadir: ul, ol, code
+	Pendiente de añadir: ul, ol
 	
 	Paleta de colores usados
 	
@@ -34,7 +34,7 @@
 
 	p, li { 
 		color: #ffffff; 
-		font-family: Serif, Helvetica; 
+		font-family: Lora, Helvetica; 
 		font-size: 18px; 
 		text-decoration: none;
 	  }
@@ -56,12 +56,22 @@
 		color: #f24537;
 		font-family: Oswald;
 	     }
+
+	/* Clases */
 	.enlace {
 		color: #ffffff;
 		text-decoration: none;
 		}
 	.enlace:hover {
 		color: #f24537;
+		}
+
+	.boxcode {	
+		width: 97%;
+		background-color: #212121;
+		border: 2px solid #000000;
+		color: #ffffff;
+		padding: 10 10 10 10;
 		}
 
 	/* Botones */
