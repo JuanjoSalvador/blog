@@ -1,15 +1,16 @@
-/* Stylesheet juanjosalvador.github.io 
-	Autor: Juan José Salvador
+/* 
+	Parabellum Theme
 	Versión: 1.0
-
-	Pendiente de añadir: ul, ol
+	Autor: Juan José Salvador
+	Web: http://github.com/JuanjoSalvador
+*/
 	
-	Paleta de colores usados
+	/* Paleta de colores usados
 	
 		#f24537 - Rojo
 		#ffffff - Blanco
-*/	
-
+		#1a1a1a - Gris (sombra)
+	*/	
 
 	header  { 
 		text-align: center; 
@@ -22,14 +23,21 @@
 		font-family: Oswald;
 		color: #ffffff;
 		font-size: 25pt;
+		text-shadow: -2px 2px 4px #1a1a1a;
 	   }
 
 	body { 
 		background-image: url(../imagenes/pattern.png); 
 		background-repeat: repeat;
+		text-shadow: -2px 2px 4px #1a1a1a;
 	     }
 
-	ul, ol {
+	ul {
+		list-style-type: none;
+	   }
+
+	ol {
+		list-style-type: katakana;
 	       }
 
 	p, li { 
@@ -44,7 +52,14 @@
 		font-size: 10pt;
 		font-family: Oswald;
 		}
-
+		
+	footer a {
+		color: #ffffff;
+		text-decoration: none;	
+		}
+	footer a:hover {
+		color: #f24537;
+		}
 	article { 
 		position: relative; 
 		margin: 0 0 0 25% ; 
@@ -59,14 +74,14 @@
 
 	/* Clases */
 	.enlace {
+		text-decoration: underline;
 		color: #ffffff;
-		text-decoration: none;
 		}
 	.enlace:hover {
 		color: #f24537;
 		}
 
-	.boxcode {	
+	.codebox {	
 		width: 97%;
 		background-color: #212121;
 		border: 2px solid #000000;
@@ -108,7 +123,7 @@
 		width:130px;
 		text-decoration:none;
 		text-align:center;
-		text-shadow:1px 1px 0px #810e05;
+		text-shadow: -2px 2px 4px #1a1a1a;
 	}
 	.boton:hover {
 		background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #c62d1f), color-stop(1, #f24537) );
