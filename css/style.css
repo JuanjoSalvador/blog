@@ -89,7 +89,7 @@
 		padding: 10 10 10 10;
 		}
 	/* IDs */
-	#construccion {
+	#construccion, #botones {
 		position: relative;
 		text-align: center;
 		}
