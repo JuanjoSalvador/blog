@@ -25,6 +25,7 @@
 	   }
 
 	body { 
+		position: fixed;
 		background-image: url(../imagenes/pattern.png); 
 		background-repeat: repeat;
 		text-shadow: -2px 2px 4px #1a1a1a;
