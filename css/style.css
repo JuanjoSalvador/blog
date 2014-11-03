@@ -12,8 +12,13 @@
 		#1a1a1a - Gris (sombra)
 	*/
 
+<<<<<<< HEAD
 	header  {
 		text-align: center;
+=======
+	header  { 
+		text-align: center; 
+>>>>>>> e72fae60743da9561b56c6e3799221205cdf2440
 		padding: 12px;
 		}
 
@@ -24,9 +29,15 @@
 		text-shadow: -2px 2px 4px #1a1a1a;
 	   }
 
+<<<<<<< HEAD
 	body {
 		background-attachment: fixed;
 		background-image: url(../imagenes/pattern.png);
+=======
+	body { 
+		background-attachment: fixed;
+		background-image: url(../imagenes/pattern.png); 
+>>>>>>> e72fae60743da9561b56c6e3799221205cdf2440
 		background-repeat: repeat;
 		text-shadow: -2px 2px 4px #1a1a1a;
 	     }
@@ -95,12 +106,15 @@
 		color: #ffffff;
 		padding: 10px 10px 10px 10px;
 		}
+<<<<<<< HEAD
 	.imagebox img {
 		position: left;
 		max-width: 50%;
 		height: auto;
 		border: 1px solid white;
 	}
+=======
+>>>>>>> e72fae60743da9561b56c6e3799221205cdf2440
 	/* IDs */
 	#construccion, #botones {
 		position: relative;
@@ -152,3 +166,7 @@
 		position:relative;
 		top:1px;
 		}
+<<<<<<< HEAD
+=======
+
+>>>>>>> e72fae60743da9561b56c6e3799221205cdf2440
