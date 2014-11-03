@@ -1,19 +1,19 @@
-/*
+/* 
 	Parabellum Theme
 	Versión: 1.0
 	Autor: Juan José Salvador
 	Web: http://github.com/JuanjoSalvador
 */
-
+	
 	/* Paleta de colores usados
-
+	
 		#f24537 - Rojo
 		#ffffff - Blanco
 		#1a1a1a - Gris (sombra)
-	*/
+	*/	
 
-	header  {
-		text-align: center;
+	header  { 
+		text-align: center; 
 		padding: 12px;
 		}
 
@@ -24,9 +24,9 @@
 		text-shadow: -2px 2px 4px #1a1a1a;
 	   }
 
-	body {
+	body { 
 		background-attachment: fixed;
-		background-image: url(../imagenes/pattern.png);
+		background-image: url(../imagenes/pattern.png); 
 		background-repeat: repeat;
 		text-shadow: -2px 2px 4px #1a1a1a;
 	     }
@@ -39,30 +39,30 @@
 		list-style-type: katakana;
 	       }
 
-	p, li {
-		color: #ffffff;
-		font-family: Lora, Helvetica;
-		font-size: 18px;
+	p, li { 
+		color: #ffffff; 
+		font-family: Lora, Helvetica; 
+		font-size: 18px; 
 		text-decoration: none;
 	  }
 
-	footer {
+	footer { 
 		text-align: center;
 		font-size: 10pt;
 		font-family: Oswald;
 		}
-
+		
 	footer a {
 		color: #ffffff;
-		text-decoration: none;
+		text-decoration: none;	
 		}
 	footer a:hover {
 		color: #f24537;
 		}
-	article {
-		position: relative;
-		margin: 0 0 0 25% ;
-		width: 50%;
+	article { 
+		position: relative; 
+		margin: 0 0 0 25% ; 
+		width: 50%; 
 		text-align: justify;
 		}
 
@@ -70,14 +70,6 @@
 		color: #f24537;
 		font-family: Oswald;
 	     }
-	span a {
-		color: #f24537;
-		font-family: Oswald;
-		text-decoration: none;
-	}
-	span a:hover {
-		color: #ffffff;
-	}
 
 	/* Clases */
 	.enlace {
@@ -88,24 +80,14 @@
 		color: #f24537;
 		}
 
-	.codebox {
+	.codebox {	
 		width: 97%;
 		background-color: #212121;
 		border: 2px solid #000000;
 		color: #ffffff;
-		padding: 10px 10px 10px 10px;
+		padding: 10 10 10 10;
 		}
-	.imagebox img {
-		position: left;
-		max-width: 50%;
-		height: auto;
-		border: 1px solid white;
-	}
-	/* IDs */
-	#construccion, #botones {
-		position: relative;
-		text-align: center;
-		}
+
 	/* Botones */
 	.boton {
 		-moz-box-shadow:inset 0px 1px 0px 0px #f5978e;
@@ -141,14 +123,14 @@
 		text-decoration:none;
 		text-align:center;
 		text-shadow: -2px 2px 4px #1a1a1a;
-		}
+	}
 	.boton:hover {
 		background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #c62d1f), color-stop(1, #f24537) );
 		background:-moz-linear-gradient( center top, #c62d1f 5%, #f24537 100% );
 		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#c62d1f', endColorstr='#f24537');
 		background-color:#c62d1f;
-		}
-	.boton:active {
+	}.boton:active {
 		position:relative;
 		top:1px;
-		}
+	}
+
