@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="./scripts/MarilynJS.js"></script>
+		<title>MarilynJS Test</title>
+		<style>
+			body {
+				font-family: Arial;
+			}
+		
+			canvas {
+				border: 10px solid #000000; 
+				background-color: #bada55;
+			}
+			
+			#pj {
+				display: none;
+			}
+			
+			#readme {
+				position: absolute;
+				left: 600px;
+				width: 300px;
+				top: 70px;
+				text-align: justify;
+			}
+			
+			footer {
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body onkeydown="whichButton(event)" onload="lienzo()">
+
+	<h1>MarilynJS Test</h1>
+
+	<img id="pj" src="./imagenes/pacman.gif"/>
+
+	<canvas id="myCanvas" width="500" height="500">
+		Tu navegador no soporta esta función. 
+	</canvas>
+	<div id="readme">
+	<p><strong>MarilynJS</strong> es un motor gráfico escrito en HTML5 y JavaScript para ayudarte a crear juegos en el navegador, utilizando tecnología web.</p>
+	
+	Instrucciones:
+		<ul>
+			<li>Utiliza las flechas del teclado para moverte.</li>
+		</ul>
+	</div>
+	
+	<footer>
+		<br/>
+		<strong>MarilynJS</strong><br/> Creado por <a href="http://juanjosalvador.github.io/">Juanjo Salvador</a> utilizando HTML5 y JavaScript.
+	</footer>
+	
+	</body>
+</html>
