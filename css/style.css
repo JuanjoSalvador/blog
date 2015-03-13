@@ -104,10 +104,15 @@
 	}
 
 	/* IDs */
-	#construccion, #botones {
+	#construccion, #botones, #social-network {
 		position: relative;
 		text-align: center;
 		}
+		
+	#info {
+		position: relative;
+		float: right;
+	}
 	/* Botones */
 	.boton {
 		-moz-box-shadow:inset 0px 1px 0px 0px #f5978e;
