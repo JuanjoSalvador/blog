@@ -97,7 +97,6 @@
 		}
 
 	.imagebox img {
-		position: left;
 		max-width: 50%;
 		height: auto;
 		border: 1px solid white;
@@ -120,7 +119,7 @@
 		box-shadow:inset 0px 1px 0px 0px #f5978e;
 		background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f24537), color-stop(1, #c62d1f) );
 		background:-moz-linear-gradient( center top, #f24537 5%, #c62d1f 100% );
-		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f24537', endColorstr='#c62d1f');
+		/*filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f24537', endColorstr='#c62d1f');*/
 		background-color:#f24537;
 		/* -webkit-border-top-left-radius:0px;
 		-moz-border-radius-topleft:0px;
