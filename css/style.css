@@ -101,19 +101,22 @@ float : right;
 position : relative;
 top : 1px;
 }
+
+@font-face
+@font-face
 @font-face {
-{
-font-family : "'Oswald'";
-font-style : normal;
-font-weight : 400;
-src : local('Oswald Regular'), local('Oswald-Regular'), url(http://fonts.gstatic.com/s/oswald/v10/Y_TKV6o8WovbUd3m_X9aAA.ttf) format('truetype');
+	{
+	font-family : "'Oswald'";
+	font-style : normal;
+	font-weight : 400;
+	src : local('Oswald Regular'), local('Oswald-Regular'), url(http://fonts.gstatic.com/s/oswald/v10/Y_TKV6o8WovbUd3m_X9aAA.ttf) format('truetype');
 }
 }
 @font-face {
-{
-font-family : "'Lora'";
-font-style : normal;
-font-weight : 400;
-src : local('Lora'), local('Lora-Regular'), url(http://fonts.gstatic.com/s/lora/v9/4A-myfZX6oDr9CtSTkTGig.ttf) format('truetype');
-}
+	{
+	font-family : "'Lora'";
+	font-style : normal;
+	font-weight : 400;
+	src : local('Lora'), local('Lora-Regular'), url(http://fonts.gstatic.com/s/lora/v9/4A-myfZX6oDr9CtSTkTGig.ttf) format('truetype');
+	}
 }
