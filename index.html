@@ -9,25 +9,33 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+		<script>
+		function navbar() {
+			titulo = document.title;
+			if (titulo = 'JuanjoSalvador.es') {
+				var home = document.getElementById(home).style;
+				home.font-color = home.font-color? "":"#f24537";
+			}
+		}
+		</script>
 		<title>JuanjoSalvador.es</title>
 	</head>
 
 	<body>
 		<header>
 			<h1>JuanjoSalvador.es/home</h1>
-			<div id="botones">
-			<a href="#" class="enlace">Home</a>
-			<a href="http://doblejotablog.wordpress.com/" class="enlace">Blog</a>
-			<a href="./curriculum" class="enlace">Curriculum</a>
-			<a href="./proyectos" class="enlace">Proyectos</a>
-			<a href="./sobre-mi" class="enlace">Sobre mi</a>
-			<br />
-		</div>
+			<nav>
+				<a href="#" class="actual">Home</a>
+				<a href="http://doblejotablog.wordpress.com/" class="enlace">Blog</a>
+				<a href="./curriculum" class="enlace" id="cv">Curriculum</a>
+				<a href="./proyectos" class="enlace" id="proyectos">Proyectos</a>
+				<a href="./sobre-mi" class="enlace" id="sobre-mi">Sobre mi</a>
+			</nav>
 		</header>
-		
+
 		<article>
 			<section>
-				<p>Me llamo Juanjo y soy <span>técnico</span> de <span>Sistemas Microinformáticos y Redes</span>. Estudio <span>Desarrollo de Aplicaciones Web</span>, 
+				<p>Me llamo Juanjo y soy <span>técnico</span> de <span>Sistemas Microinformáticos y Redes</span>. Estudio <span>Desarrollo de Aplicaciones Web</span>,
 				construyo <span>páginas web</span> como esta y a veces <span>hago fotografías</span>.</p>
 			</section>
 			<section>
@@ -42,7 +50,7 @@
 					<a href="http://500px.com/SrFreak"><img src="./imagenes/500px.png" alt="500px"></a>
 					<!-- <a href="http://srfreak.deviantart.com/"><img src="./imagenes/deviantart.png" alt="DeviantArt"></a> -->
 					<br/><br/>
-					
+
 					<img src="imagenes/Pigzilla.png" alt="Pigzilla"/>
 				</div>
 			</section>
@@ -52,8 +60,8 @@
 			</section> -->
 
 		<footer>
-			Hecho <br />
-			Tema <a href="http://juanjosalvador.github.io/demo/">Parabellum</a>, con <span>♥</span> por <a href="http://github.com/JuanjoSalvador">Juanjo Salvador</a>. <br /><a href="http://pages.github.com/">GitHub Pages</a><br /><a href="http://validator.w3.org/check?uri=http%3A%2F%2Fjuanjosalvador.github.io%2F">HTML5</a> & CSS3
+			Hecho con <span>♥</span> por <a href="http://github.com/JuanjoSalvador">Juanjo Salvador</a> en <a href="http://pages.github.com/">GitHub Pages</a> <br />
+			Tema <a href="http://juanjosalvador.github.io/demo/">Parabellum</a> <br /><a href="http://validator.w3.org/check?uri=http%3A%2F%2Fjuanjosalvador.github.io%2F">HTML5</a> & CSS3
 		</footer>
 
 	</body>

@@ -13,94 +13,104 @@
 	*/
 
 header {
-text-align : center;
-padding : 12px;
-}
+	text-align : center;
+	padding : 12px;
+	font-size: 18pt;
+	font-family: Oswald;
+	}
 h1 {
-font-family : Oswald;
-color : #ffffff;
-font-size : 25pt;
-text-shadow : -2px 2px 4px #1a1a1a;
-}
+	font-family : Oswald;
+	color : #ffffff;
+	font-size : 25pt;
+	text-shadow : -2px 2px 4px #1a1a1a;
+	}
 body {
-background-attachment : fixed;
-background-image : url(../imagenes/pattern.png);
-background-repeat : repeat;
-text-shadow : -2px 2px 4px #1a1a1a;
-}
+	background-attachment : fixed;
+	background-image : url(../imagenes/pattern.png);
+	background-repeat : repeat;
+	text-shadow : -2px 2px 4px #1a1a1a;
+	}
 ul {
-list-style-type : none;
-}
+	list-style-type : none;
+	}
 ol {
-list-style-type : katakana;
-}
+	list-style-type : katakana;
+	}
 p, li {
-color : #ffffff;
-font-family : Lora, Helvetica;
-font-size : 18px;
-text-decoration : none;
-}
+	color : #ffffff;
+	font-family : Lora, Helvetica;
+	font-size : 18px;
+	text-decoration : none;
+	}
 footer {
-text-align : center;
-font-size : 10pt;
-font-family : Oswald;
-}
+	text-align : center;
+	font-size : 10pt;
+	font-family : Oswald;
+	}
 footer a {
-color : #ffffff;
-text-decoration : none;
-}
+	color : #ffffff;
+	text-decoration : none;
+	}
 footer a:hover {
-color : #f24537;
-}
+	color : #f24537;
+	}
 article {
-position : relative;
-margin : 0 0 0 25%;
-width : 50%;
-text-align : justify;
-}
+	position : relative;
+	margin : 0 0 0 25%;
+	width : 50%;
+	text-align : justify;
+	}
 span, h2, h3, h4, h5 {
-color : #f24537;
-font-family : Oswald;
-}
+	color : #f24537;
+	font-family : Oswald;
+	}
 span a {
-color : #f24537;
-font-family : Oswald;
-text-decoration : none;
-}
+	color : #f24537;
+	font-family : Oswald;
+	text-decoration : none;
+	}
 span a:hover {
-color : #ffffff;
-}
+	color : #ffffff;
+	}
 .enlace {
-text-decoration : underline;
-color : #ffffff;
-}
+	color : #ffffff;
+	text-decoration: none;
+	}
 .enlace:hover {
-color : #f24537;
+	color : #f24537;
+	text-decoration : underline;
+	}
+.actual {
+	color : #f24537;
+	text-decoration : underline;
 }
 .codebox {
-width : 97%;
-background-color : #212121;
-border : #000000 solid 2px;
-color : #ffffff;
-padding : 10px 10px 10px 10px;
-}
+	width : 97%;
+	background-color : #212121;
+	border : #000000 solid 2px;
+	color : #ffffff;
+	padding : 10px 10px 10px 10px;
+	}
 .imagebox img {
-max-width : 50%;
-height : auto;
-border : white solid 1px;
-}
+	max-width : 50%;
+	height : auto;
+	border : white solid 1px;
+	}
 #construccion, #botones, #social-network {
-position : relative;
-text-align : center;
-}
+	position : relative;
+	text-align : center;
+	}
 #info {
-position : relative;
-float : right;
+	position : relative;
+	float : right;
+	}
+#home {
+	font-color: #ffffff;
 }
 .boton:active {
-position : relative;
-top : 1px;
-}
+	position : relative;
+	top : 1px;
+	}
 
 @font-face
 @font-face
