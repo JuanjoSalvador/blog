@@ -104,11 +104,15 @@ span a:hover {
 	}
 #home {
 	font-color: #ffffff;
-}
+	}
 
-ul {
+.seccion ul {
+	list-style-type: none;
+	}
+
+.seccion ul ul {
 	list-style-type: square;
-}
+	}
 	
 .boton:active {
 	position : relative;
