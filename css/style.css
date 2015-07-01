@@ -34,10 +34,6 @@ body {
 ul {
 	list-style-type: none;
 	}
-	
-div ul {
-	list-style-type : square;
-	}
 ol {
 	list-style-type : katakana;
 	}
@@ -112,6 +108,11 @@ span a:hover {
 #home {
 	font-color: #ffffff;
 }
+
+.seccion ul {
+	list-style-type : square;
+	}
+	
 .boton:active {
 	position : relative;
 	top : 1px;
