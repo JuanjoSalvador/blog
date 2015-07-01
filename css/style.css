@@ -107,7 +107,7 @@ span a:hover {
 }
 
 .seccion ul {
-	list-style-type : decimal;
+	list-style-type : square;
 	}
 
 .seccion ul ul {
