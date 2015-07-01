@@ -106,11 +106,7 @@ span a:hover {
 	font-color: #ffffff;
 	}
 
-.seccion ul {
-	list-style-type: none;
-	}
-
-.seccion ul ul {
+ul ul {
 	list-style-type: square;
 	}
 	
