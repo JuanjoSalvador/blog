@@ -30,6 +30,11 @@ body {
 	background-repeat : repeat;
 	text-shadow : -2px 2px 4px #1a1a1a;
 	}
+
+ul {
+	list-style-type: none;
+	}
+	
 div ul {
 	list-style-type : square;
 	}
