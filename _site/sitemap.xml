@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>http://juanjosalvador.github.io/Plantilla-de-posts-para-Jekyll/</loc>
+    <lastmod>2015-07-11T00:00:00+02:00</lastmod>
+  </url>
+  <url>
+    <loc>http://juanjosalvador.github.io/Estrenando-blog-en-GitHub-Pages-+-Jekyll/</loc>
+    <lastmod>2015-07-10T00:00:00+02:00</lastmod>
+  </url>
+  <url>
+    <loc>http://juanjosalvador.github.io/404.html</loc>
+  </url>
+  <url>
+    <loc>http://juanjosalvador.github.io/blog/</loc>
+  </url>
+  <url>
+    <loc>http://juanjosalvador.github.io/cv/</loc>
+  </url>
+  <url>
+    <loc>http://juanjosalvador.github.io/</loc>
+  </url>
+  <url>
+    <loc>http://juanjosalvador.github.io/categories/jekyll/</loc>
+  </url>
+  <url>
+    <loc>http://juanjosalvador.github.io/categories/linux/</loc>
+  </url>
+  <url>
+    <loc>http://juanjosalvador.github.io/categories/offtopic/</loc>
+  </url>
+  <url>
+    <loc>http://juanjosalvador.github.io/categories/ruby/</loc>
+  </url>
+  <url>
+    <loc>http://juanjosalvador.github.io/sobre-mi/</loc>
+  </url>
+</urlset>

@@ -1,68 +1,36 @@
-<!DOCTYPE html>
+---
+layout: page
+---
 
-<html lang="es">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="description" content="Web personal de Juanjo Salvador">
-		<meta name="keywords" content="HTML5, CSS3">
-		<meta name="author" content="Juanjo Salvador">
-		<link rel="stylesheet" type="text/css" href="css/style.css" />
-		<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
-		<script>
-		function navbar() {
-			titulo = document.title;
-			if (titulo = 'JuanjoSalvador.es') {
-				var home = document.getElementById(home).style;
-				home.font-color = home.font-color? "":"#f24537";
-			}
-		}
-		</script>
-		<title>JuanjoSalvador.es</title>
-	</head>
+<!-- <div class="posts">
+  {% for post in site.posts %}
+    <article class="post">
 
-	<body>
-		<header>
-			<h1>JuanjoSalvador.es/home</h1>
-			<nav>
-				<a href="#" class="actual">Home</a>
-				<a href="http://doblejotablog.wordpress.com/" class="enlace">Blog</a>
-				<a href="./curriculum" class="enlace" id="cv">Curriculum</a>
-				<a href="./proyectos" class="enlace" id="proyectos">Proyectos</a>
-				<a href="./sobre-mi" class="enlace" id="sobre-mi">Sobre mi</a>
-			</nav>
-		</header>
+      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
 
-		<article>
-			<section>
-				<p>Me llamo Juanjo y soy <span>técnico</span> de <span>Sistemas Microinformáticos y Redes</span>. Estudio <span>Desarrollo de Aplicaciones Web</span>,
-				construyo <span>páginas web</span>, tengo un un <span>blog</span> y a veces <span>hago fotografías</span>.</p>
-			</section>
-			<section>
-				<div id="social-network">
-					<p>Puedes encontrarme en las <span>redes sociales</span>.</p>
-					<!-- Blog -->
-					<a href="http://doblejotablog.wordpress.com/"><img src="./imagenes/wordpress.png" alt="Wordpress"></a>
-					<a href="https://www.facebook.com/juanjo.salvadorpiedra"><img src="./imagenes/fb.png" alt="Facebook"></a>
-					<a href="http://twitter.com/Linuxneitor"><img src="./imagenes/twitter.png" alt="Twitter"></a>
-					<a href="https://plus.google.com/+JuanjoSalvador"><img src="./imagenes/google+.png" alt="Google+"></a>
-					<!-- Fotografía y diseño gráfico -->
-					<a href="http://500px.com/SrFreak"><img src="./imagenes/500px.png" alt="500px"></a>
-					<!-- <a href="http://srfreak.deviantart.com/"><img src="./imagenes/deviantart.png" alt="DeviantArt"></a> -->
-					<br/><br/>
+      <div class="entry">
+        {{ post.excerpt }}
+      </div>
 
-					<img src="imagenes/Pigzilla.png" alt="Pigzilla"/>
-				</div>
-			</section>
-		</article>
-			<!-- <section>
-				<div id="construccion"><span>[ WEB EN CONSTRUCCIÓN ]</span></div>
-			</section> -->
+      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+    </article>
+  {% endfor %}
+</div> -->
 
-		<footer>
-			Hecho con <span>♥</span> por <a href="http://github.com/JuanjoSalvador">Juanjo Salvador</a> en <a href="http://pages.github.com/">GitHub Pages</a> <br />
-			Tema <a href="http://juanjosalvador.github.io/demo/">Parabellum</a> <br /><a href="http://validator.w3.org/check?uri=http%3A%2F%2Fjuanjosalvador.github.io%2F">HTML5</a> & CSS3
-		</footer>
+<div class="home">
+  <div id="pigzilla">
+    <img src="http://juanjosalvador.github.io/imagenes/Pigzilla.png" alt="Pigzilla"/> <br/>
+  </div>
 
-	</body>
-</html>
+  <p>
+    ¡Hola! Soy Juanjo Salvador, técnico de Sistemas Microinformáticos y Redes, estudiante de Desarrollo de Aplicaciones Web,
+    constructor de  páginas web, autor de <a href="http://doblejotablog.wordpress.com/"><em>Doblejota Blog</em></a>
+    y a veces, fotógrafo.
+  </p>
+
+  <p>
+    Esta es mi web personal, donde puedes encontrar información sobre mi filosofía y mis proyectos, contactar conmigo,
+    echar un vistazo a mi curriculum, o leer mis artículos sobre programación y Linux.
+  </p>
+
+</div>

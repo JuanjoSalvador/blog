@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Plantilla de posts para Jekyll – Juanjo Salvador – Sitio web personal de Juanjo Salvador</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="La automatización de tareas es un aspecto básico que todo sysadmin debe tener presente y conocer al dedillo. En Linux, tengo que reconocer que soy muy aficionado a esto de montarme scripts para casi cualquier tarea que pueda ser (o no), repetitiva. Es el caso de escribir un post para un blog en Jekyll.
+" />
+    <meta property="og:description" content="La automatización de tareas es un aspecto básico que todo sysadmin debe tener presente y conocer al dedillo. En Linux, tengo que reconocer que soy muy aficionado a esto de montarme scripts para casi cualquier tarea que pueda ser (o no), repetitiva. Es el caso de escribir un post para un blog en Jekyll.
+" />
+    
+    <meta name="author" content="Juanjo Salvador" />
+
+    
+    <meta property="og:title" content="Plantilla de posts para Jekyll" />
+    <meta property="twitter:title" content="Plantilla de posts para Jekyll" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Juanjo Salvador - Sitio web personal de Juanjo Salvador" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://avatars3.githubusercontent.com/u/5058655?v=3&s=460" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Juanjo Salvador</a></h1>
+            <p class="site-description">Sitio web personal de Juanjo Salvador</p>
+          </div>
+
+          <nav>
+            <!-- 
+              
+            
+              
+                <a href="/page.url">Blog</a>
+              
+            
+              
+                <a href="/page.url">Curriculum</a>
+              
+            
+              
+                <a href="/page.url"></a>
+              
+            
+              
+                <a href="/page.url"></a>
+              
+            
+              
+                <a href="/page.url">Categoría Jekyll</a>
+              
+            
+              
+                <a href="/page.url">Categoría Linux</a>
+              
+            
+              
+                <a href="/page.url">Categoría Off Topic</a>
+              
+            
+              
+                <a href="/page.url">Categoría Ruby</a>
+              
+            
+              
+                <a href="/page.url">Sobre mi</a>
+              
+            
+              
+                <a href="/page.url"></a>
+              
+             -->
+            <a href="/blog">Blog</a>
+            <a href="/cv">Curriculum</a>
+            <a href="/sobre-mi">Sobre mi</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>Plantilla de posts para Jekyll</h1>
+
+  <div class="date">
+    Escrito el 07/11/2015
+  </div>
+
+  <div class="cat">
+    Archivado en <a href="/categories/jekyll">jekyll</a>
+  </div>
+
+  <div class="entry">
+    <p>La automatización de tareas es un aspecto básico que todo <em>sysadmin</em> debe tener presente y conocer al dedillo. En Linux, tengo que reconocer que soy muy aficionado a esto de montarme scripts para casi cualquier tarea que pueda ser (o no), repetitiva. Es el caso de escribir un post para un blog en Jekyll.</p>
+
+<p>Jekyll utiliza MarkDown para dar formato a los posts, además de lo que llamamos <em>layout</em> (o plantilla) con la posición de cada elemento dentro del post. Generalmente le pasamos como parámetros el layout y el título del post, pudiendo o no añadir nuevos elementos mediante plugins o simplemente, editando nuestro site. Estos parámetros vienen dados en la cabecera de cada archivo <code>.md</code> que escribimos, con el siguiente formato:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">---
+layout: post # Sustituye el layout si lo usas uno diferente
+title: Título del post # Nombre generado automáticamente
+categories: [jekyll] # Añade tus categorías o borra esta línea
+---
+</code></pre></div>
+<p>Además de esta cabecera, cada archivo además debe ser llamado de una forma específica, siendo esta, la fecha del post, seguida del título de este, separado todo por guiones. Esta tarea puede ser muy pesada, sobretodo si tenemos que migrar un blog entero desde otro site. ¿Solución? Un script que le pases el nombre del post, y te genere automáticamente el archivo .md con la cabecera y el nombre de archivo con el formato correcto y prescindido por Jekyll.</p>
+
+<script src="https://gist.github.com/9669022d8e3f59ab7a4f.js?file=jekyll-post.sh"> </script>
+
+  </div>
+
+  
+<div class="comments">
+	<div id="disqus_thread"></div>
+	<script type="text/javascript">
+
+	    var disqus_shortname = 'juanjosalvador';
+
+	    (function() {
+	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	    })();
+
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+<a href="mailto:juanjosalvador@openmailbox.org"><i class="svg-icon email"></i></a>
+
+
+<a href="https://github.com/JuanjoSalvador"><i class="svg-icon github"></i></a>
+<a href="https://instagram.com/srfreak"><i class="svg-icon instagram"></i></a>
+
+
+<a href="/feed.xml"><i class="svg-icon rss"></i></a>
+<a href="https://www.twitter.com/Linuxneitor"><i class="svg-icon twitter"></i></a>
+
+
+<a href="https://plus.google.com/+JuanjoSalvador/posts"><i class="svg-icon googleplus"></i></a>
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>
