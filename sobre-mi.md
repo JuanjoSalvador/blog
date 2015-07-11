@@ -3,10 +3,11 @@ layout: page
 title: Sobre mi
 permalink: /sobre-mi/
 ---
-![Perfil](http://i.imgur.com/l6LFsl6.jpg)
 <p align="justify">
 
 Juanjo Salvador, técnico de sistemas microinformáticos y redes, blogger experimental e intento de programador, en constante formación. Actualmente, estudiante de Desarrollo de Aplicaciones Web.
+
+![Perfil](http://i.imgur.com/l6LFsl6.jpg)
 
 ### Actividad
 
