@@ -9,11 +9,7 @@ permalink: /sobre-mi/
 
 Juanjo Salvador, técnico de sistemas microinformáticos y redes, blogger experimental e intento de programador, en constante formación. Actualmente, estudiante de Desarrollo de Aplicaciones Web.
 
-</p>
-
-![Perfil](http://i.imgur.com/l6LFsl6.jpg)
-
-<p align="justify">
+<img src="http://i.imgur.com/l6LFsl6.jpg" align="center"/>
 
 ### Actividad
 
