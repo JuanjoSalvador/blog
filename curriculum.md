@@ -42,6 +42,7 @@ permalink: /cv/
     * Git
     * Mercurial
     * MarkDown
+    * Unity 3D
 
 ### Proyectos
 
