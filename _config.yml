@@ -68,6 +68,11 @@ sass:
 gems:
   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
   - jemoji
+  
+# Authors
+authors:
+  juanjo:
+    display_name: Juanjo Salvador
 
 # Exclude these files from your production _site
 exclude:
