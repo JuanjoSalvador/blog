@@ -3,7 +3,6 @@ layout: page
 title: Sobre mi
 permalink: /sobre-mi/
 ---
-<img style="float: right; padding: 10px;" width="30%" height="30%" src="/images/perfil.png">
 <p align="justify">
 
 Juanjo Salvador, técnico de sistemas microinformáticos y redes, blogger experimental e intento de programador, en constante formación. Actualmente, estudiante de Desarrollo de Aplicaciones Web.
