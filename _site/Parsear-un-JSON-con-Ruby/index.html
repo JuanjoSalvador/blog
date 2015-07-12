@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Plantilla de posts para Jekyll – JuanjoSalvador.es – Intento de programador a tiempo parcial.</title>
+    <title>Parsear un JSON con Ruby – JuanjoSalvador.es – Intento de programador a tiempo parcial.</title>
 
         <meta charset="utf-8" />
     <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
@@ -9,16 +9,16 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 
     
-    <meta name="description" content="La automatización de tareas es un aspecto básico que todo sysadmin debe tener presente y conocer al dedillo. En Linux, tengo que reconocer que soy muy aficionado a esto de montarme scripts para casi cualquier tarea que pueda ser (o no), repetitiva. Es el caso de escribir un post para un blog en Jekyll.
+    <meta name="description" content="Podemos definir JSON como un formato ligero de intercambio de datos. Es un subconjunto de la notación literal de objetos de JavaScript que no requiere el uso de XML, lo cual facilita mucho la legibilidad de la información contenida.
 " />
-    <meta property="og:description" content="La automatización de tareas es un aspecto básico que todo sysadmin debe tener presente y conocer al dedillo. En Linux, tengo que reconocer que soy muy aficionado a esto de montarme scripts para casi cualquier tarea que pueda ser (o no), repetitiva. Es el caso de escribir un post para un blog en Jekyll.
+    <meta property="og:description" content="Podemos definir JSON como un formato ligero de intercambio de datos. Es un subconjunto de la notación literal de objetos de JavaScript que no requiere el uso de XML, lo cual facilita mucho la legibilidad de la información contenida.
 " />
     
     <meta name="author" content="JuanjoSalvador.es" />
 
     
-    <meta property="og:title" content="Plantilla de posts para Jekyll" />
-    <meta property="twitter:title" content="Plantilla de posts para Jekyll" />
+    <meta property="og:title" content="Parsear un JSON con Ruby" />
+    <meta property="twitter:title" content="Parsear un JSON con Ruby" />
     
 
     <!--[if lt IE 9]>
@@ -96,36 +96,50 @@
 
     <div id="main" role="main" class="container">
       <article class="post">
-  <h1>Plantilla de posts para Jekyll</h1>
+  <h1>Parsear un JSON con Ruby</h1>
 
   <div class="date">
-    Escrito por Juanjo Salvador el 11/07/2015
+    Escrito por Juanjo Salvador el 12/07/2015
   </div>
 
   <div class="cat">
-    Archivado en <a href="/categories/jekyll">jekyll</a>
+    Archivado en <a href="/categories/ruby">ruby</a>
   </div>
 
   <div class="entry">
-    <p>La automatización de tareas es un aspecto básico que todo <em>sysadmin</em> debe tener presente y conocer al dedillo. En Linux, tengo que reconocer que soy muy aficionado a esto de montarme scripts para casi cualquier tarea que pueda ser (o no), repetitiva. Es el caso de escribir un post para un blog en Jekyll.</p>
+    <p>Podemos definir JSON como un formato ligero de intercambio de datos. Es un subconjunto de la notación literal de objetos de JavaScript que no requiere el uso de XML, lo cual facilita mucho la legibilidad de la información contenida.</p>
 
-<p>Jekyll utiliza MarkDown para dar formato a los posts, además de lo que llamamos <em>layout</em> (o plantilla) con la posición de cada elemento dentro del post. Generalmente le pasamos como parámetros el layout y el título del post, pudiendo o no añadir nuevos elementos mediante plugins o simplemente, editando nuestro site. Estos parámetros vienen dados en la cabecera de cada archivo <code>.md</code> que escribimos, con el siguiente formato:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">---
-layout: post # Sustituye el layout si lo usas uno diferente
-title: Título del post # Nombre generado automáticamente
-categories: [jekyll] # Añade tus categorías o borra esta línea
----
-</code></pre></div>
-<p>Además de esta cabecera, cada archivo además debe ser llamado de una forma específica, siendo esta, la fecha del post, seguida del título de este, separado todo por guiones. Esta tarea puede ser muy pesada, sobretodo si tenemos que migrar un blog entero desde otro site. ¿Solución? Un script que le pases el nombre del post, y te genere automáticamente el archivo .md con la cabecera y el nombre de archivo con el formato correcto y prescindido por Jekyll.</p>
+<p>En la actualidad está muy extendido, lo cual hace que cualquier desarrollador web requiera de su uso en más de una ocasión. Al proceso de extracción de datos de un JSON (<em>o XML, o cualquier otro formato</em>) se le llama <em>parsear</em>.</p>
 
-<script src="https://gist.github.com/9669022d8e3f59ab7a4f.js?file=jekyll-post.sh"> </script>
+<p>Muchos lenguajes incluyen librerías para hacer esto, como es el caso de Ruby. Hace unos días, trabajando en un script el cual necesita tomar datos de terceros y que descaga en un archivo JSON, tuve la impediosa necesidad de parsear dicho archivo, pero, era la primera vez que necesitaba hacer algo así en Ruby, así que, me lancé a la aventura.</p>
+
+<p>La solución, como casi siempre que tengo un problema similar, me apareció en <a href="http://stackoverflow.com/questions/5410682/parsing-a-json-string-in-ruby">StackOverflow</a>.</p>
+
+<p>Primero instalamos la gema json</p>
+
+<p><code>gem install json</code></p>
+
+<p>La añadimos a nuestro proyecto...</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">&#39;rubygems&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;json&#39;</span></code></pre></div>
+
+<p>Y por último, para usarlo, solo tenemos que llamar al método <code>JSON.parse()</code>, suponiendo que aquí nuestro JSON está almacenado en una variable llamada <code>string</code>.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">parsed_file</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">string</span><span class="p">)</span></code></pre></div>
+
+<p>Esto nos devolverá el JSON dividido en claves y valores, por lo que, para acceder al valor de una clave en concreto, a través de la variable donde lo hemos guardado...</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">string</span> <span class="o">=</span> <span class="s1">&#39;{&quot;desc&quot;:{&quot;someKey&quot;:&quot;someValue&quot;,&quot;anotherKey&quot;:&quot;value&quot;}}&#39;</span>
+<span class="n">parsed_file</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+<span class="n">parsed_file</span><span class="o">[</span><span class="s2">&quot;anotherKey&quot;</span><span class="o">]</span> <span class="c1"># Nos devuelve al valor de &#39;anotherKey&#39;</span></code></pre></div>
 
   </div>
 
   <h3>Posts relacionados</h3>
   
     <ul>
-      <li><a href="/Parsear-un-JSON-con-Ruby/">Parsear un JSON con Ruby</a><br /></li>
+      <li><a href="/Plantilla-de-posts-para-Jekyll/">Plantilla de posts para Jekyll</a><br /></li>
     </ul>
   
     <ul>

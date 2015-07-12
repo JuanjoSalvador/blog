@@ -1,10 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Juanjo Salvador</title>
-    <description>Sitio web personal de Juanjo Salvador</description>
+    <title>JuanjoSalvador.es</title>
+    <description>Intento de programador a tiempo parcial.</description>
     <link>http://juanjosalvador.github.io</link>
     <atom:link href="http://juanjosalvador.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Parsear un JSON con Ruby</title>
+        <description>&lt;p&gt;Podemos definir JSON como un formato ligero de intercambio de datos. Es un subconjunto de la notación literal de objetos de JavaScript que no requiere el uso de XML, lo cual facilita mucho la legibilidad de la información contenida.&lt;/p&gt;
+
+&lt;p&gt;En la actualidad está muy extendido, lo cual hace que cualquier desarrollador web requiera de su uso en más de una ocasión. Al proceso de extracción de datos de un JSON (&lt;em&gt;o XML, o cualquier otro formato&lt;/em&gt;) se le llama &lt;em&gt;parsear&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Muchos lenguajes incluyen librerías para hacer esto, como es el caso de Ruby. Hace unos días, trabajando en un script el cual necesita tomar datos de terceros y que descaga en un archivo JSON, tuve la impediosa necesidad de parsear dicho archivo, pero, era la primera vez que necesitaba hacer algo así en Ruby, así que, me lancé a la aventura.&lt;/p&gt;
+
+&lt;p&gt;La solución, como casi siempre que tengo un problema similar, me apareció en &lt;a href=&quot;http://stackoverflow.com/questions/5410682/parsing-a-json-string-in-ruby&quot;&gt;StackOverflow&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Primero instalamos la gema json&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;gem install json&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;La añadimos a nuestro proyecto...&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;rubygems&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;json&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Y por último, para usarlo, solo tenemos que llamar al método &lt;code&gt;JSON.parse()&lt;/code&gt;, suponiendo que aquí nuestro JSON está almacenado en una variable llamada &lt;code&gt;string&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;parsed_file&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Esto nos devolverá el JSON dividido en claves y valores, por lo que, para acceder al valor de una clave en concreto, a través de la variable donde lo hemos guardado...&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;{&amp;quot;desc&amp;quot;:{&amp;quot;someKey&amp;quot;:&amp;quot;someValue&amp;quot;,&amp;quot;anotherKey&amp;quot;:&amp;quot;value&amp;quot;}}&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;parsed_file&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;parsed_file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;anotherKey&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Nos devuelve al valor de &amp;#39;anotherKey&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+</description>
+        <pubDate>Sun, 12 Jul 2015 00:00:00 +0200</pubDate>
+        <link>http://juanjosalvador.github.io/Parsear-un-JSON-con-Ruby/</link>
+        <guid isPermaLink="true">http://juanjosalvador.github.io/Parsear-un-JSON-con-Ruby/</guid>
+      </item>
     
       <item>
         <title>Plantilla de posts para Jekyll</title>

@@ -44,17 +44,8 @@
       {{ content }}
     </div>
 
-    <div class="wrapper-footer">
-      <div class="container">
-        <footer class="footer">
-          {% include svg-icons.html %}
-        </footer>
-      </div>
-    </div>
-
-    {% include analytics.html %}
-
     <div class="attribution">
+      {% include svg-icons.html %}
       <p>
         <a href="https://github.com/JuanjoSalvador">Juanjo Salvador</a>. Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a>.
         <br/>
@@ -62,5 +53,6 @@
       </p>
     </div>
 
+    {% include analytics.html %}
   </body>
 </html>

@@ -31,7 +31,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $helveticaNeue;
+  font-family: $oswald;
   color: $darkerGray;
   font-weight: bold;
 
@@ -73,7 +73,7 @@ a {
   text-decoration: none;
 	cursor: pointer;
   &:hover, &:active {
-    color: $blue;
+    color: $red;
   }
 }
 
@@ -194,7 +194,7 @@ img {
   margin: 0;
   color: $darkGray;
   cursor: pointer;
-  font-family: $helveticaNeue;
+  font-family: $oswald;
   font-weight: 300;
   font-size: 28px;
   letter-spacing: 1px;
@@ -213,7 +213,7 @@ img {
 nav {
   float: right;
   margin-top: 23px; // @TODO: Vertically middle align
-  font-family: $helveticaNeue;
+  font-family: $oswald;
   font-size: 18px;
 
   @include mobile {
@@ -281,6 +281,7 @@ nav {
 footer {
   padding: 20px 0;
   text-align: center;
+  font-size: 12px;
 }
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
@@ -310,4 +311,16 @@ ul {
 
 .cat {
   font-size: 15px;
+}
+
+#cat-menu {
+  position: relative;
+  top: -73px;
+  float: right;
+}
+
+.attribution {
+  position: relative;
+  text-align: center;
+  font-size: 12px;
 }

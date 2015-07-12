@@ -5,6 +5,7 @@
 
 // Colors
 $blue: #4183C4;
+$red: #d03030;
 
 // Grays
 $black: #000;
@@ -13,12 +14,14 @@ $darkGray: #333;
 $gray: #666;
 $lightGray: #eee;
 $white: #fff;
-$customBack: #e3e4e9;
 
 // Font stacks
+@import url(http://fonts.googleapis.com/css?family=Oswald);
+
 $helvetica: Helvetica, Arial, sans-serif;
 $helveticaNeue: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $georgia: Georgia, serif;
+$oswald: 'Oswald', sans-serif;
 
 // Mobile breakpoints
 @mixin mobile {
