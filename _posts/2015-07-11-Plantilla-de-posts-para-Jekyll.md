@@ -1,7 +1,7 @@
 ---
 layout: post # Sustituye el layout si lo usas uno diferente
 title: Plantilla de posts para Jekyll # Nombre generado automáticamente
-categories: [jekyll] # Añade tus categorías o borra esta línea
+categories: jekyll # Añade tus categorías o borra esta línea
 ---
 
 La automatización de tareas es un aspecto básico que todo *sysadmin* debe tener presente y conocer al dedillo. En Linux, tengo que reconocer que soy muy aficionado a esto de montarme scripts para casi cualquier tarea que pueda ser (o no), repetitiva. Es el caso de escribir un post para un blog en Jekyll.
