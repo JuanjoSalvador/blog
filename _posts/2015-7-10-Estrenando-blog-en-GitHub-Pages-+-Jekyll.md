@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Estrenando blog en GitHub Pages + Jekyll
-post_author: Juanjo Salvador
+author: juanjo
 categories: [offtopic]
 ---
 
