@@ -3,7 +3,6 @@ layout: page
 title: Sobre mi
 permalink: /sobre-mi/
 ---
-<p align="justify">
 
 Juanjo Salvador, técnico de sistemas microinformáticos y redes, blogger experimental e intento de programador, en constante formación. Actualmente, estudiante de Desarrollo de Aplicaciones Web.
 
@@ -22,4 +21,3 @@ A nivel de programador, posiblemente mi mayor interés es trabajar con Ruby, dad
 Puedes contactar conmigo a través de las redes sociales, o en mi correo electrónico.
 
 [juanjosalvador@openmailbox.org](mailto:juanjosalvador@openmailbox.org)
-</p>
