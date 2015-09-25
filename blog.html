@@ -21,7 +21,6 @@ permalink: /blog/
   {% for post in site.posts %}
     <article class="post">
           <span>{{ post.date | date: "%d/%m/%Y" }}</span> » <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-          <div class="cat">Archivado en: <a href="{{ site.baseurl }}/categories/{{ post.categories}}">{{ post.categories }}</a></div>
     </article>
   {% endfor %}
 </div>
