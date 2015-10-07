@@ -1,0 +1,185 @@
+<html>
+  <head>
+    <title>Ejercicios resueltos</title>
+    <meta charset="utf-8">
+
+    <style media="screen">
+      table {
+        border: 2px solid black;
+      }
+        body {
+          color: black;
+          font-family: sans-serif;
+        }
+        p {
+          font-size: 15pt;
+        }
+        ul {
+          list-style-type: none;
+        }
+        span {
+          font-family: monospace;
+        }
+        h3 {
+          color: white;
+          background-color: #e74c3c;
+          padding-top: 2px;
+          padding-bottom: 2px;
+          padding-left: 2px;
+        }
+
+        .explicacion {
+          color: black;
+          font-style: italic;
+          text-decoration: underline;
+        }
+
+        h1 {
+          color: white;
+          background-color: #e74c3c;
+          height: 100px;
+          padding: 25px;
+        }
+
+        #footer {
+          color: white;
+          background-color: #e74c3c;
+          padding-top: 2px;
+          padding-bottom: 2px;
+          padding-left: 2px;
+        }
+
+        .link {
+          font-family: Arial;
+          font-weight: bold;
+          color: #c9383f;
+          font-size: 20px;
+          text-decoration: none;
+        }
+        .link:hover {
+          text-decoration: underline;
+        }
+    </style>
+
+  </head>
+
+  <body>
+    <h1>Ejercicios Javascript resueltos. Navigator y Screen</h1>
+    <h3>Ejercicio 1</h3>
+    <table>
+      <tr>
+        <td><strong>Ancho</strong></td>
+        <td><script>document.write(screen.width + "px")</script></td>
+      </tr>
+
+      <tr>
+        <td><strong>Alto</strong></td>
+        <td><script>document.write(screen.height + "px")</script></td>
+      </tr>
+
+      <tr>
+        <td><strong>Ancho disponible</strong></td>
+        <td><script>document.write(screen.availWidth + "px")</script></td>
+      </tr>
+
+      <tr>
+        <td><strong>Alto disponible</strong></td>
+        <td><script>document.write(screen.availHeight + "px")</script></td>
+      </tr>
+
+      <tr>
+        <td><strong>Orientacion</strong></td>
+        <td><script>document.write(screen.orientation)</script></td>
+      </tr>
+    </table>
+
+      <div class="explicacion"><p>Explicación del ejercicio 1</p></div>
+        <p>Dentro de cada celda donde mostramos el valor correspondiente, insertamos un script con el siguiente código:</p>
+        <pre>document.write(screen.propiedad + "px")</pre>
+        <p>Sustituyendo <em>propiedad</em> por cada propiedad que queremos mostrar</p>
+
+    <h3>Ejercicio 2</h3>
+
+    <table>
+      <tr>
+        <td><strong>Nombre</strong></td>
+        <td><script>document.write(navigator.appName)</script></td>
+      </tr>
+
+      <tr>
+        <td><strong>Nombre en clave</strong></td>
+        <td><script>document.write(navigator.appCodeName)</script></td>
+      </tr>
+
+      <tr>
+        <td><strong>Versión</strong></td>
+        <td><script>document.write(navigator.version)</script></td>
+      </tr>
+
+      <tr>
+        <td><strong>Motor</strong></td>
+        <td><script>document.write(navigator.product)</script></td>
+      </tr>
+
+      <tr>
+        <td><strong>Plataforma</strong></td>
+        <td><script>document.write(navigator.platform)</script></td>
+      </tr>
+    </table>
+
+    <div class="explicacion"><p>Explicación del ejercicio 2</p></div>
+      <p>Dentro de cada celda donde mostramos el valor correspondiente, insertamos un script con el siguiente código:</p>
+      <pre>document.write(navigator.propiedad)</pre>
+      <p>Sustituyendo <em>propiedad</em> por cada propiedad que queremos mostrar. Puede observarse que usamos el objeto <span>navigator</span></p>
+
+    <h3>Ejercicio 3</h3>
+      <table>
+        <tr>
+          <td><strong>Java</strong></td>
+          <td>
+            <script>
+              if (navigator.javaEnabled) {
+                document.write("Habilitado");
+              } else {
+                document.write("Deshabilitado");
+              }
+            </script>
+          </td>
+        </tr>
+
+        <tr>
+          <td><strong>Cookies</strong></td>
+          <td>
+            <script>
+            if (navigator.cookieEnabled) {
+              document.write("Habilitado");
+            } else {
+              document.write("Deshabilitado");
+            }
+            </script>
+          </td>
+        </tr>
+
+        <tr>
+          <td><strong>Conectado a Internet</strong></td>
+          <td>
+            <script>
+              if (navigator.onLine) {
+                document.write("Conectado");
+              } else {
+                document.write("Desconectado");
+              }
+            </script>
+          </td>
+        </tr>
+      </table>
+
+        <div class="explicacion"><p>Explicación del ejercicio 3</p></div>
+        <p>Nos valemos de la sentencia <span>if</span> para comprobar esto, ya que las propiedades javaEnabled, cookieEnabled y onLine nos devuelven un
+          valor boolean. Simplemente hay que establecer una sentencia donde, si devuelve <span>true</span> muestre un valor, y si devuelve <span>false</span>
+          muestre el contrario.
+        </p>
+
+        <div id="footer">
+          Página creada por <a href="http://juanjosalvador.github.io">Juan José Salvador Piedra</a>, 2º DAW 2015/16
+        </div>
