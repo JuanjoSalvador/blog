@@ -24,13 +24,22 @@ permalink: /cv/
 
     * HTML5, CSS3, JavaScript
     * XML y JSON
-    * C#
-    * Java
-    * Bash
+    * C# y Java
     * Python
     * Ruby
-    * CMS Wordpress
-    * CMS Prestashop
+    * PHP
+    
+  * **Administración de bases de datos**
+  
+    * MySQL
+  
+  * **Gestores de contenido**
+  
+    * Wordpress
+    * Prestashop
+    * Joomla
+    * Drupal
+    * OpenCart
 
   * **Administración de sistemas**
 
