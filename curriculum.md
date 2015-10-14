@@ -32,6 +32,8 @@ permalink: /cv/
   * **Administración de bases de datos**
   
     * MySQL
+    * Access
+    * LibreOffice/OpenOffice Base
   
   * **Gestores de contenido**
   
@@ -51,7 +53,8 @@ permalink: /cv/
     * Git
     * Mercurial
     * MarkDown
-
+    * LibreOffice y Microsoft Office
+    
 ### Proyectos
 
   * Club Linux Almeria ([*HackLab Almeria*](http://hacklabalmeria.net "HackLab Almeria"))
