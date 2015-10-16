@@ -1,7 +1,7 @@
 ---
 layout: post # Sustituye el layout si lo usas uno diferente
 title: DrHenry genera posts por ti # Nombre generado automáticamente
-categories: [jekyll] [ruby]
+categories: []
 ---
 
 Tiempo atrás [escribí un script en bash](https://gist.github.com/JuanjoSalvador/9669022d8e3f59ab7a4f) para ayudarme a publicar artículos en mi sitio de Jekyll, dado que crear un archivo-plantilla no me parecía factible, ya que mi configuración usa un nombre de archivo bastante concreto (YYYY-MM-DD-titulo.md).
