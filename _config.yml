@@ -74,6 +74,13 @@ authors:
   juanjo:
     display_name: Juanjo Salvador
 
+# Collections
+
+collections:
+  talk:
+    output: true
+    permalink: /charlas/:path/
+
 # Exclude these files from your production _site
 exclude:
     - Gemfile

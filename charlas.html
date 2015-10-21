@@ -5,9 +5,9 @@ permalink: /charlas/
 ---
 
 <div class="posts">
-  {% for post in site.talks %}
+  {% for talk in site.talks %}
     <article class="post">
-          <span>{{ post.date | date: "%d/%m/%Y" }}</span> » <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-    </article>
+        <span>{{ talk.date | date: "%m/%d/%Y" }}</span> » <a href="{{ site.baseurl }}{{ talk.url }}">{{ talk.title }}</a>
+     </article>
   {% endfor %}
 </div>
