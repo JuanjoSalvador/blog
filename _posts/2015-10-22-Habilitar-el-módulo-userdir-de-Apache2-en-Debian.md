@@ -46,6 +46,7 @@ Este es el original.
 </IfModule>
 ```
 Modificaremos las líneas 6, 7, 9 y 12, y añadiremos en sus respectivos bloques algunas líneas extra, de modo que quedaría tal que así.
+
  ```xml
 <IfModule mod_userdir.c>
         UserDir public_html
