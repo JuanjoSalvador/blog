@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Estrenando blog en GitHub Pages + Jekyll</title>
-  <meta name="description" content="Ya, ya lo se. Es mi tercer blog en un periodo de tiempo relativamente corto. Pero tengo que admitir que soy un enamorado de Jekyll, y no puedo evitarlo... Es...">
+  <title>Hackaton 2015</title>
+  <meta name="description" content="3 de Octubre de 2015. Escuela de Artes de Almería. 11:00 AM. Tras organizar equipos, desayunar un café más caliente que los fuegos del Monte del Destino, y a...">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://yourdomain.com/Estrenando-blog-en-GitHub-Pages-+-Jekyll">
+  <link rel="canonical" href="http://yourdomain.com/Hackaton-2015">
   <link rel="alternate" type="application/rss+xml" title="Juanjo Salvador" href="http://yourdomain.com/feed.xml" />
 </head>
 
@@ -69,32 +69,33 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Estrenando blog en GitHub Pages + Jekyll</h1>
-    <p class="post-meta">Jul 10, 2015 • juanjo</p>
+    <h1 class="post-title">Hackaton 2015</h1>
+    <p class="post-meta">Oct 5, 2015</p>
   </header>
 
   <article class="post-content">
-    <p>Ya, ya lo se. Es mi tercer blog en un periodo de tiempo relativamente corto. Pero tengo que admitir que soy un enamorado de Jekyll, y no puedo evitarlo... Esto no quiere decir que vaya a abandonar Doblejota Blog, no, para nada, simplemente traslado mi web personal aquí, añadiéndole un pequeño blog de apuntes de programación y desarrollo. Algo que hasta ahora he estado haciendo con Gist, pero que no me da para documentar y explayarme en el funcionamiento de mis recortes de código, así que, ¿por qué no?</p>
+    <p>3 de Octubre de 2015. Escuela de Artes de Almería. 11:00 AM. Tras organizar equipos, desayunar un café más caliente que los fuegos del Monte del Destino, y algunos minutos de desconcierto... Da comienzo El Hackatón 2015 organizado por HackLab Almería. Reunidos bajo el mismo techo, profesionales, estudiantes, curiosos, aficionados... Programadores, diseñadores, creadores de contenido y makers. Con un único propósito: cambiar el mundo dando rienda suelta a nuestras ideas.</p>
 
-<p>Otra cuestión aparece, al plantearme ¿y por qué no escribir esto en el Wordpress? La razón es muy sencilla: ese blog tiene un público hecho, y una temática definida, en la cual mis recortes y apuntes de programación no encajan demasiado... Cada tema en su lugar.</p>
+<p>Mi objetivo con este post, es hacer un resumen de lo que me ha supuesto, una muy grata experiencia en la que he tenido oportunidad de poner a prueba mis conocimientos y mis límites, aprender nuevas técnicas... y <a href="https://instagram.com/p/8aS-OEPPOX/"><strong>desbloquear logros</strong></a>.</p>
 
-<p>Por otro lado, trasladarme no ha sido tarea complicada. Si bien Jekyll, resulta algo complejo la primera vez que topas con el, una vez descifras el funcionamiento de <code>Liquid</code>, se hace bastante sencillo. De hecho, así he creado incluso mi propio sistema de categorías.</p>
+<p>Las 28 horas que pasamos ahí dentro, han sido una mezcla de angustias, de bloqueos, de <em>¡Funciona de una maldita vez!</em>... Pero sobretodo de risas y de desarrollo. Nuestro caso, el equipo 8 (<em>aunque nunca subimos si eramos el 8, el 9 o el 10</em>) desde el primer momento tuvimos grandes problemas: la falta de un diseñador y de un versado en electrónica nos jugó una mala pasada. No obstante, fuimos capaces de desarrollar un sistema para, mediante Python, leer información de unos sensores conectados a un Arduino UNO y enviarlos a una base de datos MySQL en la nube, para posteriormente rescatarlos en forma de gráficas en una aplicación de escritorio y de Android.</p>
 
-<p>Pero si quieres hacer esta tarea <em>aún más sencilla</em>, existe un repositorio en GitHub, <a href="https://github.com/barryclark/jekyll-now">Jekyll Now de Barry Clark</a>, el cual solo tienes que hacerle un <em>fork</em> y editar los parámetros que te va indicando en la guía de instalación. ¡Fácil! ¡Rápido! ¡Sencillo!</p>
+<p>Llamamos a nuestro sistema, FreezNet, ya que originalmente estaba pensado para colocar el dispositivo en frigoríficos, pero mientras fuimos desarrollando el código, nos dimos cuenta de que era algo completamente escalable, es decir: ¡estabamos creando un API estándar de conectividad IoT para Arduino! ¿Que podría ocurrir si seguimos desarrollando y extendiendo dicha API incorporando nuevas funciones?</p>
 
-<h3>¿Qué es Jekyll?</h3>
+<p>Cuando nos dimos cuenta de esto, era demasiado tarde para cambiar nuestra presentación, por lo que en el tintero quedó la posibilidad de construir un dispositivo con varios sensores que pudiesemos utilizar para <em>mejorar</em> nuestro sistema. Sin embargo, creo que esto, ha sido mi mejor experiencia hasta el momento como desarrollador.</p>
 
-<p>Jekyll es un generador de páginas HTML estáticas, escrito en Ruby, muy versátil y extensible. Se configura editando un archivo YAML (<em>_config.yml</em>), utilizando Liquid + HTML para crear layaouts y CSS para dar estilo. Es extensible mediante plugins y gemas, permitiendo añadir multitud de caracterísiticas, tales como un feed RSS o Atom, un generador de sitemap.xml automático, o comentarios con Disqus.</p>
+<p>Por supuesto, me gustaría mencionar aparte y agradecer enormemente al equipo de organizadores de <a href="www.elhackaton.com">El Hackatón</a>, a IBM, a <a href="http://hacklabalmeria.net/">HackLab Almería</a> y en especial a Cristóbal, quien me ha apoyado mucho e insistido para que me presentase como participante y no me perdiese la experiencia, y a Victor, quien nos estuvo ayudando con el webservice, amenizando la noche y otorgándonos logros por quedarnos hasta que amaneciese al día siguiente.</p>
 
-<p>Los post de Jekyll se escriben en MarkDown, el cual se procesa a HTML al general el sitio, permitiendo una escritura mucho más ágil y rápida que utilizando tags HTML.</p>
+<p>Para el próximo Hackaton, tengo algunos puntos que mejorar...</p>
 
-<h3>¿Por qué Jekyll?</h3>
+<ul>
+<li><p><strong>Organización y equipo</strong>. La falta de experiencia de los 4 que conformamos el equipo 8 fue un peso bastante grande, en especial el que fuimos 4 desarrolladores que no supimos repartirnos bien cada tarea.</p></li>
+<li><p><strong>Material propio</strong>. Este año hemos tenido suerte de que nos proporcionasen un pequeño kit IoT, pero nos ha faltado mucho material para poder presentar algo realmente funcional (aún siendo un prototipo).</p></li>
+<li><p><strong>Ideas</strong>. Llevar una idea previa de lo que queremos montar, puede ser muy interesante.</p></li>
+<li><p><strong>Presentaciones más llamativas</strong>. Una presentación en Impress, una web, logotipos, cantidad de imágenes... Todo eso nos ha faltado para poder presentar bien nuestro proyecto.</p></li>
+</ul>
 
-<p>Principalmente porque me permite escribir en MarkDown, teniendo una copia exacta del artículo en local, y porque el alojamiento me sale gratis mientras GitHub no caiga, además de que no tengo que pagar un extra por añadir un dominio, como ocurre con Wordpress.com o con alojamientos externos. ¡Yuju!</p>
-
-<p>En adición, me inspiré a probar esto cuando, tiempo atrás @SoulChainer me habló de este tipo de sitios, aunque el utiliza otro generador, Pelican, escrito en Python. Investigué un poco, y en aquel tiempo, GitHub daba mucho bombo a Octopress, un fork de Jekyll propio de estos, cuyo funcionamiento estaba orientado a los blogs estáticos como este. Sin embargo nunca tuve mucho tiempo para profundizar con ello y lo pasé a un segundo plano.</p>
-
-<p>Recientemente, tras leer el artículo de Tom Preston-Werner, <a href="http://tom.preston-werner.com/2008/11/17/blogging-like-a-hacker.html"><em>Blogging like a hacker</em></a>, donde habla precisamente sobre este tipo de blogs, me inspiré completamente para crear el mío. Total, ¿y por qué no?</p>
+<p>¡Espero ansioso mi próximo Hackatón!</p>
 
   </article>
 

@@ -1,13 +1,21 @@
 ---
 layout: page
-title: Blog
-permalink: /blog/
+title: Archivo
+permalink: /archive/
 ---
 
-<div class="posts">
-  {% for post in site.posts %}
-    <article class="post">
-          <span>{{ post.date | date: "%d/%m/%Y" }}</span> » <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-    </article>
-  {% endfor %}
+<div class="home">
+
+  <ul class="post-list">
+	<div class="posts">
+	  {% for post in site.posts %}
+	    <article class="post">
+		  <span>{{ post.date | date: "%d/%m/%Y" }}</span> » <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+	    </article>
+	  {% endfor %}
+	</div>
+  </ul>
+
+  <p class="rss-subscribe">Suscríbete <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
 </div>

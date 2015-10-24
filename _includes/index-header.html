@@ -1,0 +1,16 @@
+	<div class="profile">
+		<br/>
+		 <p><img id="logo" src="img/logo.png" width="150" height="150" /></p>
+
+		<h1>Juanjo Salvador</h1>
+		<h3>{{ site.description }}</h3>
+	</div>
+
+	<div id="nav">
+
+		{% for page in site.pages %}
+		   {% if page.title %}
+		   	<a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }} » </a> 
+		   {% endif %}
+		{% endfor %}
+	</div>

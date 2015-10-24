@@ -1,36 +1,18 @@
 ---
-layout: init
+layout: start
 ---
 
-<!-- <div class="posts">
-  {% for post in site.posts %}
-    <article class="post">
+	<div class="posts">
+	  {% for post in site.posts limit: 4 %}
+	    <article class="post">
 
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+	      <span>{{ post.date | date: "%d/%m/%Y" }}</span> » <a class="index-post" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
 
-      <div class="entry">
-        {{ post.excerpt }}
-      </div>
+	      <div class="entry">
+		{{ post.excerpt }}
+				<hr/>
+	      </div>
 
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
-    </article>
-  {% endfor %}
-</div> -->
-
-<div class="home">
-  <div id="pigzilla">
-    <img src="http://juanjosalvador.github.io/images/Pigzilla.png" alt="Pigzilla"/> <br/>
-  </div>
-
-  <p>
-    ¡Hola! Soy Juanjo Salvador, técnico de Sistemas Microinformáticos y Redes, estudiante de Desarrollo de Aplicaciones Web,
-    constructor de  páginas web, autor de <a href="http://doblejotablog.wordpress.com/">Doblejota Blog</a>
-    y a veces, fotógrafo.
-  </p>
-
-  <p>
-    Esta es mi web personal, donde puedes encontrar información sobre mi filosofía y mis proyectos, contactar conmigo,
-    echar un vistazo a mi curriculum, o leer mis artículos sobre programación y Linux.
-  </p>
-
-</div>
+	    </article>
+	  {% endfor %}
+	</div>

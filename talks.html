@@ -1,0 +1,13 @@
+---
+layout: page
+title: Charlas
+permalink: /talks/
+---
+
+<div class="posts">
+  {% for talk in site.talks %}
+    <article class="post">
+          <span>{{ talk.date | date: "%d/%m/%Y" }}</span> » <a href="{{ site.baseurl }}{{ talk.url }}">{{ talk.title }}</a>
+    </article>
+  {% endfor %}
+</div>

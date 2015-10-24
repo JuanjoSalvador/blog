@@ -1,60 +1,50 @@
 ---
 layout: page
 title: Curriculum
-permalink: /cv/
+permalink: /curriculum/
 ---
 
 ## Juanjo Salvador
 
-### Datos personales
+### Titulaciones
 
-  * Juan José Salvador Piedra
-  * 17 de Junio de 1993 (22 años)
-  * Almería
-
-### Estudios
-
-  * Graduado escolar (ESO) [2005-2009]  
+  * Graduado escolar (ESO) [2005-2009]
   * Ciclo Formativo Grado Medio Sistemas Microinformáticos y Redes [2010-2013]
   * Ciclo Formativo Grado Superior Desarrollo de Aplicaciones Web [2014-??]
 
 ### Conocimientos
 
-  * **Programación y desarrollo web**
+#### Programación y desarrollo web
 
-    * HTML5, CSS3, JavaScript
-    * XML y JSON
-    * C# y Java
-    * Python
-    * Ruby
-    * PHP
+  * HTML5, CSS3, JavaScript
+  * XML y JSON
+  * C# y Java
+  * Python
+  * Ruby
+  * PHP
     
-  * **Administración de bases de datos**
+#### Administración de bases de datos
+
+  * MySQL
+  * Access
+  * LibreOffice/OpenOffice Base
   
-    * MySQL
-    * Access
-    * LibreOffice/OpenOffice Base
-  
-  * **Gestores de contenido**
-  
-    * Wordpress
-    * Prestashop
-    * Joomla
-    * Drupal
-    * OpenCart
+#### Gestores de contenido
 
-  * **Administración de sistemas**
+  * Wordpress
+  * Prestashop
+  * Joomla
+  * Drupal
+  * OpenCart
 
-    * Servidores y entornos de cliente GNU/Linux (Nivel medio/avanzado)
-    * Servidores y entornos de cliente Windows (Nivel medio/avanzado)
+#### Administración de sistemas
 
-  * **Otros**
+  * Servidores y entornos de cliente GNU/Linux (Nivel medio/avanzado)
+  * Servidores y entornos de cliente Windows (Nivel medio/avanzado)
 
-    * Git
-    * Mercurial
-    * MarkDown
-    * LibreOffice y Microsoft Office
-    
-### Proyectos
+#### Otros
 
-  * Club Linux Almeria ([*HackLab Almeria*](http://hacklabalmeria.net "HackLab Almeria"))
+  * Git
+  * Mercurial
+  * MarkDown
+  * LibreOffice y Microsoft Office
