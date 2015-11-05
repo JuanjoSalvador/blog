@@ -13,4 +13,8 @@ Primera versión en Ruby del proyecto DrHenry. Permite crear los post con una pl
 
 Ahora pide un nombre para el post si no se introduce como argumento.
 
+## Version 0.4.0
+
+Corregidos algunos fallos del formato del título y puesta a punto.
+
 
