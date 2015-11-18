@@ -14,11 +14,12 @@
 				}
 				
 				var porcen = (cont/checkboxes.length)*100;
+				var valor  = math.round(porcen)
 				
 				if (cont == checkboxes.length) {
 					alert("ZOMG. Eres ELLA.");
 				} else {
-					alert("Resultado: " + cont + "/" + checkboxes.length + ". Eso supone un " + porcen + "% de posibilidades de que seas ELLA.");
+					alert("Resultado: " + cont + "/" + checkboxes.length + ". Eso supone un " + valor + "% de posibilidades de que seas ELLA.");
 				}
 				alert("Test creado y desarrollado por Juanjo Salvador (aka @FreakViking).");
 			}
