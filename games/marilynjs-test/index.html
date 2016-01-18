@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>HTML5 Game Test</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="scripts/marilyn.js" type="text/javascript"></script>
+
+  </head>
+
+  <body onload="init()">
+    <div id="images">
+      <img id="char" src="media/char.png" width="57" height="76" />
+      <img id="bg" src="media/background.png" />
+    </div>
+    <header>
+      <h1>MarilynJS Test</h1>
+      <h2>HTML5 + JavaScript</h2>
+    </header>
+
+    <!--<form name="debugger" method="post" action="">
+      <input id="bgDebug" type="text" />
+      <input id="charDebug" type="text" />
+    </form>-->
+    <div id="game">
+      <audio loop id="music">
+        <source src="media/music.mp3" type="audio/mpeg">
+        <source src="media/music.ogg" type="audio/ogg">
+      </audio>
+      <canvas id="miCanvas" width="600" height="385"></canvas>
+    </div>
+
+    <button onclick="document.getElementById('music').pause();">Mute music</button>
+
+    <footer>
+      <p>Created by <a href="#">Juan José Salvador</a>.</p>
+      <p>Powered by <a href="#">MarilynJS</a>.</p>
+    </footer>
+
+  </body>
+
+</html>
