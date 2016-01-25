@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Plantilla de posts para Jekyll &middot; Juanjo Salvador
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+          Juanjo Salvador
+        </a>
+      </h1>
+      <p class="lead">Desarrollo. Debian. Software Libre.</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Inicio</a>
+
+      
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about/">Sobre mi</a>
+          
+        
+      
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/charlas/">Charlas y conferencias</a>
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/curriculum/">Curriculum</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+
+      <a class="sidebar-nav-item" href="/atom.xml">RSS</a>
+    </nav>
+
+    <p>&copy; 2016. Todos los derechos reservados.</p>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">Plantilla de posts para Jekyll</h1>
+  <span class="post-date">11 Jul 2015</span>
+  <p>La automatización de tareas es un aspecto básico que todo <em>sysadmin</em> debe tener presente y conocer al dedillo. En Linux, tengo que reconocer que soy muy aficionado a esto de montarme scripts para casi cualquier tarea que pueda ser (o no), repetitiva. Es el caso de escribir un post para un blog en Jekyll.</p>
+
+<p>Jekyll utiliza MarkDown para dar formato a los posts, además de lo que llamamos <em>layout</em> (o plantilla) con la posición de cada elemento dentro del post. Generalmente le pasamos como parámetros el layout y el título del post, pudiendo o no añadir nuevos elementos mediante plugins o simplemente, editando nuestro site. Estos parámetros vienen dados en la cabecera de cada archivo <code>.md</code> que escribimos, con el siguiente formato:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">---
+layout: post # Sustituye el layout si lo usas uno diferente
+title: Título del post # Nombre generado automáticamente
+categories: [jekyll] # Añade tus categorías o borra esta línea
+---
+</code></pre></div>
+<p>Además de esta cabecera, cada archivo además debe ser llamado de una forma específica, siendo esta, la fecha del post, seguida del título de este, separado todo por guiones. Esta tarea puede ser muy pesada, sobretodo si tenemos que migrar un blog entero desde otro site. ¿Solución? Un script que le pases el nombre del post, y te genere automáticamente el archivo .md con la cabecera y el nombre de archivo con el formato correcto y prescindido por Jekyll.</p>
+
+</div>
+
+<div class="related">
+  <h2>Artículos relacionados</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2016/01/25/A%C3%B1ade-un-feed-Atom-RSS-a-Jekyll/">
+            Añade un feed Atom/RSS a Jekyll
+            <small>25 Jan 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2015/11/11/Comicbook-Packager-mi-autoempaquetador-de-comics/">
+            Comicbook Packager, mi autoempaquetador de comics
+            <small>11 Nov 2015</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2015/10/22/Habilitar-el-m%C3%B3dulo-userdir-de-Apache2-en-Debian/">
+            Habilitar el módulo userdir de Apache2 en Debian
+            <small>22 Oct 2015</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+	<div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+    var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//juanjosalvador.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</div>
+
+    </div>
+
+  </body>
+</html>

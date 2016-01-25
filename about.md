@@ -4,20 +4,20 @@ title: Sobre mi
 permalink: /about/
 ---
 
-Juanjo Salvador, técnico de sistemas microinformáticos y redes, blogger experimental e intento de programador, en constante formación. Actualmente, estudiante de Desarrollo de Aplicaciones Web.
+**Juan José Salvador** es Técnico de Sistemas Microinformáticos y Técnico Superior en Desarrollo de Aplicaciones Web.
 
-### Actividad
+### Debianista
+Usuario de GNU/Linux desde 2009 y de Debian desde 2013.
+Contribuyo en la comunidad a través de la lista de correo, múltiples foros de Debian, traduciendo la Wiki y publico artículos técnicos en un blog de tecnología y GNU/Linux.
 
-Mi principal campo de actividad es el desarrollo web (front y backend), aunque poseo amplia experiencia y conocimientos en mantenimiento de equipos, administración	de servidores Linux y desarrollo de aplicaciones de escritorio.
+### Sofware libre
+Activista por el software libre y la no censura en la red. Contribuyo con diversos proyectos de diversa índole, además de promover el uso de software libre frente al propietario.
 
-### Intereses
+### Desarrollo
+Desde muy pequeñito me sentía atraído por la programación. Lo que empezó como una llamada de curiosidad se convirtió en afición y con el tiempo, en una forma de ganarme la vida.
 
-Entre mis principales intereses y aficiones, se encuentran la fotografía y el diseño gráfico, aunque no me considero más que un aficionado en ambos campos. Puedo considerarme como un defensor del software libre, así como veterano usuario de este, siendo usuario de GNU/Linux desde 2008, además de fundador del Club Linux Almeria.
-
-A nivel de programador, posiblemente mi mayor interés es trabajar con Ruby, dado que me encanta este lenguaje, por su versatilidad y simpleza.
-
-### Contacta conmigo
-
-Puedes contactar conmigo a través de las redes sociales, o en mi correo electrónico.
-
-[juanjosalvador@openmailbox.org](mailto:juanjosalvador@openmailbox.org)
+### Contacto
+Puedes encontrarme en las redes sociales o en mi correo electrónico.
+* [@Linuxneitor](http://twitter.com/Linuxneitor)
+* [GitHub](http://www.github.com/JuanjoSalvador)
+* [Google+](https://plus.google.com/u/0/+JuanjoSalvador)

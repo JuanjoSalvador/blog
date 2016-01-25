@@ -4,47 +4,42 @@ title: Curriculum
 permalink: /curriculum/
 ---
 
-## Juanjo Salvador
+## Juan José Salvador Piedra
 
 ### Titulaciones
+  * Graduado escolar (ESO)
+  * Ciclo Formativo Grado Medio Sistemas Microinformáticos y Redes
+  * Ciclo Formativo Grado Superior Desarrollo de Aplicaciones Web
 
-  * Graduado escolar (ESO) [2005-2009]
-  * Ciclo Formativo Grado Medio Sistemas Microinformáticos y Redes [2010-2013]
-  * Ciclo Formativo Grado Superior Desarrollo de Aplicaciones Web [2014-??]
+### Idiomas
+  * Inglés (nivel alto)
+  * Francés (nivel intermedio)
 
 ### Conocimientos
 
-#### Programación y desarrollo web
+#### Informática general
+  * Sistemas GNU/Linux (Debian/Ubuntu/OpenSUSE/Fedora)
+  * Sistemas Windows (desde Windows 98 hasta Windows 10)
+  * Ofimática (MS Office, LibreOffice)
 
-  * HTML5, CSS3, JavaScript
-  * XML y JSON
-  * C# y Java
-  * Python
-  * Ruby
-  * PHP
-    
-#### Administración de bases de datos
+#### Desarrollo de aplicaciones
+  * Windows (C#)
+  * Multiplataforma (Java)
+  * Scripts (Python, Ruby, Bash)
+  * Estructura de datos (XML y JSON)
 
-  * MySQL
-  * Access
-  * LibreOffice/OpenOffice Base
-  
+#### Desarrollo web
+  * HTML5, CSS3 y JavaScript
+  * Librería jQuery
+  * Aplicaciones basadas en PHP
+  * Bases de datos MariaDB y MySQL
+
+#### Desarrollo de videojuegos
+  * Unity3D
+  * HTML5 Canvas
+
 #### Gestores de contenido
-
-  * Wordpress
-  * Prestashop
-  * Joomla
-  * Drupal
-  * OpenCart
-
-#### Administración de sistemas
-
-  * Servidores y entornos de cliente GNU/Linux (Nivel medio/avanzado)
-  * Servidores y entornos de cliente Windows (Nivel medio/avanzado)
-
-#### Otros
-
-  * Git
-  * Mercurial
-  * MarkDown
-  * LibreOffice y Microsoft Office
+  * Estáticos (Jekyll)
+  * Blogs (Wordpress)
+  * e-Shop (Prestashop, OpenCart)
+  * Multipropósito (Joomla, Drupal)

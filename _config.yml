@@ -1,25 +1,27 @@
-# Site settings
-title: Juanjo Salvador
-author: Juanjo Salvador Piedra
-email: juanjosalvador@openmailbox.org
-description: Ingeniero y no puedo # this means to ignore newlines until "baseurl:"
-  
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://yourdomain.com" # the base hostname & protocol for your site
-twitter_username: Linuxneitor
-github_username:  JuanjoSalvador
+# Dependencies
+markdown:         redcarpet
+highlighter:      pygments
 
-# Build settings
-markdown: redcarpet
+# Permalinks
+permalink:        pretty
+#relative_permalinks: true
 
-# Post settings
+# Setup
+title:            Juanjo Salvador
+tagline:          'Ingeniero y no puedo'
+description:      'Desarrollo. Debian. Software Libre.'
+url:              http://juanjosalvador.es/
+baseurl:          /
 
-permalink: /:title
+author:
+  name:           'Juanjo Salvador'
+  url:            https://twitter.com/linuxneitor
 
-# Collections
+paginate:         5
 
-collections:
-  talks:
-    output: true
+# Custom vars
+version:          2.1.0
+gems: [jekyll-paginate]
 
-# Exclude
+github:	        'JuanjoSalvador'
+twitter:        'linuxneitor'

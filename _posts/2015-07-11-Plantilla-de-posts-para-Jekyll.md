@@ -15,5 +15,3 @@ Jekyll utiliza MarkDown para dar formato a los posts, además de lo que llamamos
     ---
 
 Además de esta cabecera, cada archivo además debe ser llamado de una forma específica, siendo esta, la fecha del post, seguida del título de este, separado todo por guiones. Esta tarea puede ser muy pesada, sobretodo si tenemos que migrar un blog entero desde otro site. ¿Solución? Un script que le pases el nombre del post, y te genere automáticamente el archivo .md con la cabecera y el nombre de archivo con el formato correcto y prescindido por Jekyll.
-
-{% gist 9669022d8e3f59ab7a4f jekyll-post.sh %}

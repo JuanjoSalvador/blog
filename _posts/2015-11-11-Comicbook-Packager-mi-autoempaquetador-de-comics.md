@@ -1,6 +1,7 @@
 ---
 layout: post # Sustituye el layout si lo usas uno diferente
 title: Comicbook Packager, mi autoempaquetador de comics # Nombre generado automáticamente
+comments: true
 ---
 
 Confieso que soy aficionado a leer comics en formato digital. Y algunos de los comics que sigo, no se encuentran traducidos a mi idioma u otro idioma que entienda, por lo que tiendo a recurrir a fansites de traducciones no oficiales. Actualmente hay numerosos sitios web que ofrecen de forma gratuita o con una suscripción (*como Submanga o Crunchyroll*) la lectura de estos comics online.

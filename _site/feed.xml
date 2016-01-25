@@ -1,304 +1,129 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Juanjo Salvador</title>
-    <description>Ingeniero y no puedo</description>
-    <link>http://yourdomain.com/</link>
-    <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 24 Oct 2015 11:56:21 +0200</pubDate>
-    <lastBuildDate>Sat, 24 Oct 2015 11:56:21 +0200</lastBuildDate>
-    <generator>Jekyll v2.5.3</generator>
-    
-      <item>
-        <title>Habilitar el módulo userdir de Apache2 en Debian</title>
-        <description>&lt;p&gt;El módulo &lt;code&gt;userdir&lt;/code&gt; de Apache2 nos permite tener una carpeta en nuestro /home, llamada public_html, donde un usuario de nuestro servidor, puede alojar sus propios documentos y que estos estén disponibles en Apache bajo la url http://mi-servidor/~usuario.&lt;/p&gt;
-
-&lt;p&gt;Aunque en distros como OpenSUSE, el módulo &lt;code&gt;userdir&lt;/code&gt; viene habilitado por defecto, en Ubuntu/Debian no es el caso, por lo que si queremos disfrutar de esta característica, tendremos que hacerlo a mano.&lt;/p&gt;
-
-&lt;h3&gt;Habilitar el módulo&lt;/h3&gt;
-
-&lt;p&gt;Para empezar, tenemos que habilitar el módulo con la siguiente instrucción.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo a2enmod userdir
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;Configurar el módulo&lt;/h3&gt;
-
-&lt;p&gt;Nos pedirá que reiniciemos Apache para tener esta característica habilitada. Pero aún nos queda un poco, ahora vamos a configurar el módulo, editando &lt;code&gt;userdir.conf&lt;/code&gt;. Eso si, antes de editarlo, haremos un backup por si las moscas.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo cp /etc/apache2/mods-enabled/userdir.conf /etc/apache2/mods-enabled/userdir.conf.backup
-sudo nano /etc/apache2/mods-enabled/userdir.conf
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Aquí yo uso nano, pero tu puedes usar gedit, vim, leafpad o el editor de texto plano que más te guste.&lt;/p&gt;
-
-&lt;p&gt;Este es el original.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;IfModule&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;mod_userdir.c&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    UserDir public_html
-    UserDir disabled root
-
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;/home/*/public_html&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-        AllowOverride FileInfo AuthConfig Limit Indexes
-        Options MultiViews Indexes SymLinksIfOwnerMatch IncludesNoExec
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Limit&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;GET&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;POST&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;OPTIONS&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-            Require all granted
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Limit&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;LimitExcept&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;GET&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;POST&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;OPTIONS&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-            Require all denied
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/LimitExcept&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Directory&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/IfModule&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Modificaremos las líneas 6, 7, 9 y 12, y añadiremos en sus respectivos bloques algunas líneas extra, de modo que quedaría tal que así.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;IfModule&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;mod_userdir.c&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-        UserDir public_html
-        UserDir disabled root
-
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;/home/*/public_html&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-        AllowOverride All
-        Options MultiViews Indexes SymLinksIfOwnerMatch
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Limit&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;GET&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;POST&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;OPTIONS&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-             #Require all granted
-                Order allow,deny
-                Allow from all
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Limit&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;LimitExcept&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;GET&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;POST&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;OPTIONS&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-             #Require all denied
-                Order deny,allow
-                Deny from all
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/LimitExcept&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Directory&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/IfModule&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Una vez tengamos editado el módulo &lt;code&gt;userdir.conf&lt;/code&gt;, podremos acceder a nuestra &lt;code&gt;public_html&lt;/code&gt; situada en &lt;code&gt;/home/$USER&lt;/code&gt;, lo cual nos permite alojar ahí cualquier documento para que aparezca en nuestro servidor (y si es un index.html, mejor).&lt;/p&gt;
-
-&lt;p&gt;Para terminar, reiniciamos Apache2 y añadimos el directorio.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo service apache2 restart
-mkdir /home/&lt;span class=&quot;nv&quot;&gt;$USER&lt;/span&gt;/public_html
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Sin embargo, esto aún no soporta PHP, por ejemplo. Veremos como añadir ese soporte en otro artículo.&lt;/p&gt;
-
-&lt;h3&gt;Posible error de Apache2&lt;/h3&gt;
-
-&lt;p&gt;Es posible que tras configurarlo, al acceder a http://mi-servidor/~usuario nos de un error de permisos (403 Forbidden). La solución a esto es sencilla, basta con asegurarnos de que nuestra carpeta personal tiene permiso de lectura y ejecución para grupos y otros usuarios.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo chmod -R &lt;span class=&quot;m&quot;&gt;755&lt;/span&gt; /home/tu-usuario/
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Si aún así falla, nos vamos a &lt;code&gt;/etc/apache2/apache2.conf&lt;/code&gt; y como root añadimos el siguiente código:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;/home/*/public_html&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-        Options Indexes FollowSymLinks
-        AllowOverride None
-        Require all granted
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Directory&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Una vez hecho esto, no debería dar error de nuevo.&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+	<channel>
+		<title></title>
+		<description>Desarrollo. Debian. Software Libre.</description>		
+		<link>http://juanjosalvador.es/</link>
+		<atom:link href="http://juanjosalvador.es//feed.xml" rel="self" type="application/rss+xml" />
+		
+			<item>
+				<title>Añade un feed Atom/RSS a Jekyll</title>
+				        
+				
+					<description></description>
+				
+				<pubDate>Mon, 25 Jan 2016 00:00:00 +0100</pubDate>
+				<link>http://juanjosalvador.es//2016/01/25/A%C3%B1ade-un-feed-Atom-RSS-a-Jekyll/</link>
+				<guid isPermaLink="true">http://juanjosalvador.es//2016/01/25/A%C3%B1ade-un-feed-Atom-RSS-a-Jekyll/</guid>
+			</item>
+		
+			<item>
+				<title>Comicbook Packager, mi autoempaquetador de comics</title>
+				        
+				
+					<description>&lt;p&gt;Confieso que soy aficionado a leer comics en formato digital. Y algunos de los comics que sigo, no se encuentran traducidos a mi idioma u otro idioma que entienda, por lo que tiendo a recurrir a fansites de traducciones no oficiales. Actualmente hay numerosos sitios web que ofrecen de forma gratuita o con una suscripción (&lt;em&gt;como Submanga o Crunchyroll&lt;/em&gt;) la lectura de estos comics online.&lt;/p&gt;
 </description>
-        <pubDate>Thu, 22 Oct 2015 00:00:00 +0200</pubDate>
-        <link>http://yourdomain.com/Habilitar-el-m%C3%B3dulo-userdir-de-Apache2-en-Debian</link>
-        <guid isPermaLink="true">http://yourdomain.com/Habilitar-el-m%C3%B3dulo-userdir-de-Apache2-en-Debian</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Progreso de DrHenry</title>
-        <description>&lt;p&gt;Este es el progreso actual de mi &lt;a href=&quot;https://rubygems.org/gems/drhenry&quot;&gt;gema para generar posts de Jekyll&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2&gt;Version 0.2.0&lt;/h2&gt;
-
-&lt;p&gt;Primera versión en Ruby del proyecto DrHenry. Permite crear los post con una plantilla estándar.&lt;/p&gt;
-
-&lt;h2&gt;Version 0.3.1&lt;/h2&gt;
-
-&lt;p&gt;Ahora pide un nombre para el post si no se introduce como argumento.&lt;/p&gt;
+				
+				<pubDate>Wed, 11 Nov 2015 00:00:00 +0100</pubDate>
+				<link>http://juanjosalvador.es//2015/11/11/Comicbook-Packager-mi-autoempaquetador-de-comics/</link>
+				<guid isPermaLink="true">http://juanjosalvador.es//2015/11/11/Comicbook-Packager-mi-autoempaquetador-de-comics/</guid>
+			</item>
+		
+			<item>
+				<title>Habilitar el módulo userdir de Apache2 en Debian</title>
+				        
+				
+					<description>&lt;p&gt;El módulo &lt;code&gt;userdir&lt;/code&gt; de Apache2 nos permite tener una carpeta en nuestro /home, llamada public_html, donde un usuario de nuestro servidor, puede alojar sus propios documentos y que estos estén disponibles en Apache bajo la url http://mi-servidor/~usuario.&lt;/p&gt;
 </description>
-        <pubDate>Mon, 19 Oct 2015 00:00:00 +0200</pubDate>
-        <link>http://yourdomain.com/Progreso-de-DrHenry</link>
-        <guid isPermaLink="true">http://yourdomain.com/Progreso-de-DrHenry</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>DrHenry genera posts por ti</title>
-        <description>&lt;p&gt;Tiempo atrás &lt;a href=&quot;https://gist.github.com/JuanjoSalvador/9669022d8e3f59ab7a4f&quot;&gt;escribí un script en bash&lt;/a&gt; para ayudarme a publicar artículos en mi sitio de Jekyll, dado que crear un archivo-plantilla no me parecía factible, ya que mi configuración usa un nombre de archivo bastante concreto (YYYY-MM-DD-titulo.md).&lt;/p&gt;
-
-&lt;p&gt;Ese script tenía un problema: me obligaba a mover manualmente los post una vez creados a la carpeta pertinente... Y solo funciona con Linux. ¿Que pasa si un día de pronto un usuario de Windows o Mac quiere hacer lo mismo que yo?&lt;/p&gt;
-
-&lt;p&gt;Solución: lo convierto en una gema. Así que, esta mañana me he puesto y lo he reescrito de cero en Ruby. He de decir que la parte más difícil ha sido corregir los errores de estilo y subirlo a RubyGems.&lt;/p&gt;
-
-&lt;p&gt;El código de DrHenry, mi &lt;em&gt;post generator&lt;/em&gt; de Jekyll se encuentra disponible bajo licencia MIT en GitHub, además de la documentación necesaria.&lt;/p&gt;
-
-&lt;p&gt;DrHenry se encuentra actualmente en una versión muy temprana de su desarrollo, es posible que existan numerosos errores.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/JuanjoSalvador/drhenry&quot;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://rubygems.org/gems/drhenry&quot;&gt;RubyGems&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+				
+				<pubDate>Thu, 22 Oct 2015 00:00:00 +0200</pubDate>
+				<link>http://juanjosalvador.es//2015/10/22/Habilitar-el-m%C3%B3dulo-userdir-de-Apache2-en-Debian/</link>
+				<guid isPermaLink="true">http://juanjosalvador.es//2015/10/22/Habilitar-el-m%C3%B3dulo-userdir-de-Apache2-en-Debian/</guid>
+			</item>
+		
+			<item>
+				<title>Progreso de DrHenry</title>
+				        
+				
+					<description>&lt;p&gt;Este es el progreso actual de mi &lt;a href=&quot;https://rubygems.org/gems/drhenry&quot;&gt;gema para generar posts de Jekyll&lt;/a&gt;.&lt;/p&gt;
 </description>
-        <pubDate>Fri, 16 Oct 2015 00:00:00 +0200</pubDate>
-        <link>http://yourdomain.com/DrHenry-genera-posts-por-ti</link>
-        <guid isPermaLink="true">http://yourdomain.com/DrHenry-genera-posts-por-ti</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Super Arduino Bros</title>
-        <description>&lt;p&gt;Durante la &lt;a href=&quot;http://codeweek.eu/&quot;&gt;CodeWeek&lt;/a&gt; he tenido ocasión de asistir a un taller de Arduino organizado por &lt;a href=&quot;http://hacklabalmeria.net/&quot;&gt;HackLab Almeria&lt;/a&gt;. Allí además de cacharrear y experimentar cosas con Arduino, &lt;a href=&quot;http://twitter.com/jotaperamez&quot;&gt;@jotaperamez&lt;/a&gt; y yo montamos esta chorradilla experimentando con un altavoz.&lt;/p&gt;
-
-&lt;iframe src=&quot;https://drive.google.com/file/d/0B8I_GscWCpN_NTNxUG5RLTF0SVE/preview&quot; width=&quot;640&quot; height=&quot;360&quot;&gt;&lt;/iframe&gt;
-
-&lt;p&gt;Puedes montarte uno propio &lt;a href=&quot;http://www.princetronics.com/supermariothemesong/&quot;&gt;usando este &lt;em&gt;scratch&lt;/em&gt;&lt;/a&gt;, un &lt;strong&gt;Arduino UNO&lt;/strong&gt; y un altavoz.&lt;/p&gt;
+				
+				<pubDate>Mon, 19 Oct 2015 00:00:00 +0200</pubDate>
+				<link>http://juanjosalvador.es//2015/10/19/Progreso-de-DrHenry/</link>
+				<guid isPermaLink="true">http://juanjosalvador.es//2015/10/19/Progreso-de-DrHenry/</guid>
+			</item>
+		
+			<item>
+				<title>DrHenry genera posts por ti</title>
+				        
+				
+					<description>&lt;p&gt;Tiempo atrás &lt;a href=&quot;https://gist.github.com/JuanjoSalvador/9669022d8e3f59ab7a4f&quot;&gt;escribí un script en bash&lt;/a&gt; para ayudarme a publicar artículos en mi sitio de Jekyll, dado que crear un archivo-plantilla no me parecía factible, ya que mi configuración usa un nombre de archivo bastante concreto (YYYY-MM-DD-titulo.md).&lt;/p&gt;
 </description>
-        <pubDate>Thu, 15 Oct 2015 00:00:00 +0200</pubDate>
-        <link>http://yourdomain.com/Super-Arduino-Bros</link>
-        <guid isPermaLink="true">http://yourdomain.com/Super-Arduino-Bros</guid>
-        
-        
-        <category>eventos</category>
-        
-      </item>
-    
-      <item>
-        <title>Hackaton 2015</title>
-        <description>&lt;p&gt;3 de Octubre de 2015. Escuela de Artes de Almería. 11:00 AM. Tras organizar equipos, desayunar un café más caliente que los fuegos del Monte del Destino, y algunos minutos de desconcierto... Da comienzo El Hackatón 2015 organizado por HackLab Almería. Reunidos bajo el mismo techo, profesionales, estudiantes, curiosos, aficionados... Programadores, diseñadores, creadores de contenido y makers. Con un único propósito: cambiar el mundo dando rienda suelta a nuestras ideas.&lt;/p&gt;
-
-&lt;p&gt;Mi objetivo con este post, es hacer un resumen de lo que me ha supuesto, una muy grata experiencia en la que he tenido oportunidad de poner a prueba mis conocimientos y mis límites, aprender nuevas técnicas... y &lt;a href=&quot;https://instagram.com/p/8aS-OEPPOX/&quot;&gt;&lt;strong&gt;desbloquear logros&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Las 28 horas que pasamos ahí dentro, han sido una mezcla de angustias, de bloqueos, de &lt;em&gt;¡Funciona de una maldita vez!&lt;/em&gt;... Pero sobretodo de risas y de desarrollo. Nuestro caso, el equipo 8 (&lt;em&gt;aunque nunca subimos si eramos el 8, el 9 o el 10&lt;/em&gt;) desde el primer momento tuvimos grandes problemas: la falta de un diseñador y de un versado en electrónica nos jugó una mala pasada. No obstante, fuimos capaces de desarrollar un sistema para, mediante Python, leer información de unos sensores conectados a un Arduino UNO y enviarlos a una base de datos MySQL en la nube, para posteriormente rescatarlos en forma de gráficas en una aplicación de escritorio y de Android.&lt;/p&gt;
-
-&lt;p&gt;Llamamos a nuestro sistema, FreezNet, ya que originalmente estaba pensado para colocar el dispositivo en frigoríficos, pero mientras fuimos desarrollando el código, nos dimos cuenta de que era algo completamente escalable, es decir: ¡estabamos creando un API estándar de conectividad IoT para Arduino! ¿Que podría ocurrir si seguimos desarrollando y extendiendo dicha API incorporando nuevas funciones?&lt;/p&gt;
-
-&lt;p&gt;Cuando nos dimos cuenta de esto, era demasiado tarde para cambiar nuestra presentación, por lo que en el tintero quedó la posibilidad de construir un dispositivo con varios sensores que pudiesemos utilizar para &lt;em&gt;mejorar&lt;/em&gt; nuestro sistema. Sin embargo, creo que esto, ha sido mi mejor experiencia hasta el momento como desarrollador.&lt;/p&gt;
-
-&lt;p&gt;Por supuesto, me gustaría mencionar aparte y agradecer enormemente al equipo de organizadores de &lt;a href=&quot;www.elhackaton.com&quot;&gt;El Hackatón&lt;/a&gt;, a IBM, a &lt;a href=&quot;http://hacklabalmeria.net/&quot;&gt;HackLab Almería&lt;/a&gt; y en especial a Cristóbal, quien me ha apoyado mucho e insistido para que me presentase como participante y no me perdiese la experiencia, y a Victor, quien nos estuvo ayudando con el webservice, amenizando la noche y otorgándonos logros por quedarnos hasta que amaneciese al día siguiente.&lt;/p&gt;
-
-&lt;p&gt;Para el próximo Hackaton, tengo algunos puntos que mejorar...&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Organización y equipo&lt;/strong&gt;. La falta de experiencia de los 4 que conformamos el equipo 8 fue un peso bastante grande, en especial el que fuimos 4 desarrolladores que no supimos repartirnos bien cada tarea.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Material propio&lt;/strong&gt;. Este año hemos tenido suerte de que nos proporcionasen un pequeño kit IoT, pero nos ha faltado mucho material para poder presentar algo realmente funcional (aún siendo un prototipo).&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Ideas&lt;/strong&gt;. Llevar una idea previa de lo que queremos montar, puede ser muy interesante.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Presentaciones más llamativas&lt;/strong&gt;. Una presentación en Impress, una web, logotipos, cantidad de imágenes... Todo eso nos ha faltado para poder presentar bien nuestro proyecto.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;¡Espero ansioso mi próximo Hackatón!&lt;/p&gt;
+				
+				<pubDate>Fri, 16 Oct 2015 00:00:00 +0200</pubDate>
+				<link>http://juanjosalvador.es//2015/10/16/DrHenry-genera-posts-por-ti/</link>
+				<guid isPermaLink="true">http://juanjosalvador.es//2015/10/16/DrHenry-genera-posts-por-ti/</guid>
+			</item>
+		
+			<item>
+				<title>Super Arduino Bros</title>
+				        
+				
+					<description>&lt;p&gt;Durante la &lt;a href=&quot;http://codeweek.eu/&quot;&gt;CodeWeek&lt;/a&gt; he tenido ocasión de asistir a un taller de Arduino organizado por &lt;a href=&quot;http://hacklabalmeria.net/&quot;&gt;HackLab Almeria&lt;/a&gt;. Allí además de cacharrear y experimentar cosas con Arduino, &lt;a href=&quot;http://twitter.com/jotaperamez&quot;&gt;@jotaperamez&lt;/a&gt; y yo montamos esta chorradilla experimentando con un altavoz.&lt;/p&gt;
 </description>
-        <pubDate>Mon, 05 Oct 2015 00:00:00 +0200</pubDate>
-        <link>http://yourdomain.com/Hackaton-2015</link>
-        <guid isPermaLink="true">http://yourdomain.com/Hackaton-2015</guid>
-        
-        
-        <category>eventos</category>
-        
-      </item>
-    
-      <item>
-        <title>3 razones para aprender múltiples lenguajes de programación [ENLACE]</title>
-        <description>&lt;p&gt;¿Por qué aprender diferentes lenguajes de programación? Por el mismo motivo por el que aprender a manejar sistemas Windows, Linux y OS X: versatilidad.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://trove.com/a/3-Reasons-to-Learn-Multiple-Programming-Languages.uMstw?nocrawl=1&quot;&gt;3 Reasons to Learn Multiple Programming Languages [Inglés]&lt;/a&gt;&lt;/p&gt;
+				
+				<pubDate>Thu, 15 Oct 2015 00:00:00 +0200</pubDate>
+				<link>http://juanjosalvador.es//eventos/2015/10/15/Super-Arduino-Bros/</link>
+				<guid isPermaLink="true">http://juanjosalvador.es//eventos/2015/10/15/Super-Arduino-Bros/</guid>
+			</item>
+		
+			<item>
+				<title>Hackaton 2015</title>
+				        
+				
+					<description>&lt;p&gt;3 de Octubre de 2015. Escuela de Artes de Almería. 11:00 AM. Tras organizar equipos, desayunar un café más caliente que los fuegos del Monte del Destino, y algunos minutos de desconcierto... Da comienzo El Hackatón 2015 organizado por HackLab Almería. Reunidos bajo el mismo techo, profesionales, estudiantes, curiosos, aficionados... Programadores, diseñadores, creadores de contenido y makers. Con un único propósito: cambiar el mundo dando rienda suelta a nuestras ideas.&lt;/p&gt;
 </description>
-        <pubDate>Thu, 03 Sep 2015 00:00:00 +0200</pubDate>
-        <link>http://yourdomain.com/3-razones-para-aprender-m%C3%BAltiples-lenguajes-de-programacion</link>
-        <guid isPermaLink="true">http://yourdomain.com/3-razones-para-aprender-m%C3%BAltiples-lenguajes-de-programacion</guid>
-        
-        
-        <category>enlaces</category>
-        
-      </item>
-    
-      <item>
-        <title>Parsear un JSON con Ruby</title>
-        <description>&lt;p&gt;Podemos definir JSON como un formato ligero de intercambio de datos. Es un subconjunto de la notación literal de objetos de JavaScript que no requiere el uso de XML, lo cual facilita mucho la legibilidad de la información contenida.&lt;/p&gt;
-
-&lt;p&gt;En la actualidad está muy extendido, lo cual hace que cualquier desarrollador web requiera de su uso en más de una ocasión. Al proceso de extracción de datos de un JSON (&lt;em&gt;o XML, o cualquier otro formato&lt;/em&gt;) se le llama &lt;em&gt;parsear&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Muchos lenguajes incluyen librerías para hacer esto, como es el caso de Ruby. Hace unos días, trabajando en un script el cual necesita tomar datos de terceros y que descaga en un archivo JSON, tuve la impediosa necesidad de parsear dicho archivo, pero, era la primera vez que necesitaba hacer algo así en Ruby, así que, me lancé a la aventura.&lt;/p&gt;
-
-&lt;p&gt;La solución, como casi siempre que tengo un problema similar, me apareció en &lt;a href=&quot;http://stackoverflow.com/questions/5410682/parsing-a-json-string-in-ruby&quot;&gt;StackOverflow&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Primero instalamos la gema json&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;gem install json&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;La añadimos a nuestro proyecto...&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;rubygems&amp;#39;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;json&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Y por último, para usarlo, solo tenemos que llamar al método &lt;code&gt;JSON.parse()&lt;/code&gt;, suponiendo que aquí nuestro JSON está almacenado en una variable llamada &lt;code&gt;string&lt;/code&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;parsed_file&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Esto nos devolverá el JSON dividido en claves y valores, por lo que, para acceder al valor de una clave en concreto, a través de la variable donde lo hemos guardado...&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;{&amp;quot;desc&amp;quot;:{&amp;quot;someKey&amp;quot;:&amp;quot;someValue&amp;quot;,&amp;quot;anotherKey&amp;quot;:&amp;quot;value&amp;quot;}}&amp;#39;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;parsed_file&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;parsed_file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;anotherKey&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Nos devuelve al valor de &amp;#39;anotherKey&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+				
+				<pubDate>Mon, 05 Oct 2015 00:00:00 +0200</pubDate>
+				<link>http://juanjosalvador.es//eventos/2015/10/05/Hackaton-2015/</link>
+				<guid isPermaLink="true">http://juanjosalvador.es//eventos/2015/10/05/Hackaton-2015/</guid>
+			</item>
+		
+			<item>
+				<title>3 razones para aprender múltiples lenguajes de programación [ENLACE]</title>
+				        
+				
+					<description>&lt;p&gt;¿Por qué aprender diferentes lenguajes de programación? Por el mismo motivo por el que aprender a manejar sistemas Windows, Linux y OS X: versatilidad.&lt;/p&gt;
 </description>
-        <pubDate>Sun, 12 Jul 2015 00:00:00 +0200</pubDate>
-        <link>http://yourdomain.com/Parsear-un-JSON-con-Ruby</link>
-        <guid isPermaLink="true">http://yourdomain.com/Parsear-un-JSON-con-Ruby</guid>
-        
-        
-        <category>ruby</category>
-        
-      </item>
-    
-      <item>
-        <title>Plantilla de posts para Jekyll</title>
-        <description>&lt;p&gt;La automatización de tareas es un aspecto básico que todo &lt;em&gt;sysadmin&lt;/em&gt; debe tener presente y conocer al dedillo. En Linux, tengo que reconocer que soy muy aficionado a esto de montarme scripts para casi cualquier tarea que pueda ser (o no), repetitiva. Es el caso de escribir un post para un blog en Jekyll.&lt;/p&gt;
-
-&lt;p&gt;Jekyll utiliza MarkDown para dar formato a los posts, además de lo que llamamos &lt;em&gt;layout&lt;/em&gt; (o plantilla) con la posición de cada elemento dentro del post. Generalmente le pasamos como parámetros el layout y el título del post, pudiendo o no añadir nuevos elementos mediante plugins o simplemente, editando nuestro site. Estos parámetros vienen dados en la cabecera de cada archivo &lt;code&gt;.md&lt;/code&gt; que escribimos, con el siguiente formato:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;---
-layout: post # Sustituye el layout si lo usas uno diferente
-title: Título del post # Nombre generado automáticamente
-categories: [jekyll] # Añade tus categorías o borra esta línea
----
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Además de esta cabecera, cada archivo además debe ser llamado de una forma específica, siendo esta, la fecha del post, seguida del título de este, separado todo por guiones. Esta tarea puede ser muy pesada, sobretodo si tenemos que migrar un blog entero desde otro site. ¿Solución? Un script que le pases el nombre del post, y te genere automáticamente el archivo .md con la cabecera y el nombre de archivo con el formato correcto y prescindido por Jekyll.&lt;/p&gt;
-
-&lt;p&gt;&lt;noscript&gt;&lt;pre&gt;400: Invalid request
-&lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/9669022d8e3f59ab7a4f.js?file=jekyll-post.sh&quot;&gt; &lt;/script&gt;&lt;/p&gt;
+				
+				<pubDate>Thu, 03 Sep 2015 00:00:00 +0200</pubDate>
+				<link>http://juanjosalvador.es//enlaces/2015/09/03/3-razones-para-aprender-m%C3%BAltiples-lenguajes-de-programacion/</link>
+				<guid isPermaLink="true">http://juanjosalvador.es//enlaces/2015/09/03/3-razones-para-aprender-m%C3%BAltiples-lenguajes-de-programacion/</guid>
+			</item>
+		
+			<item>
+				<title>Parsear un JSON con Ruby</title>
+				        
+				
+					<description>&lt;p&gt;Podemos definir JSON como un formato ligero de intercambio de datos. Es un subconjunto de la notación literal de objetos de JavaScript que no requiere el uso de XML, lo cual facilita mucho la legibilidad de la información contenida.&lt;/p&gt;
 </description>
-        <pubDate>Sat, 11 Jul 2015 00:00:00 +0200</pubDate>
-        <link>http://yourdomain.com/Plantilla-de-posts-para-Jekyll</link>
-        <guid isPermaLink="true">http://yourdomain.com/Plantilla-de-posts-para-Jekyll</guid>
-        
-        
-        <category>jekyll</category>
-        
-      </item>
-    
-      <item>
-        <title>Estrenando blog en GitHub Pages + Jekyll</title>
-        <description>&lt;p&gt;Ya, ya lo se. Es mi tercer blog en un periodo de tiempo relativamente corto. Pero tengo que admitir que soy un enamorado de Jekyll, y no puedo evitarlo... Esto no quiere decir que vaya a abandonar Doblejota Blog, no, para nada, simplemente traslado mi web personal aquí, añadiéndole un pequeño blog de apuntes de programación y desarrollo. Algo que hasta ahora he estado haciendo con Gist, pero que no me da para documentar y explayarme en el funcionamiento de mis recortes de código, así que, ¿por qué no?&lt;/p&gt;
-
-&lt;p&gt;Otra cuestión aparece, al plantearme ¿y por qué no escribir esto en el Wordpress? La razón es muy sencilla: ese blog tiene un público hecho, y una temática definida, en la cual mis recortes y apuntes de programación no encajan demasiado... Cada tema en su lugar.&lt;/p&gt;
-
-&lt;p&gt;Por otro lado, trasladarme no ha sido tarea complicada. Si bien Jekyll, resulta algo complejo la primera vez que topas con el, una vez descifras el funcionamiento de &lt;code&gt;Liquid&lt;/code&gt;, se hace bastante sencillo. De hecho, así he creado incluso mi propio sistema de categorías.&lt;/p&gt;
-
-&lt;p&gt;Pero si quieres hacer esta tarea &lt;em&gt;aún más sencilla&lt;/em&gt;, existe un repositorio en GitHub, &lt;a href=&quot;https://github.com/barryclark/jekyll-now&quot;&gt;Jekyll Now de Barry Clark&lt;/a&gt;, el cual solo tienes que hacerle un &lt;em&gt;fork&lt;/em&gt; y editar los parámetros que te va indicando en la guía de instalación. ¡Fácil! ¡Rápido! ¡Sencillo!&lt;/p&gt;
-
-&lt;h3&gt;¿Qué es Jekyll?&lt;/h3&gt;
-
-&lt;p&gt;Jekyll es un generador de páginas HTML estáticas, escrito en Ruby, muy versátil y extensible. Se configura editando un archivo YAML (&lt;em&gt;_config.yml&lt;/em&gt;), utilizando Liquid + HTML para crear layaouts y CSS para dar estilo. Es extensible mediante plugins y gemas, permitiendo añadir multitud de caracterísiticas, tales como un feed RSS o Atom, un generador de sitemap.xml automático, o comentarios con Disqus.&lt;/p&gt;
-
-&lt;p&gt;Los post de Jekyll se escriben en MarkDown, el cual se procesa a HTML al general el sitio, permitiendo una escritura mucho más ágil y rápida que utilizando tags HTML.&lt;/p&gt;
-
-&lt;h3&gt;¿Por qué Jekyll?&lt;/h3&gt;
-
-&lt;p&gt;Principalmente porque me permite escribir en MarkDown, teniendo una copia exacta del artículo en local, y porque el alojamiento me sale gratis mientras GitHub no caiga, además de que no tengo que pagar un extra por añadir un dominio, como ocurre con Wordpress.com o con alojamientos externos. ¡Yuju!&lt;/p&gt;
-
-&lt;p&gt;En adición, me inspiré a probar esto cuando, tiempo atrás @SoulChainer me habló de este tipo de sitios, aunque el utiliza otro generador, Pelican, escrito en Python. Investigué un poco, y en aquel tiempo, GitHub daba mucho bombo a Octopress, un fork de Jekyll propio de estos, cuyo funcionamiento estaba orientado a los blogs estáticos como este. Sin embargo nunca tuve mucho tiempo para profundizar con ello y lo pasé a un segundo plano.&lt;/p&gt;
-
-&lt;p&gt;Recientemente, tras leer el artículo de Tom Preston-Werner, &lt;a href=&quot;http://tom.preston-werner.com/2008/11/17/blogging-like-a-hacker.html&quot;&gt;&lt;em&gt;Blogging like a hacker&lt;/em&gt;&lt;/a&gt;, donde habla precisamente sobre este tipo de blogs, me inspiré completamente para crear el mío. Total, ¿y por qué no?&lt;/p&gt;
+				
+				<pubDate>Sun, 12 Jul 2015 00:00:00 +0200</pubDate>
+				<link>http://juanjosalvador.es//ruby/2015/07/12/Parsear-un-JSON-con-Ruby/</link>
+				<guid isPermaLink="true">http://juanjosalvador.es//ruby/2015/07/12/Parsear-un-JSON-con-Ruby/</guid>
+			</item>
+		
+			<item>
+				<title>Plantilla de posts para Jekyll</title>
+				        
+				
+					<description>&lt;p&gt;La automatización de tareas es un aspecto básico que todo &lt;em&gt;sysadmin&lt;/em&gt; debe tener presente y conocer al dedillo. En Linux, tengo que reconocer que soy muy aficionado a esto de montarme scripts para casi cualquier tarea que pueda ser (o no), repetitiva. Es el caso de escribir un post para un blog en Jekyll.&lt;/p&gt;
 </description>
-        <pubDate>Fri, 10 Jul 2015 00:00:00 +0200</pubDate>
-        <link>http://yourdomain.com/Estrenando-blog-en-GitHub-Pages-+-Jekyll</link>
-        <guid isPermaLink="true">http://yourdomain.com/Estrenando-blog-en-GitHub-Pages-+-Jekyll</guid>
-        
-        
-        <category>offtopic</category>
-        
-      </item>
-    
-  </channel>
+				
+				<pubDate>Sat, 11 Jul 2015 00:00:00 +0200</pubDate>
+				<link>http://juanjosalvador.es//jekyll/2015/07/11/Plantilla-de-posts-para-Jekyll/</link>
+				<guid isPermaLink="true">http://juanjosalvador.es//jekyll/2015/07/11/Plantilla-de-posts-para-Jekyll/</guid>
+			</item>
+		
+	</channel>
 </rss>
