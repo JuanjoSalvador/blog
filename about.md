@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Sobre mi
-permalink: /about/
+permalink: /sobre-mi/
 ---
 
 **Juan José Salvador** es Técnico de Sistemas Microinformáticos y Técnico Superior en Desarrollo de Aplicaciones Web.
@@ -18,6 +18,11 @@ Desde muy pequeñito me sentía atraído por la programación. Lo que empezó co
 
 ### Contacto
 Puedes encontrarme en las redes sociales o en mi correo electrónico.
-* [@Linuxneitor](http://twitter.com/Linuxneitor)
-* [GitHub](http://www.github.com/JuanjoSalvador)
-* [Google+](https://plus.google.com/u/0/+JuanjoSalvador)
+
+[@Linuxneitor](http://twitter.com/Linuxneitor)
+
+[GitHub](http://www.github.com/JuanjoSalvador)
+
+[Google+](https://plus.google.com/u/0/+JuanjoSalvador)
+
+contacto@juanjosalvador.es
