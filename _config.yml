@@ -1,0 +1,27 @@
+# Dependencies
+markdown:         redcarpet
+highlighter:      pygments
+
+# Permalinks
+permalink:        pretty
+#relative_permalinks: true
+
+# Setup
+title:            Juanjo Salvador
+tagline:          'Ingeniero y no puedo'
+description:      'Desarrollo. Debian. Software Libre.'
+url:              http://juanjosalvador.es/
+baseurl:          /
+
+author:
+  name:           'Juanjo Salvador'
+  url:            https://twitter.com/linuxneitor
+
+paginate:         5
+
+# Custom vars
+version:          2.1.0
+gems: [jekyll-paginate]
+
+github:	        'JuanjoSalvador'
+twitter:        'linuxneitor'
