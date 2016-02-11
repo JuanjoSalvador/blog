@@ -30,8 +30,9 @@ permalink: /curriculum/
 
 #### Desarrollo web
   * HTML5, CSS3 y JavaScript
-  * Librería jQuery
+   * Librería jQuery
   * Aplicaciones basadas en PHP
+   * Framework CodeIgniter
   * Bases de datos MariaDB y MySQL
 
 #### Desarrollo de videojuegos
