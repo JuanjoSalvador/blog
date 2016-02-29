@@ -7,4 +7,4 @@ Por motivos laborales y personales,  los días 27 y 28 de Febrero estuve de viaj
 
 Aprovechando la situación y la localización, recorrimos El Paseo de los Tristes y el Mirador de San Nicolás. De allí me llevé algunas bonitas fotos.
 
-<a data-flickr-embed="true" data-footer="true"  href="https://www.flickr.com/photos/srfreak/albums/72157665098263311" title="Granada"><img src="https://farm2.staticflickr.com/1565/25253203012_bc84fd903d.jpg" width="500" height="375" alt="Granada"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+<a data-flickr-embed="true" data-footer="true"  href="https://www.flickr.com/photos/srfreak/albums/72157665098263311" title="Granada"><img src="https://farm2.staticflickr.com/1565/25253203012_bc84fd903d.jpg" width="640" height="400" alt="Granada"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
