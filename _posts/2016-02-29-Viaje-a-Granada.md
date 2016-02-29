@@ -3,7 +3,7 @@ layout: post
 title: Viaje a Granada
 ---
 
-Por motivos laborales y personales,  los días 27 y 28 de Febrero estuve de viaje en Granada. Personalmente, es una ciudad que siempre me ha maravillado y me encanta visitarla siempre que tengo ocasión. La excusa para presentarnos allí, fue cubrir el evento Mangafest Granada para [Otaku Music Radio](http://www.otakumusicradio.com), medio de prensa del que soy colaborador desde hace un año, como fotógrafo y redactor.
+Por motivos laborales y personales,  los días 27 y 28 de Febrero estuve de viaje en Granada. Personalmente, es una ciudad que siempre me ha maravillado y me encanta visitarla siempre que tengo ocasión. La excusa para presentarnos allí fue cubrir el evento Mangafest Granada para [Otaku Music Radio](http://www.otakumusicradio.com), medio de prensa del que soy colaborador desde hace un año, como fotógrafo y redactor.
 
 Aprovechando la situación y la localización, recorrimos El Paseo de los Tristes y el Mirador de San Nicolás. De allí me llevé algunas bonitas fotos.
 
