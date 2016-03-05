@@ -18,27 +18,21 @@ Primero instalamos la gema json
 
 La añadimos a nuestro proyecto...
 
-{% highlight ruby %}
-
+```ruby
 require 'rubygems'
 require 'json'
-
-{% endhighlight %}
+```
 
 Y por último, para usarlo, solo tenemos que llamar al método `JSON.parse()`, suponiendo que aquí nuestro JSON está almacenado en una variable llamada `string`.
 
-{% highlight ruby %}
-
+```ruby
 parsed_file = JSON.parse(string)
-
-{% endhighlight %}
+```
 
 Esto nos devolverá el JSON dividido en claves y valores, por lo que, para acceder al valor de una clave en concreto, a través de la variable donde lo hemos guardado...
 
-{% highlight ruby %}
-
+```ruby
 string = '{"desc":{"someKey":"someValue","anotherKey":"value"}}'
 parsed_file = JSON.parse(string)
 parsed_file["anotherKey"] # Nos devuelve al valor de 'anotherKey'
-
-{% endhighlight %}
+```
