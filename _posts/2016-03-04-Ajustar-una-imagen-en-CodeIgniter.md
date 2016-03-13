@@ -53,10 +53,11 @@ public function crop($img, $img_w, $img_h) {
 			$this->image_lib->clear();
 		}
 	}
-  ```
+```
+  
 Y con la función `resize()`, redimensionamos esa nueva imagen que hemos creado (y sobreescrito en nuestro directorio) al tamaño deseado, en mi caso, 80x80px.
 
-  ```
+```
 	public function resize($img) {
 		$new_size['image_library']  = 'gd2';
 		$new_size['source_image']   = $img;
@@ -69,7 +70,7 @@ Y con la función `resize()`, redimensionamos esa nueva imagen que hemos creado 
 			echo $this->image_lib->display_errors();
 		}
 	}
-  ```
+```
 
 ### Conclusion
 A partir de una imagen de 498x670px, en formato JPG y de 315 kB de peso, conseguí crear una imagen de 80x80px, JPG y de ¡tan solo 12 kB! Con esto conseguí reducir la carga del cliente, acelerar así el tiempo de rederizado de mi web, y aprender a manejar mejor la librería de procesado de imágenes que incorpora CodeIgniter.
