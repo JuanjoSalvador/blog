@@ -23,29 +23,23 @@ $this->load->library('image_lib');
 Con la función `crop()` recortamos una sección cuadrada del centro de la imagen. Esto varía según las dimensiones de la imagen.
 
 ```
-// Recorta una sección cuadrada del centro de la imagen,
-// con un lado igual a la medida mayor de la imagen original
-
 public function crop($img, $img_w, $img_h) {
 		$config['image_library']  = 'gd2';
 		$config['source_image']   = $img;
 		$config['maintain_ratio'] = FALSE;
 
-		// Imagen horizontal
 		if ($img_w > $img_h) {
 			$config['width']      = $img_h;
 			$config['height']     = $img_h;
 			$config['x_axis']     = $img_w / 4;
 		}
 
-		// Imagen vertical
 		if ($img_h > $img_w) {
 			$config['width']      = $img_w;
 			$config['height']     = $img_w;
 			$config['y_axis']     = $img_h / 4;
 		}
 
-		// Imagen cuadrada
 		if ($img_w == $img_h) {
 			$config['width']      = $img_w;
 			$config['height']     = $img_h;
@@ -54,19 +48,15 @@ public function crop($img, $img_w, $img_h) {
 		$this->image_lib->initialize($config);
 
 		if (!$this->image_lib->crop()) {
-      // Muestra los errores, con propósitos de depuración
 			echo $this->image_lib->display_errors();
 		} else {
 			$this->image_lib->clear();
 		}
 	}
-
   ```
 Y con la función `resize()`, redimensionamos esa nueva imagen que hemos creado (y sobreescrito en nuestro directorio) al tamaño deseado, en mi caso, 80x80px.
 
   ```
-	// Redimensiona una imagen cuadrada a 80x80px
-
 	public function resize($img) {
 		$new_size['image_library']  = 'gd2';
 		$new_size['source_image']   = $img;
