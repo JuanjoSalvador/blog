@@ -16,13 +16,13 @@ En mi caso, usando como medida estándar la medida más pequeña de la imagen. E
 
 Para trabajar con estas funciones de CodeIgniter, primero tenemos que añadir la librería `image_lib`, ya sea desde `config/autoload.php`, o desde la función `__construct()` de la clase con
 
-```php
+```
 $this->load->library('image_lib');
 ```
 
 Con la función `crop()` recortamos una sección cuadrada del centro de la imagen. Esto varía según las dimensiones de la imagen.
 
-```php
+```
 // Recorta una sección cuadrada del centro de la imagen,
 // con un lado igual a la medida mayor de la imagen original
 
@@ -64,7 +64,7 @@ public function crop($img, $img_w, $img_h) {
   ```
 Y con la función `resize()`, redimensionamos esa nueva imagen que hemos creado (y sobreescrito en nuestro directorio) al tamaño deseado, en mi caso, 80x80px.
 
-  ```php
+  ```
 	// Redimensiona una imagen cuadrada a 80x80px
 
 	public function resize($img) {
