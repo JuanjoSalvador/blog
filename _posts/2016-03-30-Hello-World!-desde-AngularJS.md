@@ -11,7 +11,7 @@ Al principio resulta algo dudoso, pero una vez le coges el truco a las directiva
 
 #### Ejemplo de Hello World con AngularJS
 
-```html
+```
 <html>
   <head>
     <title>AngularJS Hello World!</title>
@@ -34,7 +34,8 @@ Al principio resulta algo dudoso, pero una vez le coges el truco a las directiva
     </div>
   </body>
 
-</html>```
+</html>
+```
 
 Se basa en el sistema Modelo-Vista-Controlador, aunque de momento, *yo no he visto ningún modelo por ningún lado*.
 
