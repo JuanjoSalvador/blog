@@ -11,31 +11,7 @@ Al principio resulta algo dudoso, pero una vez le coges el truco a las directiva
 
 #### Ejemplo de Hello World con AngularJS
 
-```
-<html>
-  <head>
-    <title>AngularJS Hello World!</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-  </head>
-
-  <body>
-
-      <!-- Controlador -->
-    <script>
-      var app = angular.module('helloWorld', []);
-          app.controller('controller', function($scope) {
-            $scope.name = "Hello World!";
-          });
-    </script>
-
-      <!-- Vista -->
-    <div ng-app="helloWorld" ng-controller="controller">
-      <h1><em>{{ name }}</em> from AngularJS</h1>
-    </div>
-  </body>
-
-</html>
-```
+{% gist 712dd7d234c05a380b71a4a226817b62 %}
 
 Se basa en el sistema Modelo-Vista-Controlador, aunque de momento, *yo no he visto ningún modelo por ningún lado*.
 
