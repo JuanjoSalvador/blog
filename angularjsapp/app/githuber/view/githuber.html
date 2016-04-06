@@ -1,0 +1,56 @@
+<div>
+    <h2>The GitHubber</h2>
+    <h4>Search GitHub users by location</h4>
+    <p>The Githuber is powered by GitHub API and AngularJS.</p>
+        <p>The Githubber is powered by GitHub API and AngularJS.
+        Developed by <a href="http://juanjosalvador.es/">Juanjo Salvador</a> as part of AngularJS training in Coderty Studio. 
+        The Githubber is very sensitive with accents (example: Almería != Almeria).</p>
+        <p><strong>THIS IS A BETA.</strong> That means it have some errors. Please be patient.</p>
+    <!--<pre>{{vm.respuesta | json}}</pre>-->
+      <style>
+            table td {
+               padding-right: 10px;
+            }
+            
+            .bigger {
+                font-size: 20px;
+            }
+            
+      </style>
+        <div>
+            <form name="searchForm">
+                    <input type="text" name="term" ng-model="locat"/>
+                    <input type="submit" ng-click="vm.getDatos(locat)" value="Search"/>
+            </form>
+        </div>
+        
+        <br/>
+        
+        <div ng-init="vm.currentPage = 1">
+            <div ng-show="vm.respuesta.data.total_count > 0">
+                <em>Wow! There are {{vm.respuesta.data.total_count}} GitHubbers at {{locat}}</em><br/>
+                
+            </div>
+            <br>
+            <table class="table">
+                <th>Avatar</th>
+                <th>Username</th>
+                <th></th>
+                <tr ng-repeat="user in vm.respuesta.data.items">
+                    <td ng-if="user.login != 'Indavelopers'"><img ng-src="{{user.avatar_url}}" width="50" height="50" class="img-circle"/></td>
+                    <td ng-if="user.login != 'Indavelopers'"><span class="bigger">{{user.login}}</span></td>
+                    
+                    <td ng-if="user.login == 'Indavelopers'"><img src="http://yorokobu.es/wp-content/uploads/pedo.jpg" width="50" height="50"/></td>
+                    <td ng-if="user.login == 'Indavelopers'">El tontopollas ese de Marcos</td>
+                    
+                    <td><a ng-href="http://www.github.com/{{user.login}}" target="_blank">View {{user.login}} on GitHub</a></td>
+                </tr>
+            </table>            
+            <div ng-show="vm.respuesta.data.total_count > 30">
+                <strong>Page {{vm.currentPage}} of {{vm.totalPages}}</strong><br><br>
+                <button ng-hide="vm.currentPage == 1" ng-click="vm.prevPage(locat, vm.currentPage)">Previous page</button>
+                <button ng-hide="vm.currentPage == vm.totalPages" ng-click="vm.nextPage(locat, vm.currentPage)">Next page</button>
+            </div>
+            
+        </div>
+</div>
