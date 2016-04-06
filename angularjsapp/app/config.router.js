@@ -22,7 +22,7 @@
             function ($stateProvider, $urlRouterProvider) {
 
                 $urlRouterProvider
-                    .otherwise('/app/baseEntity');
+                    .otherwise('/app/githuber');
 
                 $stateProvider
                     .state('app', {
