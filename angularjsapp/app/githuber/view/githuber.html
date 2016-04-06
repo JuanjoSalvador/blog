@@ -37,12 +37,8 @@
                 <th>Username</th>
                 <th></th>
                 <tr ng-repeat="user in vm.respuesta.data.items">
-                    <td ng-if="user.login != 'Indavelopers'"><img ng-src="{{user.avatar_url}}" width="50" height="50" class="img-circle"/></td>
-                    <td ng-if="user.login != 'Indavelopers'"><span class="bigger">{{user.login}}</span></td>
-                    
-                    <td ng-if="user.login == 'Indavelopers'"><img src="http://yorokobu.es/wp-content/uploads/pedo.jpg" width="50" height="50"/></td>
-                    <td ng-if="user.login == 'Indavelopers'">El tontopollas ese de Marcos</td>
-                    
+                    <td><img ng-src="{{user.avatar_url}}" width="50" height="50" class="img-circle"/></td>
+                    <td><span class="bigger">{{user.login}}</span></td>
                     <td><a ng-href="http://www.github.com/{{user.login}}" target="_blank">View {{user.login}} on GitHub</a></td>
                 </tr>
             </table>            
