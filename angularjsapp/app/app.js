@@ -9,12 +9,7 @@
         'ngTouch',
         'ui.router',
         'ui.bootstrap',
-        'baseEntity',
-        'awesomeEntity',
-        'betterEntity',
-        'githuber',
-        'forms',
-        'ngMessages'
+        'githuber'
     ]);
 
 })()
