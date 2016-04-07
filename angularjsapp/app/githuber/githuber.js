@@ -14,8 +14,7 @@
                     url: '/githuber',
                     templateUrl: 'app/githuber/view/githuber.html',
                     controller: 'githuberController',
-                    controllerAs: 'vm'
-                    
+                    controllerAs: 'vm',
                 })
             }
         ]
