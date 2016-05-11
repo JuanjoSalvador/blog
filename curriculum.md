@@ -31,17 +31,17 @@ Poseo conocimientos intermedios y/o avanzados en las siguientes tecnologías web
   * HTML5
   * CSS3
   * JavaScript
-   * jQuery
-   * AngularJS
-   * Node.js
-   * CoffeeScript
-   * Cordova e Ionic
+     * jQuery
+     * AngularJS
+     * Node.js
+     * CoffeeScript
+     * Cordova e Ionic
   * Aplicaciones basadas en PHP
-   * CodeIgniter
+     * CodeIgniter
   * Bases de datos 
-   * MariaDB
-   * MySQL
-   * MongoDB
+     * MariaDB
+     * MySQL
+     * MongoDB
 
 #### Desarrollo de videojuegos
 Por experiencia personal, he desarrollado prototipos de videojuegos.
