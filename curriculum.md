@@ -17,30 +17,37 @@ permalink: /curriculum/
 
 ### Conocimientos
 
-#### Informática general
-  * Sistemas GNU/Linux (Debian/Ubuntu/OpenSUSE/Fedora)
-  * Sistemas Windows (desde Windows 98 hasta Windows 10)
-  * Ofimática (MS Office, LibreOffice)
-
 #### Desarrollo de aplicaciones
-  * Windows (C#)
-  * Multiplataforma (Java)
-  * Scripts (Python, Ruby, Bash)
-  * Estructura de datos (XML y JSON)
-
+Tengo experiencia desarrollando aplicaciones basadas los siguientes lenguajes
+  * C#
+  * Java
+  * Python
+  * Ruby
+  
 #### Desarrollo web
-  * HTML5, CSS3 y JavaScript
-   * Librería jQuery
+Poseo conocimientos intermedios y/o avanzados en las siguientes tecnologías web.
+  * HTML5
+  * CSS3
+  * JavaScript
+   * jQuery
+   * AngularJS
+   * Node.js
+   * CoffeeScript
+   * Cordova e Ionic
   * Aplicaciones basadas en PHP
-   * Framework CodeIgniter
-  * Bases de datos MariaDB y MySQL
+   * CodeIgniter
+  * Bases de datos 
+   * MariaDB
+   * MySQL
+   * MongoDB
 
 #### Desarrollo de videojuegos
+Por experiencia personal, he desarrollado prototipos de videojuegos.
   * Unity3D
-  * HTML5 Canvas
+  * HTML5 Canvas & JS
 
 #### Gestores de contenido
-  * Estáticos (Jekyll)
-  * Blogs (Wordpress)
-  * e-Shop (Prestashop, OpenCart)
-  * Multipropósito (Joomla, Drupal)
+En cuanto a gestores de contenido, he trabajado con los siguientes:
+  * Wordpress
+  * Prestashop, OpenCart
+  * Joomla, Drupal
