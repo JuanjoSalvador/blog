@@ -18,7 +18,8 @@ permalink: /curriculum/
 ### Conocimientos
 
 #### Desarrollo de aplicaciones
-Tengo experiencia desarrollando aplicaciones basadas los siguientes lenguajes
+Tengo experiencia desarrollando aplicaciones basadas los siguientes lenguajes.
+
   * C#
   * Java
   * Python
@@ -26,6 +27,7 @@ Tengo experiencia desarrollando aplicaciones basadas los siguientes lenguajes
   
 #### Desarrollo web
 Poseo conocimientos intermedios y/o avanzados en las siguientes tecnologías web.
+
   * HTML5
   * CSS3
   * JavaScript
@@ -43,11 +45,13 @@ Poseo conocimientos intermedios y/o avanzados en las siguientes tecnologías web
 
 #### Desarrollo de videojuegos
 Por experiencia personal, he desarrollado prototipos de videojuegos.
+
   * Unity3D
   * HTML5 Canvas & JS
 
 #### Gestores de contenido
 En cuanto a gestores de contenido, he trabajado con los siguientes:
+
   * Wordpress
   * Prestashop, OpenCart
   * Joomla, Drupal
