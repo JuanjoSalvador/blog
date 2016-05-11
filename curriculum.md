@@ -28,16 +28,14 @@ Tengo experiencia desarrollando aplicaciones basadas los siguientes lenguajes.
 #### Desarrollo web
 Poseo conocimientos intermedios y/o avanzados en las siguientes tecnologías web.
 
-  * HTML5
-  * CSS3
-  * JavaScript
+  * Frontend HTML5, CSS3 y JavaScript
      * jQuery
      * AngularJS
-     * Node.js
      * CoffeeScript
      * Cordova e Ionic
-  * Aplicaciones basadas en PHP
+  * Backend PHP y Node.js
      * CodeIgniter
+     * MEAN Stack
   * Bases de datos 
      * MariaDB
      * MySQL
