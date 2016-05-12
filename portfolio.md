@@ -7,7 +7,9 @@ permalink: /portfolio/
 ### Proyectos
 Algunos proyectos en los que he trabajado.
 
-  * **CBP**. Herramienta en modo terminal para empaquetar comics digitales. Soporta imágenes JPEG y documentos PDF. Disponible únicamente en GNU/Linux. [Enlace](http://juanjosalvador.es/2015/11/11/Comicbook-Packager-mi-autoempaquetador-de-comics/)
+  * **Comicbook Packager**. Herramienta en modo terminal para empaquetar comics digitales. Soporta imágenes JPEG y documentos PDF. Disponible únicamente en GNU/Linux. [Enlace](http://juanjosalvador.es/2015/11/11/Comicbook-Packager-mi-autoempaquetador-de-comics/)
+  * **SakuraChan**. Bot para Telegram, escrito en node.js que permite traducir de japonés a español y viceversa usando el API de Google Translate. [Repositorio](https://github.com/JuanjoSalvador/SakuraChan)
+  * **MOC Twitter Sharing**. Script Ruby que permite compartir automáticamente lo que estás escuchando en cada momento, desde Music on Console. [Repositorio](https://github.com/JuanjoSalvador/moc-twitter-sharing)
 
 ### Charlas y conferencias
 Charlas y conferencias que he impartido.
