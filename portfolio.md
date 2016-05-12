@@ -7,6 +7,8 @@ permalink: /portfolio/
 ### Proyectos
 Algunos proyectos en los que he trabajado.
 
+  * **CBP**. Herramienta en modo terminal para empaquetar comics digitales. Soporta imágenes JPEG y documentos PDF. Disponible únicamente en GNU/Linux. [Enlace](http://juanjosalvador.es/2015/11/11/Comicbook-Packager-mi-autoempaquetador-de-comics/)
+
 ### Charlas y conferencias
 Charlas y conferencias que he impartido.
 
