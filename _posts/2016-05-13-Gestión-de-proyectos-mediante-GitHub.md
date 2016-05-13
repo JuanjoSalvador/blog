@@ -11,10 +11,10 @@ Esta nueva versión se está reescribiendo completamente en C#, de forma que log
 
 Para mantener el código, utilizamos 4 ramas (branches) dentro del repositorio:
 
-* win-dev
-* win-master
-* linux-dev
-* linux-master
+* `win-dev`
+* `win-master`
+* `linux-dev`
+* `linux-master`
         
 De modo que disponemos de una rama (`*-dev`) que podemos usar para mantener el código inestable y en desarrollo, mientras que en la rama master (`*-master`) encontramos el código estable de cada versión.
 
@@ -24,7 +24,7 @@ Pero espera, ¿y qué rama pasa a ser la rama por defecto? Pues sigue siendo la 
 
 Cada pareja de ramas la gestiona un miembro del proyecto: [@jotaperamez](https://github.com/jotaperamez) administra las de Windows, mientras que yo me ocupo de mantener al día el desarrollo general y de la rama Linux. De este modo, repartimos la carga de trabajo y dejamos cierta libertad para que cada parte del equipo sea independiente, aunque exista un *administrador general* que sea quien gestione todo.
 
-El responsable de cada rama debe estar atento y mantener la rama *-master de su sección siempre al día, ya que las releases saldrán de ahí.
+El responsable de cada rama debe estar atento y mantener la rama `*-master` de su sección siempre al día, ya que las releases saldrán de ahí.
 
 ### Establece una vía de comunicación con el equipo
 
@@ -38,4 +38,4 @@ Cada tarea pendiente se asigna a un responsable, en este caso al responsable de 
 
 ### Hazlo escalable
 
-¿Necesitas más? El modelo descrito es útil y válido cuando el equipo de desarrollo es relativamente pequeño. Sin emnbargo, existen herramientas opensource que pueden ayudarte muy bien a gestionar proyectos de mayor envergadura o que requieran una infraestructura más extensa. Prueba Taiga.io para organizar y asignar tareas, y Mattermost para establecer una línea de comunicación con tu equipo.
+¿Necesitas más? El modelo descrito es útil y válido cuando el equipo de desarrollo es relativamente pequeño. Sin emnbargo, existen herramientas opensource que pueden ayudarte muy bien a gestionar proyectos de mayor envergadura o que requieran una infraestructura más extensa. Prueba [Taiga.io](https://taiga.io/) para organizar y asignar tareas, y [Mattermost](http://www.mattermost.org/) (versión opensource de Slack) para establecer una línea de comunicación con tu equipo.
