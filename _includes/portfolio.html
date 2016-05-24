@@ -44,14 +44,22 @@ function portfolioCtrl($scope) {
 }  
 </script>
 
+<style>
+    #projects {
+        display: inline;
+    }
+</style>
+
 <div ng-app="portfolio">
   <div ng-controller="portfolioCtrl as ctrl">
       
       <!-- Project links. Use it to view accross projects -->
-      <a href="#" ng-click="ctrl.getProject(0)"><img src="img.png" width="200" height="200"></a>
-      <a href="#" ng-click="ctrl.getProject(1)"><img src="img.png" width="200" height="200"></a>
-      <a href="#" ng-click="ctrl.getProject(2)"><img src="img.png" width="200" height="200"></a>
-      <a href="#" ng-click="ctrl.getProject(3)"><img src="img.png" width="200" height="200"></a>
+      <div id="projects">
+          <a href="#" ng-click="ctrl.getProject(0)"><img src="img.png" width="200" height="200"></a>
+          <a href="#" ng-click="ctrl.getProject(1)"><img src="img.png" width="200" height="200"></a>
+          <a href="#" ng-click="ctrl.getProject(2)"><img src="img.png" width="200" height="200"></a>
+          <a href="#" ng-click="ctrl.getProject(3)"><img src="img.png" width="200" height="200"></a>
+      </div>
       
       <table ng-show="show">
           <tr>
