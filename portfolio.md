@@ -4,8 +4,6 @@ title: Portfolio
 permalink: /portfolio/
 ---
 
-{% include portfolio.html %}
-
 ### Proyectos
 Algunos proyectos en los que he trabajado.
 
