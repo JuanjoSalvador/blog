@@ -4,17 +4,16 @@ title: Sobre mi
 permalink: /sobre-mi/
 ---
 
-**Juan José Salvador** es Técnico de Sistemas Microinformáticos y Técnico Superior en Desarrollo de Aplicaciones Web.
-
-### Debianista
-Usuario de GNU/Linux desde 2009 y de Debian desde 2013.
-Contribuyo en la comunidad a través de la lista de correo, múltiples foros de Debian, traduciendo la Wiki y publico artículos técnicos en un blog de tecnología y GNU/Linux.
-
-### Sofware libre
-Activista por el software libre y la no censura en la red. Contribuyo con diversos proyectos de diversa índole, además de promover el uso de software libre frente al propietario.
+**Juan José Salvador**, Técnico de Sistemas Microinformáticos y Técnico Superior en Desarrollo de Aplicaciones Web. Especializado en desarrollo front-end y en framewoeks de JavaScript como Angular y Angular 2, y en desarrollo de aplicaciones híbridas para smartphones con Ionic e Ionic 2.
 
 ### Desarrollo
-Desde muy pequeñito me sentía atraído por la programación. Lo que empezó como una llamada de curiosidad se convirtió en afición y con el tiempo, en una forma de ganarme la vida.
+Desde muy pequeñito me gustaba trastear con ordenadores. Un día descubrí los libro-juegos en BASIC y mi mundo cambió totalmente. Lo que empezó como una llamada de curiosidad se convirtió en afición y con el tiempo, en una forma de ganarme la vida.
+
+### Debian
+Usuario de GNU/Linux desde 2009 y de Debian desde que me atreví a dar el paso en 2013. Publico artículos técnicos en un blog de tecnología y GNU/Linux y paso mis ratos libres pululando por los foros ofreciendo soporte.
+
+### Sofware libre
+Considero que el conocimiento debe ser libre, y liberar el software es una forma de ayudar a conseguirlo.
 
 ### Contacto
 Puedes encontrarme en las redes sociales o en mi correo electrónico.
