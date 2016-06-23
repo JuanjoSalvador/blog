@@ -17,4 +17,12 @@ Para ello, haríamos uso del comando SCP (Secure Copy Protocol).
 
     scp user@servidor:/ruta/de/origen /ruta/de/destino
     
-Estas cosas nunca dejan de sorprenderme.
+Estas cosas nunca dejan de sorprenderme...
+
+¡Pero aún hay más!
+
+#### Hazlo recursivo 
+
+Ideal para subidas de grandes volúmenes de archivos.
+
+    scp -r /ruta/de/origen user@servidor:/ruta/de/destino
