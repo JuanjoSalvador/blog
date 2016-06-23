@@ -11,10 +11,10 @@ Para ello, haríamos uso del comando SCP (Secure Copy Protocol).
 
 #### Tranmisión de local a remoto
 
-    scp /path/to/file username@a:/path/to/destination
+    scp /ruta/de/origen user@servidor:/ruta/de/destino
 
 #### Tranmisión de remoto a local
 
-    scp username@b:/path/to/file /path/to/destination
+    scp user@servidor:/ruta/de/origen /ruta/de/destino
     
 Estas cosas nunca dejan de sorprenderme.
