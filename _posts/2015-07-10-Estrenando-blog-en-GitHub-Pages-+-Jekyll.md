@@ -1,8 +1,6 @@
 ---
 layout: post
 title: Estrenando blog en GitHub Pages + Jekyll
-author: juanjo
-categories: [offtopic]
 ---
 
 Ya, ya lo se. Es mi tercer blog en un periodo de tiempo relativamente corto. Pero tengo que admitir que soy un enamorado de Jekyll, y no puedo evitarlo... Esto no quiere decir que vaya a abandonar Doblejota Blog, no, para nada, simplemente traslado mi web personal aquí, añadiéndole un pequeño blog de apuntes de programación y desarrollo. Algo que hasta ahora he estado haciendo con Gist, pero que no me da para documentar y explayarme en el funcionamiento de mis recortes de código, así que, ¿por qué no?
