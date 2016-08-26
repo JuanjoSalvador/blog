@@ -16,3 +16,9 @@ Dado que es una fuerte fuente de ingresos para la compañía, pongo en duda si d
 ¿Cual es la solución para protegernos del tráfico de información personal que provocan? La única solución factible es, dejar de usar WhatsApp. Eliminar la aplicación y tu cuenta. Pero es un paso duro, **podríamos perder el contacto** con muchos amigos, familiares, conocidos, compañeros de trabajo, etc. Migrar esto a Telegram es una opción factible, aunque supone un gran esfuerzo.
 
 Si eliges aceptar las condiciones y que utilicen tus datos, pero aún así quieres intentar poner algo de desacuerdo en el asunto, puedes desactivar esta opción desde **Opciones > Cuenta > Privacidad**.
+
+**Actualización**
+
+Un artículo de El Androide Libre confirma mis sospechas: puedes negarte, pero Facebook seguirá llevando a cabo sus malas praxis.
+
+[El Androide Libre](http://www.elandroidelibre.com/2016/08/whatsapp-compartir-datos-facebook.html)
