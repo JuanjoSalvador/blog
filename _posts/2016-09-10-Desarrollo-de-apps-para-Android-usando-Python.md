@@ -13,16 +13,18 @@ Mi búsqueda de la viabilidad de este proyecto me ha llegado a los siguientes pu
 
 >python-for-android is an open source build tool to let you package Python code into standalone android APKs that can be passed around, installed, or uploaded to marketplaces such as the Play Store just like any other Android app
 
->https://media.readthedocs.org/pdf/python-for-android/latest/python-for-android.pdf
+https://media.readthedocs.org/pdf/python-for-android/latest/python-for-android.pdf
 
 **Kivy**, una librería opensource que nos permite dotar a Python de interfaces táctiles entre otras cosas.
 
 >Open source Python library for rapid development of applications
-that make use of innovative user interfaces, such as multi-touch apps. https://kivy.org/
+that make use of innovative user interfaces, such as multi-touch apps. 
+
+https://kivy.org/
 
 **Developing Android apps completely in Python**, un artículo de Thomas Perl, en la EuroPython 2012, donde habló sobre el desarrollo de este tipo de aplicaciones.
 
->https://ep2013.europython.eu/conference/talks/developing-android-apps-completely-in-python
+https://ep2013.europython.eu/conference/talks/developing-android-apps-completely-in-python
 
 Parece un camino largo y tedioso ahora mismo, pero es interesante saber que pueden hacerse.
 
