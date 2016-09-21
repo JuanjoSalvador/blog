@@ -20,4 +20,4 @@ Considero que el conocimiento debe ser libre, y liberar el software es una forma
 ### Contacto
 Puedes encontrarme en las redes sociales o en mi correo electrónico.
 
-[@Linuxneitor](http://twitter.com/Linuxneitor) | [GitHub](http://www.github.com/JuanjoSalvador) | [Google+](https://plus.google.com/u/0/+JuanjoSalvador) | [Telegram](https://telegram.me/JuanjoSalvador) | contacto@juanjosalvador.es
+[@Linuxneitor](http://twitter.com/Linuxneitor) | [GitHub](http://www.github.com/JuanjoSalvador) | [Google+](https://plus.google.com/u/0/+JuanjoSalvador) | [Telegram](https://telegram.me/JuanjoSalvador) | [Email](mailto:contacto@juanjosalvador.es)
