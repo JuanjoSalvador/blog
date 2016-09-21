@@ -7,10 +7,10 @@ permalink: /portfolio/
 ### Proyectos
 Algunos proyectos en los que he trabajado.
 
-  * **Comicbook Packager**. Herramienta en CLI para empaquetar comics digitales. [Enlace](http://juanjosalvador.es/2015/11/11/Comicbook-Packager-mi-autoempaquetador-de-comics/)
-  * **SakuraChan**. Bot para Telegram, escrito en node.js que permite traducir de japonés a español y viceversa usando el API de Google Translate. [Repositorio](https://github.com/JuanjoSalvador/SakuraChan)
-  * **MOC Twitter Sharing**. Script Ruby que permite compartir automáticamente lo que estás escuchando en cada momento, desde Music on Console. [Repositorio](https://github.com/JuanjoSalvador/moc-twitter-sharing)
-  * **OMR Player**. Reproductor para radio Android/iOS basado en Ionic. Permite escuchar el Shoutcast [OtakuMusicRadio](https://www.otakumusicradio.com) desde tu smartphone. [Repositorio](https://github.com/JuanjoSalvador/otaku-music-radio-player) 
+  * [**Comicbook Packager**](http://juanjosalvador.es/2015/11/11/Comicbook-Packager-mi-autoempaquetador-de-comics/). Herramienta en CLI para empaquetar comics digitales. 
+  * [**SakuraChan**](https://github.com/JuanjoSalvador/SakuraChan). Bot para Telegram, escrito en node.js que permite traducir de japonés a español y viceversa usando el API de Google Translate.
+  * [**MOC Twitter Sharing**](https://github.com/JuanjoSalvador/moc-twitter-sharing). Script Ruby que permite compartir automáticamente lo que estás escuchando en cada momento, desde Music on Console.
+  * [**OMR Player**](https://github.com/JuanjoSalvador/otaku-music-radio-player). Reproductor para radio Android/iOS basado en Ionic. Permite escuchar el Shoutcast [OtakuMusicRadio](https://www.otakumusicradio.com) desde tu smartphone. 
 
 ### Charlas y conferencias
 Charlas y conferencias que he impartido.
