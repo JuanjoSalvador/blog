@@ -6,11 +6,11 @@ permalink: /curriculum/
 
 Desarrollador web especializado en tecnologías front-end y desarrollo de aplicaciones híbridas con AngularJS. He desarrollado diversos proyectos licenciados bajo GPL/MIT, disponibles en [GitHub](http://github.com/JuanjoSalvador)
 
-**Lenguajes** | C#, Java, Python, Ruby, JavaScript (jQuery, AngularJS), SQL (MySQL y MariaDB), PHP (CodeIgniter) |
-**Desarrollo web** | HTML5, CSS3 |
-**Aplicaciones móviles** | Cordova, Ionic, React Native |
+**Lenguajes** | C#, Java, Python, Ruby, SQL (MySQL y MariaDB) |
+**Desarrollo web** | HTML5, CSS3, JavaScript (jQuery, AngularJS), PHP (CodeIgniter) |
+**Apps móviles** | Cordova, Ionic, React Native |
 **Herramientas** | Git, SVN, Maven |
-**Gestores de contenido** | Wordpress, Prestashop, Joomla |
+**CMS** | Wordpress, Prestashop, Joomla |
 
 ### Experiencia
 <hr>
@@ -27,7 +27,6 @@ Formación en Centros de Trabajo durante el CFGS. Durante mi estancia realicé u
 *Junio-Actualmente*
 
 ### Educación
-<hr>
 **CFGM Sistemas Microinformáticos y Redes** 
 <br>*IES Celia Viñas, 2010-2013*
 
