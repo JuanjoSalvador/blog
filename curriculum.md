@@ -13,7 +13,6 @@ Desarrollador web especializado en tecnologías front-end y desarrollo de aplica
 **CMS** | Wordpress, Prestashop, Joomla |
 
 ### Experiencia
-<hr>
 
 **Técnico de sistemas en ABBYX Multimedia**<br>
 *Marzo-Junio 2013*<br>
