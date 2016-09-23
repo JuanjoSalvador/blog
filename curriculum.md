@@ -4,52 +4,32 @@ title: Curriculum
 permalink: /curriculum/
 ---
 
-## Juan José Salvador Piedra
+Desarrollador web especializado en tecnologías front-end y desarrollo de aplicaciones híbridas con AngularJS. He desarrollado diversos proyectos licenciados bajo GPL/MIT, disponibles en [GitHub](http://github.com/JuanjoSalvador)
 
-### Titulaciones
-  * Graduado escolar (ESO)
-  * Ciclo Formativo Grado Medio Sistemas Microinformáticos y Redes
-  * Ciclo Formativo Grado Superior Desarrollo de Aplicaciones Web
+**Lenguajes** | C#, Java, Python, Ruby, JavaScript (jQuery, AngularJS), SQL (MySQL y MariaDB), PHP (CodeIgniter) |
+**Desarrollo web** | HTML5, CSS3 |
+**Aplicaciones móviles** | Cordova, Ionic, React Native |
+**Herramientas** | Git, SVN, Maven |
+**Gestores de contenido** | Wordpress, Prestashop, Joomla |
 
-### Idiomas
-  * Inglés (nivel alto)
-  * Francés (nivel intermedio)
+### Experiencia
+<hr>
 
-### Conocimientos
+**Técnico de sistemas en ABBYX Multimedia**<br>
+*Marzo-Junio 2013*<br>
+Formación en Centros de Trabajo durante el CFGM. Mis tareas en su mayoría suponían dar asistencia técnica y reparación de smartphones y equipos informáticos.
+<hr>
+**Desarrollador web en Coderty Studio**<br>
+*Marzo-Junio 2016*<br>
+Formación en Centros de Trabajo durante el CFGS. Durante mi estancia realicé un curso de AngularJS y desarrollé algunas aplicaciones a modo de aprendizaje utilizando Ionic Framework.
+<hr>
+**Desarrollador web en Seyte SL**<br>
+*Junio-Actualmente*
 
-#### Desarrollo de aplicaciones
-Tengo experiencia desarrollando aplicaciones basadas los siguientes lenguajes.
+### Educación
+<hr>
+**CFGM Sistemas Microinformáticos y Redes** 
+<br>*IES Celia Viñas, 2010-2013*
 
-  * C#
-  * Java
-  * Python
-  * Ruby
-  
-#### Desarrollo web
-Poseo conocimientos intermedios y/o avanzados en las siguientes tecnologías web.
-
-  * Frontend HTML5, CSS3 y JavaScript
-     * jQuery
-     * AngularJS
-     * CoffeeScript
-     * Cordova e Ionic
-  * Backend PHP y Node.js
-     * CodeIgniter
-     * MEAN Stack
-  * Bases de datos 
-     * MariaDB
-     * MySQL
-     * MongoDB
-
-#### Desarrollo de videojuegos
-Por experiencia personal, he desarrollado prototipos de videojuegos.
-
-  * Unity3D
-  * HTML5 Canvas & JS
-
-#### Gestores de contenido
-En cuanto a gestores de contenido, he trabajado con los siguientes:
-
-  * Wordpress
-  * Prestashop, OpenCart
-  * Joomla, Drupal
+**CFGS Desarrollo de Aplicaciones Web** 
+<br>*IES Celia Viñas, 2014-2016*
