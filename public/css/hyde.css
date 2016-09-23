@@ -64,7 +64,7 @@ html {
     position: fixed;
     top: 0;
     left: 0;
-    /*bottom: 0;*/
+    bottom: 0;
     width: 18rem;
     text-align: left;
   }
@@ -109,7 +109,7 @@ a.sidebar-nav-item:focus {
   .sidebar-sticky {
     position: absolute;
     right:  1rem;
-    bottom: 1rem;
+    /*bottom: 1rem;*/
     left:   1rem;
   }
 }
