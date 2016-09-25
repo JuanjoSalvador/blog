@@ -4,7 +4,7 @@ title: Sobre mi
 permalink: /sobre-mi/
 ---
 
-**Juan José Salvador**, Técnico de Sistemas Microinformáticos y Técnico Superior en Desarrollo de Aplicaciones Web. Especializado en desarrollo front-end y en framewoeks de JavaScript como Angular y Angular 2, y en desarrollo de aplicaciones híbridas para smartphones con Ionic e Ionic 2.
+**Juan José Salvador**, Técnico de Sistemas Microinformáticos y Técnico Superior en Desarrollo de Aplicaciones Web. Especializado en desarrollo front-end y en frameworks de JavaScript como Angular y Angular 2, y en desarrollo de aplicaciones híbridas para smartphones con Ionic e Ionic 2.
 
 Actualmente trabajo como desarrollador en **Seyte SL**.
 
