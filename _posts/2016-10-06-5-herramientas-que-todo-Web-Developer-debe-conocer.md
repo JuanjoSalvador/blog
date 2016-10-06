@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Construye tu web como un hacker
+title: 5 herramientas que todo Web Developer debería conocer
 ---
 
 Cuando entras en el mundo del desarrollo web e indagas a fondo, te das cuenta de que hay un mundo de posibilidades. Pero para aprovechar al máximo este mundo de posibilidades, es conveniente conocer y saber manejar algunas herramientas que nos harán la vida más fácil.
