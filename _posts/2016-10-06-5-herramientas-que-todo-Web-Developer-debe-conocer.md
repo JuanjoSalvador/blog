@@ -1,3 +1,8 @@
+---
+layout: post
+title: Construye tu web como un hacker
+---
+
 Cuando entras en el mundo del desarrollo web e indagas a fondo, te das cuenta de que hay un mundo de posibilidades. Pero para aprovechar al máximo este mundo de posibilidades, es conveniente conocer y saber manejar algunas herramientas que nos harán la vida más fácil.
 
 ### Framework CSS
