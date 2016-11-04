@@ -23,7 +23,8 @@ Formación en Centros de Trabajo durante el CFGM. Mis tareas en su mayoría supo
 Formación en Centros de Trabajo durante el CFGS. Durante mi estancia realicé un curso de AngularJS y desarrollé algunas aplicaciones a modo de aprendizaje utilizando Ionic Framework.
 <hr>
 **Desarrollador web en Seyte SL**<br>
-*Junio-Actualmente*
+*Junio-Noviembre 2016*<br>
+Principalmente desarrollo web y soporte técnico. Trabajé con Wordpress y Craft CMS como gestores de contenidos. También realicé tareas de desarrollo de aplicaciones híbridas con Ionic Framework (diseño y desarrollo).
 
 ### Educación
 **CFGM Sistemas Microinformáticos y Redes** 
