@@ -6,7 +6,7 @@ permalink: /sobre-mi/
 
 **Juan José Salvador**, Técnico de Sistemas Microinformáticos y Técnico Superior en Desarrollo de Aplicaciones Web. Especializado en desarrollo front-end y en frameworks de JavaScript como Angular y Angular 2, y en desarrollo de aplicaciones híbridas para smartphones con Ionic e Ionic 2.
 
-Actualmente trabajo como desarrollador en **Seyte SL**.
+Actualmente como desarrollador freelancer.
 
 ### Desarrollo
 Desde muy pequeñito me gustaba trastear con ordenadores. Un día descubrí los libro-juegos en BASIC y mi mundo cambió totalmente. Lo que empezó como una llamada de curiosidad se convirtió en afición y con el tiempo, en una forma de ganarme la vida.
