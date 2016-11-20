@@ -17,8 +17,6 @@ Podemos dividir el grueso de aplicaciones del mercado en tres grandes grupos:
 
 * **Apps híbridas**. Ofrecen la solución a medio camino entre las nativas y las web: desarrollo rápido, rendimiento asequible y acceso completo al dispositivo, mediante un contenedor nativo que hace las veces de intermediario entre el usuario y la aplicación, y un código web que ofrece la funcionalidad y la interfaz.
 
-<img src="http://i1.wp.com/blog.aplicacionesmovil.com/wp-content/uploads/app-web-native.jpg" align="center"/>
-
 ### Desarrollo híbrido: ¿por dónde empezamos?
 
 Existen numerosos frameworks y *app builders* que nos facilitan el proceso de desarrollo, pero yo voy a hablar de tres: **NativeScript**, **Ionic** y **React Native**. Cada uno con sus pros y sus contras.
@@ -39,7 +37,7 @@ Claro que, con todos estos frameworks podemos desarrollar, pero si queremos adem
 * Extiende las funciones que incluía Apache Cordova.
 * Herramientas en la nube (Ionic Cloud, Ionic View)
 
-Sitio web: https://ionic.io
+Sitio web: [https://ionic.io](https://ionic.io)
 
 ### NativeScript
 
@@ -49,7 +47,7 @@ Sitio web: https://ionic.io
 * Extensible mediante plugins
 * Compila a nativo (Android, iOS)
 
-Sitio web: https://www.nativescript.org/
+Sitio web: [https://www.nativescript.org/](https://www.nativescript.org/)
 
 ### React Native
 
@@ -59,12 +57,10 @@ Sitio web: https://www.nativescript.org/
 * React Native UWP permite usar RN para crear apps universales de Windows.
 * Orientado a componentes
 
-Sitio web: https://facebook.github.io/react-native/
+Sitio web: [https://facebook.github.io/react-native/](https://facebook.github.io/react-native/)
 
 #### ¡Extra!
 
-<img src="http://nativebase.io/assets/img/front-page-icon.png" style="float: center;"/>
-
 El trabajo con estilos en React Native puede ser pesado. De igual forma que Ionic posee su propio conjunto de estilos predefinidos que emulan los estilos nativos de iOS y Android, en React Native tenemos librerías de componentes similares, como es el caso de NativeBase.
 
-Sitio web: http://nativebase.io/
+Sitio web: [http://nativebase.io/](http://nativebase.io/)
