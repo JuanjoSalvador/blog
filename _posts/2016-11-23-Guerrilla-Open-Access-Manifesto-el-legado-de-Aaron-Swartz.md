@@ -71,6 +71,7 @@ Aaron Swartz
 
 July 2008, Eremo, Italy 
 ```
+
 ### Traducciones
 
 En [esta web](https://openaccessmanifesto.wordpress.com/) se recoge un total de 25 traducciones del manifiesto, entre las que figuran el español, el chino, el búlgaro, y otras.
