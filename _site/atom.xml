@@ -4,13 +4,92 @@
  <title>Juanjo Salvador</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2016-11-22T19:59:16+01:00</updated>
+ <updated>2016-11-23T00:24:51+01:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Juanjo Salvador</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Guerrilla Open Access Manifesto, el legado de Aaron Swartz</title>
+   <link href="http://localhost:4000/2016/11/23/Guerrilla-Open-Access-Manifesto-el-legado-de-Aaron-Swartz/"/>
+   <updated>2016-11-23T00:00:00+01:00</updated>
+   <id>http://localhost:4000/2016/11/23/Guerrilla-Open-Access-Manifesto-el-legado-de-Aaron-Swartz</id>
+   <content type="html">&lt;p&gt;Manifiesto escrito por &lt;a href=&quot;https://en.wikipedia.org/wiki/Aaron_Swartz&quot;&gt;Aaron Swartz&lt;/a&gt; (1986-2013, co-fundador de Reddit y hacktivista de la cultura libre)  y en 2008, sobre el libre acceso a la cultura y el conocimiento. De dominio público, en Internet Archive.&lt;/p&gt;
+
+&lt;p&gt;Extraído del documental &lt;a href=&quot;http://www.takepart.com/internets-own-boy&quot;&gt;&lt;em&gt;The Internet’s Own Boy&lt;/em&gt;&lt;/a&gt;, sobre la vida del mencionado.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Guerilla Open Access Manifesto 
+
+Information is power. But like all power, there are those who want to keep it for 
+themselves. The world's entire scientific and cultural heritage, published over centuries 
+in books and journals, is increasingly being digitized and locked up by a handful of 
+private corporations. Want to read the papers featuring the most famous results of the 
+sciences? You'll need to send enormous amounts to publishers like Reed Elsevier. 
+
+There are those struggling to change this. The Open Access Movement has fought 
+valiantly to ensure that scientists do not sign their copyrights away but instead ensure 
+their work is published on the Internet, under terms that allow anyone to access it. But 
+even under the best scenarios, their work will only apply to things published in the future. 
+Everything up until now will have been lost. 
+
+That is too high a price to pay. Forcing academics to pay money to read the work of their 
+colleagues? Scanning entire libraries but only allowing the folks at Google to read them? 
+Providing scientific articles to those at elite universities in the First World, but not to 
+children in the Global South? It's outrageous and unacceptable. 
+
+&quot;I agree,&quot; many say, &quot;but what can we do? The companies hold the copyrights, they 
+make enormous amounts of money by charging for access, and it's perfectly legal — 
+there's nothing we can do to stop them.&quot; But there is something we can, something that's 
+already being done: we can fight back. 
+
+Those with access to these resources — students, librarians, scientists — you have been 
+given a privilege. You get to feed at this banquet of knowledge while the rest of the world 
+is locked out. But you need not — indeed, morally, you cannot — keep this privilege for 
+yourselves. You have a duty to share it with the world. And you have: trading passwords 
+with colleagues, filling download requests for friends. 
+
+
+
+Meanwhile, those who have been locked out are not standing idly by. You have been 
+sneaking through holes and climbing over fences, liberating the information locked up by 
+the publishers and sharing them with your friends. 
+
+But all of this action goes on in the dark, hidden underground. It's called stealing or 
+piracy, as if sharing a wealth of knowledge were the moral equivalent of plundering a 
+ship and murdering its crew. But sharing isn't immoral — it's a moral imperative. Only 
+those blinded by greed would refuse to let a friend make a copy. 
+
+Large corporations, of course, are blinded by greed. The laws under which they operate 
+require it — their shareholders would revolt at anything less. And the politicians they 
+have bought off back them, passing laws giving them the exclusive power to decide who 
+can make copies. 
+
+There is no justice in following unjust laws. It's time to come into the light and, in the 
+grand tradition of civil disobedience, declare our opposition to this private theft of public 
+culture. 
+
+We need to take information, wherever it is stored, make our copies and share them with 
+the world. We need to take stuff that's out of copyright and add it to the archive. We need 
+to buy secret databases and put them on the Web. We need to download scientific 
+journals and upload them to file sharing networks. We need to fight for Guerilla Open 
+Access. 
+
+With enough of us, around the world, we'll not just send a strong message opposing the 
+privatization of knowledge — we'll make it a thing of the past. Will you join us? 
+
+Aaron Swartz 
+
+July 2008, Eremo, Italy 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;### Traducciones&lt;/p&gt;
+
+&lt;p&gt;En &lt;a href=&quot;https://openaccessmanifesto.wordpress.com/&quot;&gt;esta web&lt;/a&gt; se recoge un total de 25 traducciones del manifiesto, entre las que figuran el español, el chino, el búlgaro, y otras.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Desarrollo de aplicaciones móviles con JavaScript</title>
@@ -782,53 +861,54 @@ sudo nano /etc/apache2/mods-enabled/userdir.conf
 
 &lt;p&gt;Este es el original.&lt;/p&gt;
 
-&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;IfModule&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;mod_userdir.c&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    UserDir public_html
-    UserDir disabled root
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;lt;IfModule&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;mod_userdir.c&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        UserDir public_html
+        UserDir disabled root
 
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;/home/*/public_html&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-        AllowOverride FileInfo AuthConfig Limit Indexes
-        Options MultiViews Indexes SymLinksIfOwnerMatch IncludesNoExec
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Limit&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;GET&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;POST&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;OPTIONS&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-            Require all granted
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Limit&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;LimitExcept&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;GET&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;POST&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;OPTIONS&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-            Require all denied
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/LimitExcept&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Directory&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/IfModule&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;/home/*/public_html&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            AllowOverride FileInfo AuthConfig Limit Indexes
+            Options MultiViews Indexes SymLinksIfOwnerMatch IncludesNoExec
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Limit&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;GET&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;POST&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;OPTIONS&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                Require all granted
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Limit&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;LimitExcept&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;GET&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;POST&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;OPTIONS&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                Require all denied
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/LimitExcept&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Directory&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/IfModule&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;Modificaremos las líneas 6, 7, 9 y 12, y añadiremos en sus respectivos bloques algunas líneas extra, de modo que quedaría tal que así.&lt;/p&gt;
 
-&lt;p&gt;```xml&lt;/p&gt;
-&lt;IfModule mod_userdir.c=&quot;&quot;&gt;
-        UserDir public_html
-        UserDir disabled root
+&lt;p&gt;```xml
+    &lt;IfModule mod_userdir.c=&quot;&quot;&gt;
+            UserDir public_html
+            UserDir disabled root&lt;/IfModule&gt;&lt;/p&gt;
 
-        &amp;lt;Directory /home/*/public_html&amp;gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        &amp;lt;Directory /home/*/public_html&amp;gt;
         AllowOverride All
         Options MultiViews Indexes SymLinksIfOwnerMatch
-        &lt;Limit GET=&quot;&quot; POST=&quot;&quot; OPTIONS=&quot;&quot;&gt;
+        &amp;lt;Limit GET POST OPTIONS&amp;gt;
              #Require all granted
                 Order allow,deny
                 Allow from all
-        &lt;/Limit&gt;
-        &lt;LimitExcept GET=&quot;&quot; POST=&quot;&quot; OPTIONS=&quot;&quot;&gt;
+        &amp;lt;/Limit&amp;gt;
+        &amp;lt;LimitExcept GET POST OPTIONS&amp;gt;
              #Require all denied
                 Order deny,allow
                 Deny from all
-        &lt;/LimitExcept&gt;
+        &amp;lt;/LimitExcept&amp;gt;
         &amp;lt;/Directory&amp;gt;
-&lt;/IfModule&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-Una vez tengamos editado el módulo `userdir.conf`, podremos acceder a nuestra `public_html` situada en `/home/$USER`, lo cual nos permite alojar ahí cualquier documento para que aparezca en nuestro servidor (y si es un index.html, mejor).
+&amp;lt;/IfModule&amp;gt; ```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-Para terminar, reiniciamos Apache2 y añadimos el directorio.
+&lt;p&gt;Una vez tengamos editado el módulo &lt;code class=&quot;highlighter-rouge&quot;&gt;userdir.conf&lt;/code&gt;, podremos acceder a nuestra &lt;code class=&quot;highlighter-rouge&quot;&gt;public_html&lt;/code&gt; situada en &lt;code class=&quot;highlighter-rouge&quot;&gt;/home/$USER&lt;/code&gt;, lo cual nos permite alojar ahí cualquier documento para que aparezca en nuestro servidor (y si es un index.html, mejor).&lt;/p&gt;
 
-```bash
-sudo service apache2 restart
-mkdir /home/$USER/public_html
+&lt;p&gt;Para terminar, reiniciamos Apache2 y añadimos el directorio.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    sudo service apache2 restart
+    mkdir /home/&lt;span class=&quot;nv&quot;&gt;$USER&lt;/span&gt;/public_html
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;Sin embargo, esto aún no soporta PHP, por ejemplo. Veremos como añadir ese soporte en otro artículo.&lt;/p&gt;
@@ -837,17 +917,17 @@ mkdir /home/$USER/public_html
 
 &lt;p&gt;Es posible que tras configurarlo, al acceder a http://mi-servidor/~usuario nos de un error de permisos (403 Forbidden). La solución a esto es sencilla, basta con asegurarnos de que nuestra carpeta personal tiene permiso de lectura y ejecución para grupos y otros usuarios.&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo chmod -R 755 /home/tu-usuario/
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    sudo chmod -R 755 /home/tu-usuario/
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
 &lt;p&gt;Si aún así falla, nos vamos a &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/apache2/apache2.conf&lt;/code&gt; y como root añadimos el siguiente código:&lt;/p&gt;
 
-&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;/home/*/public_html&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-        Options Indexes FollowSymLinks
-        AllowOverride None
-        Require all granted
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Directory&amp;gt;&lt;/span&gt;
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;/home/*/public_html&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            Options Indexes FollowSymLinks
+            AllowOverride None
+            Require all granted
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Directory&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 

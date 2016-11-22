@@ -1,6 +1,6 @@
 ---
 layout: post # Sustituye el layout si lo usas uno diferente
-title: "Guerrilla Open Access Manifesto", el legado de Aaron Swartz # Nombre generado automáticamente
+title: Guerrilla Open Access Manifesto, el legado de Aaron Swartz # Nombre generado automáticamente
 ---
 
 Manifiesto escrito por [Aaron Swartz](https://en.wikipedia.org/wiki/Aaron_Swartz) (1986-2013, co-fundador de Reddit y hacktivista de la cultura libre)  y en 2008, sobre el libre acceso a la cultura y el conocimiento. De dominio público, en Internet Archive.

@@ -7,6 +7,19 @@
 		<atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Guerrilla Open Access Manifesto, el legado de Aaron Swartz</title>
+				        
+				
+					<description>&lt;p&gt;Manifiesto escrito por &lt;a href=&quot;https://en.wikipedia.org/wiki/Aaron_Swartz&quot;&gt;Aaron Swartz&lt;/a&gt; (1986-2013, co-fundador de Reddit y hacktivista de la cultura libre)  y en 2008, sobre el libre acceso a la cultura y el conocimiento. De dominio público, en Internet Archive.&lt;/p&gt;
+
+</description>
+				
+				<pubDate>Wed, 23 Nov 2016 00:00:00 +0100</pubDate>
+				<link>http://localhost:4000/2016/11/23/Guerrilla-Open-Access-Manifesto-el-legado-de-Aaron-Swartz/</link>
+				<guid isPermaLink="true">http://localhost:4000/2016/11/23/Guerrilla-Open-Access-Manifesto-el-legado-de-Aaron-Swartz/</guid>
+			</item>
+		
+			<item>
 				<title>Desarrollo de aplicaciones móviles con JavaScript</title>
 				        
 				
@@ -141,19 +154,6 @@ Jekyll y GitHub Pages.&lt;/p&gt;
 				<pubDate>Fri, 13 May 2016 00:00:00 +0200</pubDate>
 				<link>http://localhost:4000/2016/05/13/Gesti%C3%B3n-de-proyectos-mediante-GitHub/</link>
 				<guid isPermaLink="true">http://localhost:4000/2016/05/13/Gesti%C3%B3n-de-proyectos-mediante-GitHub/</guid>
-			</item>
-		
-			<item>
-				<title>Experiencia OpenSouthCode</title>
-				        
-				
-					<description>&lt;p&gt;Ayer día 7 de Mayo de 2016, tuvo lugar en La Térmica (Málaga) el OpenSouthCode, un evento dirigido a todo aquel aficionado al software libre, ya sea en grado de aficionado como de desarrollador. Como es de esperar, yo no perdí la ocasión de asistir al evento junto con mi compañero Cristobal a modo de expedicionarios de HackLab Almería.&lt;/p&gt;
-
-</description>
-				
-				<pubDate>Sun, 08 May 2016 00:00:00 +0200</pubDate>
-				<link>http://localhost:4000/2016/05/08/Experiencia-OpenSouthCode/</link>
-				<guid isPermaLink="true">http://localhost:4000/2016/05/08/Experiencia-OpenSouthCode/</guid>
 			</item>
 		
 	</channel>
