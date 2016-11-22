@@ -10,7 +10,7 @@ title:            Juanjo Salvador
 tagline:          'Técnico Hacker'
 description:      'Desarrollo. Debian. Software Libre.'
 url:              http://juanjosalvador.es
-baseurl:          /blog/
+baseurl:          /
 
 author:
   name:           'Juanjo Salvador'
