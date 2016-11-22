@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es-es">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Como instalar Jekyll en Windows &middot; Juanjo Salvador
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/blog/public/css/poole.css">
+  <link rel="stylesheet" href="/blog/public/css/syntax.css">
+  <link rel="stylesheet" href="/blog/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css">
+
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/blog/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/blog/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/blog/">
+          Juanjo Salvador
+        </a>
+      </h1>
+      <p class="lead">Desarrollo. Debian. Software Libre.</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/blog/">Inicio</a>
+
+      
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/sobre-mi/">Sobre mi</a>
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/curriculum/">Curriculum</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/portfolio/">Portfolio</a>
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+
+      <a class="sidebar-nav-item" href="/blog/atom.xml">RSS</a>
+    </nav>
+
+    <p>&copy; 2016. Todos los derechos reservados.</p>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">Como instalar Jekyll en Windows</h1>
+  <span class="post-date">11 Nov 2016</span>
+  <p>Con motivo de la segunda edición de mi charla <a href="http://juanjosalvador.es/2016/09/20/Construye-tu-web-como-un-hacker/"><em>Construye tu web como un hacker</em></a> en las <strong>Jornadas Hacklab Almería 2016</strong>,
+he decidido instalar un Jekyll en mi netbook con Windows 10. ¿Por qué? En primer lugar, porque intuyo que la mayoría de asistentes de la charla serán usuarios del sistema de Microsoft,
+y en segundo lugar, porque la instalación de Jekyll en Windows es más complicado que en GNU/Linux, y hacerlo ha sido un pequeño reto.</p>
+
+<h3 id="instalar-ruby">Instalar Ruby</h3>
+
+<p>El primer paso, es instalar Ruby y Ruby Development Kit en Windows. La mejor forma de hacerlo es a través de <a href="http://rubyinstaller.org/downloads/"><strong>RubyInstaller</strong></a>.</p>
+
+<p>Se trata de un ejecutable, es simplemente seguir los pasos del asistente y a volar. A continuación, y desde la misma web de RubyInstaller
+podemos descargar el Development Kit. Al ejecutarlo, nos pide una ruta de extracción, así que lo extraemos en <code class="highlighter-rouge">C:\RubyDevKit</code>.</p>
+
+<p>Para instalarlo, abrimos la consola CMD de Windows, y navegamos hasta la ruta donde hemos extraído el Development Kit de Ruby, y lo instalamos.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; ruby dk.rb init
+&gt; ruby dk.rb install
+</code></pre>
+</div>
+
+<h3 id="instalar-rubygems">Instalar Rubygems</h3>
+
+<p>Rubygems es el gestor de paquetes de Ruby, creado por la comunidad, e imprescindible cuando trabajas con este lenguaje.</p>
+
+<p>Descargamos el paquete ZIP desde la <a href="https://rubygems.org/pages/download">web de Rubygems</a>, y lo descomprimimos. Para instalarlo,
+abrimos la consola de Windows con Ruby, navegamos hacia la ruta donde hayamos descomprimido el paquete, y lo instalamos:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; ruby setup.rb
+</code></pre>
+</div>
+
+<p>Tras unos minutos, tendremos Rubygems instalado y podemos continuar.</p>
+
+<h3 id="instalar-jekyll">Instalar Jekyll</h3>
+
+<p>Una vez tenemos Ruby y Rubygems instalado, podemos instalar Jekyll, pero para asegurarnos de que no fallan las dependencias,
+primero instalaremos Bundler.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; gem install bundler
+&gt; gem install jekyll
+</code></pre>
+</div>
+
+<p>Cuando termine la instalación, ya podemos crear nuevos sitios, servir los que tenemos creados, y ponernos a crear.</p>
+
+
+</div>
+
+<p align="center">
+    <strong>¿Tienes alguna mejora para este artículo?</strong><br>
+    <a href="https://github.com/JuanjoSalvador/juanjosalvador.github.io">
+        <u>¡Mándame una pull request!</u>
+    </a>
+</p>
+
+<div id="share-this">
+  <h4>Comparte este artículo</h4>
+  <a href="https://twitter.com/intent/tweet?text=Como instalar Jekyll en Windows&url=http://localhost:4000/2016/11/11/Como-instalar-Jekyll-en-Windows/" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square"></i></a>
+<a href="https://facebook.com/sharer.php?u=http://localhost:4000/2016/11/11/Como-instalar-Jekyll-en-Windows/" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square"></i></a>
+<a href="http://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2016/11/11/Como-instalar-Jekyll-en-Windows/" rel="nofollow" target="_blank" title="Share on Linkedlin"><i class="fa fa-linkedin-square"></i></a>
+<a href="https://plus.google.com/share?url=http://localhost:4000/2016/11/11/Como-instalar-Jekyll-en-Windows/" rel="nofollow" target="_blank" title="Share on Google+"><i class="fa fa-google-plus-square"></i></a>
+
+</div>
+
+<div class="related">
+  <h2>Artículos relacionados</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2016/11/20/Desarrollo-de-apps-con-JavaScript/">
+            Desarrollo de aplicaciones móviles con JavaScript
+            <small>20 Nov 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2016/10/06/5-herramientas-que-todo-Web-Developer-debe-conocer/">
+            5 herramientas que todo Web Developer debería conocer
+            <small>06 Oct 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2016/09/20/Construye-tu-web-como-un-hacker/">
+            Construye tu web como un hacker
+            <small>20 Sep 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+	<div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+    var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//juanjosalvador.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</div>
+
+    </div>
+
+  </body>
+</html>

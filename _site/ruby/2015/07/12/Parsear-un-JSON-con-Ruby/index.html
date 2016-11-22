@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="es-es">
 
   <head>
   <link href="http://gmpg.org/xfn/11" rel="profile">
@@ -16,14 +16,16 @@
   </title>
 
   <!-- CSS -->
-  <link rel="stylesheet" href="/public/css/poole.css">
-  <link rel="stylesheet" href="/public/css/syntax.css">
-  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/blog/public/css/poole.css">
+  <link rel="stylesheet" href="/blog/public/css/syntax.css">
+  <link rel="stylesheet" href="/blog/public/css/hyde.css">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css">
+
 
   <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
-                                 <link rel="shortcut icon" href="/public/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/blog/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/blog/public/favicon.ico">
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
@@ -36,7 +38,7 @@
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
       <h1>
-        <a href="/">
+        <a href="/blog/">
           Juanjo Salvador
         </a>
       </h1>
@@ -44,7 +46,7 @@
     </div>
 
     <nav class="sidebar-nav">
-      <a class="sidebar-nav-item" href="/">Inicio</a>
+      <a class="sidebar-nav-item" href="/blog/">Inicio</a>
 
       
 
@@ -56,16 +58,14 @@
       
         
           
-            <a class="sidebar-nav-item" href="/about/">Sobre mi</a>
+            <a class="sidebar-nav-item" href="/sobre-mi/">Sobre mi</a>
           
         
       
         
-      
+          
         
-          
-            <a class="sidebar-nav-item" href="/charlas/">Charlas y conferencias</a>
-          
+      
         
       
         
@@ -82,6 +82,24 @@
       
         
           
+            <a class="sidebar-nav-item" href="/portfolio/">Portfolio</a>
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
         
       
         
@@ -89,7 +107,7 @@
         
       
 
-      <a class="sidebar-nav-item" href="/atom.xml">RSS</a>
+      <a class="sidebar-nav-item" href="/blog/atom.xml">RSS</a>
     </nav>
 
     <p>&copy; 2016. Todos los derechos reservados.</p>
@@ -98,8 +116,7 @@
 
 
     <div class="content container">
-      <<<<<<< HEAD
-<div class="post">
+      <div class="post">
   <h1 class="post-title">Parsear un JSON con Ruby</h1>
   <span class="post-date">12 Jul 2015</span>
   <p>Podemos definir JSON como un formato ligero de intercambio de datos. Es un subconjunto de la notación literal de objetos de JavaScript que no requiere el uso de XML, lo cual facilita mucho la legibilidad de la información contenida.</p>
@@ -112,22 +129,44 @@
 
 <p>Primero instalamos la gema json</p>
 
-<p><code>gem install json</code></p>
+<p><code class="highlighter-rouge">gem install json</code></p>
 
-<p>La añadimos a nuestro proyecto...</p>
+<p>La añadimos a nuestro proyecto…</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">&#39;rubygems&#39;</span>
-<span class="nb">require</span> <span class="s1">&#39;json&#39;</span></code></pre></figure>
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'rubygems'</span>
+<span class="nb">require</span> <span class="s1">'json'</span>
+</code></pre>
+</div>
 
-<p>Y por último, para usarlo, solo tenemos que llamar al método <code>JSON.parse()</code>, suponiendo que aquí nuestro JSON está almacenado en una variable llamada <code>string</code>.</p>
+<p>Y por último, para usarlo, solo tenemos que llamar al método <code class="highlighter-rouge">JSON.parse()</code>, suponiendo que aquí nuestro JSON está almacenado en una variable llamada <code class="highlighter-rouge">string</code>.</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">parsed_file</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">string</span><span class="p">)</span></code></pre></figure>
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">parsed_file</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+</code></pre>
+</div>
 
-<p>Esto nos devolverá el JSON dividido en claves y valores, por lo que, para acceder al valor de una clave en concreto, a través de la variable donde lo hemos guardado...</p>
+<p>Esto nos devolverá el JSON dividido en claves y valores, por lo que, para acceder al valor de una clave en concreto, a través de la variable donde lo hemos guardado…</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">string</span> <span class="o">=</span> <span class="s1">&#39;{&quot;desc&quot;:{&quot;someKey&quot;:&quot;someValue&quot;,&quot;anotherKey&quot;:&quot;value&quot;}}&#39;</span>
-<span class="n">parsed_file</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
-<span class="n">parsed_file</span><span class="o">[</span><span class="s2">&quot;anotherKey&quot;</span><span class="o">]</span> <span class="c1"># Nos devuelve al valor de &#39;anotherKey&#39;</span></code></pre></figure>
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">string</span> <span class="o">=</span> <span class="s1">'{"desc":{"someKey":"someValue","anotherKey":"value"}}'</span>
+<span class="n">parsed_file</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+<span class="n">parsed_file</span><span class="p">[</span><span class="s2">"anotherKey"</span><span class="p">]</span> <span class="c1"># Nos devuelve al valor de 'anotherKey'</span>
+</code></pre>
+</div>
+
+</div>
+
+<p align="center">
+    <strong>¿Tienes alguna mejora para este artículo?</strong><br>
+    <a href="https://github.com/JuanjoSalvador/juanjosalvador.github.io">
+        <u>¡Mándame una pull request!</u>
+    </a>
+</p>
+
+<div id="share-this">
+  <h4>Comparte este artículo</h4>
+  <a href="https://twitter.com/intent/tweet?text=Parsear un JSON con Ruby&url=http://localhost:4000/ruby/2015/07/12/Parsear-un-JSON-con-Ruby/" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square"></i></a>
+<a href="https://facebook.com/sharer.php?u=http://localhost:4000/ruby/2015/07/12/Parsear-un-JSON-con-Ruby/" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square"></i></a>
+<a href="http://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/ruby/2015/07/12/Parsear-un-JSON-con-Ruby/" rel="nofollow" target="_blank" title="Share on Linkedlin"><i class="fa fa-linkedin-square"></i></a>
+<a href="https://plus.google.com/share?url=http://localhost:4000/ruby/2015/07/12/Parsear-un-JSON-con-Ruby/" rel="nofollow" target="_blank" title="Share on Google+"><i class="fa fa-google-plus-square"></i></a>
 
 </div>
 
@@ -137,27 +176,27 @@
     
       <li>
         <h3>
-          <a href="/2016/01/25/A%C3%B1ade-un-feed-Atom-RSS-a-Jekyll/">
-            Añade un feed Atom/RSS a Jekyll
-            <small>25 Jan 2016</small>
+          <a href="/2016/11/20/Desarrollo-de-apps-con-JavaScript/">
+            Desarrollo de aplicaciones móviles con JavaScript
+            <small>20 Nov 2016</small>
           </a>
         </h3>
       </li>
     
       <li>
         <h3>
-          <a href="/2015/11/11/Comicbook-Packager-mi-autoempaquetador-de-comics/">
-            Comicbook Packager, mi autoempaquetador de comics
-            <small>11 Nov 2015</small>
+          <a href="/2016/11/11/Como-instalar-Jekyll-en-Windows/">
+            Como instalar Jekyll en Windows
+            <small>11 Nov 2016</small>
           </a>
         </h3>
       </li>
     
       <li>
         <h3>
-          <a href="/2015/10/22/Habilitar-el-m%C3%B3dulo-userdir-de-Apache2-en-Debian/">
-            Habilitar el módulo userdir de Apache2 en Debian
-            <small>22 Oct 2015</small>
+          <a href="/2016/10/06/5-herramientas-que-todo-Web-Developer-debe-conocer/">
+            5 herramientas que todo Web Developer debería conocer
+            <small>06 Oct 2016</small>
           </a>
         </h3>
       </li>
@@ -186,37 +225,6 @@
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
-=======
-  <article class="post-content">
-    <p>Podemos definir JSON como un formato ligero de intercambio de datos. Es un subconjunto de la notación literal de objetos de JavaScript que no requiere el uso de XML, lo cual facilita mucho la legibilidad de la información contenida.</p>
-
-<p>En la actualidad está muy extendido, lo cual hace que cualquier desarrollador web requiera de su uso en más de una ocasión. Al proceso de extracción de datos de un JSON (<em>o XML, o cualquier otro formato</em>) se le llama <em>parsear</em>.</p>
-
-<p>Muchos lenguajes incluyen librerías para hacer esto, como es el caso de Ruby. Hace unos días, trabajando en un script el cual necesita tomar datos de terceros y que descaga en un archivo JSON, tuve la impediosa necesidad de parsear dicho archivo, pero, era la primera vez que necesitaba hacer algo así en Ruby, así que, me lancé a la aventura.</p>
-
-<p>La solución, como casi siempre que tengo un problema similar, me apareció en <a href="http://stackoverflow.com/questions/5410682/parsing-a-json-string-in-ruby">StackOverflow</a>.</p>
-
-<p>Primero instalamos la gema json</p>
-
-<p><code>gem install json</code></p>
-
-<p>La añadimos a nuestro proyecto...</p>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">&#39;rubygems&#39;</span>
-<span class="nb">require</span> <span class="s1">&#39;json&#39;</span></code></pre></figure>
-
-<p>Y por último, para usarlo, solo tenemos que llamar al método <code>JSON.parse()</code>, suponiendo que aquí nuestro JSON está almacenado en una variable llamada <code>string</code>.</p>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">parsed_file</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">string</span><span class="p">)</span></code></pre></figure>
-
-<p>Esto nos devolverá el JSON dividido en claves y valores, por lo que, para acceder al valor de una clave en concreto, a través de la variable donde lo hemos guardado...</p>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">string</span> <span class="o">=</span> <span class="s1">&#39;{&quot;desc&quot;:{&quot;someKey&quot;:&quot;someValue&quot;,&quot;anotherKey&quot;:&quot;value&quot;}}&#39;</span>
-<span class="n">parsed_file</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
-<span class="n">parsed_file</span><span class="o">[</span><span class="s2">&quot;anotherKey&quot;</span><span class="o">]</span> <span class="c1"># Nos devuelve al valor de &#39;anotherKey&#39;</span></code></pre></figure>
-
-  </article>
->>>>>>> 2d468555f38bb2a76eb554b8eb9665b16e481e74
 </div>
 
     </div>

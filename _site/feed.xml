@@ -3,126 +3,157 @@
 	<channel>
 		<title></title>
 		<description>Desarrollo. Debian. Software Libre.</description>		
-		<link>http://juanjosalvador.es/</link>
-		<atom:link href="http://juanjosalvador.es//feed.xml" rel="self" type="application/rss+xml" />
+		<link>http://localhost:4000</link>
+		<atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
-				<title>Añade un feed Atom/RSS a Jekyll</title>
+				<title>Desarrollo de aplicaciones móviles con JavaScript</title>
 				        
 				
-					<description></description>
+					<description>&lt;p&gt;La tecnología siempre avanza en torno a facilitarnos según qué tareas. Los primeros ordenadores aparecieron bajo la premisa de realizar cálculos complejos, y en base a esto, hemos ido creando software que facilita cada vez más tareas pesadas, como todo aquello que gira en torno a la burocracia, por ejemplo.&lt;/p&gt;
+
+</description>
 				
-				<pubDate>Mon, 25 Jan 2016 00:00:00 +0100</pubDate>
-				<link>http://juanjosalvador.es//2016/01/25/A%C3%B1ade-un-feed-Atom-RSS-a-Jekyll/</link>
-				<guid isPermaLink="true">http://juanjosalvador.es//2016/01/25/A%C3%B1ade-un-feed-Atom-RSS-a-Jekyll/</guid>
+				<pubDate>Sun, 20 Nov 2016 00:00:00 +0100</pubDate>
+				<link>http://localhost:4000/2016/11/20/Desarrollo-de-apps-con-JavaScript/</link>
+				<guid isPermaLink="true">http://localhost:4000/2016/11/20/Desarrollo-de-apps-con-JavaScript/</guid>
 			</item>
 		
 			<item>
-				<title>Comicbook Packager, mi autoempaquetador de comics</title>
+				<title>Como instalar Jekyll en Windows</title>
 				        
 				
-					<description>&lt;p&gt;Confieso que soy aficionado a leer comics en formato digital. Y algunos de los comics que sigo, no se encuentran traducidos a mi idioma u otro idioma que entienda, por lo que tiendo a recurrir a fansites de traducciones no oficiales. Actualmente hay numerosos sitios web que ofrecen de forma gratuita o con una suscripción (&lt;em&gt;como Submanga o Crunchyroll&lt;/em&gt;) la lectura de estos comics online.&lt;/p&gt;
+					<description>&lt;p&gt;Con motivo de la segunda edición de mi charla &lt;a href=&quot;http://juanjosalvador.es/2016/09/20/Construye-tu-web-como-un-hacker/&quot;&gt;&lt;em&gt;Construye tu web como un hacker&lt;/em&gt;&lt;/a&gt; en las &lt;strong&gt;Jornadas Hacklab Almería 2016&lt;/strong&gt;,
+he decidido instalar un Jekyll en mi netbook con Windows 10. ¿Por qué? En primer lugar, porque intuyo que la mayoría de asistentes de la charla serán usuarios del sistema de Microsoft,
+y en segundo lugar, porque la instalación de Jekyll en Windows es más complicado que en GNU/Linux, y hacerlo ha sido un pequeño reto.&lt;/p&gt;
+
 </description>
 				
-				<pubDate>Wed, 11 Nov 2015 00:00:00 +0100</pubDate>
-				<link>http://juanjosalvador.es//2015/11/11/Comicbook-Packager-mi-autoempaquetador-de-comics/</link>
-				<guid isPermaLink="true">http://juanjosalvador.es//2015/11/11/Comicbook-Packager-mi-autoempaquetador-de-comics/</guid>
+				<pubDate>Fri, 11 Nov 2016 00:00:00 +0100</pubDate>
+				<link>http://localhost:4000/2016/11/11/Como-instalar-Jekyll-en-Windows/</link>
+				<guid isPermaLink="true">http://localhost:4000/2016/11/11/Como-instalar-Jekyll-en-Windows/</guid>
 			</item>
 		
 			<item>
-				<title>Habilitar el módulo userdir de Apache2 en Debian</title>
+				<title>5 herramientas que todo Web Developer debería conocer</title>
 				        
 				
-					<description>&lt;p&gt;El módulo &lt;code&gt;userdir&lt;/code&gt; de Apache2 nos permite tener una carpeta en nuestro /home, llamada public_html, donde un usuario de nuestro servidor, puede alojar sus propios documentos y que estos estén disponibles en Apache bajo la url http://mi-servidor/~usuario.&lt;/p&gt;
+					<description>&lt;p&gt;Cuando entras en el mundo del desarrollo web e indagas a fondo, te das cuenta de que hay un mundo de posibilidades. Pero para aprovechar al máximo este mundo de posibilidades, es conveniente conocer y saber manejar algunas herramientas que nos harán la vida más fácil.&lt;/p&gt;
+
 </description>
 				
-				<pubDate>Thu, 22 Oct 2015 00:00:00 +0200</pubDate>
-				<link>http://juanjosalvador.es//2015/10/22/Habilitar-el-m%C3%B3dulo-userdir-de-Apache2-en-Debian/</link>
-				<guid isPermaLink="true">http://juanjosalvador.es//2015/10/22/Habilitar-el-m%C3%B3dulo-userdir-de-Apache2-en-Debian/</guid>
+				<pubDate>Thu, 06 Oct 2016 00:00:00 +0200</pubDate>
+				<link>http://localhost:4000/2016/10/06/5-herramientas-que-todo-Web-Developer-debe-conocer/</link>
+				<guid isPermaLink="true">http://localhost:4000/2016/10/06/5-herramientas-que-todo-Web-Developer-debe-conocer/</guid>
 			</item>
 		
 			<item>
-				<title>Progreso de DrHenry</title>
+				<title>Construye tu web como un hacker</title>
 				        
 				
-					<description>&lt;p&gt;Este es el progreso actual de mi &lt;a href=&quot;https://rubygems.org/gems/drhenry&quot;&gt;gema para generar posts de Jekyll&lt;/a&gt;.&lt;/p&gt;
+					<description>&lt;p&gt;La presentación basada en Reveal.js de la charla “Construye tu web como un hacker” que di en Hacklab Almería, sobre desarrollo de blogs usando
+Jekyll y GitHub Pages.&lt;/p&gt;
+
 </description>
 				
-				<pubDate>Mon, 19 Oct 2015 00:00:00 +0200</pubDate>
-				<link>http://juanjosalvador.es//2015/10/19/Progreso-de-DrHenry/</link>
-				<guid isPermaLink="true">http://juanjosalvador.es//2015/10/19/Progreso-de-DrHenry/</guid>
+				<pubDate>Tue, 20 Sep 2016 00:00:00 +0200</pubDate>
+				<link>http://localhost:4000/2016/09/20/Construye-tu-web-como-un-hacker/</link>
+				<guid isPermaLink="true">http://localhost:4000/2016/09/20/Construye-tu-web-como-un-hacker/</guid>
 			</item>
 		
 			<item>
-				<title>DrHenry genera posts por ti</title>
+				<title>Desarrollo de apps para Android usando Python</title>
 				        
 				
-					<description>&lt;p&gt;Tiempo atrás &lt;a href=&quot;https://gist.github.com/JuanjoSalvador/9669022d8e3f59ab7a4f&quot;&gt;escribí un script en bash&lt;/a&gt; para ayudarme a publicar artículos en mi sitio de Jekyll, dado que crear un archivo-plantilla no me parecía factible, ya que mi configuración usa un nombre de archivo bastante concreto (YYYY-MM-DD-titulo.md).&lt;/p&gt;
+					<description>&lt;p&gt;Con objetivo de organizarme mejor en la PyCon ES, estuve dándole vueltas al diseño de una aplicación donde pueda seleccionar mi propio planning de charlas y talleres y organizarmelo todo en una línea cronológica que me permita ver, en cada momento, la siguiente charla/taller a la que tengo planeado asistir.&lt;/p&gt;
+
 </description>
 				
-				<pubDate>Fri, 16 Oct 2015 00:00:00 +0200</pubDate>
-				<link>http://juanjosalvador.es//2015/10/16/DrHenry-genera-posts-por-ti/</link>
-				<guid isPermaLink="true">http://juanjosalvador.es//2015/10/16/DrHenry-genera-posts-por-ti/</guid>
+				<pubDate>Sat, 10 Sep 2016 00:00:00 +0200</pubDate>
+				<link>http://localhost:4000/2016/09/10/Desarrollo-de-apps-para-Android-usando-Python/</link>
+				<guid isPermaLink="true">http://localhost:4000/2016/09/10/Desarrollo-de-apps-para-Android-usando-Python/</guid>
 			</item>
 		
 			<item>
-				<title>Super Arduino Bros</title>
+				<title>Sobre la falta de privacidad de WhatsApp</title>
 				        
 				
-					<description>&lt;p&gt;Durante la &lt;a href=&quot;http://codeweek.eu/&quot;&gt;CodeWeek&lt;/a&gt; he tenido ocasión de asistir a un taller de Arduino organizado por &lt;a href=&quot;http://hacklabalmeria.net/&quot;&gt;HackLab Almeria&lt;/a&gt;. Allí además de cacharrear y experimentar cosas con Arduino, &lt;a href=&quot;http://twitter.com/jotaperamez&quot;&gt;@jotaperamez&lt;/a&gt; y yo montamos esta chorradilla experimentando con un altavoz.&lt;/p&gt;
+					<description>&lt;p&gt;Ya me he mostrado, en anteriores ocasiones, algo contrario al uso de WhatsApp. Es más, si no fuese algo prácticamente obligatorio hoy en día,habría abandonado completamente su uso.&lt;/p&gt;
+
+&lt;p&gt;Hace dos años y medio, el gigante Facebook, conocido por sus numerosos atentados contra la privacidad de sus usuarios y la venta de datos a terceros para estudios de mercado, compró los derechos de WhatsApp, la aplicación de mensajería más utilizada del mundo ahora mismo, creando un combo magnífico: ¿quien no tiene Facebook y WhatsApp? Esta unión de ambos, trajo algunas ventajas, como &lt;strong&gt;cambios importantes&lt;/strong&gt; en la aplicación en cuanto a seguridad y privacidad, la completa gratuitad del servicio, etc.&lt;/p&gt;
+
+&lt;p&gt;Sin embargo, algo que ya auguramos en su momento, es que Facebook &lt;strong&gt;podría estar analizando los mensajes que enviamos a modo de estudio de mercado&lt;/strong&gt; de forma ilegal. De hecho, no descartaría que hayan estado haciéndolo de forma encubierta.&lt;/p&gt;
+
+&lt;p&gt;La última actualización de la aplicación de mensajería ha desvelado esta hipótesis, aunque no indica que lo hayan estado haciendo antes, ahora directamente informa al usuario de que Facebook va a usar tus mensajes para &lt;em&gt;mejorar tu experiencia&lt;/em&gt; de usuario, manteniendo esta opción habilitada por omisión.&lt;/p&gt;
+
+&lt;p&gt;Dado que es una fuerte fuente de ingresos para la compañía, pongo en duda si desactivando la opción se dejan de utilizar tus datos para sus estudios, lo que si está claro es que al menos tienen la decencia de informarte de ello.&lt;/p&gt;
+
+&lt;p&gt;¿Cual es la solución para protegernos del tráfico de información personal que provocan? La única solución factible es, dejar de usar WhatsApp. Eliminar la aplicación y tu cuenta. Pero es un paso duro, &lt;strong&gt;podríamos perder el contacto&lt;/strong&gt; con muchos amigos, familiares, conocidos, compañeros de trabajo, etc. Migrar esto a Telegram es una opción factible, aunque supone un gran esfuerzo.&lt;/p&gt;
+
+&lt;p&gt;Si eliges aceptar las condiciones y que utilicen tus datos, pero aún así quieres intentar poner algo de desacuerdo en el asunto, puedes desactivar esta opción desde &lt;strong&gt;Opciones &amp;gt; Cuenta &amp;gt; Privacidad&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Actualización&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Un artículo de El Androide Libre confirma mis sospechas: puedes negarte, pero Facebook seguirá llevando a cabo sus malas praxis.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.elandroidelibre.com/2016/08/whatsapp-compartir-datos-facebook.html&quot;&gt;El Androide Libre&lt;/a&gt;&lt;/p&gt;
 </description>
 				
-				<pubDate>Thu, 15 Oct 2015 00:00:00 +0200</pubDate>
-				<link>http://juanjosalvador.es//eventos/2015/10/15/Super-Arduino-Bros/</link>
-				<guid isPermaLink="true">http://juanjosalvador.es//eventos/2015/10/15/Super-Arduino-Bros/</guid>
+				<pubDate>Fri, 26 Aug 2016 00:00:00 +0200</pubDate>
+				<link>http://localhost:4000/2016/08/26/Sobre-la-falta-de-privacidad-de-whatsapp/</link>
+				<guid isPermaLink="true">http://localhost:4000/2016/08/26/Sobre-la-falta-de-privacidad-de-whatsapp/</guid>
 			</item>
 		
 			<item>
-				<title>Hackaton 2015</title>
+				<title>Copiar archivos por SSH</title>
 				        
 				
-					<description>&lt;p&gt;3 de Octubre de 2015. Escuela de Artes de Almería. 11:00 AM. Tras organizar equipos, desayunar un café más caliente que los fuegos del Monte del Destino, y algunos minutos de desconcierto... Da comienzo El Hackatón 2015 organizado por HackLab Almería. Reunidos bajo el mismo techo, profesionales, estudiantes, curiosos, aficionados... Programadores, diseñadores, creadores de contenido y makers. Con un único propósito: cambiar el mundo dando rienda suelta a nuestras ideas.&lt;/p&gt;
+					<description>&lt;p&gt;Cuando Ismael Olea me dijo que el FTP estaba anticuado, me sentí bastante desactualizado en cuanto a administración de servidores. Lo primero que me vino a la mente, fue si quizás se estaría refiriendo a que deberíamos usar FTPS (el protocolo FTP sobre SSL), ya que, en mis años de estudiante ya se hablaba de que iba a ser el nuevo estándar. Sin embargo, me hablaba de SSH.&lt;/p&gt;
+
 </description>
 				
-				<pubDate>Mon, 05 Oct 2015 00:00:00 +0200</pubDate>
-				<link>http://juanjosalvador.es//eventos/2015/10/05/Hackaton-2015/</link>
-				<guid isPermaLink="true">http://juanjosalvador.es//eventos/2015/10/05/Hackaton-2015/</guid>
+				<pubDate>Thu, 23 Jun 2016 00:00:00 +0200</pubDate>
+				<link>http://localhost:4000/2016/06/23/Copiar-archivos-por-SSH/</link>
+				<guid isPermaLink="true">http://localhost:4000/2016/06/23/Copiar-archivos-por-SSH/</guid>
 			</item>
 		
 			<item>
-				<title>3 razones para aprender múltiples lenguajes de programación [ENLACE]</title>
+				<title>Ionic 2 (beta) y el error &quot;Promise is not defined&quot;</title>
 				        
 				
-					<description>&lt;p&gt;¿Por qué aprender diferentes lenguajes de programación? Por el mismo motivo por el que aprender a manejar sistemas Windows, Linux y OS X: versatilidad.&lt;/p&gt;
+					<description>&lt;p&gt;Esta entrada es más un apunte personal que un artículo. Sin embargo, mis apuntes personales pueden resultar instructivos, así que no veo por qué no colgarlo aquí.&lt;/p&gt;
+
 </description>
 				
-				<pubDate>Thu, 03 Sep 2015 00:00:00 +0200</pubDate>
-				<link>http://juanjosalvador.es//enlaces/2015/09/03/3-razones-para-aprender-m%C3%BAltiples-lenguajes-de-programacion/</link>
-				<guid isPermaLink="true">http://juanjosalvador.es//enlaces/2015/09/03/3-razones-para-aprender-m%C3%BAltiples-lenguajes-de-programacion/</guid>
+				<pubDate>Thu, 19 May 2016 00:00:00 +0200</pubDate>
+				<link>http://localhost:4000/2016/05/19/Ionic-2-Promise-is-not-defined/</link>
+				<guid isPermaLink="true">http://localhost:4000/2016/05/19/Ionic-2-Promise-is-not-defined/</guid>
 			</item>
 		
 			<item>
-				<title>Parsear un JSON con Ruby</title>
+				<title>Gestión de proyectos mediante GitHub</title>
 				        
 				
-					<description>&lt;p&gt;Podemos definir JSON como un formato ligero de intercambio de datos. Es un subconjunto de la notación literal de objetos de JavaScript que no requiere el uso de XML, lo cual facilita mucho la legibilidad de la información contenida.&lt;/p&gt;
+					<description>&lt;p&gt;GitHub además de ser una excelente plataforma de Git para compartir y mantener código, también puede ser una herramienta excelente para gestionar proyectos. Para explicar esto, usaré como ejemplo, es el desarrollo de Comicbook Packager (versión 3, en camino), que se está organizando a través de las issues de un repositorio.&lt;/p&gt;
+
 </description>
 				
-				<pubDate>Sun, 12 Jul 2015 00:00:00 +0200</pubDate>
-				<link>http://juanjosalvador.es//ruby/2015/07/12/Parsear-un-JSON-con-Ruby/</link>
-				<guid isPermaLink="true">http://juanjosalvador.es//ruby/2015/07/12/Parsear-un-JSON-con-Ruby/</guid>
+				<pubDate>Fri, 13 May 2016 00:00:00 +0200</pubDate>
+				<link>http://localhost:4000/2016/05/13/Gesti%C3%B3n-de-proyectos-mediante-GitHub/</link>
+				<guid isPermaLink="true">http://localhost:4000/2016/05/13/Gesti%C3%B3n-de-proyectos-mediante-GitHub/</guid>
 			</item>
 		
 			<item>
-				<title>Plantilla de posts para Jekyll</title>
+				<title>Experiencia OpenSouthCode</title>
 				        
 				
-					<description>&lt;p&gt;La automatización de tareas es un aspecto básico que todo &lt;em&gt;sysadmin&lt;/em&gt; debe tener presente y conocer al dedillo. En Linux, tengo que reconocer que soy muy aficionado a esto de montarme scripts para casi cualquier tarea que pueda ser (o no), repetitiva. Es el caso de escribir un post para un blog en Jekyll.&lt;/p&gt;
+					<description>&lt;p&gt;Ayer día 7 de Mayo de 2016, tuvo lugar en La Térmica (Málaga) el OpenSouthCode, un evento dirigido a todo aquel aficionado al software libre, ya sea en grado de aficionado como de desarrollador. Como es de esperar, yo no perdí la ocasión de asistir al evento junto con mi compañero Cristobal a modo de expedicionarios de HackLab Almería.&lt;/p&gt;
+
 </description>
 				
-				<pubDate>Sat, 11 Jul 2015 00:00:00 +0200</pubDate>
-				<link>http://juanjosalvador.es//jekyll/2015/07/11/Plantilla-de-posts-para-Jekyll/</link>
-				<guid isPermaLink="true">http://juanjosalvador.es//jekyll/2015/07/11/Plantilla-de-posts-para-Jekyll/</guid>
+				<pubDate>Sun, 08 May 2016 00:00:00 +0200</pubDate>
+				<link>http://localhost:4000/2016/05/08/Experiencia-OpenSouthCode/</link>
+				<guid isPermaLink="true">http://localhost:4000/2016/05/08/Experiencia-OpenSouthCode/</guid>
 			</item>
 		
 	</channel>
