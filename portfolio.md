@@ -5,7 +5,7 @@ permalink: /portfolio/
 ---
 
 ### Proyectos
-Algunos proyectos en los que he trabajado.
+Algunos proyectos en los que he trabajado. Puedes ver más en mi [GitHub](https://github.com/JuanjoSalvador/).
 
   * [**Comicbook Packager**](http://juanjosalvador.es/2015/11/11/Comicbook-Packager-mi-autoempaquetador-de-comics/). Herramienta en CLI para empaquetar comics digitales. 
   * [**SakuraChan**](https://github.com/JuanjoSalvador/SakuraChan). Bot para Telegram, escrito en node.js que permite traducir de japonés a español y viceversa usando el API de Google Translate.
