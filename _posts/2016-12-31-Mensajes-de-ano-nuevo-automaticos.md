@@ -13,7 +13,7 @@ En primer lugar, necesitas instalar Telegram-Cli (Linux). Mi recomendación es i
 ten presente [esta issue](https://github.com/vysheng/tg/issues/1256), ya que existe algún problema con OpenSSL a la hora de hacer el `make`.
 A continuación es necesario que nos logueemos (introduciendo el número de teléfono y el código del país).
 
-En segundo lugar, necesitas este [script](http://juanjosalvador.es/random/happyNewYear.sh) y un `usernames.txt` donde incluiremos los ID de toda la gente a la que queremos que le llegue el mensaje.
+En segundo lugar, necesitas este [script](http://juanjosalvador.es/random/happyNewYear.sh) y un `usernames.txt` donde incluiremos los ID de toda la gente a la que queremos que le llegue el mensaje (uno por línea).
 
 El script original está aquí. Necesitarás actualizar la variable `PATH` con la ruta donde tienes tu Telegram-CLI instalado.
 
@@ -37,6 +37,7 @@ FILE="usernames.txt"
 
 while IFS='' read -r USERNAME; do
 	$PATH/bin/telegram-cli -W -e "msg $USERNAME $MESSAGE" > /dev/null && echo "Message sent to $USERNAME"
+	sleep 10
 done < "$FILE"
 ```
 
@@ -57,3 +58,7 @@ si no le indicamos explícitamente como debe ejecutarlo.
 Llegados a este punto, podemos salir y despreocuparnos, que nuestro ordenador se encargará de enviar el mensaje llegada la hora, a la lista de contactos especificados.
 
 Feliz Año Nuevo, y que disfrutéis de las vacaciones ;-)
+
+#### ACTUALIZACIÓN
+
+Me han notificado que es posible que Telegram nos ponga una limitación de mensajes por minuto que podemos enviar, lo cual podría dar pie a un baneo de una hora. Para evitar eso, he añadido un `sleep 10` entre mensaje y mensaje. Sin embargo, es recomendable que la lista de usuarios no tenga más de 20 contactos para evitarnos malfuncionamiento.
