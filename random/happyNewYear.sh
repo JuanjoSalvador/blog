@@ -17,4 +17,5 @@ FILE="usernames.txt"
 
 while IFS='' read -r USERNAME; do
 	$PATH/bin/telegram-cli -W -e "msg $USERNAME $MESSAGE" > /dev/null && echo "Message sent to $USERNAME"
+	sleep 10
 done < "$FILE"
