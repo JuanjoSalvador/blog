@@ -55,3 +55,5 @@ Y le enviamos un EOF con Ctrl-D. Añadir `bash` delante es importante, dado que 
 si no le indicamos explícitamente como debe ejecutarlo.
 
 Llegados a este punto, podemos salir y despreocuparnos, que nuestro ordenador se encargará de enviar el mensaje llegada la hora, a la lista de contactos especificados.
+
+Feliz Año Nuevo, y que disfrutéis de las vacaciones ;-)
