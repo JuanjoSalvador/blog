@@ -4,10 +4,10 @@ title: Curriculum
 permalink: /curriculum/
 ---
 
-Desarrollador web especializado en tecnologías front-end y desarrollo de aplicaciones híbridas con AngularJS. He desarrollado diversos proyectos licenciados bajo GPL/MIT, disponibles en [GitHub](http://github.com/JuanjoSalvador)
+Desarrollador web especializado en desarrollo frontend y de aplicaciones híbridas con AngularJS. He desarrollado diversos proyectos licenciados bajo GPL/MIT, disponibles en [GitHub](http://github.com/JuanjoSalvador)
 
 **Lenguajes** | C#, Java, Python, Ruby, SQL (MySQL y MariaDB) |
-**Desarrollo web** | HTML5, CSS3, JavaScript (jQuery, AngularJS), PHP (CodeIgniter) |
+**Desarrollo web** | HTML5, CSS3, JavaScript (jQuery, AngularJS), PHP (CodeIgniter), Django, Django Rest Framework |
 **Apps móviles** | Cordova, Ionic, React Native |
 **Herramientas** | Git, SVN, Maven |
 **CMS** | Wordpress, Prestashop, Joomla |
@@ -25,6 +25,10 @@ Formación en Centros de Trabajo durante el CFGS. Durante mi estancia realicé u
 **Desarrollador web en Seyte SL**<br>
 *Junio-Noviembre 2016*<br>
 Principalmente desarrollo web y soporte técnico. Trabajé con Wordpress y Craft CMS como gestores de contenidos. También realicé tareas de desarrollo de aplicaciones híbridas con Ionic Framework (diseño y desarrollo).
+<hr>
+**Desarrollador web freelancer**<br>
+*Diciembre 2016 - Actualmente*<br>
+Desarrollo web front y backend a medida. Desarrollo de apps híbridas (iOS/Android) haciendo uso de tecnologías como Ionic Framework.
 
 ### Educación
 **CFGM Sistemas Microinformáticos y Redes** 
