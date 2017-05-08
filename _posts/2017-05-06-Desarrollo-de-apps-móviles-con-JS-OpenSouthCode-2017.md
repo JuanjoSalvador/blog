@@ -3,6 +3,9 @@ layout: post # Sustituye el layout si lo usas uno diferente
 title: Desarrollo de apps móviles con JS [OpenSouthCode 2017] # Nombre generado automáticamente
 ---
 
+![](https://pbs.twimg.com/media/C_ITh6zXYAIjQiE.jpg)
+Foto de [Elio Rojano](http://twitter.com/hellc2)
+
 _¿Buscas las diapositivas de mi presentación?_ [_Están disponibles en Slides.com_](http://slides.com/juanjosalvador/desarrollo-de-apps-con-javascript)
 
 ### ¿Por qué JavaScript?
