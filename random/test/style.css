@@ -1,0 +1,15 @@
+#content, header, footer {
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+}
+
+.link {
+    color: black;
+    text-decoration: underline dotted;
+}
+
+footer {
+    color: grey;
+    font-size: 10pt;
+}
