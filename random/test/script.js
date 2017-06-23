@@ -15,3 +15,7 @@ function contar() {
         alert("Resultado: " + cont + "/" + checkboxes.length + ". Eso supone un " + porcen + "% de posibilidades de que seas ELLA.");
     }
 }
+
+function hi() {
+    window.open('https://twitter.com/intent/tweet?text=¡Hola @HighLordIron!','Saludar','width=600,height=350');
+}
