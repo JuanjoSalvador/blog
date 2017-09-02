@@ -1,0 +1,63 @@
+<html>
+
+    <head>
+        <title>Palette | Random color generator</title>
+        <style>
+            body {
+                overflow: hidden;
+            }
+            #color_id {
+                font-family: sans-serif;
+                color: rgba(255, 255, 255, 0.8);
+                width: 100%;
+                justify-content: center;
+                display: flex;
+                align-items: center;
+                bottom: 0;
+                position: absolute;
+            }
+
+            h1, h2 {
+                font-family: sans-serif;
+                color: rgba(255, 255, 255, 0.9);
+                text-align: center;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Palette</h1>
+        <h2>Random color generator</h2>
+        <div id="color_id"></div>
+        <script>
+            /**
+             * Palette.
+             * Random color generator.
+             */
+
+            var color = null;
+            var canPress = true;
+
+            function getColor() {
+                if (canPress) {
+                    color = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+                    document.getElementById('color_id').innerHTML = "<h2>"+color+"</h2>";
+                    document.body.style.backgroundColor = color;
+                    canPress = false;
+                    setTimeout(reload, 500);
+                }
+            }
+
+            function reload() {
+                return canPress = true;
+            }
+
+            window.onload = getColor();
+
+            window.onkeypress = function(e) {
+                getColor();
+            }
+        </script>
+    </body>
+
+</html>
