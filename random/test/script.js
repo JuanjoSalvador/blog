@@ -3,6 +3,7 @@ var porcen = null;
 function contar() {    
     var checkboxes = document.getElementById("test").checkbox; //Array que contiene los checkbox
     var cont = 0; //Variable que lleva la cuenta de los checkbox pulsados
+    
     for (var x=0; x < checkboxes.length; x++) {
         if (checkboxes[x].checked) {
             cont = cont + 1;
@@ -12,7 +13,6 @@ function contar() {
     porcen = Math.round((cont/checkboxes.length)*100);
     var box = document.getElementById('modal').children[0].children[1];
 
-    console.log(box);
     
     if (cont == checkboxes.length) {
         box.innerHTML = "ZOMG. Eres ELLA.";
@@ -24,7 +24,7 @@ function contar() {
 }
 
 function hi() {
-    window.open('https://twitter.com/intent/tweet?text=¡Hola @HighLordIron!','Saludar','width=600,height=350');
+    window.open(encodeURI('https://twitter.com/intent/tweet?text=¡Hola @HighLordIron!'),'Saludar','width=600,height=350');
 }
 
 function closeModal() {
