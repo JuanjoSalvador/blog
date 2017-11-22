@@ -22,7 +22,7 @@ Mi flujo de trabajo ha sido el siguiente:
 
 ### El código
 
-Vayamos por partes...
+La primera y única pega de esto, es que **solamente funciona con Python 2.7**, dado que las funciones para desencriptar los enlaces, proceden de [AdflyUrlgrabber](https://github.com/MGF15/AdflyUrlGrabber), el cual por algún motivo no ha sido portado a Python 3.x todavía.
 
 ```python
 # -*- coding: utf-8 -*-
