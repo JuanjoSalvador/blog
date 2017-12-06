@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Plantilla de posts para Jekyll &middot; El blog de Juanjo Salvador
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">El blog de Juanjo Salvador</h2>
+        </a>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Escrito por</span>
+    
+        Juanjo Salvador
+    
+
+    
+      <br>
+      <span>&nbsp;</span><time datetime="2015-07-11 00:00:00 +0200">July 11, 2015</time>
+    
+  </div>
+
+  <h1 class="post-title">Plantilla de posts para Jekyll</h1>
+  <div class="post-line"></div>
+
+  <p>La automatización de tareas es un aspecto básico que todo <em>sysadmin</em> debe tener presente y conocer al dedillo. En Linux, tengo que reconocer que soy muy aficionado a esto de montarme scripts para casi cualquier tarea que pueda ser (o no), repetitiva. Es el caso de escribir un post para un blog en Jekyll.</p>
+
+<p>Jekyll utiliza MarkDown para dar formato a los posts, además de lo que llamamos <em>layout</em> (o plantilla) con la posición de cada elemento dentro del post. Generalmente le pasamos como parámetros el layout y el título del post, pudiendo o no añadir nuevos elementos mediante plugins o simplemente, editando nuestro site. Estos parámetros vienen dados en la cabecera de cada archivo <code class="highlighter-rouge">.md</code> que escribimos, con el siguiente formato:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>---
+layout: post # Sustituye el layout si lo usas uno diferente
+title: Título del post # Nombre generado automáticamente
+categories: [jekyll] # Añade tus categorías o borra esta línea
+---
+</code></pre>
+</div>
+
+<p>Además de esta cabecera, cada archivo además debe ser llamado de una forma específica, siendo esta, la fecha del post, seguida del título de este, separado todo por guiones. Esta tarea puede ser muy pesada, sobretodo si tenemos que migrar un blog entero desde otro site. ¿Solución? Un script que le pases el nombre del post, y te genere automáticamente el archivo .md con la cabecera y el nombre de archivo con el formato correcto y prescindido por Jekyll.</p>
+
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/ruby/2015/07/12/Parsear-un-JSON-con-Ruby/" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2015/07/10/Estrenando-blog-en-GitHub-Pages-+-Jekyll/" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Arriba</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2017-12-06 22:52:42 +0100">2017</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+  </body>
+</html>

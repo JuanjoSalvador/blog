@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Gestión de proyectos mediante GitHub &middot; El blog de Juanjo Salvador
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">El blog de Juanjo Salvador</h2>
+        </a>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Escrito por</span>
+    
+        Juanjo Salvador
+    
+
+    
+      <br>
+      <span>&nbsp;</span><time datetime="2016-05-13 00:00:00 +0200">May 13, 2016</time>
+    
+  </div>
+
+  <h1 class="post-title">Gestión de proyectos mediante GitHub</h1>
+  <div class="post-line"></div>
+
+  <p>GitHub además de ser una excelente plataforma de Git para compartir y mantener código, también puede ser una herramienta excelente para gestionar proyectos. Para explicar esto, usaré como ejemplo, es el desarrollo de Comicbook Packager (versión 3, en camino), que se está organizando a través de las issues de un repositorio.</p>
+
+<h3 id="organiza-el-código-en-ramas">Organiza el código en ramas</h3>
+
+<p>Esta nueva versión se está reescribiendo completamente en C#, de forma que logramos una capacidad multiplataforma casi nativa (nativa en Windows, a través de Mono en Linux), sin tener que escribir el mismo código para dos plataformas.</p>
+
+<p>Para mantener el código, utilizamos 4 ramas (branches) dentro del repositorio:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">win-dev</code></li>
+  <li><code class="highlighter-rouge">win-master</code></li>
+  <li><code class="highlighter-rouge">linux-dev</code></li>
+  <li><code class="highlighter-rouge">linux-master</code></li>
+</ul>
+
+<p>De modo que disponemos de una rama (<code class="highlighter-rouge">*-dev</code>) que podemos usar para mantener el código inestable y en desarrollo, mientras que en la rama master (<code class="highlighter-rouge">*-master</code>) encontramos el código estable de cada versión.</p>
+
+<p>Pero espera, ¿y qué rama pasa a ser la rama por defecto? Pues sigue siendo la rama master del repositorio, por supuesto. En ella encontramos la guía de usuario, imágenes e información relevante, como licencias y demás.</p>
+
+<h3 id="asigna-un-responsable-por-cada-rama">Asigna un responsable por cada rama</h3>
+
+<p>Cada pareja de ramas la gestiona un miembro del proyecto: <a href="https://github.com/jotaperamez">@jotaperamez</a> administra las de Windows, mientras que yo me ocupo de mantener al día el desarrollo general y de la rama Linux. De este modo, repartimos la carga de trabajo y dejamos cierta libertad para que cada parte del equipo sea independiente, aunque exista un <em>administrador general</em> que sea quien gestione todo.</p>
+
+<p>El responsable de cada rama debe estar atento y mantener la rama <code class="highlighter-rouge">*-master</code> de su sección siempre al día, ya que las releases saldrán de ahí.</p>
+
+<h3 id="establece-una-vía-de-comunicación-con-el-equipo">Establece una vía de comunicación con el equipo</h3>
+
+<p>¿Y lo que dije antes de las issues? Esta es la parte divertida. De los compañeros de la Oficina de Software Libre UGR, aprendí que podemos usar las issues de GitHub a modo de foro para coordinar el desarrollo de un proyecto. Usando las etiquetas como si de categorías se tratasen, vamos añadiendo <em>to do</em> y anotaciones sobre el desarrollo. Mi sistema utiliza básicamente tres etiquetas:</p>
+
+<ul>
+  <li><strong>Windows</strong>. Para cualquier dato relacionado con el desarrollo de la rama Windows. Ya sean funciones que implementar, bugs, etc.</li>
+  <li><strong>Linux</strong>. Para cualquier cosa relacionada con el desarrollo de la rama Linux. Ya sean funciones que implementar, bugs, etc.</li>
+  <li><strong>General</strong>. Cualquier tema relacionado con el desarrollo general del proyecto, va aquí.</li>
+</ul>
+
+<p>Cada tarea pendiente se asigna a un responsable, en este caso al responsable de cada rama, de modo que en un momento dado, sabemos que tareas están libres y/o pendientes de cumplirse.</p>
+
+<h3 id="hazlo-escalable">Hazlo escalable</h3>
+
+<p>¿Necesitas más? El modelo descrito es útil y válido cuando el equipo de desarrollo es relativamente pequeño. Sin emnbargo, existen herramientas opensource que pueden ayudarte muy bien a gestionar proyectos de mayor envergadura o que requieran una infraestructura más extensa. Prueba <a href="https://taiga.io/">Taiga.io</a> para organizar y asignar tareas, y <a href="http://www.mattermost.org/">Mattermost</a> (versión opensource de Slack) para establecer una línea de comunicación con tu equipo.</p>
+
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2016/05/19/Ionic-2-Promise-is-not-defined/" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2016/05/08/Experiencia-OpenSouthCode/" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Arriba</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2017-12-06 22:52:42 +0100">2017</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+  </body>
+</html>

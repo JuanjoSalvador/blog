@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Comicbook Packager, mi autoempaquetador de comics &middot; El blog de Juanjo Salvador
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">El blog de Juanjo Salvador</h2>
+        </a>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Escrito por</span>
+    
+        Juanjo Salvador
+    
+
+    
+      <br>
+      <span>&nbsp;</span><time datetime="2015-11-11 00:00:00 +0100">November 11, 2015</time>
+    
+  </div>
+
+  <h1 class="post-title">Comicbook Packager, mi autoempaquetador de comics</h1>
+  <div class="post-line"></div>
+
+  <p>Confieso que soy aficionado a leer comics en formato digital. Y algunos de los comics que sigo, no se encuentran traducidos a mi idioma u otro idioma que entienda, por lo que tiendo a recurrir a fansites de traducciones no oficiales. Actualmente hay numerosos sitios web que ofrecen de forma gratuita o con una suscripción (<em>como Submanga o Crunchyroll</em>) la lectura de estos comics online.</p>
+
+<p>Leer comics online no es una idea que me atraiga demasiado, ya que me obliga a estar conectado a Internet vía WiFi o con una conexión de datos, si estoy fuera de casa, siendo esta última un problema algo más recurrente dado el abuso de descarga de imágenes de gran tamaño. Mi solución ante este problema (en Android) fue usar <a href="https://play.google.com/store/apps/details?id=com.sketchpunk.ocomicreader&amp;hl=en">Open Comic Reader</a> y descargar yo mismo los comics traducidos.</p>
+
+<p>Estos comics generalmente vienen en <em>páginas sueltas</em>, organizadas por capítulos/tomos, normalmente en directorios separados. Algo molesto para mi, que soy fanático del formato CBZ (<em>ComicBook ZIP</em>). Por eso, para que el empaquetado de comics sea más fácil y cómodo, me hice un script. Creé <strong>Comicbook Packager</strong>.</p>
+
+<p><strong>Comicbook Packager</strong> te permite, mediante la línea de comandos, generar un archivo CBZ a partir del directorio que le indiques, en cuestión de segundos. Está programado en Shell y depende del paquete <code class="highlighter-rouge">zip</code>. Se encuentra liberado en GitHub bajo licencia MIT.</p>
+
+<p>Su uso es muy sencillo:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>cbp -d ~/Comics/My<span class="se">\ </span>Comic/
+</code></pre>
+</div>
+
+<p>Devolverá un fichero llamado <code class="highlighter-rouge">My_Comic.cbz</code> que podemos abrir con cualquier lector de comics.</p>
+
+<p>Así mismo, si no le pasamos ningún argumento, empaquetará de forma recursiva todos los directorios que encuentre en la ubicación actual.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ls ~/Comics/
+Capitulo 1
+Capitulo 2
+Capitulo 3
+
+<span class="gp">$ </span>cbp -r ~/Comics/
+</code></pre>
+</div>
+
+<p>Devolverá 3 ficheros <code class="highlighter-rouge">.cbz</code> con nombres <code class="highlighter-rouge">Capitulo_1.cbz</code>, <code class="highlighter-rouge">Capitulo_2.cbz</code> y <code class="highlighter-rouge">Capitulo_3.cbz</code>.</p>
+
+<p><strong>Comicbook Packager</strong> se encuentra actualmente en desarrollo y su instalador solo está disponible para Debian/Ubuntu y derivadas, necesitando su instalación manual en otras distribuciones.</p>
+
+<p>En el <a href="https://github.com/JuanjoSalvador/Comicbook-Packager">repositorio de Comicbook Packager en GitHub</a> encontrarás más información sobre el funcionamiento y la instalación de este.</p>
+
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2016/01/25/A%C3%B1ade-un-feed-Atom-RSS-a-Jekyll/" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2015/10/22/Habilitar-el-m%C3%B3dulo-userdir-de-Apache2-en-Debian/" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Arriba</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2017-12-06 22:52:42 +0100">2017</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+  </body>
+</html>

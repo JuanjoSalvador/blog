@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Desarrollo de aplicaciones móviles con JavaScript &middot; El blog de Juanjo Salvador
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">El blog de Juanjo Salvador</h2>
+        </a>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Escrito por</span>
+    
+        Juanjo Salvador
+    
+
+    
+      <br>
+      <span>&nbsp;</span><time datetime="2016-11-20 00:00:00 +0100">November 20, 2016</time>
+    
+  </div>
+
+  <h1 class="post-title">Desarrollo de aplicaciones móviles con JavaScript</h1>
+  <div class="post-line"></div>
+
+  <p>La tecnología siempre avanza en torno a facilitarnos según qué tareas. Los primeros ordenadores aparecieron bajo la premisa de realizar cálculos complejos, y en base a esto, hemos ido creando software que facilita cada vez más tareas pesadas, como todo aquello que gira en torno a la burocracia, por ejemplo.</p>
+
+<p>En el caso del desarrollo de aplicaciones para dispositivos móviles no es diferente, y aquí es donde aparecen las <strong>aplicaciones híbridas</strong>, aquellas que complementan las tecnologías web con el poder del código nativo.</p>
+
+<h3 id="tipos-de-aplicaciones">Tipos de aplicaciones</h3>
+
+<p>Podemos dividir el grueso de aplicaciones del mercado en tres grandes grupos:</p>
+
+<ul>
+  <li>
+    <p><strong>Apps Nativas</strong>. Ofrecen un acceso completo al dispositivo y un rendimiento que el resto pueden no tener, pero requieren que se diseñe y construya una aplicación independiente para cada sistema operativo (en su lenguaje nativo), lo cual eleva los costes.</p>
+  </li>
+  <li>
+    <p><strong>Web Apps</strong>. Su desarrollo es mucho más rápido que las aplicaciones nativas, dado que todo el código es HTML, CSS y JS. Pueden correr en cualquier dispositivo que tenga un navegador web, pero eso limita el acceso al dispositivo en si.</p>
+  </li>
+  <li>
+    <p><strong>Apps híbridas</strong>. Ofrecen la solución a medio camino entre las nativas y las web: desarrollo rápido, rendimiento asequible y acceso completo al dispositivo, mediante un contenedor nativo que hace las veces de intermediario entre el usuario y la aplicación, y un código web que ofrece la funcionalidad y la interfaz.</p>
+  </li>
+</ul>
+
+<h3 id="desarrollo-híbrido-por-dónde-empezamos">Desarrollo híbrido: ¿por dónde empezamos?</h3>
+
+<p>Existen numerosos frameworks y <em>app builders</em> que nos facilitan el proceso de desarrollo, pero yo voy a hablar de tres: <strong>NativeScript</strong>, <strong>Ionic</strong> y <strong>React Native</strong>. Cada uno con sus pros y sus contras.</p>
+
+<ul>
+  <li>
+    <p><strong>Ionic</strong>. Se trata de un framework de Apache Cordova, la plataforma que heredó el potencial de PhoneGap. Su fuerte está en que otorga el poder de AngularJS a Cordova, además de un conjunto muy completo de herramientas y preconfiguraciones. Es un framework completamente híbrido, dado que se apoya en el contenedor WebView.</p>
+  </li>
+  <li>
+    <p><strong>NativeScript</strong>. Permite desarrollar aplicaciones completamente nativas haciendo uso de tecnologías web: Angular, TypeScript o JavaScript. Aunque su filosofía no se ajusta completamente al modelo híbrido, ya que actúa más bien como Xamarin.</p>
+  </li>
+  <li>
+    <p><strong>React Native</strong>. Plantea aplicaciones nativas, pero escritas en React, el framework JavaScript de Facebook. De forma muy similar al mencionado anteriormente, tampoco sigue exactamente la filosofía de aplicaciones híbridas como tal, sin embargo, si es cierto que ofrece un rendimiento y un tiempo de desarrollo bastante interesantes.</p>
+  </li>
+</ul>
+
+<p>Claro que, con todos estos frameworks podemos desarrollar, pero si queremos además compilar nosotros mismos nuestras aplicaciones, necesitaremos tener instalado y configurado el correspondiente SDK (Android, Windows, iOS), y en el caso de Apple, también necesitaríamos un equipo Mac.</p>
+
+<h3 id="ionic">Ionic</h3>
+
+<ul>
+  <li>Se basa en AngularJS, HTML5 y CSS3</li>
+  <li>Existe una librería de plugins para acceder al dispositivo: ngCordova.</li>
+  <li>Proporciona estilos que emulan el nativo, transiciones, elementos, etc.</li>
+  <li>Extiende las funciones que incluía Apache Cordova.</li>
+  <li>Herramientas en la nube (Ionic Cloud, Ionic View)</li>
+</ul>
+
+<p>Sitio web: <a href="https://ionic.io">https://ionic.io</a></p>
+
+<h3 id="nativescript">NativeScript</h3>
+
+<ul>
+  <li>Soporta JavaScript, TypeScript y Angular 2</li>
+  <li>No requiere tantos conocimientos de HTML y CSS como Ionic</li>
+  <li>UI nativas, en lugar de WebView</li>
+  <li>Extensible mediante plugins</li>
+  <li>Compila a nativo (Android, iOS)</li>
+</ul>
+
+<p>Sitio web: <a href="https://www.nativescript.org/">https://www.nativescript.org/</a></p>
+
+<h3 id="react-native">React Native</h3>
+
+<ul>
+  <li>Soporta React (TypeScript)</li>
+  <li>Compila a nativo (Android, iOS)</li>
+  <li>LiveReload: no necesitas volver a compilar para visualizar los cambios.</li>
+  <li>React Native UWP permite usar RN para crear apps universales de Windows.</li>
+  <li>Orientado a componentes</li>
+</ul>
+
+<p>Sitio web: <a href="https://facebook.github.io/react-native/">https://facebook.github.io/react-native/</a></p>
+
+<h4 id="extra">¡Extra!</h4>
+
+<p>El trabajo con estilos en React Native puede ser pesado. De igual forma que Ionic posee su propio conjunto de estilos predefinidos que emulan los estilos nativos de iOS y Android, en React Native tenemos librerías de componentes similares, como es el caso de NativeBase.</p>
+
+<p>Sitio web: <a href="http://nativebase.io/">http://nativebase.io/</a></p>
+
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2016/11/23/Guerrilla-Open-Access-Manifesto-el-legado-de-Aaron-Swartz/" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2016/11/11/Como-instalar-Jekyll-en-Windows/" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Arriba</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2017-12-06 22:52:42 +0100">2017</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+  </body>
+</html>

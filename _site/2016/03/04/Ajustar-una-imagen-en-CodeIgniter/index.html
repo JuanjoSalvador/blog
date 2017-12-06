@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Ajustar una imagen en CodeIgniter &middot; El blog de Juanjo Salvador
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">El blog de Juanjo Salvador</h2>
+        </a>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Escrito por</span>
+    
+        Juanjo Salvador
+    
+
+    
+      <br>
+      <span>&nbsp;</span><time datetime="2016-03-04 00:00:00 +0100">March 04, 2016</time>
+    
+  </div>
+
+  <h1 class="post-title">Ajustar una imagen en CodeIgniter</h1>
+  <div class="post-line"></div>
+
+  <p>Para una práctica de CodeIgniter, que consistía en crear una aplicación ficticia para administrar una base de datos, necesité añadir imágenes de perfil para los usuarios de esta. Las imágenes de perfil tenían que visualizarse en una sección cuadrada de 80x80px, un poco pequeña, y que podía deformar las imágenes si no eran del tamaño adecuado al redimensionarlas en el cliente. Además de que, si estas pesan demasiado, estaríamos ante una carga excedente para la web.</p>
+
+<h3 id="la-solución">La solución</h3>
+<p>Ajustar las imágenes a un cuadrado de 80x80 píxeles desde el servidor. Para ello, primero necesitamos recortar una sección cuadrada del centro de la imagen, y del mayor tamaño posible, para posteriormente, ajustar esa nueva imagen cuadrada al tamaño deseado.</p>
+
+<p>En mi caso, usando como medida estándar la medida más pequeña de la imagen. Es decir, si tengo una foto de 400x150px, el recorte se hará de una sección central de 150x150.</p>
+
+<h3 id="el-código">El código</h3>
+
+<p>Para trabajar con estas funciones de CodeIgniter, primero tenemos que añadir la librería <code class="highlighter-rouge">image_lib</code>, ya sea desde <code class="highlighter-rouge">config/autoload.php</code>, o desde la función <code class="highlighter-rouge">__construct()</code> de la clase con</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$this-&gt;load-&gt;library('image_lib');
+</code></pre>
+</div>
+
+<p>Con la función <code class="highlighter-rouge">crop()</code> recortamos una sección cuadrada del centro de la imagen. Esto varía según las dimensiones de la imagen.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>public function crop($img, $img_w, $img_h) {
+		$config['image_library']  = 'gd2';
+		$config['source_image']   = $img;
+		$config['maintain_ratio'] = FALSE;
+
+		if ($img_w &gt; $img_h) {
+			$config['width']      = $img_h;
+			$config['height']     = $img_h;
+			$config['x_axis']     = $img_w / 4;
+		}
+
+		if ($img_h &gt; $img_w) {
+			$config['width']      = $img_w;
+			$config['height']     = $img_w;
+			$config['y_axis']     = $img_h / 4;
+		}
+
+		if ($img_w == $img_h) {
+			$config['width']      = $img_w;
+			$config['height']     = $img_h;
+		}
+
+		$this-&gt;image_lib-&gt;initialize($config);
+
+		if (!$this-&gt;image_lib-&gt;crop()) {
+			echo $this-&gt;image_lib-&gt;display_errors();
+		} else {
+			$this-&gt;image_lib-&gt;clear();
+		}
+	}
+</code></pre>
+</div>
+
+<p>Y con la función <code class="highlighter-rouge">resize()</code>, redimensionamos esa nueva imagen que hemos creado (y sobreescrito en nuestro directorio) al tamaño deseado, en mi caso, 80x80px.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>	public function resize($img) {
+		$new_size['image_library']  = 'gd2';
+		$new_size['source_image']   = $img;
+		$new_size['maintain_ratio'] = TRUE;
+		$new_size['width']          = 80;
+		$new_size['height']         = 80;
+
+		$this-&gt;image_lib-&gt;initialize($new_size);
+		if (!$this-&gt;image_lib-&gt;resize()) {
+			echo $this-&gt;image_lib-&gt;display_errors();
+		}
+	}
+</code></pre>
+</div>
+
+<h3 id="conclusion">Conclusion</h3>
+<p>A partir de una imagen de 498x670px, en formato JPG y de 315 kB de peso, conseguí crear una imagen de 80x80px, JPG y de ¡tan solo 12 kB! Con esto conseguí reducir la carga del cliente, acelerar así el tiempo de rederizado de mi web, y aprender a manejar mejor la librería de procesado de imágenes que incorpora CodeIgniter.</p>
+
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2016/05/02/Unity-3D-dia-1/" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2016/02/29/Viaje-a-Granada/" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Arriba</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2017-12-06 22:52:42 +0100">2017</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+  </body>
+</html>

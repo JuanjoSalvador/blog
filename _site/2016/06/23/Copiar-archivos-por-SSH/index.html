@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Copiar archivos por SSH &middot; El blog de Juanjo Salvador
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">El blog de Juanjo Salvador</h2>
+        </a>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Escrito por</span>
+    
+        Juanjo Salvador
+    
+
+    
+      <br>
+      <span>&nbsp;</span><time datetime="2016-06-23 00:00:00 +0200">June 23, 2016</time>
+    
+  </div>
+
+  <h1 class="post-title">Copiar archivos por SSH</h1>
+  <div class="post-line"></div>
+
+  <p>Cuando Ismael Olea me dijo que el FTP estaba anticuado, me sentí bastante desactualizado en cuanto a administración de servidores. Lo primero que me vino a la mente, fue si quizás se estaría refiriendo a que deberíamos usar FTPS (el protocolo FTP sobre SSL), ya que, en mis años de estudiante ya se hablaba de que iba a ser el nuevo estándar. Sin embargo, me hablaba de SSH.</p>
+
+<p>Es una característica que me resultaba curiosa y nueva. ¿Tranmisión de ficheros directamente por SSH? Pues si, se puede. Vaya que si. Y encima, de forma bidireccional.</p>
+
+<p>Para ello, haríamos uso del comando SCP (Secure Copy Protocol).</p>
+
+<h4 id="tranmisión-de-local-a-remoto">Tranmisión de local a remoto</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>scp /ruta/de/origen user@servidor:/ruta/de/destino
+</code></pre>
+</div>
+
+<h4 id="tranmisión-de-remoto-a-local">Tranmisión de remoto a local</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>scp user@servidor:/ruta/de/origen /ruta/de/destino
+</code></pre>
+</div>
+
+<p>Estas cosas nunca dejan de sorprenderme…</p>
+
+<p>¡Pero aún hay más!</p>
+
+<h4 id="hazlo-recursivo">Hazlo recursivo</h4>
+
+<p>Ideal para subidas de grandes volúmenes de archivos.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>scp -r /ruta/de/origen user@servidor:/ruta/de/destino
+</code></pre>
+</div>
+
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2016/08/26/Sobre-la-falta-de-privacidad-de-whatsapp/" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2016/05/19/Ionic-2-Promise-is-not-defined/" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Arriba</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2017-12-06 22:52:42 +0100">2017</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+  </body>
+</html>

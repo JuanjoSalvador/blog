@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Parsear un JSON con Ruby &middot; El blog de Juanjo Salvador
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">El blog de Juanjo Salvador</h2>
+        </a>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Escrito por</span>
+    
+        Juanjo Salvador
+    
+
+    
+      <br>
+      <span>&nbsp;</span><time datetime="2015-07-12 00:00:00 +0200">July 12, 2015</time>
+    
+  </div>
+
+  <h1 class="post-title">Parsear un JSON con Ruby</h1>
+  <div class="post-line"></div>
+
+  <p>Podemos definir JSON como un formato ligero de intercambio de datos. Es un subconjunto de la notación literal de objetos de JavaScript que no requiere el uso de XML, lo cual facilita mucho la legibilidad de la información contenida.</p>
+
+<p>En la actualidad está muy extendido, lo cual hace que cualquier desarrollador web requiera de su uso en más de una ocasión. Al proceso de extracción de datos de un JSON (<em>o XML, o cualquier otro formato</em>) se le llama <em>parsear</em>.</p>
+
+<p>Muchos lenguajes incluyen librerías para hacer esto, como es el caso de Ruby. Hace unos días, trabajando en un script el cual necesita tomar datos de terceros y que descaga en un archivo JSON, tuve la impediosa necesidad de parsear dicho archivo, pero, era la primera vez que necesitaba hacer algo así en Ruby, así que, me lancé a la aventura.</p>
+
+<p>La solución, como casi siempre que tengo un problema similar, me apareció en <a href="http://stackoverflow.com/questions/5410682/parsing-a-json-string-in-ruby">StackOverflow</a>.</p>
+
+<p>Primero instalamos la gema json</p>
+
+<p><code class="highlighter-rouge">gem install json</code></p>
+
+<p>La añadimos a nuestro proyecto…</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'rubygems'</span>
+<span class="nb">require</span> <span class="s1">'json'</span>
+</code></pre>
+</div>
+
+<p>Y por último, para usarlo, solo tenemos que llamar al método <code class="highlighter-rouge">JSON.parse()</code>, suponiendo que aquí nuestro JSON está almacenado en una variable llamada <code class="highlighter-rouge">string</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">parsed_file</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Esto nos devolverá el JSON dividido en claves y valores, por lo que, para acceder al valor de una clave en concreto, a través de la variable donde lo hemos guardado…</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">string</span> <span class="o">=</span> <span class="s1">'{"desc":{"someKey":"someValue","anotherKey":"value"}}'</span>
+<span class="n">parsed_file</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+<span class="n">parsed_file</span><span class="p">[</span><span class="s2">"anotherKey"</span><span class="p">]</span> <span class="c1"># Nos devuelve al valor de 'anotherKey'</span>
+</code></pre>
+</div>
+
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/enlaces/2015/09/03/3-razones-para-aprender-m%C3%BAltiples-lenguajes-de-programacion/" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/jekyll/2015/07/11/Plantilla-de-posts-para-Jekyll/" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Arriba</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2017-12-06 22:52:42 +0100">2017</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+  </body>
+</html>

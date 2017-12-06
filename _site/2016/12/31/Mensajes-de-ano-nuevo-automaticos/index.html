@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Mensajes de Año Nuevo automáticos &middot; El blog de Juanjo Salvador
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">El blog de Juanjo Salvador</h2>
+        </a>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Escrito por</span>
+    
+        Juanjo Salvador
+    
+
+    
+      <br>
+      <span>&nbsp;</span><time datetime="2016-12-31 00:00:00 +0100">December 31, 2016</time>
+    
+  </div>
+
+  <h1 class="post-title">Mensajes de Año Nuevo automáticos</h1>
+  <div class="post-line"></div>
+
+  <p>En este día, normalmente la banda de 3G/4G tiende a estar colapsada por la cantidad de mensajes de “Feliz año” que envía la gente a la misma hora.
+Esto, junto a tener que escribir el mismo mensaje para tus compañeros de trabajo, tu jefe, tus familiares, tu abuela (que es muy moderna y tiene smartphone)
+hace que el año nuevo sea cada vez más desesperante… ¿Y si <strong>automatizamos esta tarea</strong> y que sea otro quien se ocupe de enviarlo en nuestro lugar?</p>
+
+<p>Esto es posible gracias a la magia de <strong><a href="https://github.com/vysheng/tg">Telegram-CLI</a> y Bash</strong>.</p>
+
+<p>En primer lugar, necesitas instalar Telegram-Cli (Linux). Mi recomendación es instalarlo siempre desde el código fuente. Y si usas Debian,
+ten presente <a href="https://github.com/vysheng/tg/issues/1256">esta issue</a>, ya que existe algún problema con OpenSSL a la hora de hacer el <code class="highlighter-rouge">make</code>.
+A continuación es necesario que nos logueemos (introduciendo el número de teléfono y el código del país).</p>
+
+<p>En segundo lugar, necesitas este <a href="http://juanjosalvador.es/random/happyNewYear.sh">script</a> y un <code class="highlighter-rouge">usernames.txt</code> donde incluiremos los ID de toda la gente a la que queremos que le llegue el mensaje (uno por línea).</p>
+
+<p>El script original está aquí. Necesitarás actualizar la variable <code class="highlighter-rouge">PATH</code> con la ruta donde tienes tu Telegram-CLI instalado.</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+<span class="c">############################################</span>
+<span class="c"># Author: Juanjo Salvador Piedra</span>
+<span class="c"># Website: http://juanjosalvador.es</span>
+<span class="c"># GitHub: https://github.es/JuanjoSalvador</span>
+<span class="c"># Twitter: @Linuxneitor</span>
+<span class="c"># Telegram: @JuanjoSalvador</span>
+<span class="c">############################################</span>
+
+<span class="c"># PATH to your Telegram-Cli installation</span>
+<span class="nv">PATH</span><span class="o">=</span><span class="s2">"/path/to/tg"</span>
+<span class="c"># Replace this with your own message</span>
+<span class="nv">MESSAGE</span><span class="o">=</span><span class="s2">"Feliz año nuevo! De parte de Juanjo y el equipo de JotaDevs ;)"</span>
+<span class="c"># File where is all usernames (one per line)</span>
+<span class="nv">FILE</span><span class="o">=</span><span class="s2">"usernames.txt"</span>
+
+<span class="k">while </span><span class="nv">IFS</span><span class="o">=</span><span class="s1">''</span> <span class="nb">read</span> -r USERNAME; <span class="k">do</span>
+	<span class="nv">$PATH</span>/bin/telegram-cli -W -e <span class="s2">"msg </span><span class="nv">$USERNAME</span><span class="s2"> </span><span class="nv">$MESSAGE</span><span class="s2">"</span> &gt; /dev/null <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">"Message sent to </span><span class="nv">$USERNAME</span><span class="s2">"</span>
+	sleep 10
+<span class="k">done</span> &lt; <span class="s2">"</span><span class="nv">$FILE</span><span class="s2">"</span>
+</code></pre>
+</div>
+
+<p>El último paso es programar el proceso utilizando <code class="highlighter-rouge">at</code>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ at 0000
+</code></pre>
+</div>
+<p>Y veremos como el prompt cambia por un <code class="highlighter-rouge">&gt;</code>. Entonces introducimos:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>bash /ruta/del/script/happyNewYear.sh
+</code></pre>
+</div>
+
+<p>Y le enviamos un EOF con Ctrl-D. Añadir <code class="highlighter-rouge">bash</code> delante es importante, dado que <code class="highlighter-rouge">at</code> ejecuta todo con <code class="highlighter-rouge">/bin/sh</code> en lugar de BASH, por lo que el script fallaría
+si no le indicamos explícitamente como debe ejecutarlo.</p>
+
+<p>Llegados a este punto, podemos salir y despreocuparnos, que nuestro ordenador se encargará de enviar el mensaje llegada la hora, a la lista de contactos especificados.</p>
+
+<p>Feliz Año Nuevo, y que disfrutéis de las vacaciones ;-)</p>
+
+<h4 id="actualizaciÓn">ACTUALIZACIÓN</h4>
+
+<p>Me han notificado que es posible que Telegram nos ponga una limitación de mensajes por minuto que podemos enviar, lo cual podría dar pie a un baneo de una hora. Para evitar eso, he añadido un <code class="highlighter-rouge">sleep 10</code> entre mensaje y mensaje. Sin embargo, es recomendable que la lista de usuarios no tenga más de 20 contactos para evitarnos malfuncionamiento.</p>
+
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2017/01/06/Podr%C3%ADa-Telegram-sustituir-a-Twitter/" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2016/12/18/Visualiza-documentos-Markdown-en-la-terminal/" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Arriba</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2017-12-06 22:52:42 +0100">2017</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Terminal múltiple en una sola ventana &middot; El blog de Juanjo Salvador
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">El blog de Juanjo Salvador</h2>
+        </a>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Escrito por</span>
+    
+        Juanjo Salvador
+    
+
+    
+      <br>
+      <span>&nbsp;</span><time datetime="2016-02-17 00:00:00 +0100">February 17, 2016</time>
+    
+  </div>
+
+  <h1 class="post-title">Terminal múltiple en una sola ventana</h1>
+  <div class="post-line"></div>
+
+  <p>Personalmente, soy muy dado a tener abiertas de 3 a 5 terminales a la vez cuando trabajo con algo en Linux. En ventanas diferentes o en pestañas. Sin embargo, se me hace muy engorroso tener que cambiar de una a otra cuando tengo que consultar o comprobar ciertos resultados. ¿Que sería lo ideal? Tener varias terminales abiertas dentro de la misma ventana.</p>
+
+<p><img src="url" alt="Terminator" /></p>
+
+<p>¿La solución? <strong>Terminator</strong>. Se trata de un emulador de terminal enfocado a la visualización de varias consolas en la misma ventana, pudiendo dividirlas vertical u horizontalmente.</p>
+
+<p>Disponible en los repositorios de Debian.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>apt-get install terminator
+</code></pre>
+</div>
+<p>En Gnome, si además queremos cambiar el emulador por defecto, podemos hacerlo con el comando <code class="highlighter-rouge">update-alternatives</code> (como root).</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>update-alternatives –config x-terminal-emulator
+</code></pre>
+</div>
+
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2016/02/18/Wget-para-FTP-recursivo/" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2016/01/25/A%C3%B1ade-un-feed-Atom-RSS-a-Jekyll/" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Arriba</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2017-12-06 22:52:42 +0100">2017</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+  </body>
+</html>

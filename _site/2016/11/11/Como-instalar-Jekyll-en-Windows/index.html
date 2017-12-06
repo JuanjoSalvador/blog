@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Como instalar Jekyll en Windows &middot; El blog de Juanjo Salvador
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">El blog de Juanjo Salvador</h2>
+        </a>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Escrito por</span>
+    
+        Juanjo Salvador
+    
+
+    
+      <br>
+      <span>&nbsp;</span><time datetime="2016-11-11 00:00:00 +0100">November 11, 2016</time>
+    
+  </div>
+
+  <h1 class="post-title">Como instalar Jekyll en Windows</h1>
+  <div class="post-line"></div>
+
+  <p>Con motivo de la segunda edición de mi charla <a href="http://juanjosalvador.es/2016/09/20/Construye-tu-web-como-un-hacker/"><em>Construye tu web como un hacker</em></a> en las <strong>Jornadas Hacklab Almería 2016</strong>,
+he decidido instalar un Jekyll en mi netbook con Windows 10. ¿Por qué? En primer lugar, porque intuyo que la mayoría de asistentes de la charla serán usuarios del sistema de Microsoft,
+y en segundo lugar, porque la instalación de Jekyll en Windows es más complicado que en GNU/Linux, y hacerlo ha sido un pequeño reto.</p>
+
+<h3 id="instalar-ruby">Instalar Ruby</h3>
+
+<p>El primer paso, es instalar Ruby y Ruby Development Kit en Windows. La mejor forma de hacerlo es a través de <a href="http://rubyinstaller.org/downloads/"><strong>RubyInstaller</strong></a>.</p>
+
+<p>Se trata de un ejecutable, es simplemente seguir los pasos del asistente y a volar. A continuación, y desde la misma web de RubyInstaller
+podemos descargar el Development Kit. Al ejecutarlo, nos pide una ruta de extracción, así que lo extraemos en <code class="highlighter-rouge">C:\RubyDevKit</code>.</p>
+
+<p>Para instalarlo, abrimos la consola CMD de Windows, y navegamos hasta la ruta donde hemos extraído el Development Kit de Ruby, y lo instalamos.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; ruby dk.rb init
+&gt; ruby dk.rb install
+</code></pre>
+</div>
+
+<h3 id="instalar-rubygems">Instalar Rubygems</h3>
+
+<p>Rubygems es el gestor de paquetes de Ruby, creado por la comunidad, e imprescindible cuando trabajas con este lenguaje.</p>
+
+<p>Descargamos el paquete ZIP desde la <a href="https://rubygems.org/pages/download">web de Rubygems</a>, y lo descomprimimos. Para instalarlo,
+abrimos la consola de Windows con Ruby, navegamos hacia la ruta donde hayamos descomprimido el paquete, y lo instalamos:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; ruby setup.rb
+</code></pre>
+</div>
+
+<p>Tras unos minutos, tendremos Rubygems instalado y podemos continuar.</p>
+
+<h3 id="instalar-jekyll">Instalar Jekyll</h3>
+
+<p>Una vez tenemos Ruby y Rubygems instalado, podemos instalar Jekyll, pero para asegurarnos de que no fallan las dependencias,
+primero instalaremos Bundler.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; gem install bundler
+&gt; gem install jekyll
+</code></pre>
+</div>
+
+<p>Cuando termine la instalación, ya podemos crear nuevos sitios, servir los que tenemos creados, y ponernos a crear.</p>
+
+
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2016/11/20/Desarrollo-de-apps-con-JavaScript/" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2016/10/06/5-herramientas-que-todo-Web-Developer-debe-conocer/" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Arriba</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2017-12-06 22:52:42 +0100">2017</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+  </body>
+</html>

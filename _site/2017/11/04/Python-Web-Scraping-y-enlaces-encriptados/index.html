@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Python, Web Scraping y enlaces encriptados &middot; El blog de Juanjo Salvador
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">El blog de Juanjo Salvador</h2>
+        </a>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Escrito por</span>
+    
+        Juanjo Salvador
+    
+
+    
+      <br>
+      <span>&nbsp;</span><time datetime="2017-11-04 00:00:00 +0100">November 04, 2017</time>
+    
+  </div>
+
+  <h1 class="post-title">Python, Web Scraping y enlaces encriptados</h1>
+  <div class="post-line"></div>
+
+  <p>Cuando escribí <a href="http://juanjosalvador.me/2015/11/11/Comicbook-Packager-mi-autoempaquetador-de-comics/">Comicbook Packager</a> hace 2 años, mi problema era casi exclusivamente poder convertir un montón (pero un montón, ¿eh?) de carpetas con imágenes sueltas en paquetes CBZ para poderlos subir a mi nube, llevarlos siempre conmigo y poderlos leer en mi tablet Android usando un lector de cómics digitales.</p>
+
+<p>En aquellos años, encontrar comics vía torrent era mucho más sencillo que ahora, así que no tenía problema para descargarlos. Pero, las cosas han cambiado y han desaparecido muchas de mis fuentes de torrents, lo cual ha hecho que vuelva la edad de la descarga directa y los enlaces de Mega, con su correspondiente proxy y encriptado de Adf.ly, Linkbucks, y otros servicios que prometen dinero por cada clic que reciba tu enlace. Además de ser muy molesto, esto hace que tengas que ir enlace por enlace extrayendo manualmente el enlace a Mega y meterlo en tu gestor de descargas.</p>
+
+<h3 id="la-solución">La solución</h3>
+
+<p>Llevo un tiempo trabajando en una <a href="https://github.com/JuanjoSalvador/NyaaPy">librería de Python</a> que haciendo uso de <a href="https://en.wikipedia.org/wiki/Web_scraping">Web Scraping</a> extrae información de una web concreta, según le pidamos. Es un principio que podemos aplicar perfectamente a este problema, con objeto de solucionarlo.</p>
+
+<p>Para llevarlo a cabo he utilizado <strong>Requests</strong>, un módulo de Python que te permite lanzar peticiones HTTP, e inclusive descargar todo el contenido de una página en formato HTML plano, y <strong>BeautifulSoup</strong>, otro módulo de Python que podemos utilizar para analizar y extraer el contenido que queramos de un documento HTML, en base a sus etiquetas.</p>
+
+<p>Mi flujo de trabajo ha sido el siguiente:</p>
+
+<ol>
+  <li>Mediante Requests obtenemos el HTML de la página en cuestión.</li>
+  <li>Mediante BeautifulSoup extraemos los contenedores donde se encuentran los enlaces.</li>
+  <li>De cada contenedor, extraemos el elemento <code class="highlighter-rouge">&lt;a&gt;</code> y su atributo <code class="highlighter-rouge">href</code> (enlace encriptado en este caso).</li>
+  <li>Desencriptamos cada enlace y almacenamos la URL definitiva en un fichero TXT</li>
+</ol>
+
+<h3 id="el-código">El código</h3>
+
+<p>La primera y única pega de esto, es que <strong>solamente funciona con Python 2.7</strong>, dado que las funciones para desencriptar los enlaces, proceden de <a href="https://github.com/MGF15/AdflyUrlGrabber">AdflyUrlgrabber</a>, el cual por algún motivo no ha sido portado a Python 3.x todavía.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">base64</span><span class="o">,</span> <span class="nn">urllib</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">re</span><span class="o">,</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+</code></pre>
+</div>
+<p>Estos son los <code class="highlighter-rouge">import</code> que he necesitado, tanto para extraer los enlaces como para desencriptarlos.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">_crack</span><span class="p">(</span><span class="n">code</span><span class="p">):</span>
+        <span class="n">zeros</span> <span class="o">=</span> <span class="s">''</span>
+        <span class="n">ones</span> <span class="o">=</span> <span class="s">''</span>
+        <span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">letter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">code</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">zeros</span> <span class="o">+=</span> <span class="n">code</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">ones</span> <span class="o">=</span> <span class="n">code</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">ones</span>
+
+        <span class="n">key</span> <span class="o">=</span> <span class="n">zeros</span> <span class="o">+</span> <span class="n">ones</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">key</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">key</span><span class="p">)):</span>
+                    <span class="k">if</span> <span class="n">key</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+                        <span class="n">u</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">key</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">^</span><span class="nb">int</span><span class="p">(</span><span class="n">key</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+                        <span class="k">if</span> <span class="n">u</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span> 
+                            <span class="n">key</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+                        <span class="n">i</span> <span class="o">=</span> <span class="n">j</span>					
+                        <span class="k">break</span>
+            <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
+
+        <span class="n">key</span> <span class="o">=</span> <span class="s">''</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">'base64'</span><span class="p">)[</span><span class="mi">16</span><span class="p">:</span><span class="o">-</span><span class="mi">16</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">key</span>
+
+<span class="k">def</span> <span class="nf">_decrypt</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">adfly</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">ysmm</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r"var ysmm = '(.*?)';"</span><span class="p">,</span><span class="n">adfly</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">decrypted_url</span> <span class="o">=</span> <span class="n">_crack</span><span class="p">(</span><span class="n">ysmm</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">decrypted_url</span>
+</code></pre>
+</div>
+<p>Funciones <code class="highlighter-rouge">_crack()</code> y <code class="highlighter-rouge">_decrypt()</code>, encargadas de romper el cifrado de Adf.ly y de devolver la URL que se oculta detrás.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c"># Extrae los enlaces que cumplan las condiciones de la página objetivo.</span>
+    <span class="n">target</span>  <span class="o">=</span> <span class="s">"&lt;URL&gt;"</span>
+
+    <span class="n">content</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">target</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+    <span class="n">soup</span>    <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="s">'html.parser'</span><span class="p">)</span>
+    <span class="n">items</span>   <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">'article blockquote div'</span><span class="p">)</span> <span class="c"># Contenedor de enlaces</span>
+    <span class="n">links</span>   <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">'a'</span><span class="p">):</span>
+            <span class="c"># Condición para que el enlace sea el que buscamos</span>
+            <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s">"www.Mega.com"</span><span class="p">:</span>
+                <span class="n">url</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">'http://adf(.*)'</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'href'</span><span class="p">))</span>
+                <span class="n">links</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">"http://adf{}</span><span class="se">\n</span><span class="s">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
+
+    <span class="c"># Comprueba que exista el directorio de salida</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s">'output'</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s">'output'</span><span class="p">)</span>
+
+    <span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'output/output.txt'</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span>
+
+    <span class="c"># Procesa cada enlace adf.ly, desencriptándolo y guardándolo en output.txt</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">link</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">links</span><span class="p">):</span>
+            <span class="k">print</span> <span class="s">"Procesando enlace #{} de {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">links</span><span class="p">))</span>
+            <span class="nb">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">"{}</span><span class="se">\n</span><span class="s">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">_decrypt</span><span class="p">(</span><span class="n">link</span><span class="p">)))</span>
+
+    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">"Ocurrió un error: {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+    <span class="k">print</span> <span class="s">"¡Finalizado! Resultados guardados en output/output.txt"</span>
+</code></pre>
+</div>
+<p>Función principal del script. Realiza el flujo de trabajo explicado arriba, primero extrayendo el HTML de la página objetivo, a continuación analizándolo en busca de los enlaces que nos interesan, y por último guardándolos en un archivo TXT que podemos utilizar como más nos guste.</p>
+
+
+</div>
+
+<div class="pagination">
+  
+  
+    <a href="/2017/08/11/Escribiendo-un-bot-para-telegram/" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Arriba</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2017-12-06 22:52:42 +0100">2017</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+  </body>
+</html>

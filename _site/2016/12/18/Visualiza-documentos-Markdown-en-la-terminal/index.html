@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Visualiza documentos Markdown en la terminal &middot; El blog de Juanjo Salvador
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">El blog de Juanjo Salvador</h2>
+        </a>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Escrito por</span>
+    
+        Juanjo Salvador
+    
+
+    
+      <br>
+      <span>&nbsp;</span><time datetime="2016-12-18 00:00:00 +0100">December 18, 2016</time>
+    
+  </div>
+
+  <h1 class="post-title">Visualiza documentos Markdown en la terminal</h1>
+  <div class="post-line"></div>
+
+  <p>Últimamente el formato Markdown (<code class="highlighter-rouge">.md</code>) está trinfando mucho, dada su versatilidad y simpleza. Prueba de ello
+es que podemos encontrar prácticamente en cualquier repositorio que clonemos desde Github, u otro servicio similar,
+documentación escrita en dicho formato.</p>
+
+<p>Normalmente el Markdown se <strong>parsea a HTML</strong>, de modo que hace su visualización en webs muy cómoda,
+de la misma forma que diversos editores (como VS Code, o Atom) soportan la previsualización de nuestros documentos. Claro que, ¿que ocurre
+si <strong>no tenemos acceso a una GUI</strong>, no tenemos un editor compatible, o no queremos tener que abrirlo? Hay un truco que nos permite
+leer nuestros documentos Markdown directamente <strong>desde la terminal</strong>.</p>
+
+<h3 id="requisitos">Requisitos</h3>
+
+<ul>
+  <li><strong>Lynx</strong>. Navegador web en modo texto.</li>
+  <li><strong>Pandoc</strong>. Conversor de documentos muy versátil.</li>
+</ul>
+
+<p>Ambos paquetes podemos instalarlos en nuestro sistema *nix (GNU/Linux, OSX, BSD, etc).</p>
+
+<h3 id="uso">Uso</h3>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>pandoc file.md | lynx -stdin
+</code></pre>
+</div>
+
+<h3 id="allá-vamos">¡Allá vamos!</h3>
+
+<p><img src="http://i.imgur.com/Gm2Ci0D.png" alt="Using Lynx to view a Markdown document" /></p>
+
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2016/12/31/Mensajes-de-ano-nuevo-automaticos/" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2016/11/23/Guerrilla-Open-Access-Manifesto-el-legado-de-Aaron-Swartz/" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Arriba</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2017-12-06 22:52:42 +0100">2017</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+  </body>
+</html>

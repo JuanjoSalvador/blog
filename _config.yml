@@ -1,0 +1,29 @@
+# Permalinks
+permalink:      pretty
+
+# Setup
+title:          El blog de Juanjo Salvador
+paginate:       5
+baseurl:        
+url:            "https://juanjosalvador.me"
+
+# Assets
+sass:
+  sass_dir:     _sass
+  style:        :compressed
+
+# Build settings
+markdown:       kramdown
+
+# About
+author:
+  name:         Juanjo Salvador
+  url:          http://juanjosalvador.me
+  email:        hola@juanjosalvador.me
+
+# Custom vars
+version:        3.4.3
+
+# Gems
+plugins_dir:
+gems: [jekyll-paginate]

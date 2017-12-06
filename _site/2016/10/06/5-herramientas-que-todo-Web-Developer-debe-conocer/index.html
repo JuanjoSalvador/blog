@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      5 herramientas que todo Web Developer debería conocer &middot; El blog de Juanjo Salvador
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">El blog de Juanjo Salvador</h2>
+        </a>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Escrito por</span>
+    
+        Juanjo Salvador
+    
+
+    
+      <br>
+      <span>&nbsp;</span><time datetime="2016-10-06 00:00:00 +0200">October 06, 2016</time>
+    
+  </div>
+
+  <h1 class="post-title">5 herramientas que todo Web Developer debería conocer</h1>
+  <div class="post-line"></div>
+
+  <p>Cuando entras en el mundo del desarrollo web e indagas a fondo, te das cuenta de que hay un mundo de posibilidades. Pero para aprovechar al máximo este mundo de posibilidades, es conveniente conocer y saber manejar algunas herramientas que nos harán la vida más fácil.</p>
+
+<h3 id="framework-css">Framework CSS</h3>
+
+<p>Ya sea Bootstrap, o tu propia librería de estilos y animaciones que has ido desarrollando a lo largo de los años. Conocer un framework CSS y evitar tener que escribir manualmente todos los estilos de cada web, acelera muchísimo el trabajo de maquetación y de estilos. Algunos ejemplos interesantes son:</p>
+
+<ul>
+  <li><strong>Bootstrap</strong> proporciona un sistema de columnas que facilita la responsividad, siendo además el más extendido.</li>
+  <li><strong>Kube</strong>, un framework CSS responsivo, flexible y ligero, diseñado para profesionales.</li>
+  <li><strong>Flexbox</strong> es otro sistema de columnas responsivo basado en la propiedad <code class="highlighter-rouge">flex</code>de CSS.</li>
+</ul>
+
+<h3 id="framework-javascript">Framework JavaScript</h3>
+
+<p>Conocer <strong>jQuery</strong> hoy en día no basta. Cierto es que facilita muchos trabajos relacionados con JavaScript y se ha convertido en el pilar base de muchos sistemas de UI/UX, pero en el mundo real, un front-end developer necesitará crear algo más allá de interfaces. ¿Que tal aplicaciones escritas completamente en JavaScript? En este grupo tenemos una variedad casi infinita, se dice que si levantas una piedra, aparecen 12 frameworks de JavaScript.</p>
+
+<ul>
+  <li><strong>Ember.js</strong> se define como un framework para crear aplicaciones ambiciosas, basado en el paradigma MVVM (Modelo-Vista-Vistamodelo).</li>
+  <li><strong>AngularJS</strong> conocido como “<em>Superheroic JavaScript MVW</em>”, donde MVW se traduce como Modelo-Vista-Loquesea.</li>
+  <li><strong>Backbone.js</strong>, el framework más ligero (pesa solo 7Kb), potente y muy flexible.</li>
+</ul>
+
+<p>En este punto, como mención especial añadiría <strong>CoffeeScript</strong>, un pequeño lenguaje que se compila a JavaScript (como TypeScript en Angular 2) pensado para añadir azúcar sintáctico a JavaScript. ¡Endulza tu código!</p>
+
+<h3 id="gestores-de-paquetes">Gestores de paquetes</h3>
+
+<p>Cuando hablo de gestores de paquetes, orientados al desarrollo web, hablo sobretodo de <strong>npm</strong> y <strong>bower</strong>, dos herramientas que considero claves en este tipo de desarrollos.</p>
+
+<p><strong>NPM</strong>, es un gestor de paquetes de <strong>node.js</strong> y que nos proporciona acceso a un sinfín de librerías y componentes JavaScript, como <em>shelljs</em>, una librería que proporciona instrucciones UNIX en JS.</p>
+
+<p><strong>Bower</strong> sin embargo, está enfocado a descargar y administrar dependencias  del lado cliente (Bootstrap por ejemplo, puede instalarse desde bower).</p>
+
+<p>Ambos sistemas incorporan un fichero de dependencias, <code class="highlighter-rouge">package.json</code> y <code class="highlighter-rouge">bower.json</code> respectivamente, donde le podemos indicar los paquetes que queramos descargar e instalarlos de un plumazo con <code class="highlighter-rouge">npm install</code>.</p>
+
+<p>Mención especial a <strong>Yeoman</strong>, un <code class="highlighter-rouge">kickstarter manager</code>, o un gestor de plantillas. Cada proyecto requiere una esctructura de carpetas y ficheros específicos, y con Yeoman, podemos generarlos. Muy útil sobretodo para Angular.</p>
+
+<h3 id="tester-de-apis">Tester de APIs</h3>
+
+<p>Una tendencia actual y en alza, es el modelo de aplicaciones centralizadas basadas en API REST, o el <em>deja que el servidor trabaje</em>. Este modelo de apps se basa en un servidor, con todo el motor de la aplicación sobre el, y que se conecta a los clientes a través de un API REST. Este sistema por ejemplo, lo encontramos en el <em>zen de Angular</em>.</p>
+
+<p>Cuando estamos desarrollando un API REST, para hacer las pruebas pertinentes, tenemos que además tener listo un cliente. Esto puede retrasarnos o aumentar la carga de trabajo, así que para facilitar estas tareas, ¿por qué no usar un tester? Mi recomendación en este punto es <strong>Postman</strong>.</p>
+
+<p>Postman es una aplicación que podemos instalar en el navegador (Chorme/Chromium) y utilizarla para <strong>atacar nuestra API</strong> pasándole una URL, el método (POST/GET) y unos parámetros si fuesen necesarios. Inmediatamente tendremos la respuesta del servidor en formato XML, HTML o JSON, como convenga, y podremos analizar si vamos o no por el buen camino. Considero esta herramienta como una de las más importantes del artículo, ya que agiliza muchísimo el desarrollo back.</p>
+
+<h3 id="depurador-del-navegador">Depurador del navegador</h3>
+
+<p>Depurar el código JavaScript solía ser complicado, hasta que aparecieron los depuradores de navegador. Google hizo su apuesta con <strong>Chrome DevTools</strong>, una herramienta que nos permite analizar elementos, estilos, tráfico y salidas de consola de JavaScript en tiempo de ejecución. Asi mismo, incluye un depurador, y permite editar el código en vivo.</p>
+
+<p>Firefox incluye una suite de herramientas muy similar e igual de potente, sin embargo, para entrar en profundidad, existe una versión alternativa del navegador, denominada <strong>Firefox Developer</strong>, con actualizaciones más frecuntes y un completo editor de código que permite analizar y modificar <em>on the fly</em>.</p>
+
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2016/11/11/Como-instalar-Jekyll-en-Windows/" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2016/09/20/Construye-tu-web-como-un-hacker/" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Arriba</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2017-12-06 22:52:42 +0100">2017</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+  </body>
+</html>
