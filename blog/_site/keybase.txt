@@ -1,0 +1,75 @@
+==================================================================
+https://keybase.io/jsalvador
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://juanjosalvador.me
+  * I am jsalvador (https://keybase.io/jsalvador) on keybase.
+  * I have a public key with fingerprint 792B 5094 516E E135 2769  5F16 944B E7E0 5403 6E49
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "01017a5d94947408b974f7d9a5926a62bf87938d01a54827178de92fa0d7b542218c0a",
+            "fingerprint": "792b5094516ee13527695f16944be7e054036e49",
+            "host": "keybase.io",
+            "key_id": "944be7e054036e49",
+            "kid": "01017a5d94947408b974f7d9a5926a62bf87938d01a54827178de92fa0d7b542218c0a",
+            "uid": "c043ec1317969ad3e63c8dc080086819",
+            "username": "jsalvador"
+        },
+        "revoke": {
+            "sig_ids": [
+                "4b0c4d7a6962938312efe674027bddbe86031998e2d27ba95975455b2f8835350f"
+            ]
+        },
+        "service": {
+            "hostname": "juanjosalvador.me",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1489238006,
+    "expire_in": 157680000,
+    "prev": "b400e47166035a6b24131eebb591b2b0e25ec161eb45410f30aec4e74f00ad01",
+    "seqno": 20,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.64
+Comment: https://keybase.io/crypto
+
+yMJ2AnicrVJdbBVFGL2ltmoTEnkgNHh5cIgPlRuYmZ2Z3blqTLRKajQR+6BQ8Tqz
+8+3t9pa71929V6ASUZFABA1oYtIHiJrGn6BAH0xqSApagUgxQgArqdqoMQESDYZW
+S9LE2ca++ejTZL453znnO9+MLW7OtTWN/9S5Ym79srTpzInZeu7pL/+aGUA6MltQ
+cQBVYP6AfgNJWqqEBhURJpi4ihvJJHMZ9rR0WeAaqbikQgmqA8+VjmcwUZx51CWu
+Z0DSQGHjas4oJZ6PFSqgIKyWIa7FYTW1tK6kmmPJOBEAxOHUFZIHREjGNLiAOcOO
+ACZtY2+UZB3WnFYJrA4jW7OX0ry9/8D/z77r83Q+Zg74xCGuFFIZB4Tje8bHHsae
+8EimW08grqpNYNF9iepvKBPFaFsBxdCIKpAFm4Rl6zpBxR7ENPaZcZWQglobDqEQ
+gLBGqauN0eAJ7BApPaDGVpTk0uWMc00Dz3O4w3GANlpuK9kI/XnyLKYF+bqq9kUL
+HlbbWgHV4iiN/KjfPvemaa2YOUu31DL4C6BL/xKVdFg1dlG2oQFxEkZVVCQW6adh
+xkyYJ6ljZxYFBJtrYQylMENwV9gixpkMNCylZhgDc4mwY3AlNGU2OgCtuSSaagyU
+2zQFAc04IzhwsAKfgV0RxsruBGWjPV+NUJFa0lSVLadNr6rSegxo2xfHn7kl19SW
+a21ZlP3gXNvtdyz865VP3Xpz0Yebiw/37Bj+lK76+NFzLTeHrjRP3jh1vbPjk5mJ
+N8++5n11NN/fc+HzluMf+fsfPLJkBZna2n5wyXS+fUfHsU1nuk4m6x4b/nH3O52n
+tt87duHFiam+H5zfxgtHunfTO1tXTR3YtfGlylB+cOa5119Nn3XlE0u/W77+vn1L
+D2w/+8vOudhcmZ081/xz99rK1XJP777lc+W9p7uuj0ePt35wGoadDYdGT5qj02ve
+1bODr3x7uavtz8svP3Rw6MTEWLFz1oipkenmwdG118bGH7kr/8bKww/cs6dj640n
+r3298/zo/j35i+/h8sW3r3Z/f//I5De//n5sw8ChNefX/f3HSPj+3bva37q097ZL
+nw0u/gePF2Q8
+=Qx+q
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/jsalvador
+
+==================================================================

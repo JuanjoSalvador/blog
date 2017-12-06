@@ -1,0 +1,1499 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>Juanjo Salvador</title>
+ <link href="http://localhost:4000/atom.xml" rel="self"/>
+ <link href="http://localhost:4000/"/>
+ <updated>2017-12-06T12:31:57+01:00</updated>
+ <id>http://localhost:4000</id>
+ <author>
+   <name>Juanjo Salvador</name>
+   <email></email>
+ </author>
+
+ 
+ <entry>
+   <title>Python, Web Scraping y enlaces encriptados</title>
+   <link href="http://localhost:4000/2017/11/04/Python-Web-Scraping-y-enlaces-encriptados/"/>
+   <updated>2017-11-04T00:00:00+01:00</updated>
+   <id>http://localhost:4000/2017/11/04/Python-Web-Scraping-y-enlaces-encriptados</id>
+   <content type="html">&lt;p&gt;Cuando escribí &lt;a href=&quot;http://juanjosalvador.me/2015/11/11/Comicbook-Packager-mi-autoempaquetador-de-comics/&quot;&gt;Comicbook Packager&lt;/a&gt; hace 2 años, mi problema era casi exclusivamente poder convertir un montón (pero un montón, ¿eh?) de carpetas con imágenes sueltas en paquetes CBZ para poderlos subir a mi nube, llevarlos siempre conmigo y poderlos leer en mi tablet Android usando un lector de cómics digitales.&lt;/p&gt;
+
+&lt;p&gt;En aquellos años, encontrar comics vía torrent era mucho más sencillo que ahora, así que no tenía problema para descargarlos. Pero, las cosas han cambiado y han desaparecido muchas de mis fuentes de torrents, lo cual ha hecho que vuelva la edad de la descarga directa y los enlaces de Mega, con su correspondiente proxy y encriptado de Adf.ly, Linkbucks, y otros servicios que prometen dinero por cada clic que reciba tu enlace. Además de ser muy molesto, esto hace que tengas que ir enlace por enlace extrayendo manualmente el enlace a Mega y meterlo en tu gestor de descargas.&lt;/p&gt;
+
+&lt;h3 id=&quot;la-solución&quot;&gt;La solución&lt;/h3&gt;
+
+&lt;p&gt;Llevo un tiempo trabajando en una &lt;a href=&quot;https://github.com/JuanjoSalvador/NyaaPy&quot;&gt;librería de Python&lt;/a&gt; que haciendo uso de &lt;a href=&quot;https://en.wikipedia.org/wiki/Web_scraping&quot;&gt;Web Scraping&lt;/a&gt; extrae información de una web concreta, según le pidamos. Es un principio que podemos aplicar perfectamente a este problema, con objeto de solucionarlo.&lt;/p&gt;
+
+&lt;p&gt;Para llevarlo a cabo he utilizado &lt;strong&gt;Requests&lt;/strong&gt;, un módulo de Python que te permite lanzar peticiones HTTP, e inclusive descargar todo el contenido de una página en formato HTML plano, y &lt;strong&gt;BeautifulSoup&lt;/strong&gt;, otro módulo de Python que podemos utilizar para analizar y extraer el contenido que queramos de un documento HTML, en base a sus etiquetas.&lt;/p&gt;
+
+&lt;p&gt;Mi flujo de trabajo ha sido el siguiente:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Mediante Requests obtenemos el HTML de la página en cuestión.&lt;/li&gt;
+  &lt;li&gt;Mediante BeautifulSoup extraemos los contenedores donde se encuentran los enlaces.&lt;/li&gt;
+  &lt;li&gt;De cada contenedor, extraemos el elemento &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;a&amp;gt;&lt;/code&gt; y su atributo &lt;code class=&quot;highlighter-rouge&quot;&gt;href&lt;/code&gt; (enlace encriptado en este caso).&lt;/li&gt;
+  &lt;li&gt;Desencriptamos cada enlace y almacenamos la URL definitiva en un fichero TXT&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;el-código&quot;&gt;El código&lt;/h3&gt;
+
+&lt;p&gt;La primera y única pega de esto, es que &lt;strong&gt;solamente funciona con Python 2.7&lt;/strong&gt;, dado que las funciones para desencriptar los enlaces, proceden de &lt;a href=&quot;https://github.com/MGF15/AdflyUrlGrabber&quot;&gt;AdflyUrlgrabber&lt;/a&gt;, el cual por algún motivo no ha sido portado a Python 3.x todavía.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;base64&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;urllib&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;requests&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;re&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;bs4&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BeautifulSoup&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Estos son los &lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt; que he necesitado, tanto para extraer los enlaces como para desencriptarlos.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;_crack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;''&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ones&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;''&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;letter&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;ones&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ones&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ones&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isdigit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isdigit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+                        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; 
+                            &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;					
+                        &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;decode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'base64'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;_decrypt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;adfly&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;urllib&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;urlopen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ysmm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;re&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findall&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;r&quot;var ysmm = '(.*?)';&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;adfly&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;decrypted_url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_crack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ysmm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;decrypted_url&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Funciones &lt;code class=&quot;highlighter-rouge&quot;&gt;_crack()&lt;/code&gt; y &lt;code class=&quot;highlighter-rouge&quot;&gt;_decrypt()&lt;/code&gt;, encargadas de romper el cifrado de Adf.ly y de devolver la URL que se oculta detrás.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# Extrae los enlaces que cumplan las condiciones de la página objetivo.&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;URL&amp;gt;&quot;&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;soup&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BeautifulSoup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'html.parser'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;items&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;soup&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'article blockquote div'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# Contenedor de enlaces&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;links&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find_all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;c&quot;&gt;# Condición para que el enlace sea el que buscamos&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;www.Mega.com&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;re&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'http://adf(.*)'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'href'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;links&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://adf{}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;# Comprueba que exista el directorio de salida&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'output'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mkdir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'output'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;nb&quot;&gt;file&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'output/output.txt'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'w'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;# Procesa cada enlace adf.ly, desencriptándolo y guardándolo en output.txt&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;links&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Procesando enlace #{} de {}&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;links&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+            &lt;span class=&quot;nb&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_decrypt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;link&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Ocurrió un error: {}&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;¡Finalizado! Resultados guardados en output/output.txt&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Función principal del script. Realiza el flujo de trabajo explicado arriba, primero extrayendo el HTML de la página objetivo, a continuación analizándolo en busca de los enlaces que nos interesan, y por último guardándolos en un archivo TXT que podemos utilizar como más nos guste.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Escribiendo un bot para Telegram</title>
+   <link href="http://localhost:4000/2017/08/11/Escribiendo-un-bot-para-telegram/"/>
+   <updated>2017-08-11T00:00:00+02:00</updated>
+   <id>http://localhost:4000/2017/08/11/Escribiendo-un-bot-para-telegram</id>
+   <content type="html">&lt;p&gt;Telegram es un cliente de mensajería fantástico, como ya ha quedado reflejado en anteriores posts de mi blog, como cuando utilicé un &lt;a href=&quot;http://juanjosalvador.me/2016/12/31/Mensajes-de-ano-nuevo-automaticos/&quot;&gt;sistema automatizado para enviar felicitaciones de año nuevo usando Telegram-cli&lt;/a&gt;. Es muy versátil y extensible mediante bots que pueden hacer todo lo que imaginemos y más.&lt;/p&gt;
+
+&lt;h2 id=&quot;la-idea&quot;&gt;La idea&lt;/h2&gt;
+
+&lt;p&gt;Es el caso de MariaBot, un bot sencillo que he desarrollado para el grupo &lt;a href=&quot;https://t.me/andaluciadev&quot;&gt;Andalucía Developers&lt;/a&gt; con dos premisas:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ayudar a gestionar ciertas tareas del grupo.&lt;/li&gt;
+  &lt;li&gt;Lanzar un proyecto conjunto para todos los miembros del grupo.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Actualmente el bot solo tiene capacidad para dar la bienvenida de forma automática a cada nuevo miembro que se une al grupo. Próximamente espero que pueda atender más tareas, como almacenar enlaces de recursos, o ser capaz de realizar tareas sencillas.&lt;/p&gt;
+
+&lt;p&gt;Está programado en Python usando Telebot.&lt;/p&gt;
+
+&lt;h2 id=&quot;el-código&quot;&gt;El código&lt;/h2&gt;
+
+&lt;p&gt;Lo primero que tenemos que hacer es inicializar el bot. Para eso necesitaremos un API token, que podemos conseguir a través de @BotFather, un bot (valga la redundancia) que se encarga de dar de alta nuevos autómatas en el API de telegram.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+    &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;telebot&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;bot&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;telebot&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TeleBot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TU&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TOKEN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AQU&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;Í&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;El siguiente paso es añador un &lt;em&gt;handler&lt;/em&gt; (manejador) que permita al bot escuchar eventos y responder a ellos.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Escuchamos el evento de tipo &quot;new_chat_members&quot; que se lanza cuando entra un nuevo usuario al grupo.&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;@bot.message_handler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;content_types&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'new_chat_members'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Y ejecutamos la función &quot;welcome&quot; el respuesta.&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;new_member&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new_chat_member&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;username&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Bienvenido/a al grupo, &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_member&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;chat_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;chat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;bot&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;send_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;chat_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Este paso podemos repetirlo todas las veces que necesitemos para cada evento que necesitemos. Permite responder ante comandos, mensajes anclados, usuarios que entran o salen, y una extensa lista más. Puedes consultar toda la documentación &lt;a href=&quot;https://github.com/eternnoir/pyTelegramBotAPI&quot;&gt;aquí&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Para terminar, solo tenemos que decirle a nuestro bot que empiece a funcionar.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;n&quot;&gt;bot&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;polling&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;algunas-mejoras&quot;&gt;Algunas mejoras&lt;/h2&gt;
+
+&lt;p&gt;Además del bot, también escribí un script bash que hace las veces de manager para el bot. Me permite arrancarlo y pararlo como si de un &lt;em&gt;daemon&lt;/em&gt; se tratase, haciendolo mucho más sencillo.&lt;/p&gt;
+
+&lt;p&gt;El código fuente del bot completo está liberado en GitHub bajo licencia MIT.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;https://github.com/JuanjoSalvador/maria-bot&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Para ejecutarlo, solo necesitamos un servidor que soporte Python. Yo lo tengo funcionando en mi propio VPS, pero otras alternativas interesantes son PythonEverywhere, Cloud9, etc.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusión&quot;&gt;Conclusión&lt;/h2&gt;
+
+&lt;p&gt;Hacer bots de Telegram es bastante sencillo, pero no debemos olvidarnos de que se trata solamente de una interfaz casi humana para un programa. Podemos hacer lo que queramos con ellos, desde dar la bienvenida a un grupo, hasta que traduzca contenido entre idiomas.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Desarrollo de apps móviles con JS [OpenSouthCode 2017]</title>
+   <link href="http://localhost:4000/2017/05/06/Desarrollo-de-apps-m%C3%B3viles-con-JS-OpenSouthCode-2017/"/>
+   <updated>2017-05-06T00:00:00+02:00</updated>
+   <id>http://localhost:4000/2017/05/06/Desarrollo-de-apps-móviles-con-JS-OpenSouthCode-2017</id>
+   <content type="html">&lt;p&gt;&lt;img src=&quot;https://pbs.twimg.com/media/C_ITh6zXYAIjQiE.jpg&quot; alt=&quot;&quot; /&gt;
+Foto de &lt;a href=&quot;http://twitter.com/hellc2&quot;&gt;Elio Rojano&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;¿Buscas las diapositivas de mi presentación?&lt;/em&gt; &lt;a href=&quot;http://slides.com/juanjosalvador/desarrollo-de-apps-con-javascript&quot;&gt;&lt;em&gt;Están disponibles en Slides.com&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;por-qué-javascript&quot;&gt;¿Por qué JavaScript?&lt;/h3&gt;
+
+&lt;p&gt;Esta es una pregunta que quizás muchos aquí os estáis haciendo. ¿Por qué JavaScript? 
+Yo tengo una respuesta bastante sencilla para esto…&lt;/p&gt;
+
+&lt;p&gt;&lt;cite&gt;¿Y por qué no?&lt;cite&gt;&lt;/cite&gt;&lt;/cite&gt;&lt;/p&gt;
+
+&lt;p&gt;El enorme “ecosistema” que ha generado JavaScript a su alrededor en cuanto a frameworks
+y librerías, lo convierten en un lenguaje muy óptimo para las necesidades de hoy en día.&lt;/p&gt;
+
+&lt;h3 id=&quot;webapps-progressive-webapps-apps-híbridas&quot;&gt;WebApps, Progressive WebApps, Apps Híbridas&lt;/h3&gt;
+
+&lt;p&gt;Existen muchas tecnologías que nos permiten crear nuestras propias aplicaciones móviles usando JavaScript,
+así como existen diferentes tipos de aplicaciones que usarían este lenguaje.&lt;/p&gt;
+
+&lt;p&gt;La diferencia entre ellas reside primordialmente en las capacidades que nos ofertan. 
+Por ejemplo, una webapp es directamente una aplicación que se ejecuta en el navegador 
+y que nos permite visualizar contenido. ¿Y que pasa con las Progressive WebApps?&lt;/p&gt;
+
+&lt;p&gt;Pasan a ser una versión evolucionada, a medio camino de webapp y aplicación nativa,
+pero manteniendo el estilo.&lt;/p&gt;
+
+&lt;p&gt;Las aplicación híbridas, y aquí es donde me gustaría hacer hincapié, son aplicaciones
+web, que se cargan desde un contenedor nativo,y que mediante un API propia nos permiten
+acceder a componentes y funciones propias del dispositivo, como el espacio de almacenamiento,
+la cámara o el GPS.&lt;/p&gt;
+
+&lt;h3 id=&quot;tecnologías-javascript&quot;&gt;Tecnologías JavaScript&lt;/h3&gt;
+
+&lt;p&gt;¿Significa esto que tengo que aprender a desarrollar en Java o en Swift? 
+No, desde que existen tecnologías que permiten a los desarrolladores de mi campo
+abarcar más posibilidades, manteniendo una premisa: escribe tu aplicación una vez,
+y compílala donde necesites (Android, iOS, Windows Universal App).&lt;/p&gt;
+
+&lt;h3 id=&quot;mantente-híbrido-vs-compila-a-nativo&quot;&gt;Mantente híbrido VS Compila a nativo&lt;/h3&gt;
+
+&lt;p&gt;De las tecnologías citadas, Cordova e Ionic utilizan JavaScript (aunque Ionic 2 en adelante ya pasa a usar TypeScript), y el paquete resultante se mantiene como una aplicación web dentro de un contenedor nativo. Sin embargo, NS y RN decidieron ir más allá implementando un bindeo entre TypeScript y las UI nativas.&lt;/p&gt;
+
+&lt;p&gt;Esto es especialmente genial, debido a que no vamos a emular una interfaz nativa, VAMOS A CONSTRUIRLA. De la misma forma nos brindan acceso al dispositivo (de forma muy similar a como podemos hacer en JS usando un API diseñada para la ocasión), encima sin necesidad de añadir plugins.&lt;/p&gt;
+
+&lt;p&gt;¿Cual es el resultado? En ambos casos vamos a terminar con un APK que hemos programado enteramente en JavaScript, pero solamente en uno de ellos tendremos un app nativa, que nos otorga todas las ventajas de estas.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusión&quot;&gt;Conclusión&lt;/h3&gt;
+
+&lt;p&gt;¿A que JavaScript mola?&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>¿Podría Telegram sustituir a Twitter?</title>
+   <link href="http://localhost:4000/2017/01/06/Podr%C3%ADa-Telegram-sustituir-a-Twitter/"/>
+   <updated>2017-01-06T00:00:00+01:00</updated>
+   <id>http://localhost:4000/2017/01/06/¿Podría-Telegram-sustituir-a-Twitter?</id>
+   <content type="html">&lt;p&gt;&lt;strong&gt;¡Feliz 0111 1110 0001!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;No quería empezar este primer artículo sin dedicar al menos una línea a desearos un feliz año nuevo de la manera más
+informal que se me podía ocurrir. Pero tampoco quiero desviar el tema del artículo demasiado.&lt;/p&gt;
+
+&lt;h4 id=&quot;twitter-es-necesario&quot;&gt;Twitter, ¿es necesario?&lt;/h4&gt;
+
+&lt;p&gt;Empecemos por el primero punto: ¿de verdad necesitamos Twitter a día de hoy?&lt;/p&gt;
+
+&lt;p&gt;Quiero decir, hace algunos años, aproximadamente por el glorioso 2010, la blogosfera hispanohablante empezó a delegar parte de su trabajo en Twitter,
+ya que empezaba a ser una poderosa herramienta de difusión y donde podían ser más activos sin penaliazciones, gracias a un maravilloso concepto: microblogging.&lt;/p&gt;
+
+&lt;p&gt;En aquel tiempo tenía mucho sentido crearte una cuenta de Twitter, aunque solo fuese para leer. Sin embargo, con el tiempo,
+dicha blogosfera ha crecido. Mucho. Para bien o para mal, eso no seré yo quien lo juzgue. Y con ello, ha traído
+jugosas nuevas fuentes de ingresos, como la publicidad a través de tweets y trending topics patrocinados.Todo esto ha hecho que en gran medida,
+nuestra &lt;em&gt;timeline&lt;/em&gt; se vea inundada por una cantidad innecesaria de publicidad,
+sobretodo si eres usuario de Twitter en Android/iOS, y aún existiendo formas de evitarlo, seguimos usándolo.&lt;/p&gt;
+
+&lt;p&gt;La pregunta es, ¿de verdad necesitamos tanto usar Twitter como para tener que pagar ese precio? Al margen de que
+tener presencia en las redes sociales sea un punto a favor en la marca personal, ¿realmente lo necesitamos? Aunque parezca irónico, si.
+Al menos si queremos seguir informados. Sigue siendo una excelente fuente de noticias y opiniones, sobretodo si sabes elegir tus fuentes, como
+diría Ismael Olea.&lt;/p&gt;
+
+&lt;h4 id=&quot;otras-formas-de-estar-informado&quot;&gt;Otras formas de estar informado&lt;/h4&gt;
+
+&lt;p&gt;Aunque suene muy &lt;em&gt;abuelo batallitas&lt;/em&gt;, yo sigo siendo amigo del feed RSS. Es más, mi rutina mañanera incluye
+una taza de café mientras leo publicaciones recientes de mis blogs favoritos con Feedly. Este podría ser un buen
+punto de partida. Sin embargo, volvemos al origen: perdemos la ventaja que supone el microblogging.&lt;/p&gt;
+
+&lt;p&gt;Desde hace algún tiempo, muchos blogueros están empezando a usar Telegram para &lt;em&gt;difundir la palabra&lt;/em&gt;, como es el
+caso de Yoyo con &lt;a href=&quot;https://salmorejogeek.com/&quot;&gt;&lt;strong&gt;Salmorejo Geek&lt;/strong&gt;&lt;/a&gt;, usando para ello los denominados &lt;strong&gt;canales de Telegram&lt;/strong&gt;.
+Funciona prácticamente como Twitter: envías mensajes cortos y un grupo de personas suscritas a ellos, pueden leerlos,
+además de recibir la notificación de que has escrito algo. Genial, ¿verdad? Sin la molesta publicidad. Sin &lt;em&gt;el lado negativo&lt;/em&gt; de la blogosfera, integrado en Telegram.&lt;/p&gt;
+
+&lt;p&gt;Solo tiene un aspecto que no me gusta: cada canal se debe seguir por separado, lo cual está bien si seguimos dos, o tres canales, pero…
+¿y si se diese el caso de que leemos, por poner un ejemplo, 40?&lt;/p&gt;
+
+&lt;h4 id=&quot;unidos-venceremos-separados-caeremos&quot;&gt;Unidos venceremos, separados caeremos.&lt;/h4&gt;
+
+&lt;p&gt;Si seguimos una cantidad exagerada de canales en Telegram, lo más probable es que se nos acumulen los contenidos para leer.
+En Feedly, por ejemplo, disponemos de una vista principal con las últimas noticias y temas que la aplicación considera relevantes para nosotros,
+aunque es algo que viola la privacidad del usuario, pero es un tema del que hablaré más adelante. Igual pasa en Twitter, aunque sin ningún criterio
+personalizado para mostrarnos el contenido: conforme llega, nos lo saca. ¿No sería genial poder hacer lo mismo con Telegram?&lt;/p&gt;
+
+&lt;p&gt;Imaginad por un segundo que Telegram nos permitiese leer todos los canales que seguimos en uno. Que nos permitiese abrir una ventana
+y tengamos ahí, como si de un chat grupal se tratase, todos los mensajes enviados a diferentes canales, ordenados cronológicamente.
+De la &lt;strong&gt;misma forma que Twitter&lt;/strong&gt; hace: autor, enlace al canal, y el contenido. Y un marcador de mensajes no leídos. Solamente con esto, ya estaríamos
+introduciendo el mismo concepto original de Twitter, una red social, en un cliente de mensajería como es Telegram, eliminando la necesidad de dicha red social.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Mensajes de Año Nuevo automáticos</title>
+   <link href="http://localhost:4000/2016/12/31/Mensajes-de-ano-nuevo-automaticos/"/>
+   <updated>2016-12-31T00:00:00+01:00</updated>
+   <id>http://localhost:4000/2016/12/31/Mensajes-de-ano-nuevo-automaticos</id>
+   <content type="html">&lt;p&gt;En este día, normalmente la banda de 3G/4G tiende a estar colapsada por la cantidad de mensajes de “Feliz año” que envía la gente a la misma hora.
+Esto, junto a tener que escribir el mismo mensaje para tus compañeros de trabajo, tu jefe, tus familiares, tu abuela (que es muy moderna y tiene smartphone)
+hace que el año nuevo sea cada vez más desesperante… ¿Y si &lt;strong&gt;automatizamos esta tarea&lt;/strong&gt; y que sea otro quien se ocupe de enviarlo en nuestro lugar?&lt;/p&gt;
+
+&lt;p&gt;Esto es posible gracias a la magia de &lt;strong&gt;&lt;a href=&quot;https://github.com/vysheng/tg&quot;&gt;Telegram-CLI&lt;/a&gt; y Bash&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;En primer lugar, necesitas instalar Telegram-Cli (Linux). Mi recomendación es instalarlo siempre desde el código fuente. Y si usas Debian,
+ten presente &lt;a href=&quot;https://github.com/vysheng/tg/issues/1256&quot;&gt;esta issue&lt;/a&gt;, ya que existe algún problema con OpenSSL a la hora de hacer el &lt;code class=&quot;highlighter-rouge&quot;&gt;make&lt;/code&gt;.
+A continuación es necesario que nos logueemos (introduciendo el número de teléfono y el código del país).&lt;/p&gt;
+
+&lt;p&gt;En segundo lugar, necesitas este &lt;a href=&quot;http://juanjosalvador.es/random/happyNewYear.sh&quot;&gt;script&lt;/a&gt; y un &lt;code class=&quot;highlighter-rouge&quot;&gt;usernames.txt&lt;/code&gt; donde incluiremos los ID de toda la gente a la que queremos que le llegue el mensaje (uno por línea).&lt;/p&gt;
+
+&lt;p&gt;El script original está aquí. Necesitarás actualizar la variable &lt;code class=&quot;highlighter-rouge&quot;&gt;PATH&lt;/code&gt; con la ruta donde tienes tu Telegram-CLI instalado.&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;############################################&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Author: Juanjo Salvador Piedra&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Website: http://juanjosalvador.es&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# GitHub: https://github.es/JuanjoSalvador&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Twitter: @Linuxneitor&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Telegram: @JuanjoSalvador&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;############################################&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# PATH to your Telegram-Cli installation&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/path/to/tg&quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Replace this with your own message&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;MESSAGE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Feliz año nuevo! De parte de Juanjo y el equipo de JotaDevs ;)&quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# File where is all usernames (one per line)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;FILE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;usernames.txt&quot;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;IFS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;read&lt;/span&gt; -r USERNAME; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+	&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;/bin/telegram-cli -W -e &lt;span class=&quot;s2&quot;&gt;&quot;msg &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$USERNAME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$MESSAGE&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &amp;gt; /dev/null &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Message sent to &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$USERNAME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+	sleep 10
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt; &amp;lt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$FILE&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;El último paso es programar el proceso utilizando &lt;code class=&quot;highlighter-rouge&quot;&gt;at&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ at 0000
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Y veremos como el prompt cambia por un &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&lt;/code&gt;. Entonces introducimos:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bash /ruta/del/script/happyNewYear.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Y le enviamos un EOF con Ctrl-D. Añadir &lt;code class=&quot;highlighter-rouge&quot;&gt;bash&lt;/code&gt; delante es importante, dado que &lt;code class=&quot;highlighter-rouge&quot;&gt;at&lt;/code&gt; ejecuta todo con &lt;code class=&quot;highlighter-rouge&quot;&gt;/bin/sh&lt;/code&gt; en lugar de BASH, por lo que el script fallaría
+si no le indicamos explícitamente como debe ejecutarlo.&lt;/p&gt;
+
+&lt;p&gt;Llegados a este punto, podemos salir y despreocuparnos, que nuestro ordenador se encargará de enviar el mensaje llegada la hora, a la lista de contactos especificados.&lt;/p&gt;
+
+&lt;p&gt;Feliz Año Nuevo, y que disfrutéis de las vacaciones ;-)&lt;/p&gt;
+
+&lt;h4 id=&quot;actualizaciÓn&quot;&gt;ACTUALIZACIÓN&lt;/h4&gt;
+
+&lt;p&gt;Me han notificado que es posible que Telegram nos ponga una limitación de mensajes por minuto que podemos enviar, lo cual podría dar pie a un baneo de una hora. Para evitar eso, he añadido un &lt;code class=&quot;highlighter-rouge&quot;&gt;sleep 10&lt;/code&gt; entre mensaje y mensaje. Sin embargo, es recomendable que la lista de usuarios no tenga más de 20 contactos para evitarnos malfuncionamiento.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Visualiza documentos Markdown en la terminal</title>
+   <link href="http://localhost:4000/2016/12/18/Visualiza-documentos-Markdown-en-la-terminal/"/>
+   <updated>2016-12-18T00:00:00+01:00</updated>
+   <id>http://localhost:4000/2016/12/18/Visualiza-documentos-Markdown-en-la-terminal</id>
+   <content type="html">&lt;p&gt;Últimamente el formato Markdown (&lt;code class=&quot;highlighter-rouge&quot;&gt;.md&lt;/code&gt;) está trinfando mucho, dada su versatilidad y simpleza. Prueba de ello
+es que podemos encontrar prácticamente en cualquier repositorio que clonemos desde Github, u otro servicio similar,
+documentación escrita en dicho formato.&lt;/p&gt;
+
+&lt;p&gt;Normalmente el Markdown se &lt;strong&gt;parsea a HTML&lt;/strong&gt;, de modo que hace su visualización en webs muy cómoda,
+de la misma forma que diversos editores (como VS Code, o Atom) soportan la previsualización de nuestros documentos. Claro que, ¿que ocurre
+si &lt;strong&gt;no tenemos acceso a una GUI&lt;/strong&gt;, no tenemos un editor compatible, o no queremos tener que abrirlo? Hay un truco que nos permite
+leer nuestros documentos Markdown directamente &lt;strong&gt;desde la terminal&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;requisitos&quot;&gt;Requisitos&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Lynx&lt;/strong&gt;. Navegador web en modo texto.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Pandoc&lt;/strong&gt;. Conversor de documentos muy versátil.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ambos paquetes podemos instalarlos en nuestro sistema *nix (GNU/Linux, OSX, BSD, etc).&lt;/p&gt;
+
+&lt;h3 id=&quot;uso&quot;&gt;Uso&lt;/h3&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;pandoc file.md | lynx -stdin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;allá-vamos&quot;&gt;¡Allá vamos!&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/Gm2Ci0D.png&quot; alt=&quot;Using Lynx to view a Markdown document&quot; /&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Guerrilla Open Access Manifesto, el legado de Aaron Swartz</title>
+   <link href="http://localhost:4000/2016/11/23/Guerrilla-Open-Access-Manifesto-el-legado-de-Aaron-Swartz/"/>
+   <updated>2016-11-23T00:00:00+01:00</updated>
+   <id>http://localhost:4000/2016/11/23/Guerrilla-Open-Access-Manifesto-el-legado-de-Aaron-Swartz</id>
+   <content type="html">&lt;p&gt;Manifiesto escrito por &lt;a href=&quot;https://en.wikipedia.org/wiki/Aaron_Swartz&quot;&gt;Aaron Swartz&lt;/a&gt; (1986-2013, co-fundador de Reddit y hacktivista de la cultura libre)  y en 2008, sobre el libre acceso a la cultura y el conocimiento. De dominio público, en Internet Archive.&lt;/p&gt;
+
+&lt;p&gt;Extraído del documental &lt;a href=&quot;http://www.takepart.com/internets-own-boy&quot;&gt;&lt;em&gt;The Internet’s Own Boy&lt;/em&gt;&lt;/a&gt;, sobre la vida del mencionado.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Guerilla Open Access Manifesto 
+
+Information is power. But like all power, there are those who want to keep it for 
+themselves. The world's entire scientific and cultural heritage, published over centuries 
+in books and journals, is increasingly being digitized and locked up by a handful of 
+private corporations. Want to read the papers featuring the most famous results of the 
+sciences? You'll need to send enormous amounts to publishers like Reed Elsevier. 
+
+There are those struggling to change this. The Open Access Movement has fought 
+valiantly to ensure that scientists do not sign their copyrights away but instead ensure 
+their work is published on the Internet, under terms that allow anyone to access it. But 
+even under the best scenarios, their work will only apply to things published in the future. 
+Everything up until now will have been lost. 
+
+That is too high a price to pay. Forcing academics to pay money to read the work of their 
+colleagues? Scanning entire libraries but only allowing the folks at Google to read them? 
+Providing scientific articles to those at elite universities in the First World, but not to 
+children in the Global South? It's outrageous and unacceptable. 
+
+&quot;I agree,&quot; many say, &quot;but what can we do? The companies hold the copyrights, they 
+make enormous amounts of money by charging for access, and it's perfectly legal — 
+there's nothing we can do to stop them.&quot; But there is something we can, something that's 
+already being done: we can fight back. 
+
+Those with access to these resources — students, librarians, scientists — you have been 
+given a privilege. You get to feed at this banquet of knowledge while the rest of the world 
+is locked out. But you need not — indeed, morally, you cannot — keep this privilege for 
+yourselves. You have a duty to share it with the world. And you have: trading passwords 
+with colleagues, filling download requests for friends. 
+
+
+
+Meanwhile, those who have been locked out are not standing idly by. You have been 
+sneaking through holes and climbing over fences, liberating the information locked up by 
+the publishers and sharing them with your friends. 
+
+But all of this action goes on in the dark, hidden underground. It's called stealing or 
+piracy, as if sharing a wealth of knowledge were the moral equivalent of plundering a 
+ship and murdering its crew. But sharing isn't immoral — it's a moral imperative. Only 
+those blinded by greed would refuse to let a friend make a copy. 
+
+Large corporations, of course, are blinded by greed. The laws under which they operate 
+require it — their shareholders would revolt at anything less. And the politicians they 
+have bought off back them, passing laws giving them the exclusive power to decide who 
+can make copies. 
+
+There is no justice in following unjust laws. It's time to come into the light and, in the 
+grand tradition of civil disobedience, declare our opposition to this private theft of public 
+culture. 
+
+We need to take information, wherever it is stored, make our copies and share them with 
+the world. We need to take stuff that's out of copyright and add it to the archive. We need 
+to buy secret databases and put them on the Web. We need to download scientific 
+journals and upload them to file sharing networks. We need to fight for Guerilla Open 
+Access. 
+
+With enough of us, around the world, we'll not just send a strong message opposing the 
+privatization of knowledge — we'll make it a thing of the past. Will you join us? 
+
+Aaron Swartz 
+
+July 2008, Eremo, Italy 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;traducciones&quot;&gt;Traducciones&lt;/h3&gt;
+
+&lt;p&gt;En &lt;a href=&quot;https://openaccessmanifesto.wordpress.com/&quot;&gt;esta web&lt;/a&gt; se recoge un total de 25 traducciones del manifiesto, entre las que figuran el español, el chino, el búlgaro, y otras.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Desarrollo de aplicaciones móviles con JavaScript</title>
+   <link href="http://localhost:4000/2016/11/20/Desarrollo-de-apps-con-JavaScript/"/>
+   <updated>2016-11-20T00:00:00+01:00</updated>
+   <id>http://localhost:4000/2016/11/20/Desarrollo-de-apps-con-JavaScript</id>
+   <content type="html">&lt;p&gt;La tecnología siempre avanza en torno a facilitarnos según qué tareas. Los primeros ordenadores aparecieron bajo la premisa de realizar cálculos complejos, y en base a esto, hemos ido creando software que facilita cada vez más tareas pesadas, como todo aquello que gira en torno a la burocracia, por ejemplo.&lt;/p&gt;
+
+&lt;p&gt;En el caso del desarrollo de aplicaciones para dispositivos móviles no es diferente, y aquí es donde aparecen las &lt;strong&gt;aplicaciones híbridas&lt;/strong&gt;, aquellas que complementan las tecnologías web con el poder del código nativo.&lt;/p&gt;
+
+&lt;h3 id=&quot;tipos-de-aplicaciones&quot;&gt;Tipos de aplicaciones&lt;/h3&gt;
+
+&lt;p&gt;Podemos dividir el grueso de aplicaciones del mercado en tres grandes grupos:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Apps Nativas&lt;/strong&gt;. Ofrecen un acceso completo al dispositivo y un rendimiento que el resto pueden no tener, pero requieren que se diseñe y construya una aplicación independiente para cada sistema operativo (en su lenguaje nativo), lo cual eleva los costes.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Web Apps&lt;/strong&gt;. Su desarrollo es mucho más rápido que las aplicaciones nativas, dado que todo el código es HTML, CSS y JS. Pueden correr en cualquier dispositivo que tenga un navegador web, pero eso limita el acceso al dispositivo en si.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Apps híbridas&lt;/strong&gt;. Ofrecen la solución a medio camino entre las nativas y las web: desarrollo rápido, rendimiento asequible y acceso completo al dispositivo, mediante un contenedor nativo que hace las veces de intermediario entre el usuario y la aplicación, y un código web que ofrece la funcionalidad y la interfaz.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;desarrollo-híbrido-por-dónde-empezamos&quot;&gt;Desarrollo híbrido: ¿por dónde empezamos?&lt;/h3&gt;
+
+&lt;p&gt;Existen numerosos frameworks y &lt;em&gt;app builders&lt;/em&gt; que nos facilitan el proceso de desarrollo, pero yo voy a hablar de tres: &lt;strong&gt;NativeScript&lt;/strong&gt;, &lt;strong&gt;Ionic&lt;/strong&gt; y &lt;strong&gt;React Native&lt;/strong&gt;. Cada uno con sus pros y sus contras.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Ionic&lt;/strong&gt;. Se trata de un framework de Apache Cordova, la plataforma que heredó el potencial de PhoneGap. Su fuerte está en que otorga el poder de AngularJS a Cordova, además de un conjunto muy completo de herramientas y preconfiguraciones. Es un framework completamente híbrido, dado que se apoya en el contenedor WebView.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;NativeScript&lt;/strong&gt;. Permite desarrollar aplicaciones completamente nativas haciendo uso de tecnologías web: Angular, TypeScript o JavaScript. Aunque su filosofía no se ajusta completamente al modelo híbrido, ya que actúa más bien como Xamarin.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;React Native&lt;/strong&gt;. Plantea aplicaciones nativas, pero escritas en React, el framework JavaScript de Facebook. De forma muy similar al mencionado anteriormente, tampoco sigue exactamente la filosofía de aplicaciones híbridas como tal, sin embargo, si es cierto que ofrece un rendimiento y un tiempo de desarrollo bastante interesantes.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Claro que, con todos estos frameworks podemos desarrollar, pero si queremos además compilar nosotros mismos nuestras aplicaciones, necesitaremos tener instalado y configurado el correspondiente SDK (Android, Windows, iOS), y en el caso de Apple, también necesitaríamos un equipo Mac.&lt;/p&gt;
+
+&lt;h3 id=&quot;ionic&quot;&gt;Ionic&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Se basa en AngularJS, HTML5 y CSS3&lt;/li&gt;
+  &lt;li&gt;Existe una librería de plugins para acceder al dispositivo: ngCordova.&lt;/li&gt;
+  &lt;li&gt;Proporciona estilos que emulan el nativo, transiciones, elementos, etc.&lt;/li&gt;
+  &lt;li&gt;Extiende las funciones que incluía Apache Cordova.&lt;/li&gt;
+  &lt;li&gt;Herramientas en la nube (Ionic Cloud, Ionic View)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Sitio web: &lt;a href=&quot;https://ionic.io&quot;&gt;https://ionic.io&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;nativescript&quot;&gt;NativeScript&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Soporta JavaScript, TypeScript y Angular 2&lt;/li&gt;
+  &lt;li&gt;No requiere tantos conocimientos de HTML y CSS como Ionic&lt;/li&gt;
+  &lt;li&gt;UI nativas, en lugar de WebView&lt;/li&gt;
+  &lt;li&gt;Extensible mediante plugins&lt;/li&gt;
+  &lt;li&gt;Compila a nativo (Android, iOS)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Sitio web: &lt;a href=&quot;https://www.nativescript.org/&quot;&gt;https://www.nativescript.org/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;react-native&quot;&gt;React Native&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Soporta React (TypeScript)&lt;/li&gt;
+  &lt;li&gt;Compila a nativo (Android, iOS)&lt;/li&gt;
+  &lt;li&gt;LiveReload: no necesitas volver a compilar para visualizar los cambios.&lt;/li&gt;
+  &lt;li&gt;React Native UWP permite usar RN para crear apps universales de Windows.&lt;/li&gt;
+  &lt;li&gt;Orientado a componentes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Sitio web: &lt;a href=&quot;https://facebook.github.io/react-native/&quot;&gt;https://facebook.github.io/react-native/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;extra&quot;&gt;¡Extra!&lt;/h4&gt;
+
+&lt;p&gt;El trabajo con estilos en React Native puede ser pesado. De igual forma que Ionic posee su propio conjunto de estilos predefinidos que emulan los estilos nativos de iOS y Android, en React Native tenemos librerías de componentes similares, como es el caso de NativeBase.&lt;/p&gt;
+
+&lt;p&gt;Sitio web: &lt;a href=&quot;http://nativebase.io/&quot;&gt;http://nativebase.io/&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Como instalar Jekyll en Windows</title>
+   <link href="http://localhost:4000/2016/11/11/Como-instalar-Jekyll-en-Windows/"/>
+   <updated>2016-11-11T00:00:00+01:00</updated>
+   <id>http://localhost:4000/2016/11/11/Como-instalar-Jekyll-en-Windows</id>
+   <content type="html">&lt;p&gt;Con motivo de la segunda edición de mi charla &lt;a href=&quot;http://juanjosalvador.es/2016/09/20/Construye-tu-web-como-un-hacker/&quot;&gt;&lt;em&gt;Construye tu web como un hacker&lt;/em&gt;&lt;/a&gt; en las &lt;strong&gt;Jornadas Hacklab Almería 2016&lt;/strong&gt;,
+he decidido instalar un Jekyll en mi netbook con Windows 10. ¿Por qué? En primer lugar, porque intuyo que la mayoría de asistentes de la charla serán usuarios del sistema de Microsoft,
+y en segundo lugar, porque la instalación de Jekyll en Windows es más complicado que en GNU/Linux, y hacerlo ha sido un pequeño reto.&lt;/p&gt;
+
+&lt;h3 id=&quot;instalar-ruby&quot;&gt;Instalar Ruby&lt;/h3&gt;
+
+&lt;p&gt;El primer paso, es instalar Ruby y Ruby Development Kit en Windows. La mejor forma de hacerlo es a través de &lt;a href=&quot;http://rubyinstaller.org/downloads/&quot;&gt;&lt;strong&gt;RubyInstaller&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Se trata de un ejecutable, es simplemente seguir los pasos del asistente y a volar. A continuación, y desde la misma web de RubyInstaller
+podemos descargar el Development Kit. Al ejecutarlo, nos pide una ruta de extracción, así que lo extraemos en &lt;code class=&quot;highlighter-rouge&quot;&gt;C:\RubyDevKit&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Para instalarlo, abrimos la consola CMD de Windows, y navegamos hasta la ruta donde hemos extraído el Development Kit de Ruby, y lo instalamos.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; ruby dk.rb init
+&amp;gt; ruby dk.rb install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;instalar-rubygems&quot;&gt;Instalar Rubygems&lt;/h3&gt;
+
+&lt;p&gt;Rubygems es el gestor de paquetes de Ruby, creado por la comunidad, e imprescindible cuando trabajas con este lenguaje.&lt;/p&gt;
+
+&lt;p&gt;Descargamos el paquete ZIP desde la &lt;a href=&quot;https://rubygems.org/pages/download&quot;&gt;web de Rubygems&lt;/a&gt;, y lo descomprimimos. Para instalarlo,
+abrimos la consola de Windows con Ruby, navegamos hacia la ruta donde hayamos descomprimido el paquete, y lo instalamos:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; ruby setup.rb
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Tras unos minutos, tendremos Rubygems instalado y podemos continuar.&lt;/p&gt;
+
+&lt;h3 id=&quot;instalar-jekyll&quot;&gt;Instalar Jekyll&lt;/h3&gt;
+
+&lt;p&gt;Una vez tenemos Ruby y Rubygems instalado, podemos instalar Jekyll, pero para asegurarnos de que no fallan las dependencias,
+primero instalaremos Bundler.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; gem install bundler
+&amp;gt; gem install jekyll
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Cuando termine la instalación, ya podemos crear nuevos sitios, servir los que tenemos creados, y ponernos a crear.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>5 herramientas que todo Web Developer debería conocer</title>
+   <link href="http://localhost:4000/2016/10/06/5-herramientas-que-todo-Web-Developer-debe-conocer/"/>
+   <updated>2016-10-06T00:00:00+02:00</updated>
+   <id>http://localhost:4000/2016/10/06/5-herramientas-que-todo-Web-Developer-debe-conocer</id>
+   <content type="html">&lt;p&gt;Cuando entras en el mundo del desarrollo web e indagas a fondo, te das cuenta de que hay un mundo de posibilidades. Pero para aprovechar al máximo este mundo de posibilidades, es conveniente conocer y saber manejar algunas herramientas que nos harán la vida más fácil.&lt;/p&gt;
+
+&lt;h3 id=&quot;framework-css&quot;&gt;Framework CSS&lt;/h3&gt;
+
+&lt;p&gt;Ya sea Bootstrap, o tu propia librería de estilos y animaciones que has ido desarrollando a lo largo de los años. Conocer un framework CSS y evitar tener que escribir manualmente todos los estilos de cada web, acelera muchísimo el trabajo de maquetación y de estilos. Algunos ejemplos interesantes son:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Bootstrap&lt;/strong&gt; proporciona un sistema de columnas que facilita la responsividad, siendo además el más extendido.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Kube&lt;/strong&gt;, un framework CSS responsivo, flexible y ligero, diseñado para profesionales.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Flexbox&lt;/strong&gt; es otro sistema de columnas responsivo basado en la propiedad &lt;code class=&quot;highlighter-rouge&quot;&gt;flex&lt;/code&gt;de CSS.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;framework-javascript&quot;&gt;Framework JavaScript&lt;/h3&gt;
+
+&lt;p&gt;Conocer &lt;strong&gt;jQuery&lt;/strong&gt; hoy en día no basta. Cierto es que facilita muchos trabajos relacionados con JavaScript y se ha convertido en el pilar base de muchos sistemas de UI/UX, pero en el mundo real, un front-end developer necesitará crear algo más allá de interfaces. ¿Que tal aplicaciones escritas completamente en JavaScript? En este grupo tenemos una variedad casi infinita, se dice que si levantas una piedra, aparecen 12 frameworks de JavaScript.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Ember.js&lt;/strong&gt; se define como un framework para crear aplicaciones ambiciosas, basado en el paradigma MVVM (Modelo-Vista-Vistamodelo).&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;AngularJS&lt;/strong&gt; conocido como “&lt;em&gt;Superheroic JavaScript MVW&lt;/em&gt;”, donde MVW se traduce como Modelo-Vista-Loquesea.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Backbone.js&lt;/strong&gt;, el framework más ligero (pesa solo 7Kb), potente y muy flexible.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;En este punto, como mención especial añadiría &lt;strong&gt;CoffeeScript&lt;/strong&gt;, un pequeño lenguaje que se compila a JavaScript (como TypeScript en Angular 2) pensado para añadir azúcar sintáctico a JavaScript. ¡Endulza tu código!&lt;/p&gt;
+
+&lt;h3 id=&quot;gestores-de-paquetes&quot;&gt;Gestores de paquetes&lt;/h3&gt;
+
+&lt;p&gt;Cuando hablo de gestores de paquetes, orientados al desarrollo web, hablo sobretodo de &lt;strong&gt;npm&lt;/strong&gt; y &lt;strong&gt;bower&lt;/strong&gt;, dos herramientas que considero claves en este tipo de desarrollos.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;NPM&lt;/strong&gt;, es un gestor de paquetes de &lt;strong&gt;node.js&lt;/strong&gt; y que nos proporciona acceso a un sinfín de librerías y componentes JavaScript, como &lt;em&gt;shelljs&lt;/em&gt;, una librería que proporciona instrucciones UNIX en JS.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Bower&lt;/strong&gt; sin embargo, está enfocado a descargar y administrar dependencias  del lado cliente (Bootstrap por ejemplo, puede instalarse desde bower).&lt;/p&gt;
+
+&lt;p&gt;Ambos sistemas incorporan un fichero de dependencias, &lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt; y &lt;code class=&quot;highlighter-rouge&quot;&gt;bower.json&lt;/code&gt; respectivamente, donde le podemos indicar los paquetes que queramos descargar e instalarlos de un plumazo con &lt;code class=&quot;highlighter-rouge&quot;&gt;npm install&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Mención especial a &lt;strong&gt;Yeoman&lt;/strong&gt;, un &lt;code class=&quot;highlighter-rouge&quot;&gt;kickstarter manager&lt;/code&gt;, o un gestor de plantillas. Cada proyecto requiere una esctructura de carpetas y ficheros específicos, y con Yeoman, podemos generarlos. Muy útil sobretodo para Angular.&lt;/p&gt;
+
+&lt;h3 id=&quot;tester-de-apis&quot;&gt;Tester de APIs&lt;/h3&gt;
+
+&lt;p&gt;Una tendencia actual y en alza, es el modelo de aplicaciones centralizadas basadas en API REST, o el &lt;em&gt;deja que el servidor trabaje&lt;/em&gt;. Este modelo de apps se basa en un servidor, con todo el motor de la aplicación sobre el, y que se conecta a los clientes a través de un API REST. Este sistema por ejemplo, lo encontramos en el &lt;em&gt;zen de Angular&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Cuando estamos desarrollando un API REST, para hacer las pruebas pertinentes, tenemos que además tener listo un cliente. Esto puede retrasarnos o aumentar la carga de trabajo, así que para facilitar estas tareas, ¿por qué no usar un tester? Mi recomendación en este punto es &lt;strong&gt;Postman&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Postman es una aplicación que podemos instalar en el navegador (Chorme/Chromium) y utilizarla para &lt;strong&gt;atacar nuestra API&lt;/strong&gt; pasándole una URL, el método (POST/GET) y unos parámetros si fuesen necesarios. Inmediatamente tendremos la respuesta del servidor en formato XML, HTML o JSON, como convenga, y podremos analizar si vamos o no por el buen camino. Considero esta herramienta como una de las más importantes del artículo, ya que agiliza muchísimo el desarrollo back.&lt;/p&gt;
+
+&lt;h3 id=&quot;depurador-del-navegador&quot;&gt;Depurador del navegador&lt;/h3&gt;
+
+&lt;p&gt;Depurar el código JavaScript solía ser complicado, hasta que aparecieron los depuradores de navegador. Google hizo su apuesta con &lt;strong&gt;Chrome DevTools&lt;/strong&gt;, una herramienta que nos permite analizar elementos, estilos, tráfico y salidas de consola de JavaScript en tiempo de ejecución. Asi mismo, incluye un depurador, y permite editar el código en vivo.&lt;/p&gt;
+
+&lt;p&gt;Firefox incluye una suite de herramientas muy similar e igual de potente, sin embargo, para entrar en profundidad, existe una versión alternativa del navegador, denominada &lt;strong&gt;Firefox Developer&lt;/strong&gt;, con actualizaciones más frecuntes y un completo editor de código que permite analizar y modificar &lt;em&gt;on the fly&lt;/em&gt;.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Construye tu web como un hacker</title>
+   <link href="http://localhost:4000/2016/09/20/Construye-tu-web-como-un-hacker/"/>
+   <updated>2016-09-20T00:00:00+02:00</updated>
+   <id>http://localhost:4000/2016/09/20/Construye-tu-web-como-un-hacker</id>
+   <content type="html">&lt;p&gt;La presentación basada en Reveal.js de la charla “Construye tu web como un hacker” que di en Hacklab Almería, sobre desarrollo de blogs usando
+Jekyll y GitHub Pages.&lt;/p&gt;
+
+&lt;iframe width=&quot;800&quot; height=&quot;600&quot; src=&quot;http://juanjosalvador.es/presentaciones/jekyll.html&quot;&gt;&lt;/iframe&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Desarrollo de apps para Android usando Python</title>
+   <link href="http://localhost:4000/2016/09/10/Desarrollo-de-apps-para-Android-usando-Python/"/>
+   <updated>2016-09-10T00:00:00+02:00</updated>
+   <id>http://localhost:4000/2016/09/10/Desarrollo-de-apps-para-Android-usando-Python</id>
+   <content type="html">&lt;p&gt;Con objetivo de organizarme mejor en la PyCon ES, estuve dándole vueltas al diseño de una aplicación donde pueda seleccionar mi propio planning de charlas y talleres y organizarmelo todo en una línea cronológica que me permita ver, en cada momento, la siguiente charla/taller a la que tengo planeado asistir.&lt;/p&gt;
+
+&lt;p&gt;Esto ya lo empecé a diseñar para la &lt;a href=&quot;http://juanjosalvador.es/2016/05/08/Experiencia-OpenSouthCode/&quot;&gt;OpenSouthCode&lt;/a&gt;, pero entre una cosa y otra, se quedó a medias. Con esto último quiero decir, que mi planteamiento original fue hacerlo con Ionic y AngularJS. Ahora, que para una PyCon, lo suyo sería hacerlo en Python… ¿no?&lt;/p&gt;
+
+&lt;p&gt;Mi búsqueda de la viabilidad de este proyecto me ha llegado a los siguientes puntos:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Python for Android&lt;/strong&gt;, una herramienta que te permite empaquetar código Python en un APK que puedes instalar en cualquier dispositivo Android.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;python-for-android is an open source build tool to let you package Python code into standalone android APKs that can be passed around, installed, or uploaded to marketplaces such as the Play Store just like any other Android app&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://media.readthedocs.org/pdf/python-for-android/latest/python-for-android.pdf&quot;&gt;Python for Android - Read the Docs&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Kivy&lt;/strong&gt;, una librería opensource que nos permite dotar a Python de interfaces táctiles entre otras cosas.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Open source Python library for rapid development of applications
+that make use of innovative user interfaces, such as multi-touch apps.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&quot;]https://kivy.org/&quot;&gt;Web oficial&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Developing Android apps completely in Python&lt;/strong&gt;, un artículo de Thomas Perl, en la EuroPython 2012, donde habló sobre el desarrollo de este tipo de aplicaciones.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://ep2013.europython.eu/conference/talks/developing-android-apps-completely-in-python&quot;&gt;Developing Android apps completely in Python&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Parece un camino largo y tedioso ahora mismo, pero es interesante saber que pueden hacerse.&lt;/p&gt;
+
+&lt;p&gt;Happy coding!&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Sobre la falta de privacidad de WhatsApp</title>
+   <link href="http://localhost:4000/2016/08/26/Sobre-la-falta-de-privacidad-de-whatsapp/"/>
+   <updated>2016-08-26T00:00:00+02:00</updated>
+   <id>http://localhost:4000/2016/08/26/Sobre-la-falta-de-privacidad-de-whatsapp</id>
+   <content type="html">&lt;p&gt;Ya me he mostrado, en anteriores ocasiones, algo contrario al uso de WhatsApp. Es más, si no fuese algo prácticamente obligatorio hoy en día,habría abandonado completamente su uso.&lt;/p&gt;
+
+&lt;p&gt;Hace dos años y medio, el gigante Facebook, conocido por sus numerosos atentados contra la privacidad de sus usuarios y la venta de datos a terceros para estudios de mercado, compró los derechos de WhatsApp, la aplicación de mensajería más utilizada del mundo ahora mismo, creando un combo magnífico: ¿quien no tiene Facebook y WhatsApp? Esta unión de ambos, trajo algunas ventajas, como &lt;strong&gt;cambios importantes&lt;/strong&gt; en la aplicación en cuanto a seguridad y privacidad, la completa gratuitad del servicio, etc.&lt;/p&gt;
+
+&lt;p&gt;Sin embargo, algo que ya auguramos en su momento, es que Facebook &lt;strong&gt;podría estar analizando los mensajes que enviamos a modo de estudio de mercado&lt;/strong&gt; de forma ilegal. De hecho, no descartaría que hayan estado haciéndolo de forma encubierta.&lt;/p&gt;
+
+&lt;p&gt;La última actualización de la aplicación de mensajería ha desvelado esta hipótesis, aunque no indica que lo hayan estado haciendo antes, ahora directamente informa al usuario de que Facebook va a usar tus mensajes para &lt;em&gt;mejorar tu experiencia&lt;/em&gt; de usuario, manteniendo esta opción habilitada por omisión.&lt;/p&gt;
+
+&lt;p&gt;Dado que es una fuerte fuente de ingresos para la compañía, pongo en duda si desactivando la opción se dejan de utilizar tus datos para sus estudios, lo que si está claro es que al menos tienen la decencia de informarte de ello.&lt;/p&gt;
+
+&lt;p&gt;¿Cual es la solución para protegernos del tráfico de información personal que provocan? La única solución factible es, dejar de usar WhatsApp. Eliminar la aplicación y tu cuenta. Pero es un paso duro, &lt;strong&gt;podríamos perder el contacto&lt;/strong&gt; con muchos amigos, familiares, conocidos, compañeros de trabajo, etc. Migrar esto a Telegram es una opción factible, aunque supone un gran esfuerzo.&lt;/p&gt;
+
+&lt;p&gt;Si eliges aceptar las condiciones y que utilicen tus datos, pero aún así quieres intentar poner algo de desacuerdo en el asunto, puedes desactivar esta opción desde &lt;strong&gt;Opciones &amp;gt; Cuenta &amp;gt; Privacidad&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Actualización&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Un artículo de El Androide Libre confirma mis sospechas: puedes negarte, pero Facebook seguirá llevando a cabo sus malas praxis.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.elandroidelibre.com/2016/08/whatsapp-compartir-datos-facebook.html&quot;&gt;El Androide Libre&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Copiar archivos por SSH</title>
+   <link href="http://localhost:4000/2016/06/23/Copiar-archivos-por-SSH/"/>
+   <updated>2016-06-23T00:00:00+02:00</updated>
+   <id>http://localhost:4000/2016/06/23/Copiar-archivos-por-SSH</id>
+   <content type="html">&lt;p&gt;Cuando Ismael Olea me dijo que el FTP estaba anticuado, me sentí bastante desactualizado en cuanto a administración de servidores. Lo primero que me vino a la mente, fue si quizás se estaría refiriendo a que deberíamos usar FTPS (el protocolo FTP sobre SSL), ya que, en mis años de estudiante ya se hablaba de que iba a ser el nuevo estándar. Sin embargo, me hablaba de SSH.&lt;/p&gt;
+
+&lt;p&gt;Es una característica que me resultaba curiosa y nueva. ¿Tranmisión de ficheros directamente por SSH? Pues si, se puede. Vaya que si. Y encima, de forma bidireccional.&lt;/p&gt;
+
+&lt;p&gt;Para ello, haríamos uso del comando SCP (Secure Copy Protocol).&lt;/p&gt;
+
+&lt;h4 id=&quot;tranmisión-de-local-a-remoto&quot;&gt;Tranmisión de local a remoto&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;scp /ruta/de/origen user@servidor:/ruta/de/destino
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;tranmisión-de-remoto-a-local&quot;&gt;Tranmisión de remoto a local&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;scp user@servidor:/ruta/de/origen /ruta/de/destino
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Estas cosas nunca dejan de sorprenderme…&lt;/p&gt;
+
+&lt;p&gt;¡Pero aún hay más!&lt;/p&gt;
+
+&lt;h4 id=&quot;hazlo-recursivo&quot;&gt;Hazlo recursivo&lt;/h4&gt;
+
+&lt;p&gt;Ideal para subidas de grandes volúmenes de archivos.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;scp -r /ruta/de/origen user@servidor:/ruta/de/destino
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Ionic 2 (beta) y el error "Promise is not defined"</title>
+   <link href="http://localhost:4000/2016/05/19/Ionic-2-Promise-is-not-defined/"/>
+   <updated>2016-05-19T00:00:00+02:00</updated>
+   <id>http://localhost:4000/2016/05/19/Ionic-2-Promise-is-not-defined</id>
+   <content type="html">&lt;p&gt;Esta entrada es más un apunte personal que un artículo. Sin embargo, mis apuntes personales pueden resultar instructivos, así que no veo por qué no colgarlo aquí.&lt;/p&gt;
+
+&lt;p&gt;Trata sobre como resolver (o como he resuelto yo) el error &lt;code class=&quot;highlighter-rouge&quot;&gt;Promise is not defined&lt;/code&gt; al intentar depurar una aplicación híbrida de Ionic 2 (beta 22) desde el navegador, usando &lt;code class=&quot;highlighter-rouge&quot;&gt;ionic serve&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;el-problema-descrito&quot;&gt;El problema, descrito&lt;/h3&gt;
+
+&lt;p&gt;Al ejecutar &lt;code class=&quot;highlighter-rouge&quot;&gt;ionic serve&lt;/code&gt;, es posible que obtengamos el siguiente log.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Running 'serve:before' gulp task before serve
+[18:28:32] Starting 'clean'...
+[18:28:32] Finished 'clean' after 17 ms
+[18:28:32] Starting 'watch'...
+[18:28:32] Starting 'sass'...
+[18:28:32] Starting 'html'...
+[18:28:32] Starting 'fonts'...
+[18:28:32] Starting 'scripts'...
+[18:28:32] Finished 'scripts' after 76 ms
+[18:28:32] Finished 'html' after 85 ms
+[18:28:32] Finished 'fonts' after 93 ms
+Caught exception:
+ ReferenceError: Promise is not defined
+    at LazyResult.async (/Users/linuxeitor/Documents/Ionic2/Ionic2SecondApp/node_modules/postcss/lib/lazy-result.js:157:31)
+    at LazyResult.then (/Users/linuxeitor/Documents/Ionic2/Ionic2SecondApp/node_modules/postcss/lib/lazy-result.js:79:21)
+    at DestroyableTransform._transform (/Users/linuxeitor/Documents/Ionic2/Ionic2SecondApp/node_modules/gulp-autoprefixer/index.js:24:6)
+    at DestroyableTransform.Transform._read (/Users/linuxeitor/Documents/Ionic2/Ionic2SecondApp/node_modules/through2/node_modules/readable-stream/lib/_stream_transform.js:159:10)
+    at DestroyableTransform.Transform._write (/Users/linuxeitor/Documents/Ionic2/Ionic2SecondApp/node_modules/through2/node_modules/readable-stream/lib/_stream_transform.js:147:83)
+    at doWrite (/Users/linuxeitor/Documents/Ionic2/Ionic2SecondApp/node_modules/through2/node_modules/readable-stream/lib/_stream_writable.js:313:64)
+    at writeOrBuffer (/Users/linuxeitor/Documents/Ionic2/Ionic2SecondApp/node_modules/through2/node_modules/readable-stream/lib/_stream_writable.js:302:5)
+    at DestroyableTransform.Writable.write (/Users/linuxeitor/Documents/Ionic2/Ionic2SecondApp/node_modules/through2/node_modules/readable-stream/lib/_stream_writable.js:241:11)
+    at DestroyableTransform.ondata (/Users/linuxeitor/Documents/Ionic2/Ionic2SecondApp/node_modules/through2/node_modules/readable-stream/lib/_stream_readable.js:531:20)
+    at DestroyableTransform.emit (events.js:95:17) 
+
+Mind letting us know? https://github.com/driftyco/ionic-cli/issues
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Los señores de Ionic, muy amablemente introdujeron un enlace a la página de incidencias de su repositorio, para que notifiquemos el error. Sin embargo, si haces una búsqueda en dicha URL, verás que hay muchos casos similares con respuestas muy variopintas.&lt;/p&gt;
+
+&lt;h3 id=&quot;el-origen&quot;&gt;El origen&lt;/h3&gt;
+
+&lt;p&gt;Tras indagar en Internet (y mucho StackOverflow), he llegado a la conclusión de que el origen del problema es una &lt;strong&gt;dependencia faltante&lt;/strong&gt; y una configuración de Gulp. En concreto, falta añadir un &lt;code class=&quot;highlighter-rouge&quot;&gt;requiere&lt;/code&gt; a &lt;code class=&quot;highlighter-rouge&quot;&gt;gulpfile.js&lt;/code&gt; y un paquete NPM a nuestra lista de módulos.&lt;/p&gt;
+
+&lt;h3 id=&quot;la-solución&quot;&gt;La solución&lt;/h3&gt;
+
+&lt;p&gt;Sencillo. Solo tenemos que abrir nuestro &lt;code class=&quot;highlighter-rouge&quot;&gt;gulpfile.js&lt;/code&gt; (en la raíz del proyecto Ionic), y añadir lo siguiente a la línea 6:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;require('es6-promise').polyfill();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;A continuación, instalamos el paquete &lt;code class=&quot;highlighter-rouge&quot;&gt;es6-promise&lt;/code&gt; con NPM:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install es6-promise
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;¡Y a volar!&lt;/p&gt;
+
+&lt;p&gt;Por si acaso, he hecho un &lt;a href=&quot;https://github.com/driftyco/ionic2-app-base/pull/31&quot;&gt;pull request al repositorio de la plantilla &lt;code class=&quot;highlighter-rouge&quot;&gt;blank&lt;/code&gt; de Ionic 2&lt;/a&gt;, solucionando este problema.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Gestión de proyectos mediante GitHub</title>
+   <link href="http://localhost:4000/2016/05/13/Gesti%C3%B3n-de-proyectos-mediante-GitHub/"/>
+   <updated>2016-05-13T00:00:00+02:00</updated>
+   <id>http://localhost:4000/2016/05/13/Gestión-de-proyectos-mediante-GitHub</id>
+   <content type="html">&lt;p&gt;GitHub además de ser una excelente plataforma de Git para compartir y mantener código, también puede ser una herramienta excelente para gestionar proyectos. Para explicar esto, usaré como ejemplo, es el desarrollo de Comicbook Packager (versión 3, en camino), que se está organizando a través de las issues de un repositorio.&lt;/p&gt;
+
+&lt;h3 id=&quot;organiza-el-código-en-ramas&quot;&gt;Organiza el código en ramas&lt;/h3&gt;
+
+&lt;p&gt;Esta nueva versión se está reescribiendo completamente en C#, de forma que logramos una capacidad multiplataforma casi nativa (nativa en Windows, a través de Mono en Linux), sin tener que escribir el mismo código para dos plataformas.&lt;/p&gt;
+
+&lt;p&gt;Para mantener el código, utilizamos 4 ramas (branches) dentro del repositorio:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;win-dev&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;win-master&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;linux-dev&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;linux-master&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;De modo que disponemos de una rama (&lt;code class=&quot;highlighter-rouge&quot;&gt;*-dev&lt;/code&gt;) que podemos usar para mantener el código inestable y en desarrollo, mientras que en la rama master (&lt;code class=&quot;highlighter-rouge&quot;&gt;*-master&lt;/code&gt;) encontramos el código estable de cada versión.&lt;/p&gt;
+
+&lt;p&gt;Pero espera, ¿y qué rama pasa a ser la rama por defecto? Pues sigue siendo la rama master del repositorio, por supuesto. En ella encontramos la guía de usuario, imágenes e información relevante, como licencias y demás.&lt;/p&gt;
+
+&lt;h3 id=&quot;asigna-un-responsable-por-cada-rama&quot;&gt;Asigna un responsable por cada rama&lt;/h3&gt;
+
+&lt;p&gt;Cada pareja de ramas la gestiona un miembro del proyecto: &lt;a href=&quot;https://github.com/jotaperamez&quot;&gt;@jotaperamez&lt;/a&gt; administra las de Windows, mientras que yo me ocupo de mantener al día el desarrollo general y de la rama Linux. De este modo, repartimos la carga de trabajo y dejamos cierta libertad para que cada parte del equipo sea independiente, aunque exista un &lt;em&gt;administrador general&lt;/em&gt; que sea quien gestione todo.&lt;/p&gt;
+
+&lt;p&gt;El responsable de cada rama debe estar atento y mantener la rama &lt;code class=&quot;highlighter-rouge&quot;&gt;*-master&lt;/code&gt; de su sección siempre al día, ya que las releases saldrán de ahí.&lt;/p&gt;
+
+&lt;h3 id=&quot;establece-una-vía-de-comunicación-con-el-equipo&quot;&gt;Establece una vía de comunicación con el equipo&lt;/h3&gt;
+
+&lt;p&gt;¿Y lo que dije antes de las issues? Esta es la parte divertida. De los compañeros de la Oficina de Software Libre UGR, aprendí que podemos usar las issues de GitHub a modo de foro para coordinar el desarrollo de un proyecto. Usando las etiquetas como si de categorías se tratasen, vamos añadiendo &lt;em&gt;to do&lt;/em&gt; y anotaciones sobre el desarrollo. Mi sistema utiliza básicamente tres etiquetas:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Windows&lt;/strong&gt;. Para cualquier dato relacionado con el desarrollo de la rama Windows. Ya sean funciones que implementar, bugs, etc.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Linux&lt;/strong&gt;. Para cualquier cosa relacionada con el desarrollo de la rama Linux. Ya sean funciones que implementar, bugs, etc.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;General&lt;/strong&gt;. Cualquier tema relacionado con el desarrollo general del proyecto, va aquí.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Cada tarea pendiente se asigna a un responsable, en este caso al responsable de cada rama, de modo que en un momento dado, sabemos que tareas están libres y/o pendientes de cumplirse.&lt;/p&gt;
+
+&lt;h3 id=&quot;hazlo-escalable&quot;&gt;Hazlo escalable&lt;/h3&gt;
+
+&lt;p&gt;¿Necesitas más? El modelo descrito es útil y válido cuando el equipo de desarrollo es relativamente pequeño. Sin emnbargo, existen herramientas opensource que pueden ayudarte muy bien a gestionar proyectos de mayor envergadura o que requieran una infraestructura más extensa. Prueba &lt;a href=&quot;https://taiga.io/&quot;&gt;Taiga.io&lt;/a&gt; para organizar y asignar tareas, y &lt;a href=&quot;http://www.mattermost.org/&quot;&gt;Mattermost&lt;/a&gt; (versión opensource de Slack) para establecer una línea de comunicación con tu equipo.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Experiencia OpenSouthCode</title>
+   <link href="http://localhost:4000/2016/05/08/Experiencia-OpenSouthCode/"/>
+   <updated>2016-05-08T00:00:00+02:00</updated>
+   <id>http://localhost:4000/2016/05/08/Experiencia-OpenSouthCode</id>
+   <content type="html">&lt;p&gt;Ayer día 7 de Mayo de 2016, tuvo lugar en La Térmica (Málaga) el OpenSouthCode, un evento dirigido a todo aquel aficionado al software libre, ya sea en grado de aficionado como de desarrollador. Como es de esperar, yo no perdí la ocasión de asistir al evento junto con mi compañero Cristobal a modo de expedicionarios de HackLab Almería.&lt;/p&gt;
+
+&lt;p&gt;En el evento encontramos a gente de mucho nivel y reconocimiento, como &lt;strong&gt;JJ Merelo&lt;/strong&gt; y su charla de como petarlo en los rankings de GitHub, &lt;strong&gt;Antonio Larrosa&lt;/strong&gt;, quien trabaja para OpenSUSE, y hasta &lt;strong&gt;Paul Brown&lt;/strong&gt;, miembro fundador de Hispalinux, y que nos dio un taller de instalar Linux, con poco éxito entre sus asistentes, pero que convertimos en una tertulia sobre por qué debemos impulsar el uso de tecnologías libres.&lt;/p&gt;
+
+&lt;p&gt;Se habló mucho sobre &lt;strong&gt;JavaScript y Scala&lt;/strong&gt;, o sobre como los developers de Haskell pueden flotar a dos palmos del suelo. ¿Será este un buen momento para introducirme en la programación funcional? Por otro lado, no faltaron los momentos de &lt;em&gt;networking&lt;/em&gt;, sobretodo frente a la máquina de café o durante la comida, en los que intercambiamos contactos, conocimientos, experiencia laboral y proyectos de futuro, y gracias a los cuales pude conocer a trabajadores de Hispasec, o incluso a uno de los responsables de la documentación de Angular 2, &lt;strong&gt;Jesus Rodriguez&lt;/strong&gt;, quien se sorprendió de que en Almería hubiesemos desarrolladores de Angular también. Sería un buen invitado para las próximas Jornadas HackLab.&lt;/p&gt;
+
+&lt;p&gt;A nivel personal, me apenó mucho haberme ido sin poder tener unas palabras con los chicos del grupo de Software Libre UGR, sin embargo, pudimos ver nacer el grupo de Telegram de software libre a nivel andaluz, lo cual no está nada mal y tenemos que agradecer a JJ Merelo. De igual forma, esta experiencia me hizo replantearme mi futuro académico, ¡y me reencontré con mi vieja amiga &lt;a href=&quot;https://twitter.com/beelzenef_&quot;&gt;@Beelzenef_&lt;/a&gt;!&lt;/p&gt;
+
+&lt;p&gt;Espero que el próximo año se repita este evento, y que podamos ir más de dos personas para allá desde Almería.&lt;/p&gt;
+
+&lt;p&gt;La siguiente parada será el Tecnoencuentro.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Unity 3D - Día 2</title>
+   <link href="http://localhost:4000/2016/05/03/Unity-3D-dia-2/"/>
+   <updated>2016-05-03T00:00:00+02:00</updated>
+   <id>http://localhost:4000/2016/05/03/Unity-3D-dia-2</id>
+   <content type="html">&lt;p&gt;Mi segundo día desarrollando mi juego, incluye colisiones, algunos objetos (como una poción y una llave) y sprites
+sin animación aún.&lt;/p&gt;
+
+&lt;p&gt;El siguiente paso del proyecto es añadir las animaciones, y corregir las colisiones con las paredes.&lt;/p&gt;
+
+&lt;h3 id=&quot;herramientas-utilizadas&quot;&gt;Herramientas utilizadas&lt;/h3&gt;
+
+&lt;p&gt;Para el desarrollo de mi juego, estoy utilizando las siguientes herramientas:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Tiled&lt;/strong&gt; para crear los mapas.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Unity 3D&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Photoshop&lt;/strong&gt; para montar los tilesets.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Tiled2Unity&lt;/strong&gt; para poder cargar los mapas de Tiled (.tmx) en Unity.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;VisualStudio Community 2015&lt;/strong&gt; para desarrollar los scripts en C#.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Inkscape&lt;/strong&gt; (NUEVO) para el diseño de los sprites estáticos.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;resultado&quot;&gt;Resultado&lt;/h3&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/wVTlVueXtYw&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Unity 3D - Día 1</title>
+   <link href="http://localhost:4000/2016/05/02/Unity-3D-dia-1/"/>
+   <updated>2016-05-02T00:00:00+02:00</updated>
+   <id>http://localhost:4000/2016/05/02/Unity-3D-dia-1</id>
+   <content type="html">&lt;p&gt;El pasado verano, hice un cursillo de Unity 3D de 4 semanas, en las que recibimos formación básica acerca del mencionado motor gráfico.
+En dicho cursillo, montamos nuestro propio Space Invaders en 3D, pero muy a mi pesar, nos dejamos mucho contenido interesante en el tintero,
+como el soporte de Unity para juegos en 2D, el cual es bastante espectacular.&lt;/p&gt;
+
+&lt;p&gt;En mi tiempo libre durante las pasadas semanas, estuve diseñando un videojuego &lt;em&gt;roguelike&lt;/em&gt;, el cual pensaba desarrollar con RPG Maker,
+para aprovechar la licencia que conseguí de HumbleBundle. Sin embargo, sería un despedicio por mi parte no aprovechar mis conocimientos
+de Unity para este proyecto, además de que le daría un punto interesante de emoción.&lt;/p&gt;
+
+&lt;p&gt;Mi meta de este proyecto, es tener una versión completamente jugable de al menos los 10 primeros niveles, con el sistema de enemigos,
+inventario, objeto, interfaz, etc, y presentar mi obra en Diciembre en el festival Granada Gaming.&lt;/p&gt;
+
+&lt;p&gt;A su vez, pretendo realizar un pequeño diario de desarrollo usando este blog.&lt;/p&gt;
+
+&lt;h3 id=&quot;herramientas-utilizadas&quot;&gt;Herramientas utilizadas&lt;/h3&gt;
+
+&lt;p&gt;Para el desarrollo de mi juego, estoy utilizando las siguientes herramientas:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Tiled&lt;/strong&gt; para crear los mapas.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Unity 3D&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Photoshop&lt;/strong&gt; para montar los tilesets.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Tiled2Unity&lt;/strong&gt; para poder cargar los mapas de Tiled (.tmx) en Unity.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;VisualStudio Community 2015&lt;/strong&gt; para desarrollar los scripts en C#.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;resultado&quot;&gt;Resultado&lt;/h3&gt;
+
+&lt;p&gt;Mi primera jornada desarrollando ha sido más bien corta. He tardado más tiempo en instalar todas las herramientas que necesito,
+que en montar algo.&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/dXbdUWdKXYE&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Ajustar una imagen en CodeIgniter</title>
+   <link href="http://localhost:4000/2016/03/04/Ajustar-una-imagen-en-CodeIgniter/"/>
+   <updated>2016-03-04T00:00:00+01:00</updated>
+   <id>http://localhost:4000/2016/03/04/Ajustar-una-imagen-en-CodeIgniter</id>
+   <content type="html">&lt;p&gt;Para una práctica de CodeIgniter, que consistía en crear una aplicación ficticia para administrar una base de datos, necesité añadir imágenes de perfil para los usuarios de esta. Las imágenes de perfil tenían que visualizarse en una sección cuadrada de 80x80px, un poco pequeña, y que podía deformar las imágenes si no eran del tamaño adecuado al redimensionarlas en el cliente. Además de que, si estas pesan demasiado, estaríamos ante una carga excedente para la web.&lt;/p&gt;
+
+&lt;h3 id=&quot;la-solución&quot;&gt;La solución&lt;/h3&gt;
+&lt;p&gt;Ajustar las imágenes a un cuadrado de 80x80 píxeles desde el servidor. Para ello, primero necesitamos recortar una sección cuadrada del centro de la imagen, y del mayor tamaño posible, para posteriormente, ajustar esa nueva imagen cuadrada al tamaño deseado.&lt;/p&gt;
+
+&lt;p&gt;En mi caso, usando como medida estándar la medida más pequeña de la imagen. Es decir, si tengo una foto de 400x150px, el recorte se hará de una sección central de 150x150.&lt;/p&gt;
+
+&lt;h3 id=&quot;el-código&quot;&gt;El código&lt;/h3&gt;
+
+&lt;p&gt;Para trabajar con estas funciones de CodeIgniter, primero tenemos que añadir la librería &lt;code class=&quot;highlighter-rouge&quot;&gt;image_lib&lt;/code&gt;, ya sea desde &lt;code class=&quot;highlighter-rouge&quot;&gt;config/autoload.php&lt;/code&gt;, o desde la función &lt;code class=&quot;highlighter-rouge&quot;&gt;__construct()&lt;/code&gt; de la clase con&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$this-&amp;gt;load-&amp;gt;library('image_lib');
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Con la función &lt;code class=&quot;highlighter-rouge&quot;&gt;crop()&lt;/code&gt; recortamos una sección cuadrada del centro de la imagen. Esto varía según las dimensiones de la imagen.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public function crop($img, $img_w, $img_h) {
+		$config['image_library']  = 'gd2';
+		$config['source_image']   = $img;
+		$config['maintain_ratio'] = FALSE;
+
+		if ($img_w &amp;gt; $img_h) {
+			$config['width']      = $img_h;
+			$config['height']     = $img_h;
+			$config['x_axis']     = $img_w / 4;
+		}
+
+		if ($img_h &amp;gt; $img_w) {
+			$config['width']      = $img_w;
+			$config['height']     = $img_w;
+			$config['y_axis']     = $img_h / 4;
+		}
+
+		if ($img_w == $img_h) {
+			$config['width']      = $img_w;
+			$config['height']     = $img_h;
+		}
+
+		$this-&amp;gt;image_lib-&amp;gt;initialize($config);
+
+		if (!$this-&amp;gt;image_lib-&amp;gt;crop()) {
+			echo $this-&amp;gt;image_lib-&amp;gt;display_errors();
+		} else {
+			$this-&amp;gt;image_lib-&amp;gt;clear();
+		}
+	}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Y con la función &lt;code class=&quot;highlighter-rouge&quot;&gt;resize()&lt;/code&gt;, redimensionamos esa nueva imagen que hemos creado (y sobreescrito en nuestro directorio) al tamaño deseado, en mi caso, 80x80px.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	public function resize($img) {
+		$new_size['image_library']  = 'gd2';
+		$new_size['source_image']   = $img;
+		$new_size['maintain_ratio'] = TRUE;
+		$new_size['width']          = 80;
+		$new_size['height']         = 80;
+
+		$this-&amp;gt;image_lib-&amp;gt;initialize($new_size);
+		if (!$this-&amp;gt;image_lib-&amp;gt;resize()) {
+			echo $this-&amp;gt;image_lib-&amp;gt;display_errors();
+		}
+	}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+&lt;p&gt;A partir de una imagen de 498x670px, en formato JPG y de 315 kB de peso, conseguí crear una imagen de 80x80px, JPG y de ¡tan solo 12 kB! Con esto conseguí reducir la carga del cliente, acelerar así el tiempo de rederizado de mi web, y aprender a manejar mejor la librería de procesado de imágenes que incorpora CodeIgniter.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Viaje a Granada</title>
+   <link href="http://localhost:4000/2016/02/29/Viaje-a-Granada/"/>
+   <updated>2016-02-29T00:00:00+01:00</updated>
+   <id>http://localhost:4000/2016/02/29/Viaje-a-Granada</id>
+   <content type="html">&lt;p&gt;Por motivos laborales y personales,  los días 27 y 28 de Febrero estuve de viaje en Granada. Personalmente, es una ciudad que siempre me ha maravillado y me encanta visitarla siempre que tengo ocasión. La excusa para presentarnos allí fue cubrir el evento Mangafest Granada para &lt;a href=&quot;http://www.otakumusicradio.com&quot;&gt;Otaku Music Radio&lt;/a&gt;, medio de prensa del que soy colaborador desde hace un año, como fotógrafo y redactor.&lt;/p&gt;
+
+&lt;p&gt;Aprovechando la situación y la localización, recorrimos El Paseo de los Tristes y el Mirador de San Nicolás. De allí me llevé algunas bonitas fotos.&lt;/p&gt;
+
+&lt;p&gt;&lt;a data-flickr-embed=&quot;true&quot; data-footer=&quot;true&quot; href=&quot;https://www.flickr.com/photos/srfreak/albums/72157665098263311&quot; title=&quot;Granada&quot;&gt;&lt;img src=&quot;https://farm2.staticflickr.com/1565/25253203012_bc84fd903d.jpg&quot; width=&quot;640&quot; height=&quot;400&quot; alt=&quot;Granada&quot; /&gt;&lt;/a&gt;&lt;script async=&quot;&quot; src=&quot;//embedr.flickr.com/assets/client-code.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Wget para FTP recursivo</title>
+   <link href="http://localhost:4000/2016/02/18/Wget-para-FTP-recursivo/"/>
+   <updated>2016-02-18T00:00:00+01:00</updated>
+   <id>http://localhost:4000/2016/02/18/Wget-para-FTP-recursivo</id>
+   <content type="html">&lt;p&gt;Por circunstancias laborales, he precisado descargar un directorio raiz bastante extenso desde un FTP. Como no tengo instalado un cliente gráfico, y prefiero no tener que hacerlo, he usado la herramienta &lt;code class=&quot;highlighter-rouge&quot;&gt;wget&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;wget -r ftp://usuario:contraseña@servidor/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Y a descargar.&lt;/p&gt;
+
+&lt;p&gt;Tengo que hacerme un script similar pero para descargar el contenido de un directorio de Apache2.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Terminal múltiple en una sola ventana</title>
+   <link href="http://localhost:4000/2016/02/17/Terminal-m%C3%BAltiple-en-una-sola-ventana/"/>
+   <updated>2016-02-17T00:00:00+01:00</updated>
+   <id>http://localhost:4000/2016/02/17/Terminal-múltiple-en-una-sola-ventana</id>
+   <content type="html">&lt;p&gt;Personalmente, soy muy dado a tener abiertas de 3 a 5 terminales a la vez cuando trabajo con algo en Linux. En ventanas diferentes o en pestañas. Sin embargo, se me hace muy engorroso tener que cambiar de una a otra cuando tengo que consultar o comprobar ciertos resultados. ¿Que sería lo ideal? Tener varias terminales abiertas dentro de la misma ventana.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;url&quot; alt=&quot;Terminator&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;¿La solución? &lt;strong&gt;Terminator&lt;/strong&gt;. Se trata de un emulador de terminal enfocado a la visualización de varias consolas en la misma ventana, pudiendo dividirlas vertical u horizontalmente.&lt;/p&gt;
+
+&lt;p&gt;Disponible en los repositorios de Debian.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-get install terminator
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;En Gnome, si además queremos cambiar el emulador por defecto, podemos hacerlo con el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;update-alternatives&lt;/code&gt; (como root).&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;update-alternatives –config x-terminal-emulator
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Añade un feed Atom/RSS a Jekyll</title>
+   <link href="http://localhost:4000/2016/01/25/A%C3%B1ade-un-feed-Atom-RSS-a-Jekyll/"/>
+   <updated>2016-01-25T00:00:00+01:00</updated>
+   <id>http://localhost:4000/2016/01/25/Añade-un-feed-Atom-RSS-a-Jekyll</id>
+   <content type="html">&lt;p&gt;Los feed RSS o Atom son geniales. Tanto para los lectores, ya que les permiten seguir una cantidad intersante de blogs desde una aplicación única y de un vistazo, como para autores, ya que facilita que aumenten sus suscriptores habituales.&lt;/p&gt;
+
+&lt;p&gt;Un sistema muy popular para añadir un feed RSS a tu sitio, es FeedBurner. Este sistema te permite incluso llevar un seguimiento eficaz del número de lectores que tienes. Sin embargo, a menos que pretendas ganar dinero con tu sitio, esas métricas son un poco innecesarias.&lt;/p&gt;
+
+&lt;p&gt;En Jekyll no existe una forma nativa de establecer un feed, sin embargo, gracias a XML y Liquid se puede crear un feed RSS o Atom que podemos añadir a nuestro site tan solo añadiendo un nuevo fichero. ¿Cómo? Descargando y añadiendo a la raíz del sitio &lt;a href=&quot;https://github.com/JuanjoSalvador/jekyll-utils/blob/master/feed-atom/atom.xml&quot;&gt;este documento XML&lt;/a&gt; y enlazandolo desde nuestro site.&lt;/p&gt;
+
+&lt;p&gt;Una vez añadido, en cuanto Jekyll genere la página de nuevo, tendremos nuestro feed listo para funcionar.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Comicbook Packager, mi autoempaquetador de comics</title>
+   <link href="http://localhost:4000/2015/11/11/Comicbook-Packager-mi-autoempaquetador-de-comics/"/>
+   <updated>2015-11-11T00:00:00+01:00</updated>
+   <id>http://localhost:4000/2015/11/11/Comicbook-Packager-mi-autoempaquetador-de-comics</id>
+   <content type="html">&lt;p&gt;Confieso que soy aficionado a leer comics en formato digital. Y algunos de los comics que sigo, no se encuentran traducidos a mi idioma u otro idioma que entienda, por lo que tiendo a recurrir a fansites de traducciones no oficiales. Actualmente hay numerosos sitios web que ofrecen de forma gratuita o con una suscripción (&lt;em&gt;como Submanga o Crunchyroll&lt;/em&gt;) la lectura de estos comics online.&lt;/p&gt;
+
+&lt;p&gt;Leer comics online no es una idea que me atraiga demasiado, ya que me obliga a estar conectado a Internet vía WiFi o con una conexión de datos, si estoy fuera de casa, siendo esta última un problema algo más recurrente dado el abuso de descarga de imágenes de gran tamaño. Mi solución ante este problema (en Android) fue usar &lt;a href=&quot;https://play.google.com/store/apps/details?id=com.sketchpunk.ocomicreader&amp;amp;hl=en&quot;&gt;Open Comic Reader&lt;/a&gt; y descargar yo mismo los comics traducidos.&lt;/p&gt;
+
+&lt;p&gt;Estos comics generalmente vienen en &lt;em&gt;páginas sueltas&lt;/em&gt;, organizadas por capítulos/tomos, normalmente en directorios separados. Algo molesto para mi, que soy fanático del formato CBZ (&lt;em&gt;ComicBook ZIP&lt;/em&gt;). Por eso, para que el empaquetado de comics sea más fácil y cómodo, me hice un script. Creé &lt;strong&gt;Comicbook Packager&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Comicbook Packager&lt;/strong&gt; te permite, mediante la línea de comandos, generar un archivo CBZ a partir del directorio que le indiques, en cuestión de segundos. Está programado en Shell y depende del paquete &lt;code class=&quot;highlighter-rouge&quot;&gt;zip&lt;/code&gt;. Se encuentra liberado en GitHub bajo licencia MIT.&lt;/p&gt;
+
+&lt;p&gt;Su uso es muy sencillo:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;cbp -d ~/Comics/My&lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;Comic/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Devolverá un fichero llamado &lt;code class=&quot;highlighter-rouge&quot;&gt;My_Comic.cbz&lt;/code&gt; que podemos abrir con cualquier lector de comics.&lt;/p&gt;
+
+&lt;p&gt;Así mismo, si no le pasamos ningún argumento, empaquetará de forma recursiva todos los directorios que encuentre en la ubicación actual.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;ls ~/Comics/
+Capitulo 1
+Capitulo 2
+Capitulo 3
+
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;cbp -r ~/Comics/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Devolverá 3 ficheros &lt;code class=&quot;highlighter-rouge&quot;&gt;.cbz&lt;/code&gt; con nombres &lt;code class=&quot;highlighter-rouge&quot;&gt;Capitulo_1.cbz&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Capitulo_2.cbz&lt;/code&gt; y &lt;code class=&quot;highlighter-rouge&quot;&gt;Capitulo_3.cbz&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Comicbook Packager&lt;/strong&gt; se encuentra actualmente en desarrollo y su instalador solo está disponible para Debian/Ubuntu y derivadas, necesitando su instalación manual en otras distribuciones.&lt;/p&gt;
+
+&lt;p&gt;En el &lt;a href=&quot;https://github.com/JuanjoSalvador/Comicbook-Packager&quot;&gt;repositorio de Comicbook Packager en GitHub&lt;/a&gt; encontrarás más información sobre el funcionamiento y la instalación de este.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Habilitar el módulo userdir de Apache2 en Debian</title>
+   <link href="http://localhost:4000/2015/10/22/Habilitar-el-m%C3%B3dulo-userdir-de-Apache2-en-Debian/"/>
+   <updated>2015-10-22T00:00:00+02:00</updated>
+   <id>http://localhost:4000/2015/10/22/Habilitar-el-módulo-userdir-de-Apache2-en-Debian</id>
+   <content type="html">&lt;p&gt;El módulo &lt;code class=&quot;highlighter-rouge&quot;&gt;userdir&lt;/code&gt; de Apache2 nos permite tener una carpeta en nuestro /home, llamada public_html, donde un usuario de nuestro servidor, puede alojar sus propios documentos y que estos estén disponibles en Apache bajo la url http://mi-servidor/~usuario.&lt;/p&gt;
+
+&lt;p&gt;Aunque en distros como OpenSUSE, el módulo &lt;code class=&quot;highlighter-rouge&quot;&gt;userdir&lt;/code&gt; viene habilitado por defecto, en Ubuntu/Debian no es el caso, por lo que si queremos disfrutar de esta característica, tendremos que hacerlo a mano.&lt;/p&gt;
+
+&lt;h3 id=&quot;habilitar-el-módulo&quot;&gt;Habilitar el módulo&lt;/h3&gt;
+
+&lt;p&gt;Para empezar, tenemos que habilitar el módulo con la siguiente instrucción.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo a2enmod userdir
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;configurar-el-módulo&quot;&gt;Configurar el módulo&lt;/h3&gt;
+
+&lt;p&gt;Nos pedirá que reiniciemos Apache para tener esta característica habilitada. Pero aún nos queda un poco, ahora vamos a configurar el módulo, editando &lt;code class=&quot;highlighter-rouge&quot;&gt;userdir.conf&lt;/code&gt;. Eso si, antes de editarlo, haremos un backup por si las moscas.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo cp /etc/apache2/mods-enabled/userdir.conf /etc/apache2/mods-enabled/userdir.conf.backup
+sudo nano /etc/apache2/mods-enabled/userdir.conf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Aquí yo uso nano, pero tu puedes usar gedit, vim, leafpad o el editor de texto plano que más te guste.&lt;/p&gt;
+
+&lt;p&gt;Este es el original.&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;lt;IfModule&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;mod_userdir.c&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        UserDir public_html
+        UserDir disabled root
+
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;/home/*/public_html&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            AllowOverride FileInfo AuthConfig Limit Indexes
+            Options MultiViews Indexes SymLinksIfOwnerMatch IncludesNoExec
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Limit&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;GET&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;POST&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;OPTIONS&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                Require all granted
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Limit&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;LimitExcept&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;GET&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;POST&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;OPTIONS&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                Require all denied
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/LimitExcept&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Directory&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/IfModule&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Modificaremos las líneas 6, 7, 9 y 12, y añadiremos en sus respectivos bloques algunas líneas extra, de modo que quedaría tal que así.&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;lt;IfModule&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;mod_userdir.c&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            UserDir public_html
+            UserDir disabled root
+
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;/home/*/public_html&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            AllowOverride All
+            Options MultiViews Indexes SymLinksIfOwnerMatch
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Limit&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;GET&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;POST&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;OPTIONS&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                 #Require all granted
+                    Order allow,deny
+                    Allow from all
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Limit&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;LimitExcept&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;GET&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;POST&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;OPTIONS&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                 #Require all denied
+                    Order deny,allow
+                    Deny from all
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/LimitExcept&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Directory&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/IfModule&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Una vez tengamos editado el módulo &lt;code class=&quot;highlighter-rouge&quot;&gt;userdir.conf&lt;/code&gt;, podremos acceder a nuestra &lt;code class=&quot;highlighter-rouge&quot;&gt;public_html&lt;/code&gt; situada en &lt;code class=&quot;highlighter-rouge&quot;&gt;/home/$USER&lt;/code&gt;, lo cual nos permite alojar ahí cualquier documento para que aparezca en nuestro servidor (y si es un index.html, mejor).&lt;/p&gt;
+
+&lt;p&gt;Para terminar, reiniciamos Apache2 y añadimos el directorio.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    sudo service apache2 restart
+    mkdir /home/&lt;span class=&quot;nv&quot;&gt;$USER&lt;/span&gt;/public_html
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Sin embargo, esto aún no soporta PHP, por ejemplo. Veremos como añadir ese soporte en otro artículo.&lt;/p&gt;
+
+&lt;h3 id=&quot;posible-error-de-apache2&quot;&gt;Posible error de Apache2&lt;/h3&gt;
+
+&lt;p&gt;Es posible que tras configurarlo, al acceder a http://mi-servidor/~usuario nos de un error de permisos (403 Forbidden). La solución a esto es sencilla, basta con asegurarnos de que nuestra carpeta personal tiene permiso de lectura y ejecución para grupos y otros usuarios.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    sudo chmod -R 755 /home/tu-usuario/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Si aún así falla, nos vamos a &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/apache2/apache2.conf&lt;/code&gt; y como root añadimos el siguiente código:&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;/home/*/public_html&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            Options Indexes FollowSymLinks
+            AllowOverride None
+            Require all granted
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Directory&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Una vez hecho esto, no debería dar error de nuevo.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Progreso de DrHenry</title>
+   <link href="http://localhost:4000/2015/10/19/Progreso-de-DrHenry/"/>
+   <updated>2015-10-19T00:00:00+02:00</updated>
+   <id>http://localhost:4000/2015/10/19/Progreso-de-DrHenry</id>
+   <content type="html">&lt;p&gt;Este es el progreso actual de mi &lt;a href=&quot;https://rubygems.org/gems/drhenry&quot;&gt;gema para generar posts de Jekyll&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;version-020&quot;&gt;Version 0.2.0&lt;/h2&gt;
+
+&lt;p&gt;Primera versión en Ruby del proyecto DrHenry. Permite crear los post con una plantilla estándar.&lt;/p&gt;
+
+&lt;h2 id=&quot;version-031&quot;&gt;Version 0.3.1&lt;/h2&gt;
+
+&lt;p&gt;Ahora pide un nombre para el post si no se introduce como argumento.&lt;/p&gt;
+
+&lt;h2 id=&quot;version-040&quot;&gt;Version 0.4.0&lt;/h2&gt;
+
+&lt;p&gt;Corregidos algunos fallos del formato del título y puesta a punto.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>DrHenry genera posts por ti</title>
+   <link href="http://localhost:4000/2015/10/16/DrHenry-genera-posts-por-ti/"/>
+   <updated>2015-10-16T00:00:00+02:00</updated>
+   <id>http://localhost:4000/2015/10/16/DrHenry-genera-posts-por-ti</id>
+   <content type="html">&lt;p&gt;Tiempo atrás &lt;a href=&quot;https://gist.github.com/JuanjoSalvador/9669022d8e3f59ab7a4f&quot;&gt;escribí un script en bash&lt;/a&gt; para ayudarme a publicar artículos en mi sitio de Jekyll, dado que crear un archivo-plantilla no me parecía factible, ya que mi configuración usa un nombre de archivo bastante concreto (YYYY-MM-DD-titulo.md).&lt;/p&gt;
+
+&lt;p&gt;Ese script tenía un problema: me obligaba a mover manualmente los post una vez creados a la carpeta pertinente… Y solo funciona con Linux. ¿Que pasa si un día de pronto un usuario de Windows o Mac quiere hacer lo mismo que yo?&lt;/p&gt;
+
+&lt;p&gt;Solución: lo convierto en una gema. Así que, esta mañana me he puesto y lo he reescrito de cero en Ruby. He de decir que la parte más difícil ha sido corregir los errores de estilo y subirlo a RubyGems.&lt;/p&gt;
+
+&lt;p&gt;El código de DrHenry, mi &lt;em&gt;post generator&lt;/em&gt; de Jekyll se encuentra disponible bajo licencia MIT en GitHub, además de la documentación necesaria.&lt;/p&gt;
+
+&lt;p&gt;DrHenry se encuentra actualmente en una versión muy temprana de su desarrollo, es posible que existan numerosos errores.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/JuanjoSalvador/drhenry&quot;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://rubygems.org/gems/drhenry&quot;&gt;RubyGems&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Super Arduino Bros</title>
+   <link href="http://localhost:4000/eventos/2015/10/15/Super-Arduino-Bros/"/>
+   <updated>2015-10-15T00:00:00+02:00</updated>
+   <id>http://localhost:4000/eventos/2015/10/15/Super-Arduino-Bros</id>
+   <content type="html">&lt;p&gt;Durante la &lt;a href=&quot;http://codeweek.eu/&quot;&gt;CodeWeek&lt;/a&gt; he tenido ocasión de asistir a un taller de Arduino organizado por &lt;a href=&quot;http://hacklabalmeria.net/&quot;&gt;HackLab Almeria&lt;/a&gt;. Allí además de cacharrear y experimentar cosas con Arduino, &lt;a href=&quot;http://twitter.com/jotaperamez&quot;&gt;@jotaperamez&lt;/a&gt; y yo montamos esta chorradilla experimentando con un altavoz.&lt;/p&gt;
+
+&lt;iframe src=&quot;https://drive.google.com/file/d/0B8I_GscWCpN_NTNxUG5RLTF0SVE/preview&quot; width=&quot;640&quot; height=&quot;360&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Puedes montarte uno propio &lt;a href=&quot;http://www.princetronics.com/supermariothemesong/&quot;&gt;usando este &lt;em&gt;scratch&lt;/em&gt;&lt;/a&gt;, un &lt;strong&gt;Arduino UNO&lt;/strong&gt; y un altavoz.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Hackaton 2015</title>
+   <link href="http://localhost:4000/eventos/2015/10/05/Hackaton-2015/"/>
+   <updated>2015-10-05T00:00:00+02:00</updated>
+   <id>http://localhost:4000/eventos/2015/10/05/Hackaton-2015</id>
+   <content type="html">&lt;p&gt;3 de Octubre de 2015. Escuela de Artes de Almería. 11:00 AM. Tras organizar equipos, desayunar un café más caliente que los fuegos del Monte del Destino, y algunos minutos de desconcierto… Da comienzo El Hackatón 2015 organizado por HackLab Almería. Reunidos bajo el mismo techo, profesionales, estudiantes, curiosos, aficionados… Programadores, diseñadores, creadores de contenido y makers. Con un único propósito: cambiar el mundo dando rienda suelta a nuestras ideas.&lt;/p&gt;
+
+&lt;p&gt;Mi objetivo con este post, es hacer un resumen de lo que me ha supuesto, una muy grata experiencia en la que he tenido oportunidad de poner a prueba mis conocimientos y mis límites, aprender nuevas técnicas… y &lt;a href=&quot;https://instagram.com/p/8aS-OEPPOX/&quot;&gt;&lt;strong&gt;desbloquear logros&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Las 28 horas que pasamos ahí dentro, han sido una mezcla de angustias, de bloqueos, de &lt;em&gt;¡Funciona de una maldita vez!&lt;/em&gt;… Pero sobretodo de risas y de desarrollo. Nuestro caso, el equipo 8 (&lt;em&gt;aunque nunca subimos si eramos el 8, el 9 o el 10&lt;/em&gt;) desde el primer momento tuvimos grandes problemas: la falta de un diseñador y de un versado en electrónica nos jugó una mala pasada. No obstante, fuimos capaces de desarrollar un sistema para, mediante Python, leer información de unos sensores conectados a un Arduino UNO y enviarlos a una base de datos MySQL en la nube, para posteriormente rescatarlos en forma de gráficas en una aplicación de escritorio y de Android.&lt;/p&gt;
+
+&lt;p&gt;Llamamos a nuestro sistema, FreezNet, ya que originalmente estaba pensado para colocar el dispositivo en frigoríficos, pero mientras fuimos desarrollando el código, nos dimos cuenta de que era algo completamente escalable, es decir: ¡estabamos creando un API estándar de conectividad IoT para Arduino! ¿Que podría ocurrir si seguimos desarrollando y extendiendo dicha API incorporando nuevas funciones?&lt;/p&gt;
+
+&lt;p&gt;Cuando nos dimos cuenta de esto, era demasiado tarde para cambiar nuestra presentación, por lo que en el tintero quedó la posibilidad de construir un dispositivo con varios sensores que pudiesemos utilizar para &lt;em&gt;mejorar&lt;/em&gt; nuestro sistema. Sin embargo, creo que esto, ha sido mi mejor experiencia hasta el momento como desarrollador.&lt;/p&gt;
+
+&lt;p&gt;Por supuesto, me gustaría mencionar aparte y agradecer enormemente al equipo de organizadores de &lt;a href=&quot;www.elhackaton.com&quot;&gt;El Hackatón&lt;/a&gt;, a IBM, a &lt;a href=&quot;http://hacklabalmeria.net/&quot;&gt;HackLab Almería&lt;/a&gt; y en especial a Cristóbal, quien me ha apoyado mucho e insistido para que me presentase como participante y no me perdiese la experiencia, y a Victor, quien nos estuvo ayudando con el webservice, amenizando la noche y otorgándonos logros por quedarnos hasta que amaneciese al día siguiente.&lt;/p&gt;
+
+&lt;p&gt;Para el próximo Hackaton, tengo algunos puntos que mejorar…&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Organización y equipo&lt;/strong&gt;. La falta de experiencia de los 4 que conformamos el equipo 8 fue un peso bastante grande, en especial el que fuimos 4 desarrolladores que no supimos repartirnos bien cada tarea.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Material propio&lt;/strong&gt;. Este año hemos tenido suerte de que nos proporcionasen un pequeño kit IoT, pero nos ha faltado mucho material para poder presentar algo realmente funcional (aún siendo un prototipo).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Ideas&lt;/strong&gt;. Llevar una idea previa de lo que queremos montar, puede ser muy interesante.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Presentaciones más llamativas&lt;/strong&gt;. Una presentación en Impress, una web, logotipos, cantidad de imágenes… Todo eso nos ha faltado para poder presentar bien nuestro proyecto.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;¡Espero ansioso mi próximo Hackatón!&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>3 razones para aprender múltiples lenguajes de programación [ENLACE]</title>
+   <link href="http://localhost:4000/enlaces/2015/09/03/3-razones-para-aprender-m%C3%BAltiples-lenguajes-de-programacion/"/>
+   <updated>2015-09-03T00:00:00+02:00</updated>
+   <id>http://localhost:4000/enlaces/2015/09/03/3-razones-para-aprender-múltiples-lenguajes-de-programacion</id>
+   <content type="html">&lt;p&gt;¿Por qué aprender diferentes lenguajes de programación? Por el mismo motivo por el que aprender a manejar sistemas Windows, Linux y OS X: versatilidad.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://trove.com/a/3-Reasons-to-Learn-Multiple-Programming-Languages.uMstw?nocrawl=1&quot;&gt;3 Reasons to Learn Multiple Programming Languages [Inglés]&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Parsear un JSON con Ruby</title>
+   <link href="http://localhost:4000/ruby/2015/07/12/Parsear-un-JSON-con-Ruby/"/>
+   <updated>2015-07-12T00:00:00+02:00</updated>
+   <id>http://localhost:4000/ruby/2015/07/12/Parsear-un-JSON-con-Ruby</id>
+   <content type="html">&lt;p&gt;Podemos definir JSON como un formato ligero de intercambio de datos. Es un subconjunto de la notación literal de objetos de JavaScript que no requiere el uso de XML, lo cual facilita mucho la legibilidad de la información contenida.&lt;/p&gt;
+
+&lt;p&gt;En la actualidad está muy extendido, lo cual hace que cualquier desarrollador web requiera de su uso en más de una ocasión. Al proceso de extracción de datos de un JSON (&lt;em&gt;o XML, o cualquier otro formato&lt;/em&gt;) se le llama &lt;em&gt;parsear&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Muchos lenguajes incluyen librerías para hacer esto, como es el caso de Ruby. Hace unos días, trabajando en un script el cual necesita tomar datos de terceros y que descaga en un archivo JSON, tuve la impediosa necesidad de parsear dicho archivo, pero, era la primera vez que necesitaba hacer algo así en Ruby, así que, me lancé a la aventura.&lt;/p&gt;
+
+&lt;p&gt;La solución, como casi siempre que tengo un problema similar, me apareció en &lt;a href=&quot;http://stackoverflow.com/questions/5410682/parsing-a-json-string-in-ruby&quot;&gt;StackOverflow&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Primero instalamos la gema json&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;gem install json&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;La añadimos a nuestro proyecto…&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'rubygems'&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'json'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Y por último, para usarlo, solo tenemos que llamar al método &lt;code class=&quot;highlighter-rouge&quot;&gt;JSON.parse()&lt;/code&gt;, suponiendo que aquí nuestro JSON está almacenado en una variable llamada &lt;code class=&quot;highlighter-rouge&quot;&gt;string&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;parsed_file&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Esto nos devolverá el JSON dividido en claves y valores, por lo que, para acceder al valor de una clave en concreto, a través de la variable donde lo hemos guardado…&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{&quot;desc&quot;:{&quot;someKey&quot;:&quot;someValue&quot;,&quot;anotherKey&quot;:&quot;value&quot;}}'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;parsed_file&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;parsed_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;anotherKey&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Nos devuelve al valor de 'anotherKey'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Plantilla de posts para Jekyll</title>
+   <link href="http://localhost:4000/jekyll/2015/07/11/Plantilla-de-posts-para-Jekyll/"/>
+   <updated>2015-07-11T00:00:00+02:00</updated>
+   <id>http://localhost:4000/jekyll/2015/07/11/Plantilla-de-posts-para-Jekyll</id>
+   <content type="html">&lt;p&gt;La automatización de tareas es un aspecto básico que todo &lt;em&gt;sysadmin&lt;/em&gt; debe tener presente y conocer al dedillo. En Linux, tengo que reconocer que soy muy aficionado a esto de montarme scripts para casi cualquier tarea que pueda ser (o no), repetitiva. Es el caso de escribir un post para un blog en Jekyll.&lt;/p&gt;
+
+&lt;p&gt;Jekyll utiliza MarkDown para dar formato a los posts, además de lo que llamamos &lt;em&gt;layout&lt;/em&gt; (o plantilla) con la posición de cada elemento dentro del post. Generalmente le pasamos como parámetros el layout y el título del post, pudiendo o no añadir nuevos elementos mediante plugins o simplemente, editando nuestro site. Estos parámetros vienen dados en la cabecera de cada archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;.md&lt;/code&gt; que escribimos, con el siguiente formato:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+layout: post # Sustituye el layout si lo usas uno diferente
+title: Título del post # Nombre generado automáticamente
+categories: [jekyll] # Añade tus categorías o borra esta línea
+---
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Además de esta cabecera, cada archivo además debe ser llamado de una forma específica, siendo esta, la fecha del post, seguida del título de este, separado todo por guiones. Esta tarea puede ser muy pesada, sobretodo si tenemos que migrar un blog entero desde otro site. ¿Solución? Un script que le pases el nombre del post, y te genere automáticamente el archivo .md con la cabecera y el nombre de archivo con el formato correcto y prescindido por Jekyll.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Estrenando blog en GitHub Pages + Jekyll</title>
+   <link href="http://localhost:4000/2015/07/10/Estrenando-blog-en-GitHub-Pages-+-Jekyll/"/>
+   <updated>2015-07-10T00:00:00+02:00</updated>
+   <id>http://localhost:4000/2015/07/10/Estrenando-blog-en-GitHub-Pages-+-Jekyll</id>
+   <content type="html">&lt;p&gt;Ya, ya lo se. Es mi tercer blog en un periodo de tiempo relativamente corto. Pero tengo que admitir que soy un enamorado de Jekyll, y no puedo evitarlo… Esto no quiere decir que vaya a abandonar Doblejota Blog, no, para nada, simplemente traslado mi web personal aquí, añadiéndole un pequeño blog de apuntes de programación y desarrollo. Algo que hasta ahora he estado haciendo con Gist, pero que no me da para documentar y explayarme en el funcionamiento de mis recortes de código, así que, ¿por qué no?&lt;/p&gt;
+
+&lt;p&gt;Otra cuestión aparece, al plantearme ¿y por qué no escribir esto en el Wordpress? La razón es muy sencilla: ese blog tiene un público hecho, y una temática definida, en la cual mis recortes y apuntes de programación no encajan demasiado… Cada tema en su lugar.&lt;/p&gt;
+
+&lt;p&gt;Por otro lado, trasladarme no ha sido tarea complicada. Si bien Jekyll, resulta algo complejo la primera vez que topas con el, una vez descifras el funcionamiento de &lt;code class=&quot;highlighter-rouge&quot;&gt;Liquid&lt;/code&gt;, se hace bastante sencillo. De hecho, así he creado incluso mi propio sistema de categorías.&lt;/p&gt;
+
+&lt;p&gt;Pero si quieres hacer esta tarea &lt;em&gt;aún más sencilla&lt;/em&gt;, existe un repositorio en GitHub, &lt;a href=&quot;https://github.com/barryclark/jekyll-now&quot;&gt;Jekyll Now de Barry Clark&lt;/a&gt;, el cual solo tienes que hacerle un &lt;em&gt;fork&lt;/em&gt; y editar los parámetros que te va indicando en la guía de instalación. ¡Fácil! ¡Rápido! ¡Sencillo!&lt;/p&gt;
+
+&lt;h3 id=&quot;qué-es-jekyll&quot;&gt;¿Qué es Jekyll?&lt;/h3&gt;
+
+&lt;p&gt;Jekyll es un generador de páginas HTML estáticas, escrito en Ruby, muy versátil y extensible. Se configura editando un archivo YAML (&lt;em&gt;_config.yml&lt;/em&gt;), utilizando Liquid + HTML para crear layaouts y CSS para dar estilo. Es extensible mediante plugins y gemas, permitiendo añadir multitud de caracterísiticas, tales como un feed RSS o Atom, un generador de sitemap.xml automático, o comentarios con Disqus.&lt;/p&gt;
+
+&lt;p&gt;Los post de Jekyll se escriben en MarkDown, el cual se procesa a HTML al general el sitio, permitiendo una escritura mucho más ágil y rápida que utilizando tags HTML.&lt;/p&gt;
+
+&lt;h3 id=&quot;por-qué-jekyll&quot;&gt;¿Por qué Jekyll?&lt;/h3&gt;
+
+&lt;p&gt;Principalmente porque me permite escribir en MarkDown, teniendo una copia exacta del artículo en local, y porque el alojamiento me sale gratis mientras GitHub no caiga, además de que no tengo que pagar un extra por añadir un dominio, como ocurre con Wordpress.com o con alojamientos externos. ¡Yuju!&lt;/p&gt;
+
+&lt;p&gt;En adición, me inspiré a probar esto cuando, tiempo atrás @SoulChainer me habló de este tipo de sitios, aunque el utiliza otro generador, Pelican, escrito en Python. Investigué un poco, y en aquel tiempo, GitHub daba mucho bombo a Octopress, un fork de Jekyll propio de estos, cuyo funcionamiento estaba orientado a los blogs estáticos como este. Sin embargo nunca tuve mucho tiempo para profundizar con ello y lo pasé a un segundo plano.&lt;/p&gt;
+
+&lt;p&gt;Recientemente, tras leer el artículo de Tom Preston-Werner, &lt;a href=&quot;http://tom.preston-werner.com/2008/11/17/blogging-like-a-hacker.html&quot;&gt;&lt;em&gt;Blogging like a hacker&lt;/em&gt;&lt;/a&gt;, donde habla precisamente sobre este tipo de blogs, me inspiré completamente para crear el mío. Total, ¿y por qué no?&lt;/p&gt;
+</content>
+ </entry>
+ 
+
+</feed>

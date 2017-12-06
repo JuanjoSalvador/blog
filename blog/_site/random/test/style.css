@@ -1,0 +1,76 @@
+body {
+    font-family: 'Ubuntu';
+}
+
+#content {
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+}
+
+#container {
+    padding-top: 4.5em;
+}
+
+.link {
+    color: black;
+    text-decoration: underline dotted;
+}
+
+header {
+    width: 100%;
+    display: block;
+    position: fixed;
+    background-color: #d63336;
+    padding-left: 2em;
+    padding-bottom: 2em;
+    height: 4.5em;
+    z-index: 99;
+    color: whitesmoke;
+}
+
+header h1, header p {
+    float: left;
+    clear: both;
+}
+
+header .left {
+    float: right;
+    padding-right: 2em;
+}
+
+header .left ul li {
+    display: inline;
+}
+
+footer {
+    padding-left: 2em;
+    color: darkslategray;
+    font-size: 10pt;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+input[type='checkbox'] {
+    border: 10px solid black;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    background-color: whitesmoke;
+    box-shadow: 1px 1px 5px #888888;
+    z-index: 99;
+    display: none;
+}
+
+.modal .modal-body {
+    width: 100%;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+}
+
