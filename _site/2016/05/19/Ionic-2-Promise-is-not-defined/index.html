@@ -36,7 +36,7 @@
 
     
       <br>
-      <span>&nbsp;</span><time datetime="2016-05-19 00:00:00 +0200">May 19, 2016</time>
+      <span>&nbsp;</span><time datetime="2016-05-19 00:00:00 +0000">May 19, 2016</time>
     
   </div>
 
@@ -51,7 +51,7 @@
 
 <p>Al ejecutar <code class="highlighter-rouge">ionic serve</code>, es posible que obtengamos el siguiente log.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Running 'serve:before' gulp task before serve
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Running 'serve:before' gulp task before serve
 [18:28:32] Starting 'clean'...
 [18:28:32] Finished 'clean' after 17 ms
 [18:28:32] Starting 'watch'...
@@ -76,8 +76,7 @@ Caught exception:
     at DestroyableTransform.emit (events.js:95:17) 
 
 Mind letting us know? https://github.com/driftyco/ionic-cli/issues
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Los señores de Ionic, muy amablemente introdujeron un enlace a la página de incidencias de su repositorio, para que notifiquemos el error. Sin embargo, si haces una búsqueda en dicha URL, verás que hay muchos casos similares con respuestas muy variopintas.</p>
 
@@ -89,15 +88,13 @@ Mind letting us know? https://github.com/driftyco/ionic-cli/issues
 
 <p>Sencillo. Solo tenemos que abrir nuestro <code class="highlighter-rouge">gulpfile.js</code> (en la raíz del proyecto Ionic), y añadir lo siguiente a la línea 6:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>require('es6-promise').polyfill();
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>require('es6-promise').polyfill();
+</code></pre></div></div>
 
 <p>A continuación, instalamos el paquete <code class="highlighter-rouge">es6-promise</code> con NPM:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>npm install es6-promise
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install es6-promise
+</code></pre></div></div>
 
 <p>¡Y a volar!</p>
 
@@ -122,7 +119,7 @@ Mind letting us know? https://github.com/driftyco/ionic-cli/issues
 
     <footer>
       <span>
-        &copy; <time datetime="2017-12-06 22:52:42 +0100">2017</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+        &copy; <time datetime="2018-01-02 21:22:43 +0000">2018</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
       </span>
     </footer>
   </body>

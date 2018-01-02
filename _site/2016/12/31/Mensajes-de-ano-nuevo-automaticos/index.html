@@ -36,7 +36,7 @@
 
     
       <br>
-      <span>&nbsp;</span><time datetime="2016-12-31 00:00:00 +0100">December 31, 2016</time>
+      <span>&nbsp;</span><time datetime="2016-12-31 00:00:00 +0000">December 31, 2016</time>
     
   </div>
 
@@ -57,7 +57,7 @@ A continuación es necesario que nos logueemos (introduciendo el número de tel�
 
 <p>El script original está aquí. Necesitarás actualizar la variable <code class="highlighter-rouge">PATH</code> con la ruta donde tienes tu Telegram-CLI instalado.</p>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
 
 <span class="c">############################################</span>
 <span class="c"># Author: Juanjo Salvador Piedra</span>
@@ -74,23 +74,20 @@ A continuación es necesario que nos logueemos (introduciendo el número de tel�
 <span class="c"># File where is all usernames (one per line)</span>
 <span class="nv">FILE</span><span class="o">=</span><span class="s2">"usernames.txt"</span>
 
-<span class="k">while </span><span class="nv">IFS</span><span class="o">=</span><span class="s1">''</span> <span class="nb">read</span> -r USERNAME; <span class="k">do</span>
-	<span class="nv">$PATH</span>/bin/telegram-cli -W -e <span class="s2">"msg </span><span class="nv">$USERNAME</span><span class="s2"> </span><span class="nv">$MESSAGE</span><span class="s2">"</span> &gt; /dev/null <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">"Message sent to </span><span class="nv">$USERNAME</span><span class="s2">"</span>
+<span class="k">while </span><span class="nv">IFS</span><span class="o">=</span><span class="s1">''</span> <span class="nb">read</span> <span class="nt">-r</span> USERNAME<span class="p">;</span> <span class="k">do</span>
+	<span class="nv">$PATH</span>/bin/telegram-cli <span class="nt">-W</span> <span class="nt">-e</span> <span class="s2">"msg </span><span class="nv">$USERNAME</span><span class="s2"> </span><span class="nv">$MESSAGE</span><span class="s2">"</span> <span class="o">&gt;</span> /dev/null <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">"Message sent to </span><span class="nv">$USERNAME</span><span class="s2">"</span>
 	sleep 10
 <span class="k">done</span> &lt; <span class="s2">"</span><span class="nv">$FILE</span><span class="s2">"</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>El último paso es programar el proceso utilizando <code class="highlighter-rouge">at</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ at 0000
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ at 0000
+</code></pre></div></div>
 <p>Y veremos como el prompt cambia por un <code class="highlighter-rouge">&gt;</code>. Entonces introducimos:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>bash /ruta/del/script/happyNewYear.sh
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bash /ruta/del/script/happyNewYear.sh
+</code></pre></div></div>
 
 <p>Y le enviamos un EOF con Ctrl-D. Añadir <code class="highlighter-rouge">bash</code> delante es importante, dado que <code class="highlighter-rouge">at</code> ejecuta todo con <code class="highlighter-rouge">/bin/sh</code> en lugar de BASH, por lo que el script fallaría
 si no le indicamos explícitamente como debe ejecutarlo.</p>
@@ -121,7 +118,7 @@ si no le indicamos explícitamente como debe ejecutarlo.</p>
 
     <footer>
       <span>
-        &copy; <time datetime="2017-12-06 22:52:42 +0100">2017</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+        &copy; <time datetime="2018-01-02 21:22:43 +0000">2018</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
       </span>
     </footer>
   </body>

@@ -36,7 +36,7 @@
 
     
       <br>
-      <span>&nbsp;</span><time datetime="2015-07-12 00:00:00 +0200">July 12, 2015</time>
+      <span>&nbsp;</span><time datetime="2015-07-12 00:00:00 +0000">July 12, 2015</time>
     
   </div>
 
@@ -57,24 +57,21 @@
 
 <p>La añadimos a nuestro proyecto…</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'rubygems'</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'rubygems'</span>
 <span class="nb">require</span> <span class="s1">'json'</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Y por último, para usarlo, solo tenemos que llamar al método <code class="highlighter-rouge">JSON.parse()</code>, suponiendo que aquí nuestro JSON está almacenado en una variable llamada <code class="highlighter-rouge">string</code>.</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">parsed_file</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
-</code></pre>
-</div>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">parsed_file</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+</code></pre></div></div>
 
 <p>Esto nos devolverá el JSON dividido en claves y valores, por lo que, para acceder al valor de una clave en concreto, a través de la variable donde lo hemos guardado…</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">string</span> <span class="o">=</span> <span class="s1">'{"desc":{"someKey":"someValue","anotherKey":"value"}}'</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">string</span> <span class="o">=</span> <span class="s1">'{"desc":{"someKey":"someValue","anotherKey":"value"}}'</span>
 <span class="n">parsed_file</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
 <span class="n">parsed_file</span><span class="p">[</span><span class="s2">"anotherKey"</span><span class="p">]</span> <span class="c1"># Nos devuelve al valor de 'anotherKey'</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 
 </div>
@@ -94,7 +91,7 @@
 
     <footer>
       <span>
-        &copy; <time datetime="2017-12-06 22:52:42 +0100">2017</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+        &copy; <time datetime="2018-01-02 21:22:43 +0000">2018</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
       </span>
     </footer>
   </body>
