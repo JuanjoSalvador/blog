@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Node.js en Ubuntu y derivadas &middot; El blog de Juanjo Salvador
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">El blog de Juanjo Salvador</h2>
+        </a>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Escrito por</span>
+    
+        Juanjo Salvador
+    
+
+    
+      <br>
+      <span>&nbsp;</span><time datetime="2018-01-18 00:00:00 +0100">January 18, 2018</time>
+    
+  </div>
+
+  <h1 class="post-title">Node.js en Ubuntu y derivadas</h1>
+  <div class="post-line"></div>
+
+  <p>Instalar Node.js en Linux, solía ser una tarea fácil. Y aunque por norma general mi recomendación es instalar a partir del código fuente,
+para la mayoría de usuarios es más fácil hacerlo desde el gestor de paquetes. Ubuntu tiene un problema con esto: el conflicto de nombres de
+paquetes. Esto se debe a que, mientras que en la mayoría de distribuciones, Node.js es llamado sencillamente <code class="highlighter-rouge">node</code> (tanto el instalador
+como el ejecutable), en Ubuntu el paquete <code class="highlighter-rouge">node</code> atiende a otro software diferente.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="o">[</span>12:51:08] <span class="o">[</span>~]  → apt search node
+<span class="o">[</span>...]
+node/trusty 0.3.2-7.4 all
+  Amateur Packet Radio Node program <span class="o">(</span>transitional package<span class="o">)</span>
+</code></pre>
+</div>
+<p>Mientras que el que nos interesa a nosotros es el paquete <code class="highlighter-rouge">nodejs</code>.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="o">[</span>12:51:08] <span class="o">[</span>~]  → apt search node
+<span class="o">[</span>...]
+nodejs/unknown,now 8.9.4-1nodesource1 amd64 <span class="o">[</span>installed]
+  Node.js event-based server-side javascript engine
+</code></pre>
+</div>
+
+<p>Otro problema es la ausencia de un paquete actualizado en los repositorios de Ubuntu. A día de hoy (18 de Enero de 2018), los repositorios
+de Artful <a href="https://packages.ubuntu.com/artful/nodejs">tienen todavía la versión 6 de Node</a>. Así que, ¿cómo solventamos esto?</p>
+
+<p>Primero instalamos el paquete <code class="highlighter-rouge">nodejs</code> tal y como explica en la web, añadiendo un repositorio extra.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+sudo apt-get install -y nodejs
+</code></pre>
+</div>
+
+<p>Llegados a este punto, el ejecutable será <code class="highlighter-rouge">/usr/bin/nodejs</code>, la raíz del conflicto. Lo solucionaremos creando un enlace blando.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo ln -s /usr/bin/nodejs /usr/bin/node
+</code></pre>
+</div>
+
+<p>Ahora podemos ejecutar <code class="highlighter-rouge">node --version</code> y comprobar que todo ha ido como la seda.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[13:01:35] [~]  → node --version
+v8.9.4
+</code></pre>
+</div>
+
+
+</div>
+
+<div class="pagination">
+  
+  
+    <a href="/2018/01/02/Feliz-ano-nuevo/" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Arriba</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2018-02-21 21:16:18 +0100">2018</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+  </body>
+</html>

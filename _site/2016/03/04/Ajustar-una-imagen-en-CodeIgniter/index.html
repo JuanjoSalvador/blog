@@ -36,7 +36,7 @@
 
     
       <br>
-      <span>&nbsp;</span><time datetime="2016-03-04 00:00:00 +0000">March 04, 2016</time>
+      <span>&nbsp;</span><time datetime="2016-03-04 00:00:00 +0100">March 04, 2016</time>
     
   </div>
 
@@ -54,12 +54,13 @@
 
 <p>Para trabajar con estas funciones de CodeIgniter, primero tenemos que añadir la librería <code class="highlighter-rouge">image_lib</code>, ya sea desde <code class="highlighter-rouge">config/autoload.php</code>, o desde la función <code class="highlighter-rouge">__construct()</code> de la clase con</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$this-&gt;load-&gt;library('image_lib');
-</code></pre></div></div>
+<div class="highlighter-rouge"><pre class="highlight"><code>$this-&gt;load-&gt;library('image_lib');
+</code></pre>
+</div>
 
 <p>Con la función <code class="highlighter-rouge">crop()</code> recortamos una sección cuadrada del centro de la imagen. Esto varía según las dimensiones de la imagen.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public function crop($img, $img_w, $img_h) {
+<div class="highlighter-rouge"><pre class="highlight"><code>public function crop($img, $img_w, $img_h) {
 		$config['image_library']  = 'gd2';
 		$config['source_image']   = $img;
 		$config['maintain_ratio'] = FALSE;
@@ -89,11 +90,12 @@
 			$this-&gt;image_lib-&gt;clear();
 		}
 	}
-</code></pre></div></div>
+</code></pre>
+</div>
 
 <p>Y con la función <code class="highlighter-rouge">resize()</code>, redimensionamos esa nueva imagen que hemos creado (y sobreescrito en nuestro directorio) al tamaño deseado, en mi caso, 80x80px.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	public function resize($img) {
+<div class="highlighter-rouge"><pre class="highlight"><code>	public function resize($img) {
 		$new_size['image_library']  = 'gd2';
 		$new_size['source_image']   = $img;
 		$new_size['maintain_ratio'] = TRUE;
@@ -105,7 +107,8 @@
 			echo $this-&gt;image_lib-&gt;display_errors();
 		}
 	}
-</code></pre></div></div>
+</code></pre>
+</div>
 
 <h3 id="conclusion">Conclusion</h3>
 <p>A partir de una imagen de 498x670px, en formato JPG y de 315 kB de peso, conseguí crear una imagen de 80x80px, JPG y de ¡tan solo 12 kB! Con esto conseguí reducir la carga del cliente, acelerar así el tiempo de rederizado de mi web, y aprender a manejar mejor la librería de procesado de imágenes que incorpora CodeIgniter.</p>
@@ -128,7 +131,7 @@
 
     <footer>
       <span>
-        &copy; <time datetime="2018-01-02 21:22:43 +0000">2018</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+        &copy; <time datetime="2018-02-21 21:16:18 +0100">2018</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
       </span>
     </footer>
   </body>

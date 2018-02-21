@@ -36,7 +36,7 @@
 
     
       <br>
-      <span>&nbsp;</span><time datetime="2015-10-22 00:00:00 +0000">October 22, 2015</time>
+      <span>&nbsp;</span><time datetime="2015-10-22 00:00:00 +0200">October 22, 2015</time>
     
   </div>
 
@@ -51,22 +51,24 @@
 
 <p>Para empezar, tenemos que habilitar el módulo con la siguiente instrucción.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>a2enmod userdir
-</code></pre></div></div>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo a2enmod userdir
+</code></pre>
+</div>
 
 <h3 id="configurar-el-módulo">Configurar el módulo</h3>
 
 <p>Nos pedirá que reiniciemos Apache para tener esta característica habilitada. Pero aún nos queda un poco, ahora vamos a configurar el módulo, editando <code class="highlighter-rouge">userdir.conf</code>. Eso si, antes de editarlo, haremos un backup por si las moscas.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>cp /etc/apache2/mods-enabled/userdir.conf /etc/apache2/mods-enabled/userdir.conf.backup
-<span class="nb">sudo </span>nano /etc/apache2/mods-enabled/userdir.conf
-</code></pre></div></div>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo cp /etc/apache2/mods-enabled/userdir.conf /etc/apache2/mods-enabled/userdir.conf.backup
+sudo nano /etc/apache2/mods-enabled/userdir.conf
+</code></pre>
+</div>
 
 <p>Aquí yo uso nano, pero tu puedes usar gedit, vim, leafpad o el editor de texto plano que más te guste.</p>
 
 <p>Este es el original.</p>
 
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">&lt;IfModule</span> <span class="err">mod_userdir.c</span><span class="nt">&gt;</span>
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code>    <span class="nt">&lt;IfModule</span> <span class="err">mod_userdir.c</span><span class="nt">&gt;</span>
         UserDir public_html
         UserDir disabled root
 
@@ -81,10 +83,11 @@
             <span class="nt">&lt;/LimitExcept&gt;</span>
         <span class="nt">&lt;/Directory&gt;</span>
     <span class="nt">&lt;/IfModule&gt;</span>
-</code></pre></div></div>
+</code></pre>
+</div>
 <p>Modificaremos las líneas 6, 7, 9 y 12, y añadiremos en sus respectivos bloques algunas líneas extra, de modo que quedaría tal que así.</p>
 
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">&lt;IfModule</span> <span class="err">mod_userdir.c</span><span class="nt">&gt;</span>
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code>    <span class="nt">&lt;IfModule</span> <span class="err">mod_userdir.c</span><span class="nt">&gt;</span>
             UserDir public_html
             UserDir disabled root
 
@@ -103,32 +106,36 @@
             <span class="nt">&lt;/LimitExcept&gt;</span>
             <span class="nt">&lt;/Directory&gt;</span>
     <span class="nt">&lt;/IfModule&gt;</span>
-</code></pre></div></div>
+</code></pre>
+</div>
 
 <p>Una vez tengamos editado el módulo <code class="highlighter-rouge">userdir.conf</code>, podremos acceder a nuestra <code class="highlighter-rouge">public_html</code> situada en <code class="highlighter-rouge">/home/$USER</code>, lo cual nos permite alojar ahí cualquier documento para que aparezca en nuestro servidor (y si es un index.html, mejor).</p>
 
 <p>Para terminar, reiniciamos Apache2 y añadimos el directorio.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nb">sudo </span>service apache2 restart
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>    sudo service apache2 restart
     mkdir /home/<span class="nv">$USER</span>/public_html
-</code></pre></div></div>
+</code></pre>
+</div>
 <p>Sin embargo, esto aún no soporta PHP, por ejemplo. Veremos como añadir ese soporte en otro artículo.</p>
 
 <h3 id="posible-error-de-apache2">Posible error de Apache2</h3>
 
 <p>Es posible que tras configurarlo, al acceder a http://mi-servidor/~usuario nos de un error de permisos (403 Forbidden). La solución a esto es sencilla, basta con asegurarnos de que nuestra carpeta personal tiene permiso de lectura y ejecución para grupos y otros usuarios.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nb">sudo </span>chmod <span class="nt">-R</span> 755 /home/tu-usuario/
-</code></pre></div></div>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>    sudo chmod -R 755 /home/tu-usuario/
+</code></pre>
+</div>
 
 <p>Si aún así falla, nos vamos a <code class="highlighter-rouge">/etc/apache2/apache2.conf</code> y como root añadimos el siguiente código:</p>
 
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">&lt;Directory</span> <span class="err">/home/*/public_html</span><span class="nt">&gt;</span>
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code>    <span class="nt">&lt;Directory</span> <span class="err">/home/*/public_html</span><span class="nt">&gt;</span>
             Options Indexes FollowSymLinks
             AllowOverride None
             Require all granted
     <span class="nt">&lt;/Directory&gt;</span>
-</code></pre></div></div>
+</code></pre>
+</div>
 
 <p>Una vez hecho esto, no debería dar error de nuevo.</p>
 
@@ -150,7 +157,7 @@
 
     <footer>
       <span>
-        &copy; <time datetime="2018-01-02 21:22:43 +0000">2018</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+        &copy; <time datetime="2018-02-21 21:16:18 +0100">2018</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
       </span>
     </footer>
   </body>

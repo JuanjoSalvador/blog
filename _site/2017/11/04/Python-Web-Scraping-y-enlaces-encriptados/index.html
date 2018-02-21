@@ -36,7 +36,7 @@
 
     
       <br>
-      <span>&nbsp;</span><time datetime="2017-11-04 00:00:00 +0000">November 04, 2017</time>
+      <span>&nbsp;</span><time datetime="2017-11-04 00:00:00 +0100">November 04, 2017</time>
     
   </div>
 
@@ -66,17 +66,18 @@
 
 <p>La primera y única pega de esto, es que <strong>solamente funciona con Python 2.7</strong>, dado que las funciones para desencriptar los enlaces, proceden de <a href="https://github.com/MGF15/AdflyUrlGrabber">AdflyUrlgrabber</a>, el cual por algún motivo no ha sido portado a Python 3.x todavía.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># -*- coding: utf-8 -*-</span>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># -*- coding: utf-8 -*-</span>
 
-<span class="kn">import</span> <span class="nn">base64</span><span class="p">,</span> <span class="n">urllib</span>
+<span class="kn">import</span> <span class="nn">base64</span><span class="o">,</span> <span class="nn">urllib</span>
 <span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">os</span><span class="p">,</span> <span class="n">re</span><span class="p">,</span> <span class="n">sys</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">re</span><span class="o">,</span> <span class="nn">sys</span>
 
 <span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
-</code></pre></div></div>
+</code></pre>
+</div>
 <p>Estos son los <code class="highlighter-rouge">import</code> que he necesitado, tanto para extraer los enlaces como para desencriptarlos.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">_crack</span><span class="p">(</span><span class="n">code</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">_crack</span><span class="p">(</span><span class="n">code</span><span class="p">):</span>
         <span class="n">zeros</span> <span class="o">=</span> <span class="s">''</span>
         <span class="n">ones</span> <span class="o">=</span> <span class="s">''</span>
         <span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">letter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">code</span><span class="p">):</span>
@@ -110,10 +111,11 @@
     <span class="n">decrypted_url</span> <span class="o">=</span> <span class="n">_crack</span><span class="p">(</span><span class="n">ysmm</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">decrypted_url</span>
-</code></pre></div></div>
+</code></pre>
+</div>
 <p>Funciones <code class="highlighter-rouge">_crack()</code> y <code class="highlighter-rouge">_decrypt()</code>, encargadas de romper el cifrado de Adf.ly y de devolver la URL que se oculta detrás.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="c"># Extrae los enlaces que cumplan las condiciones de la página objetivo.</span>
     <span class="n">target</span>  <span class="o">=</span> <span class="s">"&lt;URL&gt;"</span>
 
@@ -145,13 +147,16 @@
         <span class="k">print</span> <span class="s">"Ocurrió un error: {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
 
     <span class="k">print</span> <span class="s">"¡Finalizado! Resultados guardados en output/output.txt"</span>
-</code></pre></div></div>
+</code></pre>
+</div>
 <p>Función principal del script. Realiza el flujo de trabajo explicado arriba, primero extrayendo el HTML de la página objetivo, a continuación analizándolo en busca de los enlaces que nos interesan, y por último guardándolos en un archivo TXT que podemos utilizar como más nos guste.</p>
 
 
 </div>
 
 <div class="pagination">
+  
+    <a href="/2018/01/02/Feliz-ano-nuevo/" class="left arrow">&#8592;</a>
   
   
     <a href="/2017/08/11/Escribiendo-un-bot-para-telegram/" class="right arrow">&#8594;</a>
@@ -164,7 +169,7 @@
 
     <footer>
       <span>
-        &copy; <time datetime="2018-01-02 21:22:43 +0000">2018</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+        &copy; <time datetime="2018-02-21 21:16:18 +0100">2018</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
       </span>
     </footer>
   </body>
