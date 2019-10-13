@@ -5,7 +5,7 @@ title: AndalucíaDev Jobs Selfservice
 
 Recientemente he empezado a escribir una aplicación web sencilla que me permite gestionar un canal de [Telegram para ofertas de trabajo](https://t.me/andaluciadevjobs)
 mediante «autoservicio». Es decir, los propios usuarios pueden enviar sus ofertas para ser publicadas, con el formato correcto,
-facilitando la administración hasta el punto de solo necesitar revisar cada oferta y darle al botón de publicar. La versión en desarrollo se puede [visualizar aquí](https://ad.jobs.herokuapp.com/).
+facilitando la administración hasta el punto de solo necesitar revisar cada oferta y darle al botón de publicar. La versión en desarrollo se puede [visualizar aquí](https://ad-jobs.herokuapp.com/).
 
 ### La idea
 
