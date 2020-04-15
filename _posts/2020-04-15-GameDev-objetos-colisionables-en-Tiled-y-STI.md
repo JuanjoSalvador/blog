@@ -13,7 +13,7 @@ Tras mucho indagar, he dado con la solución:
 
 2. En los atributos propios que podemos añadirle a cada loseta, añadimos la propiedad `collidable`, de tipo `bool`, y la marcamos con un tick para que su valor sea `true` (izquierda).
 
-![Editor de tiles en Tiled](/resources/images/editor.jpg)
+![Editor de tiles en Tiled](/blog/resources/images/editor.jpg)
 
 Y con esto, ya estaría listo. Para confirmar que se han creado como objetos colisionables, si estás usando el plugin `box2d` de STI, puedes depurarlo así:
 
@@ -26,4 +26,5 @@ end
 
 Si por el contrario, estás utilizando `bump`, la función a utilizar sería `map:bump_draw()` en su lugar.
 
-![Ventana de juego con cajas de colisión resaltadas](/resources/images/juego.jpg)
+![Ventana de juego con cajas de colisión resaltadas](/blog/resources/images/juego.jpg)
+
