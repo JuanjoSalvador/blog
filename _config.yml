@@ -5,7 +5,7 @@ permalink:      pretty
 title:          El blog de Juanjo Salvador
 paginate:       5
 baseurl:        
-url:            "https://juanjosalvador.me"
+url:            "https://jsalvador.me"
 
 # Assets
 sass:
@@ -18,12 +18,11 @@ markdown:       kramdown
 # About
 author:
   name:         Juanjo Salvador
-  url:          http://juanjosalvador.me
-  email:        hola@juanjosalvador.me
+  url:          http://jsalvador.me
+  email:        juanjosalvador@netc.eu 
 
 # Custom vars
 version:        3.4.3
 
 # Gems
-plugins_dir:
-gems: [jekyll-paginate]
+plugins: [jekyll-paginate]
