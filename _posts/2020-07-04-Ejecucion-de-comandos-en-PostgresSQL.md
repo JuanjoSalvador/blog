@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Ejecución de comnandos en PostgreSQL"
+title: "Ejecución de comandos en PostgreSQL"
 ---
 
 A veces necesitaremos ejecutar algún comando interno de PostgreSQL, para alguna acción rápida, como crear un usuario o una base de datos nueva que posteriormente 
