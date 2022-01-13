@@ -27,7 +27,7 @@ Si buscas algo más especializado en diseño, aprovecha las agencias de publicid
 
 ## Especialízate
 
-Un profesor mío, decía siempre «maestro de nada, aprendiz de todo». Y realmente, es un buen consejo, pero en este mundillo vale más la pena ser un maestro de una o varias tecnologías, y no un aprendiz de todas. Escoge una rama que te guste y que te haga sentir a gusto. 
+Un profesor mío, decía siempre «aprendiz de todo, maestro de nada». Y realmente, es un buen consejo, pero en este mundillo vale más la pena ser un maestro de una o varias tecnologías, y no un aprendiz de todas. Escoge una rama que te guste y que te haga sentir a gusto. 
 
 ¿Prefieres front? Cada minuto aparece un nuevo framework de JavaScript, por suerte para ti, unos pocos lideran el mercado. Escoge entre Vue, React o Angular (o los tres, ¿quién soy yo para decirte qué hacer?), haz algún curso, empieza un proyecto con alguno de esos tres, y aprende las buenas prácticas de este hasta que te sea tan natural como respirar. ¿Escoges back? Las tecnologías que las empresas suelen pedir varían, pero PHP, Python, JavaScript y Java siempre van a la estar a la orden del día. Y dentro de estos, frameworks como CakePHP, Django, Express y Spring Boot, por poner algunos ejemplos. De nuevo, escoge uno de esos lenguajes, familiarizate con sus frameworks, inicia un proyecto personal con eso, y empápate de conocimientos.
 
