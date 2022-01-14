@@ -2,46 +2,68 @@
 <html lang="en">
 
   <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Juanjo Salvador's personal webpage">
 
-  <title>
-    
-      Como instalar Jekyll en Windows &middot; El blog de Juanjo Salvador
-    
-  </title>
+    <title>
+        
+            Como instalar Jekyll en Windows &middot; Ingeniero y no puedo
+        
+    </title>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <link rel="stylesheet" href="/assets/styles.css">
+
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Como instalar Jekyll en Windows | Ingeniero y no puedo</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Como instalar Jekyll en Windows" />
+<meta name="author" content="Juanjo Salvador" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Con motivo de la segunda edición de mi charla Construye tu web como un hacker en las Jornadas Hacklab Almería 2016, he decidido instalar un Jekyll en mi netbook con Windows 10. ¿Por qué? En primer lugar, porque intuyo que la mayoría de asistentes de la charla serán usuarios del sistema de Microsoft, y en segundo lugar, porque la instalación de Jekyll en Windows es más complicado que en GNU/Linux, y hacerlo ha sido un pequeño reto." />
+<meta property="og:description" content="Con motivo de la segunda edición de mi charla Construye tu web como un hacker en las Jornadas Hacklab Almería 2016, he decidido instalar un Jekyll en mi netbook con Windows 10. ¿Por qué? En primer lugar, porque intuyo que la mayoría de asistentes de la charla serán usuarios del sistema de Microsoft, y en segundo lugar, porque la instalación de Jekyll en Windows es más complicado que en GNU/Linux, y hacerlo ha sido un pequeño reto." />
+<link rel="canonical" href="http://localhost:4000/2016/11/11/Como-instalar-Jekyll-en-Windows/" />
+<meta property="og:url" content="http://localhost:4000/2016/11/11/Como-instalar-Jekyll-en-Windows/" />
+<meta property="og:site_name" content="Ingeniero y no puedo" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-11-11T00:00:00+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Como instalar Jekyll en Windows" />
+<script type="application/ld+json">
+{"description":"Con motivo de la segunda edición de mi charla Construye tu web como un hacker en las Jornadas Hacklab Almería 2016, he decidido instalar un Jekyll en mi netbook con Windows 10. ¿Por qué? En primer lugar, porque intuyo que la mayoría de asistentes de la charla serán usuarios del sistema de Microsoft, y en segundo lugar, porque la instalación de Jekyll en Windows es más complicado que en GNU/Linux, y hacerlo ha sido un pequeño reto.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2016/11/11/Como-instalar-Jekyll-en-Windows/"},"url":"http://localhost:4000/2016/11/11/Como-instalar-Jekyll-en-Windows/","author":{"@type":"Person","name":"Juanjo Salvador"},"headline":"Como instalar Jekyll en Windows","@type":"BlogPosting","dateModified":"2016-11-11T00:00:00+01:00","datePublished":"2016-11-11T00:00:00+01:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
 </head>
 
 
   <body>
-    <nav class="nav">
-      <div class="nav-container">
-        <a href="/">
-          <h2 class="nav-title">El blog de Juanjo Salvador</h2>
-        </a>
-    </div>
-  </nav>
+        <section class="hero is-primary">
+            <div class="hero-body">
+                <div class="container main">
+                    <div class="columns is-mobile">
+                        <div class="column">
+                            <h1 class="title is-1"><a href="/">Ingeniero y no puedo</a></h1>
+                            <h2 class="subtitle is-3">El blog personal de Juanjo Salvador</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <main>
-      <div class="post">
+        <section class="section">
+            <div class="container">
+                <div class="columns is-mobile">
+                    <div class="column">
+                        <div class="post">
+  
+  <h2 class="title is-2 post-title">Como instalar Jekyll en Windows</h2>
   <div class="post-info">
-    <span>Escrito por</span>
-    
-        Juanjo Salvador
-    
-
-    
-      <br>
-      <span>&nbsp;</span><time datetime="2016-11-11 00:00:00 +0100">November 11, 2016</time>
-    
+    <time datetime="" class="frontpage-time has-text-grey-light">November 11, 2016</time>
   </div>
-
-  <h1 class="post-title">Como instalar Jekyll en Windows</h1>
-  <div class="post-line"></div>
 
   <p>Con motivo de la segunda edición de mi charla <a href="http://juanjosalvador.es/2016/09/20/Construye-tu-web-como-un-hacker/"><em>Construye tu web como un hacker</em></a> en las <strong>Jornadas Hacklab Almería 2016</strong>,
 he decidido instalar un Jekyll en mi netbook con Windows 10. ¿Por qué? En primer lugar, porque intuyo que la mayoría de asistentes de la charla serán usuarios del sistema de Microsoft,
@@ -52,14 +74,13 @@ y en segundo lugar, porque la instalación de Jekyll en Windows es más complica
 <p>El primer paso, es instalar Ruby y Ruby Development Kit en Windows. La mejor forma de hacerlo es a través de <a href="http://rubyinstaller.org/downloads/"><strong>RubyInstaller</strong></a>.</p>
 
 <p>Se trata de un ejecutable, es simplemente seguir los pasos del asistente y a volar. A continuación, y desde la misma web de RubyInstaller
-podemos descargar el Development Kit. Al ejecutarlo, nos pide una ruta de extracción, así que lo extraemos en <code class="highlighter-rouge">C:\RubyDevKit</code>.</p>
+podemos descargar el Development Kit. Al ejecutarlo, nos pide una ruta de extracción, así que lo extraemos en <code class="language-plaintext highlighter-rouge">C:\RubyDevKit</code>.</p>
 
 <p>Para instalarlo, abrimos la consola CMD de Windows, y navegamos hasta la ruta donde hemos extraído el Development Kit de Ruby, y lo instalamos.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&gt; ruby dk.rb init
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; ruby dk.rb init
 &gt; ruby dk.rb install
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="instalar-rubygems">Instalar Rubygems</h3>
 
@@ -68,9 +89,8 @@ podemos descargar el Development Kit. Al ejecutarlo, nos pide una ruta de extrac
 <p>Descargamos el paquete ZIP desde la <a href="https://rubygems.org/pages/download">web de Rubygems</a>, y lo descomprimimos. Para instalarlo,
 abrimos la consola de Windows con Ruby, navegamos hacia la ruta donde hayamos descomprimido el paquete, y lo instalamos:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&gt; ruby setup.rb
-</code></pre>
-</div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; ruby setup.rb
+</code></pre></div></div>
 
 <p>Tras unos minutos, tendremos Rubygems instalado y podemos continuar.</p>
 
@@ -79,34 +99,26 @@ abrimos la consola de Windows con Ruby, navegamos hacia la ruta donde hayamos de
 <p>Una vez tenemos Ruby y Rubygems instalado, podemos instalar Jekyll, pero para asegurarnos de que no fallan las dependencias,
 primero instalaremos Bundler.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&gt; gem install bundler
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; gem install bundler
 &gt; gem install jekyll
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Cuando termine la instalación, ya podemos crear nuevos sitios, servir los que tenemos creados, y ponernos a crear.</p>
 
 
 
 </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<div class="pagination">
-  
-    <a href="/2016/11/20/Desarrollo-de-apps-con-JavaScript/" class="left arrow">&#8592;</a>
-  
-  
-    <a href="/2016/10/06/5-herramientas-que-todo-Web-Developer-debe-conocer/" class="right arrow">&#8594;</a>
-  
-
-  <a href="#" class="top">Arriba</a>
-</div>
-
-    </main>
-
-    <footer>
-      <span>
-        &copy; <time datetime="2018-02-21 21:16:18 +0100">2018</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
-      </span>
-    </footer>
+        <footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            Made with <span style="color: #e25555;">&hearts;</span> by Juanjo Salvador
+        </p>
+    </div>
+</footer>
   </body>
 </html>

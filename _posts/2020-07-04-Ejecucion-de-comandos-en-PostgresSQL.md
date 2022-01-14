@@ -9,13 +9,13 @@ en cuestión a través de `psql` y ejecutar lo que necesite ahí, pero, ¿puedo 
 
 Ayer descubrí que existe una opción en `psql` para hacer esto. Por ejemplo, para listar las bases de datos existentes en mi nodo:
 
-```shell
+```pre
 $ psql -c '\list' postgres
 ```
 
 Mostrando una salida como esta
 
-```
+```pre
 mastodon@ubuntu-s-1vcpu-1gb-lon1-01:~$ psql -c '\list' postgres
                                    List of databases
         Name         |  Owner   | Encoding | Collate |  Ctype  |   Access privileges
