@@ -34,7 +34,7 @@ Los pasos a seguir serán los siguientes:
 
 Empezamos creando un usuario para nuestro servicio, necesitaremos darle al menos una contraseña que sea segura, ya que este podrá ser una puerta de entrada a la máquina.
 
-```
+```pre
 root@scw-amazing-stallman # adduser minecraft
 ```
 
@@ -42,7 +42,7 @@ root@scw-amazing-stallman # adduser minecraft
 
 Una vez lo tengamos, vamos a instalar `ufw` (si tu máquina viene con Ubuntu, no es necesario instalarlo) para administrar el firewall, y habilitar los puertos 22, 80, 443 y 25565.
 
-```
+```pre
 root@scw-amazing-stallman # apt update
 root@scw-amazing-stallman # apt upgrade
 root@scw-amazing-stallman # apt install ufw -y
@@ -52,7 +52,7 @@ root@scw-amazing-stallman # ufw allow 22/tcp 80/tcp 443/tcp 25565/tcp
 
 Llegados a este punto, solo nos falta añadir un espacio de intercambio. En principio esto no es obligatorio, pero si queremose exprimir los 2 GB de RAM de la máquina, será un buen añadido. En mi caso, le voy a dar hasta 4 GB de intercambio.
 
-```
+```pre
 root@scw-amazing-stallman # fallocate -l 4G /swap
 root@scw-amazing-stallman # chmod 0600 /swap
 root@scw-amazing-stallman # mkswap /swap
@@ -61,13 +61,13 @@ root@scw-amazing-stallman # swapon /swap
 
 Y para asegurarnos de que sea persistente, lo añadimos al `/etc/fstab`.
 
-```
+```pre
 root@scw-amazing-stallman # echo "/swap swap swap defaults 0 0" >> /etc/fstab
 ```
 
 En este punto, cabe destacar también, que tendremos que configurar el *swappiness* de nuestra máquina para que recurra lo menos posible al espacio de intercambio, dentro de unos márgenes, y así optimizar esta. Si comprobamos el valor actual, veremos que está a 60. El valor ideal es 10.
 
-```
+```pre
 root@scw-amazing-stallman # cat /proc/sys/vm/swappiness
 60
 root@scw-amazing-stallman # sysctl vm.swappiness=10
@@ -80,7 +80,7 @@ Tras este cambio, no es necesario reiniciar nuestra máquina. Si quieres saber m
 
 Hablar de JVM es hablar de Java. Lo óptimo, afirman los desarrolladores que es Java 8, pero dado que ya no se encuentra en los repositorios de Debian/Ubuntu, yo me he decantado por Java 11. Retrocompatible, e igual de funcional. No necesitamos el JDK, solamente el entorno de ejecución (JRE).
 
-```
+```pre
 root@scw-amazing-stallman # apt install openjdk-11-jre-headless
 ```
 
@@ -92,7 +92,7 @@ También puedes instalar un monitor de sistema, que te permita ver en todo momen
 
 Pero para la mayoría de instalaciones, bastaría con ejecutar el siguiente comando:
 
-```
+```pre
 root@scw-amazing-stallman # bash <(curl -Ss https://my-netdata.io/kickstart-static64.sh) \ 
                             --no-updates --stable-channel --disable-telemetry
 ```
