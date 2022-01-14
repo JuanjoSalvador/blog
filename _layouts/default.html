@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  {% include head.html %}
+
+  <body>
+        <section class="hero is-{{ site.color }}">
+            <div class="hero-body">
+                <div class="container main">
+                    <div class="columns is-mobile">
+                        <div class="column">
+                            <h1 class="title is-1"><a href="/">{{ site.title }}</a></h1>
+                            <h2 class="subtitle is-3">{{ site.subtitle }}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="columns is-mobile">
+                    <div class="column">
+                        {{ content }}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {% include footer.html %}
+  </body>
+</html>
