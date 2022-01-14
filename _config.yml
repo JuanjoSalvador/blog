@@ -2,28 +2,34 @@
 permalink:      pretty
 
 # Setup
-title:          El blog de Juanjo Salvador
-paginate:       5
+title:          Ingeniero y no puedo
+subtitle:       El blog personal de Juanjo Salvador
 baseurl:        
-url:            "https://juanjosalvador.me"
+url:            "https://jsalvador.me"
+
+theme:          blue-jekyll-theme
+color:          primary
+
+author:
+  name:         Juanjo Salvador
+  url:          http://jsalvador.me
+  email:        juanjosalvador@netc.eu
 
 # Assets
 sass:
   sass_dir:     _sass
   style:        :compressed
 
-# Build settings
-markdown:       kramdown
-
-# About
-author:
-  name:         Juanjo Salvador
-  url:          http://juanjosalvador.me
-  email:        hola@juanjosalvador.me
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
 
 # Custom vars
-version:        3.4.3
+version:        3.9.1
+paginate:       5
+paginate_path: "/page:num/"
 
-# Gems
-plugins_dir:
-gems: [jekyll-paginate]
+plugins: 
+  - jekyll-paginate
+  - jekyll-seo-tag

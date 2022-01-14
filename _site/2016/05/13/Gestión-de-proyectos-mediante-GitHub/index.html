@@ -2,46 +2,68 @@
 <html lang="en">
 
   <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Juanjo Salvador's personal webpage">
 
-  <title>
-    
-      Gestión de proyectos mediante GitHub &middot; El blog de Juanjo Salvador
-    
-  </title>
+    <title>
+        
+            Gestión de proyectos mediante GitHub &middot; Ingeniero y no puedo
+        
+    </title>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <link rel="stylesheet" href="/assets/styles.css">
+
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Gestión de proyectos mediante GitHub | Ingeniero y no puedo</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Gestión de proyectos mediante GitHub" />
+<meta name="author" content="Juanjo Salvador" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="GitHub además de ser una excelente plataforma de Git para compartir y mantener código, también puede ser una herramienta excelente para gestionar proyectos. Para explicar esto, usaré como ejemplo, es el desarrollo de Comicbook Packager (versión 3, en camino), que se está organizando a través de las issues de un repositorio." />
+<meta property="og:description" content="GitHub además de ser una excelente plataforma de Git para compartir y mantener código, también puede ser una herramienta excelente para gestionar proyectos. Para explicar esto, usaré como ejemplo, es el desarrollo de Comicbook Packager (versión 3, en camino), que se está organizando a través de las issues de un repositorio." />
+<link rel="canonical" href="http://localhost:4000/2016/05/13/Gesti%C3%B3n-de-proyectos-mediante-GitHub/" />
+<meta property="og:url" content="http://localhost:4000/2016/05/13/Gesti%C3%B3n-de-proyectos-mediante-GitHub/" />
+<meta property="og:site_name" content="Ingeniero y no puedo" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-05-13T00:00:00+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Gestión de proyectos mediante GitHub" />
+<script type="application/ld+json">
+{"description":"GitHub además de ser una excelente plataforma de Git para compartir y mantener código, también puede ser una herramienta excelente para gestionar proyectos. Para explicar esto, usaré como ejemplo, es el desarrollo de Comicbook Packager (versión 3, en camino), que se está organizando a través de las issues de un repositorio.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2016/05/13/Gesti%C3%B3n-de-proyectos-mediante-GitHub/"},"url":"http://localhost:4000/2016/05/13/Gesti%C3%B3n-de-proyectos-mediante-GitHub/","author":{"@type":"Person","name":"Juanjo Salvador"},"headline":"Gestión de proyectos mediante GitHub","@type":"BlogPosting","dateModified":"2016-05-13T00:00:00+02:00","datePublished":"2016-05-13T00:00:00+02:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
 </head>
 
 
   <body>
-    <nav class="nav">
-      <div class="nav-container">
-        <a href="/">
-          <h2 class="nav-title">El blog de Juanjo Salvador</h2>
-        </a>
-    </div>
-  </nav>
+        <section class="hero is-primary">
+            <div class="hero-body">
+                <div class="container main">
+                    <div class="columns is-mobile">
+                        <div class="column">
+                            <h1 class="title is-1"><a href="/">Ingeniero y no puedo</a></h1>
+                            <h2 class="subtitle is-3">El blog personal de Juanjo Salvador</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <main>
-      <div class="post">
+        <section class="section">
+            <div class="container">
+                <div class="columns is-mobile">
+                    <div class="column">
+                        <div class="post">
+  
+  <h2 class="title is-2 post-title">Gestión de proyectos mediante GitHub</h2>
   <div class="post-info">
-    <span>Escrito por</span>
-    
-        Juanjo Salvador
-    
-
-    
-      <br>
-      <span>&nbsp;</span><time datetime="2016-05-13 00:00:00 +0200">May 13, 2016</time>
-    
+    <time datetime="" class="frontpage-time has-text-grey-light">May 13, 2016</time>
   </div>
-
-  <h1 class="post-title">Gestión de proyectos mediante GitHub</h1>
-  <div class="post-line"></div>
 
   <p>GitHub además de ser una excelente plataforma de Git para compartir y mantener código, también puede ser una herramienta excelente para gestionar proyectos. Para explicar esto, usaré como ejemplo, es el desarrollo de Comicbook Packager (versión 3, en camino), que se está organizando a través de las issues de un repositorio.</p>
 
@@ -52,13 +74,13 @@
 <p>Para mantener el código, utilizamos 4 ramas (branches) dentro del repositorio:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">win-dev</code></li>
-  <li><code class="highlighter-rouge">win-master</code></li>
-  <li><code class="highlighter-rouge">linux-dev</code></li>
-  <li><code class="highlighter-rouge">linux-master</code></li>
+  <li><code class="language-plaintext highlighter-rouge">win-dev</code></li>
+  <li><code class="language-plaintext highlighter-rouge">win-master</code></li>
+  <li><code class="language-plaintext highlighter-rouge">linux-dev</code></li>
+  <li><code class="language-plaintext highlighter-rouge">linux-master</code></li>
 </ul>
 
-<p>De modo que disponemos de una rama (<code class="highlighter-rouge">*-dev</code>) que podemos usar para mantener el código inestable y en desarrollo, mientras que en la rama master (<code class="highlighter-rouge">*-master</code>) encontramos el código estable de cada versión.</p>
+<p>De modo que disponemos de una rama (<code class="language-plaintext highlighter-rouge">*-dev</code>) que podemos usar para mantener el código inestable y en desarrollo, mientras que en la rama master (<code class="language-plaintext highlighter-rouge">*-master</code>) encontramos el código estable de cada versión.</p>
 
 <p>Pero espera, ¿y qué rama pasa a ser la rama por defecto? Pues sigue siendo la rama master del repositorio, por supuesto. En ella encontramos la guía de usuario, imágenes e información relevante, como licencias y demás.</p>
 
@@ -66,7 +88,7 @@
 
 <p>Cada pareja de ramas la gestiona un miembro del proyecto: <a href="https://github.com/jotaperamez">@jotaperamez</a> administra las de Windows, mientras que yo me ocupo de mantener al día el desarrollo general y de la rama Linux. De este modo, repartimos la carga de trabajo y dejamos cierta libertad para que cada parte del equipo sea independiente, aunque exista un <em>administrador general</em> que sea quien gestione todo.</p>
 
-<p>El responsable de cada rama debe estar atento y mantener la rama <code class="highlighter-rouge">*-master</code> de su sección siempre al día, ya que las releases saldrán de ahí.</p>
+<p>El responsable de cada rama debe estar atento y mantener la rama <code class="language-plaintext highlighter-rouge">*-master</code> de su sección siempre al día, ya que las releases saldrán de ahí.</p>
 
 <h3 id="establece-una-vía-de-comunicación-con-el-equipo">Establece una vía de comunicación con el equipo</h3>
 
@@ -86,24 +108,17 @@
 
 
 </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<div class="pagination">
-  
-    <a href="/2016/05/19/Ionic-2-Promise-is-not-defined/" class="left arrow">&#8592;</a>
-  
-  
-    <a href="/2016/05/08/Experiencia-OpenSouthCode/" class="right arrow">&#8594;</a>
-  
-
-  <a href="#" class="top">Arriba</a>
-</div>
-
-    </main>
-
-    <footer>
-      <span>
-        &copy; <time datetime="2018-02-21 21:16:18 +0100">2018</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
-      </span>
-    </footer>
+        <footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            Made with <span style="color: #e25555;">&hearts;</span> by Juanjo Salvador
+        </p>
+    </div>
+</footer>
   </body>
 </html>

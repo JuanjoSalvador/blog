@@ -2,46 +2,68 @@
 <html lang="en">
 
   <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Juanjo Salvador's personal webpage">
 
-  <title>
-    
-      Python, Web Scraping y enlaces encriptados &middot; El blog de Juanjo Salvador
-    
-  </title>
+    <title>
+        
+            Python, Web Scraping y enlaces encriptados &middot; Ingeniero y no puedo
+        
+    </title>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <link rel="stylesheet" href="/assets/styles.css">
+
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Python, Web Scraping y enlaces encriptados | Ingeniero y no puedo</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Python, Web Scraping y enlaces encriptados" />
+<meta name="author" content="Juanjo Salvador" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Cuando escribí Comicbook Packager hace 2 años, mi problema era casi exclusivamente poder convertir un montón (pero un montón, ¿eh?) de carpetas con imágenes sueltas en paquetes CBZ para poderlos subir a mi nube, llevarlos siempre conmigo y poderlos leer en mi tablet Android usando un lector de cómics digitales." />
+<meta property="og:description" content="Cuando escribí Comicbook Packager hace 2 años, mi problema era casi exclusivamente poder convertir un montón (pero un montón, ¿eh?) de carpetas con imágenes sueltas en paquetes CBZ para poderlos subir a mi nube, llevarlos siempre conmigo y poderlos leer en mi tablet Android usando un lector de cómics digitales." />
+<link rel="canonical" href="http://localhost:4000/2017/11/04/Python-Web-Scraping-y-enlaces-encriptados/" />
+<meta property="og:url" content="http://localhost:4000/2017/11/04/Python-Web-Scraping-y-enlaces-encriptados/" />
+<meta property="og:site_name" content="Ingeniero y no puedo" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-11-04T00:00:00+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Python, Web Scraping y enlaces encriptados" />
+<script type="application/ld+json">
+{"description":"Cuando escribí Comicbook Packager hace 2 años, mi problema era casi exclusivamente poder convertir un montón (pero un montón, ¿eh?) de carpetas con imágenes sueltas en paquetes CBZ para poderlos subir a mi nube, llevarlos siempre conmigo y poderlos leer en mi tablet Android usando un lector de cómics digitales.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2017/11/04/Python-Web-Scraping-y-enlaces-encriptados/"},"url":"http://localhost:4000/2017/11/04/Python-Web-Scraping-y-enlaces-encriptados/","author":{"@type":"Person","name":"Juanjo Salvador"},"headline":"Python, Web Scraping y enlaces encriptados","@type":"BlogPosting","dateModified":"2017-11-04T00:00:00+01:00","datePublished":"2017-11-04T00:00:00+01:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
 </head>
 
 
   <body>
-    <nav class="nav">
-      <div class="nav-container">
-        <a href="/">
-          <h2 class="nav-title">El blog de Juanjo Salvador</h2>
-        </a>
-    </div>
-  </nav>
+        <section class="hero is-primary">
+            <div class="hero-body">
+                <div class="container main">
+                    <div class="columns is-mobile">
+                        <div class="column">
+                            <h1 class="title is-1"><a href="/">Ingeniero y no puedo</a></h1>
+                            <h2 class="subtitle is-3">El blog personal de Juanjo Salvador</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <main>
-      <div class="post">
+        <section class="section">
+            <div class="container">
+                <div class="columns is-mobile">
+                    <div class="column">
+                        <div class="post">
+  
+  <h2 class="title is-2 post-title">Python, Web Scraping y enlaces encriptados</h2>
   <div class="post-info">
-    <span>Escrito por</span>
-    
-        Juanjo Salvador
-    
-
-    
-      <br>
-      <span>&nbsp;</span><time datetime="2017-11-04 00:00:00 +0100">November 04, 2017</time>
-    
+    <time datetime="" class="frontpage-time has-text-grey-light">November 04, 2017</time>
   </div>
-
-  <h1 class="post-title">Python, Web Scraping y enlaces encriptados</h1>
-  <div class="post-line"></div>
 
   <p>Cuando escribí <a href="http://juanjosalvador.me/2015/11/11/Comicbook-Packager-mi-autoempaquetador-de-comics/">Comicbook Packager</a> hace 2 años, mi problema era casi exclusivamente poder convertir un montón (pero un montón, ¿eh?) de carpetas con imágenes sueltas en paquetes CBZ para poderlos subir a mi nube, llevarlos siempre conmigo y poderlos leer en mi tablet Android usando un lector de cómics digitales.</p>
 
@@ -58,7 +80,7 @@
 <ol>
   <li>Mediante Requests obtenemos el HTML de la página en cuestión.</li>
   <li>Mediante BeautifulSoup extraemos los contenedores donde se encuentran los enlaces.</li>
-  <li>De cada contenedor, extraemos el elemento <code class="highlighter-rouge">&lt;a&gt;</code> y su atributo <code class="highlighter-rouge">href</code> (enlace encriptado en este caso).</li>
+  <li>De cada contenedor, extraemos el elemento <code class="language-plaintext highlighter-rouge">&lt;a&gt;</code> y su atributo <code class="language-plaintext highlighter-rouge">href</code> (enlace encriptado en este caso).</li>
   <li>Desencriptamos cada enlace y almacenamos la URL definitiva en un fichero TXT</li>
 </ol>
 
@@ -66,18 +88,17 @@
 
 <p>La primera y única pega de esto, es que <strong>solamente funciona con Python 2.7</strong>, dado que las funciones para desencriptar los enlaces, proceden de <a href="https://github.com/MGF15/AdflyUrlGrabber">AdflyUrlgrabber</a>, el cual por algún motivo no ha sido portado a Python 3.x todavía.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># -*- coding: utf-8 -*-</span>
-
-<span class="kn">import</span> <span class="nn">base64</span><span class="o">,</span> <span class="nn">urllib</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># -*- coding: utf-8 -*-
+</span>
+<span class="kn">import</span> <span class="nn">base64</span><span class="p">,</span> <span class="n">urllib</span>
 <span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">re</span><span class="o">,</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="p">,</span> <span class="n">re</span><span class="p">,</span> <span class="n">sys</span>
 
 <span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
-</code></pre>
-</div>
-<p>Estos son los <code class="highlighter-rouge">import</code> que he necesitado, tanto para extraer los enlaces como para desencriptarlos.</p>
+</code></pre></div></div>
+<p>Estos son los <code class="language-plaintext highlighter-rouge">import</code> que he necesitado, tanto para extraer los enlaces como para desencriptarlos.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">_crack</span><span class="p">(</span><span class="n">code</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">_crack</span><span class="p">(</span><span class="n">code</span><span class="p">):</span>
         <span class="n">zeros</span> <span class="o">=</span> <span class="s">''</span>
         <span class="n">ones</span> <span class="o">=</span> <span class="s">''</span>
         <span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">letter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">code</span><span class="p">):</span>
@@ -91,9 +112,9 @@
         <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
 
         <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">key</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">key</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">isdigit</span><span class="p">():</span>
                 <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">key</span><span class="p">)):</span>
-                    <span class="k">if</span> <span class="n">key</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">key</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">isdigit</span><span class="p">():</span>
                         <span class="n">u</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">key</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">^</span><span class="nb">int</span><span class="p">(</span><span class="n">key</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
                         <span class="k">if</span> <span class="n">u</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span> 
                             <span class="n">key</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
@@ -101,76 +122,67 @@
                         <span class="k">break</span>
             <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
 
-        <span class="n">key</span> <span class="o">=</span> <span class="s">''</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">'base64'</span><span class="p">)[</span><span class="mi">16</span><span class="p">:</span><span class="o">-</span><span class="mi">16</span><span class="p">]</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">key</span><span class="p">).</span><span class="n">decode</span><span class="p">(</span><span class="s">'base64'</span><span class="p">)[</span><span class="mi">16</span><span class="p">:</span><span class="o">-</span><span class="mi">16</span><span class="p">]</span>
 
         <span class="k">return</span> <span class="n">key</span>
 
 <span class="k">def</span> <span class="nf">_decrypt</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-    <span class="n">adfly</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-    <span class="n">ysmm</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r"var ysmm = '(.*?)';"</span><span class="p">,</span><span class="n">adfly</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">adfly</span> <span class="o">=</span> <span class="n">urllib</span><span class="p">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">ysmm</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s">"var ysmm = '(.*?)';"</span><span class="p">,</span><span class="n">adfly</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">decrypted_url</span> <span class="o">=</span> <span class="n">_crack</span><span class="p">(</span><span class="n">ysmm</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">decrypted_url</span>
-</code></pre>
-</div>
-<p>Funciones <code class="highlighter-rouge">_crack()</code> y <code class="highlighter-rouge">_decrypt()</code>, encargadas de romper el cifrado de Adf.ly y de devolver la URL que se oculta detrás.</p>
+</code></pre></div></div>
+<p>Funciones <code class="language-plaintext highlighter-rouge">_crack()</code> y <code class="language-plaintext highlighter-rouge">_decrypt()</code>, encargadas de romper el cifrado de Adf.ly y de devolver la URL que se oculta detrás.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="c"># Extrae los enlaces que cumplan las condiciones de la página objetivo.</span>
-    <span class="n">target</span>  <span class="o">=</span> <span class="s">"&lt;URL&gt;"</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># Extrae los enlaces que cumplan las condiciones de la página objetivo.
+</span>    <span class="n">target</span>  <span class="o">=</span> <span class="s">"&lt;URL&gt;"</span>
 
-    <span class="n">content</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">target</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">target</span><span class="p">).</span><span class="n">text</span>
     <span class="n">soup</span>    <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="s">'html.parser'</span><span class="p">)</span>
-    <span class="n">items</span>   <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">'article blockquote div'</span><span class="p">)</span> <span class="c"># Contenedor de enlaces</span>
-    <span class="n">links</span>   <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">items</span>   <span class="o">=</span> <span class="n">soup</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">'article blockquote div'</span><span class="p">)</span> <span class="c1"># Contenedor de enlaces
+</span>    <span class="n">links</span>   <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">'a'</span><span class="p">):</span>
-            <span class="c"># Condición para que el enlace sea el que buscamos</span>
-            <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s">"www.Mega.com"</span><span class="p">:</span>
-                <span class="n">url</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">'http://adf(.*)'</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'href'</span><span class="p">))</span>
-                <span class="n">links</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">"http://adf{}</span><span class="se">\n</span><span class="s">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
+        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">item</span><span class="p">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">'a'</span><span class="p">):</span>
+            <span class="c1"># Condición para que el enlace sea el que buscamos
+</span>            <span class="k">if</span> <span class="n">a</span><span class="p">.</span><span class="n">text</span> <span class="o">==</span> <span class="s">"www.Mega.com"</span><span class="p">:</span>
+                <span class="n">url</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="s">'http://adf(.*)'</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'href'</span><span class="p">))</span>
+                <span class="n">links</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">"http://adf{}</span><span class="se">\n</span><span class="s">"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
 
-    <span class="c"># Comprueba que exista el directorio de salida</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s">'output'</span><span class="p">):</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s">'output'</span><span class="p">)</span>
+    <span class="c1"># Comprueba que exista el directorio de salida
+</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">exists</span><span class="p">(</span><span class="s">'output'</span><span class="p">):</span>
+        <span class="n">os</span><span class="p">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s">'output'</span><span class="p">)</span>
 
     <span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'output/output.txt'</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span>
 
-    <span class="c"># Procesa cada enlace adf.ly, desencriptándolo y guardándolo en output.txt</span>
-    <span class="k">try</span><span class="p">:</span>
+    <span class="c1"># Procesa cada enlace adf.ly, desencriptándolo y guardándolo en output.txt
+</span>    <span class="k">try</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">link</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">links</span><span class="p">):</span>
-            <span class="k">print</span> <span class="s">"Procesando enlace #{} de {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">links</span><span class="p">))</span>
-            <span class="nb">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">"{}</span><span class="se">\n</span><span class="s">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">_decrypt</span><span class="p">(</span><span class="n">link</span><span class="p">)))</span>
+            <span class="k">print</span> <span class="s">"Procesando enlace #{} de {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">links</span><span class="p">))</span>
+            <span class="nb">file</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"{}</span><span class="se">\n</span><span class="s">"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">_decrypt</span><span class="p">(</span><span class="n">link</span><span class="p">)))</span>
 
     <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s">"Ocurrió un error: {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s">"Ocurrió un error: {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
 
     <span class="k">print</span> <span class="s">"¡Finalizado! Resultados guardados en output/output.txt"</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Función principal del script. Realiza el flujo de trabajo explicado arriba, primero extrayendo el HTML de la página objetivo, a continuación analizándolo en busca de los enlaces que nos interesan, y por último guardándolos en un archivo TXT que podemos utilizar como más nos guste.</p>
 
 
 </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<div class="pagination">
-  
-    <a href="/2018/01/02/Feliz-ano-nuevo/" class="left arrow">&#8592;</a>
-  
-  
-    <a href="/2017/08/11/Escribiendo-un-bot-para-telegram/" class="right arrow">&#8594;</a>
-  
-
-  <a href="#" class="top">Arriba</a>
-</div>
-
-    </main>
-
-    <footer>
-      <span>
-        &copy; <time datetime="2018-02-21 21:16:18 +0100">2018</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
-      </span>
-    </footer>
+        <footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            Made with <span style="color: #e25555;">&hearts;</span> by Juanjo Salvador
+        </p>
+    </div>
+</footer>
   </body>
 </html>

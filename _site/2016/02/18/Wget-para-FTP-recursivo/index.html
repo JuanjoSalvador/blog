@@ -2,76 +2,90 @@
 <html lang="en">
 
   <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Juanjo Salvador's personal webpage">
 
-  <title>
-    
-      Wget para FTP recursivo &middot; El blog de Juanjo Salvador
-    
-  </title>
+    <title>
+        
+            Wget para FTP recursivo &middot; Ingeniero y no puedo
+        
+    </title>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <link rel="stylesheet" href="/assets/styles.css">
+
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Wget para FTP recursivo | Ingeniero y no puedo</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Wget para FTP recursivo" />
+<meta name="author" content="Juanjo Salvador" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Por circunstancias laborales, he precisado descargar un directorio raiz bastante extenso desde un FTP. Como no tengo instalado un cliente gráfico, y prefiero no tener que hacerlo, he usado la herramienta wget." />
+<meta property="og:description" content="Por circunstancias laborales, he precisado descargar un directorio raiz bastante extenso desde un FTP. Como no tengo instalado un cliente gráfico, y prefiero no tener que hacerlo, he usado la herramienta wget." />
+<link rel="canonical" href="http://localhost:4000/2016/02/18/Wget-para-FTP-recursivo/" />
+<meta property="og:url" content="http://localhost:4000/2016/02/18/Wget-para-FTP-recursivo/" />
+<meta property="og:site_name" content="Ingeniero y no puedo" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-02-18T00:00:00+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Wget para FTP recursivo" />
+<script type="application/ld+json">
+{"description":"Por circunstancias laborales, he precisado descargar un directorio raiz bastante extenso desde un FTP. Como no tengo instalado un cliente gráfico, y prefiero no tener que hacerlo, he usado la herramienta wget.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2016/02/18/Wget-para-FTP-recursivo/"},"url":"http://localhost:4000/2016/02/18/Wget-para-FTP-recursivo/","author":{"@type":"Person","name":"Juanjo Salvador"},"headline":"Wget para FTP recursivo","@type":"BlogPosting","dateModified":"2016-02-18T00:00:00+01:00","datePublished":"2016-02-18T00:00:00+01:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
 </head>
 
 
   <body>
-    <nav class="nav">
-      <div class="nav-container">
-        <a href="/">
-          <h2 class="nav-title">El blog de Juanjo Salvador</h2>
-        </a>
-    </div>
-  </nav>
+        <section class="hero is-primary">
+            <div class="hero-body">
+                <div class="container main">
+                    <div class="columns is-mobile">
+                        <div class="column">
+                            <h1 class="title is-1"><a href="/">Ingeniero y no puedo</a></h1>
+                            <h2 class="subtitle is-3">El blog personal de Juanjo Salvador</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <main>
-      <div class="post">
+        <section class="section">
+            <div class="container">
+                <div class="columns is-mobile">
+                    <div class="column">
+                        <div class="post">
+  
+  <h2 class="title is-2 post-title">Wget para FTP recursivo</h2>
   <div class="post-info">
-    <span>Escrito por</span>
-    
-        Juanjo Salvador
-    
-
-    
-      <br>
-      <span>&nbsp;</span><time datetime="2016-02-18 00:00:00 +0100">February 18, 2016</time>
-    
+    <time datetime="" class="frontpage-time has-text-grey-light">February 18, 2016</time>
   </div>
 
-  <h1 class="post-title">Wget para FTP recursivo</h1>
-  <div class="post-line"></div>
+  <p>Por circunstancias laborales, he precisado descargar un directorio raiz bastante extenso desde un FTP. Como no tengo instalado un cliente gráfico, y prefiero no tener que hacerlo, he usado la herramienta <code class="language-plaintext highlighter-rouge">wget</code>.</p>
 
-  <p>Por circunstancias laborales, he precisado descargar un directorio raiz bastante extenso desde un FTP. Como no tengo instalado un cliente gráfico, y prefiero no tener que hacerlo, he usado la herramienta <code class="highlighter-rouge">wget</code>.</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>wget -r ftp://usuario:contraseña@servidor/
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>wget <span class="nt">-r</span> ftp://usuario:contraseña@servidor/
+</code></pre></div></div>
 <p>Y a descargar.</p>
 
 <p>Tengo que hacerme un script similar pero para descargar el contenido de un directorio de Apache2.</p>
 
 
 </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<div class="pagination">
-  
-    <a href="/2016/02/29/Viaje-a-Granada/" class="left arrow">&#8592;</a>
-  
-  
-    <a href="/2016/02/17/Terminal-m%C3%BAltiple-en-una-sola-ventana/" class="right arrow">&#8594;</a>
-  
-
-  <a href="#" class="top">Arriba</a>
-</div>
-
-    </main>
-
-    <footer>
-      <span>
-        &copy; <time datetime="2018-02-21 21:16:18 +0100">2018</time> Juanjo Salvador. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
-      </span>
-    </footer>
+        <footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            Made with <span style="color: #e25555;">&hearts;</span> by Juanjo Salvador
+        </p>
+    </div>
+</footer>
   </body>
 </html>
