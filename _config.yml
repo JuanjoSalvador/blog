@@ -7,7 +7,7 @@ subtitle:       El blog personal de Juanjo Salvador
 baseurl:        
 url:            "https://jsalvador.me"
 
-remote_theme:   JuanjoSalvador/blue
+#remote_theme:   JuanjoSalvador/blue
 color:          primary
 
 author:
