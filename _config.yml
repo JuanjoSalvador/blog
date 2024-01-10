@@ -13,11 +13,13 @@ author:
   name:         Juanjo Salvador
   url:          http://jsalvador.me
   email:        juanjosalvador@netc.eu
+  github:       JuanjoSalvador                     # Place your GitHub username here
+  twitter:      Linuxneitor                        # Place your twitter username here
+  mastodon:     https://mastodon.social/@jsalvador # Place your profile URL here
 
 # Assets
 sass:
-  sass_dir:     _sass
-  style:        :compressed
+  style:        compressed
 
 markdown: kramdown
 highlighter: rouge
