@@ -31,6 +31,11 @@ version:        3.9.1
 paginate:       5
 paginate_path: "/page:num/"
 
+twitter:
+  username: Linuxneitor
+  card: summary
+locale: es_ES
+
 plugins: 
   - jekyll-paginate
   - jekyll-seo-tag
