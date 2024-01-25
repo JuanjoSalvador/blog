@@ -10,7 +10,7 @@ Inspirado por un [artículo del blog de Pinchito](https://pinchito.es/2023/job-s
 
 <center>
     <figure>
-        <img src="/blog/assets/20240125/so-you-use-5addcf.jpg" width="50%" alt="Meme de Willy Wonka en la película clásica, preguntando por tus habilidades con bases de datos al ver que usas Excel como tal" />
+        <img src="{{ site.baseurl }}/assets/20240125/so-you-use-5addcf.jpg" width="50%" alt="Meme de Willy Wonka en la película clásica, preguntando por tus habilidades con bases de datos al ver que usas Excel como tal" />
     </figure>
 </center>
 
@@ -43,7 +43,7 @@ No obstante, no siempre el fallo viene de tu parte. En mi análisis posterior de
 
 <center>
     <figure>
-        <img src="/blog/assets/20240125/job-graph.png" alt="Gráfico con los resultados de mi búsqueda" />
+        <img src="{{ site.baseurl }}/assets/20240125/job-graph.png" alt="Gráfico con los resultados de mi búsqueda" />
         <small>Diagrama de Sankey con los resultados de mi búsqueda <br/>
         (6 de Octubre de 2023 - 25 de Enero de 2024)</small>
     </figure>
