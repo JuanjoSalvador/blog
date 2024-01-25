@@ -19,7 +19,7 @@ Work in progress!
 
 ```
 title:          My Awesome Blog
-subtitle:       My Awesome Blog Subtitle
+description:    This is my awesome Jekyll blog
 url:            "https://foobar.dev"
 color:          primary
 
