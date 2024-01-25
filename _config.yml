@@ -4,7 +4,7 @@ permalink:      pretty
 # Setup
 title:          Ingeniero y no puedo
 description:    El blog personal de Juanjo Salvador
-baseurl:        "/blog/"
+baseurl:        "/blog"
 url:            "https://jsalvador.me"
 
 color:          dark
