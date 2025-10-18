@@ -8,7 +8,7 @@ El pasado día 14 de Octubre de 2025, Microsoft anunció oficialmente el fin del
 
 <center>
     <figure>
-        <img src="{{ site.url }}/assets/20251018/eu-chad.jpg" width="50%" alt="Meme de Chad con una taza azul con la bandera de la UE" />
+        <img src="{{ site.url }}/blog/assets/20251018/eu-chad.jpg" width="50%" alt="Meme de Chad con una taza azul con la bandera de la UE" />
     </figure>
 </center>
 
@@ -18,7 +18,7 @@ Sin embargo, la comunidad del pingüino es enorme, hay literalmente [miles de op
 
 <center>
     <figure>
-        <img src="{{ site.url }}/assets/20251018/mermaid-linux-graph.png" width="100%" alt="Gráfico de flujo mostrando qué distribución Linux elegir basándote en tus preferencias" />
+        <img src="{{ site.url }}/blog/assets/20251018/mermaid-linux-graph.png" width="100%" alt="Gráfico de flujo mostrando qué distribución Linux elegir basándote en tus preferencias" />
     </figure>
 </center>
 
@@ -26,4 +26,5 @@ También menciono a aquellos que se han empapado tanto en contenido como el de [
 
 
 Lo generé usando [Mermaid](https://www.mermaidchart.com/d/f57518fd-3e90-4855-8e95-c1921edf4943), que lo he descubierto hace poco y es muy resultón, además de que se puede integrar con GitHub y Jekyll.
+
 
