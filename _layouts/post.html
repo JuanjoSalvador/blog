@@ -5,8 +5,8 @@ layout: default
 <div class="post">
   
   <h2 class="title is-2 post-title">{{ page.title }}</h2>
-  <div class="post-info">
-    <time datetime="{{ post.date }}" class="frontpage-time has-text-grey-light">{{ page.date | date: "%B %d, %Y" }}</time>
+  <div class="post-info has-text-grey-light">
+    Publicado por {{ site.author.name }}, el <time datetime="{{ post.date }}" class="frontpage-time">{{ page.date | date_es }}</time>
   </div>
 
   {{ content }}

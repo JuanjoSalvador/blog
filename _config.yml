@@ -1,44 +1,63 @@
-# Permalinks
-permalink:      pretty
+# Configuración del sitio
+title: Ingeniero y no puedo
+description: El blog personal de Juanjo Salvador
+baseurl: "/blog"
+url: "https://jsalvador.me"
 
-# Setup
-title:          Ingeniero y no puedo
-description:    El blog personal de Juanjo Salvador
-baseurl:        "/blog"
-url:            "https://jsalvador.me"
-
-color:          dark
-
+# Configuración de autor
 author:
-  name:         Juanjo Salvador
-  url:          http://jsalvador.me
-  email:        juanjosalvador@netc.eu
-  github:       JuanjoSalvador                     # Place your GitHub username here
-  twitter:      Linuxneitor                        # Place your twitter username here
-  mastodon:     https://mastodon.social/@jsalvador # Place your profile URL here
+  name: Juanjo Salvador
+  url: http://jsalvador.me
+  email: juanjosalvador@netc.eu
+  github: JuanjoSalvador
+  twitter: Linuxneitor
+  mastodon: https://mastodon.social/@jsalvador
 
-# Assets
-sass:
-  style:        compressed
-
+# Configuración de construcción
 markdown: kramdown
-highlighter: rouge
 kramdown:
   input: GFM
+  syntax_highlighter: rouge
 
-# Custom vars
-version:        3.9.1
-paginate:       5
-paginate_path: "/page:num/"
+# Configuración de salida
+permalink: pretty
+paginate: 5
+paginate_path: "/:num/"
 
-twitter:
-  username: Linuxneitor
-  card: summary
-locale: es_ES
+# Configuración de assets
+sass:
+  style: compressed
+  sourcemap: never  # Nueva opción en Jekyll 4
 
-plugins: 
+# Optimización de rendimiento
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  blanklines: false
+
+# Plugins
+plugins:
   - jekyll-paginate
   - jekyll-seo-tag
   - jekyll-feed
   - jekyll-og-image
 
+# Exclusiones
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/
+  - README.md
+  - LICENSE
+
+# Configuración de caché
+incremental: true  # Característica mejorada en Jekyll 4
+
+# Variables personalizadas
+version: 4.3.3
+color: dark

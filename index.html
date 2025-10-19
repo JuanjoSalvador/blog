@@ -9,15 +9,17 @@ title: Home
             <a href="{{ post.url | prepend: site.baseurl }}">
                 <h3 class="title is-3">{{ post.title }}</h3>
             </a>
-            <time datetime="{{ post.date }}" class="frontpage-time has-text-grey-light">{{ post.date | date: "%B %d, %Y" }}</time>
-
-            <p>
+            <span class="frontpage-time has-text-grey-light">
+              Publicado por {{ site.author.name }}, el <time datetime="{{ post.date }}">{{ post.date | date_es }}</time>
+            </span>
+            
+            <p class="frontpage-item-excerpt">
                 {{ post.content | truncatewords: 60 | strip_html }}
             </p>
 
             <p class="frontpage-item-readmore">
                 <a href="{{ post.url | prepend: site.baseurl }}" class="button is-{{ site.color }}">
-                   <strong>Read more</strong>
+                   <strong>Sigue leyendo</strong>
                 </a>
             </p>
             <br><br>
@@ -25,15 +27,4 @@ title: Home
     {% endfor %}
 </div>
 
-<div class="pagination">
-  {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="left-arrow">&#8592;</a>
-  {% endif %}
-
-  {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="right-arrow">&#8594;</a>
-  {% endif %}
-
-  <span class="page-number">{{ paginator.page }}</span>
-  
-</div>
+{% include pagination.html %}

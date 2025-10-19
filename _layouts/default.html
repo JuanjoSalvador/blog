@@ -1,36 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" data-theme="light">
 
   {% include head.html %}
 
-  <body>
-        <section class="hero is-{{ site.color }}">
-            <div class="hero-body">
-                <div class="container main">
-                    <div class="columns">
-                        <div class="column"></div>
-                        <div class="column is-two-thirds">  
-                            <h1 class="title is-1"><a href="{{ site.baseurl }}">{{ site.title }}</a></h1>
-                            <h2 class="subtitle is-3">{{ site.description }}</h2>
-                        </div>
-                        <div class="column"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <body>   
+    {% include header.html %}
 
-        <section class="section">
-            <div class="container">
-                <div class="columns is-mobile">
-                    <div class="column"></div>
-                    <div class="column is-two-thirds">
-                        {{ content }}
-                    </div>
-                    <div class="column"></div>
+    <section class="section">
+        <div class="container">
+            <div class="columns is-mobile">
+                <div class="column"></div>
+                <div class="column is-four-fifths">
+                    {{ content | justify }}
                 </div>
+                <div class="column"></div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        {% include footer.html %}
+    {% include footer.html %}
   </body>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+    var $burgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+    if ($burgers.length > 0) {
+        $burgers.forEach(function ($el) {
+        $el.addEventListener('click', function () {
+            var target = $el.dataset.target;
+            var $target = document.getElementById(target);
+            $el.classList.toggle('is-active');
+            if ($target) { $target.classList.toggle('is-active'); }
+        });
+        });
+    }
+    });
+    </script>
 </html>
