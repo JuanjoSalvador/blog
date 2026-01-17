@@ -25,7 +25,7 @@ Recientemente he actualizado algunas cosas con respecto a la versión que liber�
 
 También he mejorado su presencia en redes sociales, por fin he empezado a subir actualizaciones en la [cuenta oficial](https://bsky.app/profile/sunset-bsky.bsky.social/) que le creé cuando empecé el proyecto. 
 
-Y lo más importante: ¡está disponible para pruebas públicas! Puedes verlo en funcionamiento en [sunset-testing.jsalvador.me](https://sunset-testing.jsalvador.me). El dominio es temporal, mientras pienso a donde va este proyecto.
+Y lo más importante: ¡está disponible para pruebas públicas! Puedes verlo en funcionamiento en [sunset.jsalvador.me](https://sunset.jsalvador.me). El dominio es temporal, mientras pienso a donde va este proyecto.
 
 ### El futuro... de Sunset
 
