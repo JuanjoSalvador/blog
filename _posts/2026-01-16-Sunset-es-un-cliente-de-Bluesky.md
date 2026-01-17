@@ -18,8 +18,7 @@ Recientemente he actualizado algunas cosas con respecto a la versi√≥n que liber√
 
 <center>
     <figure>
-        <img src="https://cdn.bsky.app/img/avatar/plain/did:plc:zq2r62mx5wwnu52nqppu6rgx/bafkreig73zk2scsw4sg3lhv27uja7yvlgrzqfdtmdqdmmovqzvssocpkle@jpeg" class="is-rounded" width="200" />
-        <figcaption>Logo para Sunset</figcaption>
+        <img src="{{ site.url }}/blog/assets/20260116/image.png" />
     </figure>
 </center>
 
