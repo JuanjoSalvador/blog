@@ -1,8 +1,8 @@
 # Configuración del sitio
 title: Ingeniero y no puedo
 description: El blog personal de Juanjo Salvador
-baseurl: "/blog"
-url: "https://jsalvador.me"
+baseurl: "/"
+url: "https://ingenieroynopuedo.es"
 
 # Configuración de autor
 author:
@@ -10,7 +10,6 @@ author:
   url: http://jsalvador.me
   email: juanjosalvador@netc.eu
   github: JuanjoSalvador
-  twitter: Linuxneitor
   mastodon: https://mastodon.social/@jsalvador
 
 # Configuración de construcción
@@ -60,4 +59,5 @@ incremental: true  # Característica mejorada en Jekyll 4
 
 # Variables personalizadas
 version: 4.3.3
+
 color: dark
