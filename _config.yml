@@ -1,14 +1,13 @@
 # Configuración del sitio
 title: Ingeniero y no puedo
 description: El blog personal de Juanjo Salvador
-baseurl: "/"
+baseurl: 
 url: "https://ingenieroynopuedo.es"
 
 # Configuración de autor
 author:
   name: Juanjo Salvador
   url: http://jsalvador.me
-  email: juanjosalvador@netc.eu
   github: JuanjoSalvador
   mastodon: https://mastodon.social/@jsalvador
 

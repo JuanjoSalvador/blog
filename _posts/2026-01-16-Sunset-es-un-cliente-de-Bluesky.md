@@ -18,7 +18,7 @@ Recientemente he actualizado algunas cosas con respecto a la versi√≥n que liber√
 
 <center>
     <figure>
-        <img src="{{ site.url }}/blog/assets/20260116/image.png" />
+        <img src="{{ site.url }}/assets/20260116/image.png" />
     </figure>
 </center>
 

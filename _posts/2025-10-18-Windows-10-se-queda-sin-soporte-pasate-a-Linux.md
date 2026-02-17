@@ -8,7 +8,7 @@ El pasado día 14 de Octubre de 2025, Microsoft anunció oficialmente el fin del
 
 <center>
     <figure>
-        <img src="{{ site.url }}/blog/assets/20251018/eu-chad.jpg" width="50%" alt="Meme de Chad con una taza azul con la bandera de la UE" />
+        <img src="{{ site.url }}/assets/20251018/eu-chad.jpg" width="50%" alt="Meme de Chad con una taza azul con la bandera de la UE" />
     </figure>
 </center>
 
@@ -18,7 +18,7 @@ Sin embargo, la comunidad del pingüino es enorme, hay literalmente [miles de op
 
 <center>
     <figure>
-        <img src="{{ site.url }}/blog/assets/20251018/mermaid-linux-graph.png" width="100%" alt="Gráfico de flujo mostrando qué distribución Linux elegir basándote en tus preferencias" />
+        <img src="{{ site.url }}/assets/20251018/mermaid-linux-graph.png" width="100%" alt="Gráfico de flujo mostrando qué distribución Linux elegir basándote en tus preferencias" />
     </figure>
 </center>
 
