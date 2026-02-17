@@ -1,5 +1,7 @@
 <nav class="navbar is-{{ site.color }}" aria-label="main navigation" role="navigation">
     <div class="navbar-brand">
+        <div class="navbar-item"></div>
+
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMain">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
@@ -10,15 +12,13 @@
 
     <div id="navbarMain" class="navbar-menu">
         <div class="navbar-start">
-            <div class="navbar-item">
-                <span>{{ site.title }} - {{ site.description }}</span>
-            </div>
+            <div class="navbar-brand"></div>
+            <a href="/" alt="Link to Juanjo Salvador's blog" class="navbar-item">
+                <span>🏠 Inicio</span>
+            </a>
         </div>
 
         <div class="navbar-end">
-            <a href="/blog/" alt="Link to Juanjo Salvador's blog" class="navbar-item">
-                <strong>Inicio</strong>
-            </a>
         </div>
     </div>
 </nav>

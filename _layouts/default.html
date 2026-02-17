@@ -8,32 +8,15 @@
 
     <section class="section">
         <div class="container">
-            <div class="columns is-mobile">
-                <div class="column"></div>
-                <div class="column is-four-fifths">
-                    {{ content | justify }}
+            <div class="columns is-3 is-mobile">
+                <div class="column has-text-justified">
+                    {{ content }}
                 </div>
-                <div class="column"></div>
             </div>
         </div>
     </section>
 
     {% include footer.html %}
   </body>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
-    var $burgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-    if ($burgers.length > 0) {
-        $burgers.forEach(function ($el) {
-        $el.addEventListener('click', function () {
-            var target = $el.dataset.target;
-            var $target = document.getElementById(target);
-            $el.classList.toggle('is-active');
-            if ($target) { $target.classList.toggle('is-active'); }
-        });
-        });
-    }
-    });
-    </script>
+  {% include hamburguer.html %}
 </html>

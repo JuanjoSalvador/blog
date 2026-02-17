@@ -4,9 +4,15 @@ layout: default
 
 <div class="post">
   
-  <h2 class="title is-2 post-title">{{ page.title }}</h2>
-  <div class="post-info has-text-grey-light">
-    Publicado por {{ site.author.name }}, el <time datetime="{{ post.date }}" class="frontpage-time">{{ page.date | date_es }}</time>
+  <div class="has-text-centered">
+    <h2 class="title is-2 post-title">{{ page.title }}</h2>     
+    <figure class="image is-64x64 is-flex is-justify-content-center" style="margin: 0 auto;">
+      <img src="https://jsalvador.me/public/images/pfp.jpg" class="is-rounded" />
+    </figure>
+    <br/>
+    <div class="post-info has-text-grey-light">
+      {{ site.author.name }}, <time datetime="{{ post.date }}" class="frontpage-time">{{ page.date | date_es }}</time>
+    </div>
   </div>
 
   {{ content }}
