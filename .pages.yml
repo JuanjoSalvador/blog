@@ -3,7 +3,7 @@ content:
   - name: posts
     label: Posts
     type: collection
-    path: content/posts
+    path: _posts
     fields:
       - name: title
         type: string
