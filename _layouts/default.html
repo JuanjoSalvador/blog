@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="light">
+<html lang="es" data-theme="dark">
 
   {% include head.html %}
 
@@ -8,10 +8,12 @@
 
     <section class="section">
         <div class="container">
-            <div class="columns is-3 is-mobile">
-                <div class="column has-text-justified">
+            <div class="columns is-3 mb-1">
+                <div class="column"></div>
+                <div class="column is-two-thirds has-text-justified">
                     {{ content }}
                 </div>
+                <div class="column"></div>
             </div>
         </div>
     </section>
@@ -19,4 +21,6 @@
     {% include footer.html %}
   </body>
   {% include hamburguer.html %}
+  
+  {% include theme-switcher.html %}
 </html>

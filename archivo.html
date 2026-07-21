@@ -1,0 +1,13 @@
+---
+layout: page
+title: Archivo
+---
+
+{% for post in site.posts %}
+<span class="has-text-grey-light">
+    <time datetime="{{ post.date }}">{{ post.date | date_es }}</time>
+</span>
+<a href="{{ post.url | prepend: site.baseurl }}">
+    <p>{{ post.title }}</p>
+</a>
+{% endfor %}

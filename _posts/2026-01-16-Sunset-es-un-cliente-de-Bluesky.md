@@ -1,6 +1,7 @@
 ---
 layout: post
-title: "Sunset es un cliente de Bluesky, impulsado por Vue y Nuxt"
+title: "Experimentando con ATProto y Nuxt"
+description: "Sunset es un cliente de Bluesky, impulsado por Vue y Nuxt."
 tags: proyectos, vue, nuxt
 ---
 

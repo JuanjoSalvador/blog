@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Jekyll builds: de GitHub Pages a GitHub Actions"
+description: "GitHub Pages soporta un número limitado de plugins para Jekyll, si queremos ir más allá, hay que buscar soluciones."
 tags: jekyll, github
 ---
 

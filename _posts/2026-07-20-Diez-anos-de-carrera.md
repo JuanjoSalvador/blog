@@ -1,11 +1,9 @@
 ---
 layout: post
 title: "Diez años de carrera..."
-description: ""
+description: "Jofú, 10 años ya. Se dicen pronto, ¿eh? Pero aquí estamos."
 tags: 
 ---
-
-Jofú, 10 años ya. Se dicen pronto, ¿eh? Pero aquí estamos.
 
 Empecé mi carrera en 2016, a principios de julio además, justo después de graduarme: con ilusión, conocimientos de Java y PHP, y la ambición de dedicarme al desarrollo backend, algo que quizás tardaría un poco más en llegar, de lo que me esperaba.
 
@@ -16,7 +14,7 @@ Empecé trabajando en una empresa pequeña y con grandes aspiraciones, algo que 
 Ya en aquel entonces, me movía por el ambiente *techie*, Hacklab Almería, UNIA, los foros de Ionic... y el voluntariado, era algo que me unía fuertemente a esto. Era una forma de conocer a más gente, nuevos conceptos e ideas. Así acabé, que me liaron para participar como voluntario en PyConES 2016, y a raíz de eso me volqué a aprender el lenguaje y su ecosistema.
 
 <center>
-  <img src="/assets/20260721/pycon-es-2016.png" alt="Foto de Juanjo hablando a la cámara en PyConES 2026" width="50%" /><br/>
+  <img src="/assets/20260721/pycon-es-2016.png" alt="Foto de Juanjo hablando a la cámara en PyConES 2026" width="100%" /><br/>
   <small>Juanlu me lió para aparecer en el <a href="https://www.youtube.com/watch?v=RQcjZg—Ny28">vídeo</a>, no tengo claro aún por qué, pero se lo agradezco mucho, me hizo ilusión.</small>
 </center>
 
@@ -25,7 +23,7 @@ Hasta el punto que, con la influencia positiva que supuso rodearme de las buenas
 Tiempo después y tras un parón dedicándome a administración de sistemas, porque de algo hay que comer —guardo buenos recuerdos de mi paso por ViewNext, en realidad—, volví a lo que me gustaba: el desarrollo backend. Mejor aún, volví al que era mi framework favorito: Django, ¡y en remoto! Aquí fue cuando, tras una entrevista que parecía que no había superado, entré a trabajar en la ya extinta Cathedral Software, la empresa de la que guardo mejores recuerdos hasta el momento. Fueron años de bonanza económica, de diversión, de experimentar, y de locuras.
 
 <center>
-  <img src="/assets/20260721/cathedral-totebag.png" alt="Foto de Juanjo con una totebag en la cabeza" width="40%" /><br/>
+  <img src="/assets/20260721/cathedral-totebag.png" alt="Foto de Juanjo con una totebag en la cabeza" width="50%" /><br/>
   <small>
     Alguien tuvo la idea de subir una foto, desde la oficina, donde todos llevaban la <em>tote bag</em>em> de Cathedral Software en la cabeza, y yo también quería ser popular.
   </small>
