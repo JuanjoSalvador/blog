@@ -1,4 +1,5 @@
 ---
+layout: post
 title: 10 años de carrera...
 ---
 Jofú, 10 años ya. Se dicen pronto, ¿eh? Pero aquí estamos.
