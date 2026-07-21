@@ -19,7 +19,8 @@ Hasta el punto que, con la influencia positiva que supuso rodearme de las buenas
 
 Tiempo después y tras un parón dedicándome a administración de sistemas, porque de algo hay que comer —guardo buenos recuerdos de mi paso por ViewNext, en realidad—, volví a lo que me gustaba: el desarrollo backend. Mejor aún, volví al que era mi framework favorito: Django, ¡y en remoto! Aquí fue cuando, tras una entrevista que parecía que no había superado, entré a trabajar en la ya extinta Cathedral Software, la empresa de la que guardo mejores recuerdos hasta el momento. Fueron años de bonanza económica, de diversión, de experimentar, y de locuras.
 
-![Foto de Juanjo con una totebag en la cabeza](/assets/20260721/cathedral-totebag.png)
+<img src="/assets/20260721/cathedral-totebag.png" alt="Foto de Juanjo con una totebag en la cabeza" align="middle" width="70%" />
+
 <small>Alguien tuvo la idea de subir una foto, desde la oficina, donde todos llevaban la *tote bag* de Cathedral Software en la cabeza, y yo también quería ser popular.</small>
 
 Al salir de esta empresa, tenía la sensación de que no volvería a encontrar un sitio donde encajaría tan bien. Y de hecho, en los siguientes lugares donde trabajé, detalles que omitiré porque tampoco es plan de detallar mi curriculum aquí, no me sentí tan acogido ni tan parte del equipo, como me pasó en Cathedral. Quizás hasta ahora, la empresa donde desempeño como programador, aportando mi granito de arena con Java. Y lambdas, y mi experiencia en procesos de extracción y tratamiento de datos. Un aporte, que siento que realmente tiene algún peso, que realmente me hace sentir parte de un equipo, y que me anima a continuar.
