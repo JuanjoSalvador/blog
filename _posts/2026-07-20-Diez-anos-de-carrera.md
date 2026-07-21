@@ -25,9 +25,9 @@ Hasta el punto que, con la influencia positiva que supuso rodearme de las buenas
 Tiempo después y tras un parón dedicándome a administración de sistemas, porque de algo hay que comer —guardo buenos recuerdos de mi paso por ViewNext, en realidad—, volví a lo que me gustaba: el desarrollo backend. Mejor aún, volví al que era mi framework favorito: Django, ¡y en remoto! Aquí fue cuando, tras una entrevista que parecía que no había superado, entré a trabajar en la ya extinta Cathedral Software, la empresa de la que guardo mejores recuerdos hasta el momento. Fueron años de bonanza económica, de diversión, de experimentar, y de locuras.
 
 <center>
-  <img src="/assets/20260721/cathedral-totebag.png" alt="Foto de Juanjo con una totebag en la cabeza" width="50%" />
+  <img src="/assets/20260721/cathedral-totebag.png" alt="Foto de Juanjo con una totebag en la cabeza" width="40%" /><br/>
   <small>
-  Alguien tuvo la idea de subir una foto, desde la oficina, donde todos llevaban la *tote bag* de Cathedral Software en la cabeza, y yo también quería ser popular.
+    Alguien tuvo la idea de subir una foto, desde la oficina, donde todos llevaban la <em>tote bag</em>em> de Cathedral Software en la cabeza, y yo también quería ser popular.
   </small>
 </center>
 
